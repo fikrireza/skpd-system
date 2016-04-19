@@ -17,4 +17,13 @@ Route::get('/', function () {
 
 Route::get('dashboard', function(){
   return view('pages/dashboard');
+})->middleware('IsAdmin');
+
+Route::get('register', function(){
+  return view('pages/register');
 });
+
+Route::post('login', 'CustomAuthController@loginprocess');
+Route::get('logout', 'CustomAuthController@logoutprocess');
+
+Route::post('register', 'RegisterController@registerprocess');

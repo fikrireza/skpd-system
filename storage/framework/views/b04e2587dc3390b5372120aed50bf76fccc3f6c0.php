@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PT. Ganda Mady Pratama | Human Resources Information Systems</title>
+    <title>SKPD Pengaduan Online | Kabupaten Tangerang</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -35,11 +35,11 @@
 
       <div class="login-box-body">
         <p class="login-box-msg">Silahkan lakukan proses login</p>
-        <form action="<?php echo e(url('loginprocess')); ?>" method="post">
+        <form action="<?php echo e(url('login')); ?>" method="post">
           <?php echo csrf_field(); ?>
 
           <div class="form-group has-feedback">
-            <input name="username" type="text" class="form-control" placeholder="Username">
+            <input name="email" type="email" class="form-control" placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -55,13 +55,14 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+              <button type="submit" class="btn btn-success btn-block btn-flat">Log In</button>
             </div><!-- /.col -->
           </div>
         </form>
 
 
-        <a href="#">I forgot my password</a><br>
+        <a href="#">Lupa password? Klik disini</a><br>
+        <a href="<?php echo e(url('register')); ?>">Belum memiliki akun? Klik disini</a><br>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
