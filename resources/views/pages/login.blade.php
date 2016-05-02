@@ -28,8 +28,8 @@
   <body class="skin-blue-light hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <!-- <img src="{{asset('images/logo-gmt.png')}}" alt="" /> -->
-        <a href="../../index2.html"><b>SKPD Pengaduan Online</b></a>
+        <img src="{{asset('images/logologinkabtangerang.png')}}" alt="SPD" />
+        &nbsp;&nbsp;<b>Simpedu Online</b>
       </div>
 
 
@@ -47,11 +47,7 @@
           </div>
           <div class="row">
             <div class="col-xs-8">
-              <div class="checkbox icheck">
-                <label>
-                  <input type="checkbox"> Remember Me
-                </label>
-              </div>
+
             </div><!-- /.col -->
             <div class="col-xs-4">
               <button type="submit" class="btn btn-success btn-block btn-flat">Log In</button>
