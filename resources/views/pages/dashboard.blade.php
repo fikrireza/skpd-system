@@ -102,8 +102,8 @@
               Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca pada saat Pendaftaran online bagaimana? Mohon informasinya, terima kasih.
             </p>
             <div class="attachment">
-              <h4>Data Pendukung:</h4>
-              <p class="filename">
+              <b>Data Pendukung</b>
+              <p class="text-muted">
                 gambar.jpg
               </p>
               <div class="pull-right">
@@ -351,9 +351,7 @@
   <script src="{{ asset('dist/js/app.min.js') }}"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   {{-- <script src="{{ asset('/dist/js/pages/dashboard.js') }}"></script> --}}
-  <script src="dist/js/pages/dashboard2.js"></script>
+  <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('/dist/js/demo.js') }}"></script>
-
-
 @stop

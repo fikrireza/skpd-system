@@ -27,3 +27,7 @@ Route::post('login', 'CustomAuthController@loginprocess');
 Route::get('logout', 'CustomAuthController@logoutprocess');
 
 Route::post('register', 'RegisterController@registerprocess');
+
+Route::get('tanggap', function(){
+  return view('pages.tanggapipengaduan');
+});
