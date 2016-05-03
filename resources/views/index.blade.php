@@ -5,17 +5,24 @@
     @yield('title')
   </head>
 
-  <body class="hold-transition skin-blue layout-top-nav">
+  <body class="hold-transition skin-white layout-top-nav">
     <div class="wrapper">
 
       <header class="main-header">
         <nav class="navbar navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a href="../../index2.html" class="navbar-brand"><b>SIMPEDU</b></a>
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                <i class="fa fa-bars"></i>
-              </button>
+              <a href="{{ url('/')}}" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini">
+                  <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
+                </span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg">
+                  <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
+                  &nbsp;&nbsp;<b>SIMPEDU</b>
+                </span>
+              </a>
             </div>
           </div><!-- /.container-fluid -->
         </nav>
@@ -113,7 +120,7 @@
                         <form action="{{ url('register') }}" method="post">
                           {!! csrf_field() !!}
                           <div class="form-group has-feedback">
-                            <input name="nama" type="text" class="form-control" placeholder="Nama Lengkap">
+                            <input name="nama" type="text" class="form-control" placeholder="Nama">
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                           </div>
                           <div class="form-group has-feedback">
@@ -125,7 +132,7 @@
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                           </div>
                           <div class="form-group has-feedback">
-                            <input name="kpassword" type="password" class="form-control" placeholder="Ulangi Password">
+                            <input name="kpassword" type="password" class="form-control" placeholder="Konfirmasi Password">
                             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                           </div>
                           <div class="row">
