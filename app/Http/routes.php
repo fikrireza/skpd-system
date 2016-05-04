@@ -15,6 +15,10 @@ Route::get('/', function() {
   return view('index');
 });
 
+Route::get('/beranda', function () {
+  return view('pages/beranda');
+});
+
 Route::get('/login', function () {
   return view('pages/login');
 });
