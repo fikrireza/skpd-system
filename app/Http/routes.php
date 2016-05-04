@@ -47,3 +47,7 @@ Route::get('lihatpengaduan', function(){
 Route::get('pengaduanbytopik', function(){
   return view('pages.pengaduanbytopik');
 });
+
+Route::get('userprofile', function(){
+  return view('pages.userprofile');
+});
