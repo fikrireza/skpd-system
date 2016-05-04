@@ -186,11 +186,11 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      <ul class="list-inline">
+                      {{-- <ul class="list-inline">
                         <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
                         <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
                         <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul>
+                      </ul> --}}
                     </div><!-- /.post -->
                     <!-- Post -->
                     <div class="post">
@@ -209,11 +209,11 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      <ul class="list-inline">
+                      {{-- <ul class="list-inline">
                         <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
                         <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
                         <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul>
+                      </ul> --}}
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
                   <div class="tab-pane" id="perhubungan">
@@ -222,7 +222,7 @@
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
                         <span class="username">
-                          <a href="#">Sarah Ross</a>
+                          <a href="#">Pelapor</a>
                           <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
                         </span>
                         <span class="description">Shared publicly - 7:30 PM today</span>
@@ -234,11 +234,38 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      <ul class="list-inline">
+                      {{-- <ul class="list-inline">
                         <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
                         <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
                         <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul>
+                      </ul> --}}
+                      <div class="box-footer box-comments">
+                        <div class="box-comment">
+                          <!-- User image -->
+                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user3-128x128.jpg') }}" alt="user image">
+                          <div class="comment-text">
+                            <span class="username">
+                              Administrator
+                              <span class="text-muted pull-right">8:03 PM Today</span>
+                            </span><!-- /.username -->
+                            It is a long established fact that a reader will be distracted
+                            by the readable content of a page when looking at its layout.
+                          </div><!-- /.comment-text -->
+                        </div><!-- /.box-comment -->
+                        <div class="box-comment">
+                          <!-- User image -->
+                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
+                          <div class="comment-text">
+                            <span class="username">
+                              SKPD Perhubungan
+                              <span class="text-muted pull-right">8:03 PM Today</span>
+                            </span><!-- /.username -->
+                            The point of using Lorem Ipsum is that it has a more-or-less
+                            normal distribution of letters, as opposed to using
+                            'Content here, content here', making it look like readable English.
+                          </div><!-- /.comment-text -->
+                        </div><!-- /.box-comment -->
+                      </div>
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
 
@@ -260,11 +287,11 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      <ul class="list-inline">
+                      {{-- <ul class="list-inline">
                         <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
                         <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
                         <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul>
+                      </ul> --}}
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
                 </div><!-- /.tab-content -->
@@ -275,22 +302,22 @@
                 <!-- About Me Box -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">About Me</h3>
+                  <h3 class="box-title">Laporan Terbaru</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
+                  <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
                   <p class="text-muted">
                     B.S. in Computer Science from the University of Tennessee at Knoxville
                   </p>
 
                   <hr>
 
-                  <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
                   <p class="text-muted">Malibu, California</p>
 
                   <hr>
 
-                  <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                  {{-- <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
                   <p>
                     <span class="label label-danger">UI Design</span>
                     <span class="label label-success">Coding</span>
@@ -299,9 +326,9 @@
                     <span class="label label-primary">Node.js</span>
                   </p>
 
-                  <hr>
+                  <hr> --}}
 
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
