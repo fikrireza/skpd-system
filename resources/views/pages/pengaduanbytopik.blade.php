@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('title')
-  <title>Lihat Seluruh Pengaduan</title>
+  <title>Data Pengaduan Berdasarkan Topik</title>
   <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
 @stop
 
 @section('breadcrumb')
   <h1>
-    Lihat Seluruh Pengaduan
-    <small>Pengaduan ditampilkan sesuai dengan SKPD terkait</small>
+    Seluruh Data Pengaduan
+    <small>Pengaduan ditampilkan sesuai dengan topik pengaduan yang dipilih</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
@@ -20,14 +20,14 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Horizontal Form -->
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header">
-          <h3 class="box-title">Seluruh Data Pengaduan Untuk SKPD Terkait</h3>
+          <h3 class="box-title">Seluruh Pengaduan dengan Topik : Kesehatan</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelpengaduan" class="table table-hover">
             <thead>
-              <tr class="bg-green">
+              <tr class="bg-yellow">
                 <th>#</th>
                 <th>Pelapor</th>
                 <th>Topik Aduan</th>
@@ -40,7 +40,7 @@
               <tr>
                 <td>1</td>
                 <td>Bambang Pamungkis</td>
-                <td>E-KTP &amp; KK</td>
+                <td>Kesehatan</td>
                 <td>24 April 2016</td>
                 <td><span class="label bg-primary">Telah Ditanggapi</span></td>
                 <td>
@@ -50,7 +50,7 @@
               <tr>
                 <td>2</td>
                 <td>Amanda Satyarini</td>
-                <td>Perizinan</td>
+                <td>Kesehatan</td>
                 <td>25 April 2016</td>
                 <td><span class="label bg-red">Belum Ditanggapi</span></td>
                 <td>
@@ -60,7 +60,7 @@
               <tr>
                 <td>3</td>
                 <td>Brenda Marsalia</td>
-                <td>Pendidikan</td>
+                <td>Kesehatan</td>
                 <td>26 April 2016</td>
                 <td><span class="label bg-primary">Telah Ditanggapi</span></td>
                 <td>
@@ -70,7 +70,7 @@
               <tr>
                 <td>4</td>
                 <td>Bambang Pamungkis</td>
-                <td>E-KTP &amp; KK</td>
+                <td>Kesehatan</td>
                 <td>24 April 2016</td>
                 <td><span class="label bg-primary">Telah Ditanggapi</span></td>
                 <td>
@@ -80,7 +80,7 @@
               <tr>
                 <td>5</td>
                 <td>Amanda Satyarini</td>
-                <td>Perizinan</td>
+                <td>Kesehatan</td>
                 <td>25 April 2016</td>
                 <td><span class="label bg-red">Belum Ditanggapi</span></td>
                 <td>
@@ -90,7 +90,7 @@
               <tr>
                 <td>6</td>
                 <td>Brenda Marsalia</td>
-                <td>Pendidikan</td>
+                <td>Kesehatan</td>
                 <td>26 April 2016</td>
                 <td><span class="label bg-primary">Telah Ditanggapi</span></td>
                 <td>
@@ -100,7 +100,7 @@
               <tr>
                 <td>7</td>
                 <td>Bambang Pamungkis</td>
-                <td>E-KTP &amp; KK</td>
+                <td>Kesehatan</td>
                 <td>24 April 2016</td>
                 <td><span class="label bg-primary">Telah Ditanggapi</span></td>
                 <td>
@@ -110,7 +110,7 @@
               <tr>
                 <td>8</td>
                 <td>Amanda Satyarini</td>
-                <td>Perizinan</td>
+                <td>Kesehatan</td>
                 <td>25 April 2016</td>
                 <td><span class="label bg-red">Belum Ditanggapi</span></td>
                 <td>
@@ -120,7 +120,7 @@
               <tr>
                 <td>9</td>
                 <td>Brenda Marsalia</td>
-                <td>Pendidikan</td>
+                <td>Kesehatan</td>
                 <td>26 April 2016</td>
                 <td><span class="label bg-primary">Telah Ditanggapi</span></td>
                 <td>
@@ -130,7 +130,7 @@
               <tr>
                 <td>10</td>
                 <td>Bambang Pamungkis</td>
-                <td>E-KTP &amp; KK</td>
+                <td>Kesehatan</td>
                 <td>24 April 2016</td>
                 <td><span class="label bg-primary">Telah Ditanggapi</span></td>
                 <td>
@@ -140,7 +140,7 @@
               <tr>
                 <td>11</td>
                 <td>Amanda Satyarini</td>
-                <td>Perizinan</td>
+                <td>Kesehatan</td>
                 <td>25 April 2016</td>
                 <td><span class="label bg-red">Belum Ditanggapi</span></td>
                 <td>
@@ -150,7 +150,7 @@
               <tr>
                 <td>12</td>
                 <td>Brenda Marsalia</td>
-                <td>Pendidikan</td>
+                <td>Kesehatan</td>
                 <td>26 April 2016</td>
                 <td><span class="label bg-primary">Telah Ditanggapi</span></td>
                 <td>

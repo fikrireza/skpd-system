@@ -27,7 +27,7 @@
         <div class="icon">
           <i class="ion ion-speakerphone"></i>
         </div>
-        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-4 col-xs-12">
@@ -182,7 +182,7 @@
                 <li><i class="fa fa-circle-o text-green"></i> Lalu Lintas</li>
                 <li><i class="fa fa-circle-o text-yellow"></i> Perizinan</li>
                 <li><i class="fa fa-circle-o text-aqua"></i> Pendidikan</li>
-                <li><i class="fa fa-circle-o text-light-blue"></i> Teknologi</li>
+                <li><i class="fa fa-circle-o text-light-blue"></i> Kesehatan</li>
                 <li><i class="fa fa-circle-o text-gray"></i> Lainnya</li>
               </ul>
             </div><!-- /.col -->
@@ -201,7 +201,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{url('pengaduanbytopik')}}">
                 Pelayanan E-KTP &amp; KK
                 <span class="pull-right text-red">
                   <b>12%</b>
@@ -233,8 +233,8 @@
               </a>
             </li>
             <li>
-              <a href="#">
-                Teknologi
+              <a href="{{url('pengaduanbytopik')}}">
+                Kesehatan
                 <span class="pull-right text-green">
                   <b>98%</b>
                 </span>

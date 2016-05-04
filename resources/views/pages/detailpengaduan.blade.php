@@ -17,6 +17,41 @@
 @stop
 
 @section('content')
+
+  <!-- Modal -->
+  <div class="modal modal-default fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Mutasi Pengaduan Warga</h4>
+        </div>
+        <form class="form" action="dudy.php" method="post">
+          <div>
+            <div class="modal-body">
+                  <div class="form-group">
+                    <label>
+                      Pilih topik yang relevan dengan aduan warga:
+                    </label>
+                    <select class="form-control" name="">
+                      <option>Kesehatan</option>
+                      <option>Lalu Lintas</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="modal-footer">
+              <button type="reset" class="btn btn-warning pull-left" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="set">Proses Mutasi Pengaduan</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
   <div class="row">
 
     <div class="col-md-12">
@@ -45,6 +80,7 @@
             <b>Data Pendukung</b><br>
             <i class="text-muted">gambar.jpg</i>
             <div class="pull-right">
+              <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
               <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
             </div>
           </div><!-- /.attachment-block -->
