@@ -6,7 +6,7 @@
     </div>
     <div class="pull-left info">
       <p>Anton</p>
-      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      <a href="#"><i class="fa fa-circle text-success"></i> User SKPD</a>
     </div>
   </div>
   <!-- search form -->
@@ -23,7 +23,7 @@
   <ul class="sidebar-menu">
     <li class="header">NAVIGASI UTAMA</li>
     <li class="treeview">
-      <a href="#">
+      <a href="{{url('dashboard')}}">
         <i class="fa fa-dashboard"></i> <span>Halaman Utama</span>
       </a>
     </li>
@@ -34,8 +34,8 @@
         <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a href="#"><i class="fa fa-circle-o"></i> Lihat Seluruh Pengaduan</a></li>
-        <li><a href="#"><i class="fa fa-circle-o"></i> Tanggapi Pengaduan</a></li>
+        <li><a href="{{url('lihatpengaduan')}}"><i class="fa fa-circle-o"></i> Lihat Seluruh Pengaduan</a></li>
+        <li><a href="{{url('tanggap')}}"><i class="fa fa-circle-o"></i> Tanggapi Pengaduan</a></li>
       </ul>
     </li>
     <li class="treeview">

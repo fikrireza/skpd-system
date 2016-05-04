@@ -35,3 +35,11 @@ Route::post('register', 'RegisterController@registerprocess');
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
 });
+
+Route::get('detailpengaduan', function(){
+  return view('pages.detailpengaduan');
+});
+
+Route::get('lihatpengaduan', function(){
+  return view('pages.lihatpengaduan');
+});

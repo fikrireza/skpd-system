@@ -107,8 +107,8 @@
                 gambar.jpg
               </p>
               <div class="pull-right">
-                <button class="btn btn-warning btn-sm btn-flat">Lihat Data Pendukung</button>
-                <button class="btn btn-success btn-sm btn-flat">Proses Pengaduan</button>
+                <a href="#" class="btn btn-warning btn-sm btn-flat">Lihat Data Pendukung</a>
+                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
@@ -128,7 +128,7 @@
             </p>
             <div class="attachment">
               <div class="pull-right">
-                <button class="btn btn-success btn-sm btn-flat">Proses Pengaduan</button>
+                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
@@ -148,13 +148,13 @@
             </p>
             <div class="attachment">
               <div class="pull-right">
-                <button class="btn btn-success btn-sm btn-flat">Proses Pengaduan</button>
+                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
         </div><!-- /.chat -->
         <div class="box-footer">
-          <button class="btn btn-primary pull-right"><i class="fa fa-eye"></i> &nbsp;&nbsp;Lihat Seluruh Pengaduan</button>
+          <a href="{{url('lihatpengaduan')}}" class="btn btn-primary pull-right"><i class="fa fa-eye"></i> &nbsp;&nbsp;Lihat Seluruh Pengaduan</a>
         </div>
       </div><!-- /.box (chat box) -->
 
