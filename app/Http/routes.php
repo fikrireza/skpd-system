@@ -59,3 +59,7 @@ Route::get('wargaprofile', function(){
 Route::get('userskpdprofile', function(){
   return view('pages.userskpdprofile');
 });
+
+Route::get('datawarga', function(){
+  return view('pages.datawarga');
+});
