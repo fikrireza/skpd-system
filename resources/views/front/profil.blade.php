@@ -116,7 +116,7 @@
                           <div class="form-group">
                             <label class="col-sm-3 control-label">No. KTP</label>
                             <div class="col-sm-9">
-                              <div class="input-group">
+                              <div class="input-group">   
                                 <div class="input-group-addon">
                                   <i class="fa fa-credit-card"></i>
                                 </div>
