@@ -55,7 +55,7 @@
                         <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                         <p>
                           Alexander Pierce
-                          <small>Member since Nov. 2015</small>
+                          <small>Bergabung Sejak 5-Mei-2016</small>
                         </p>
                       </li>
                       <!-- Menu Footer-->
@@ -80,221 +80,159 @@
           <!-- Main content -->
           <section class="content">
             <div class="row">
+              <div class="col-md-9">
+                <div class="box box-info">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Alexander Pierce</h3>
+                  </div><!-- /.box-header -->
+                  <!-- form start -->
+                  <form class="form-horizontal">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="box-body">
+                        <div class="widget-user-image">
+                          <img class="img-square" src="{{ asset('/dist/img/avatar04.png') }}" alt="User Avatar">
+                        </div><!-- /.widget-user-image -->
+                        <h5 class="widget-user-desc" align="center">Bergabung 5-Mei-2016</h5>
+                      </div>
+                      <div class="box-footer">
+                        <button type="file" class="btn">Pilih Foto</button>
+                      </div><!-- /.box-footer -->
+                    </div>
+                    <div class="col-md-9">
+                      <form class="form-horizontal">
+                        <div class="box-body">
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">Nama</label>
+                            <div class="col-sm-9">
+                              <div class="input-group">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-user"></i>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Nama" value="Alexander Pierce">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">No. KTP</label>
+                            <div class="col-sm-9">
+                              <div class="input-group">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-credit-card"></i>
+                                </div>
+                                <input type="text" class="form-control" placeholder="No. KTP" value="3277387748930002">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">Tanggal Lahir</label>
+                            <div class="col-sm-9">
+                              <div class="input-group">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control" value="30/03/1988">
+                              </div><!-- /.input group -->
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">No. Telepon</label>
+                            <div class="col-sm-9">
+                              <div class="input-group">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-phone"></i>
+                                </div>
+                                <input type="text" class="form-control" placeholder="No. Telp" value="021-778728678">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                              <div class="input-group">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-envelope"></i>
+                                </div>
+                                <input type="email" class="form-control" placeholder="Email" value="alexander@mail.com">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">Jenis Kelamin</label>
+                              <div class="col-sm-9">
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Pria
+                                  </label>
+                                  <label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1">Wanita
+                                  </label>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label">Alamat</label>
+                            <div class="col-sm-9">
+                              <textarea class="form-control" placeholder="Alamat" rows="5">Jl. Kemuning Barat Tengah Utara Selatan No. 1234</textarea>
+                            </div>
+                          </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                          <button type="submit" class="btn btn-info pull-right">Ubah Data</button>
+                        </div><!-- /.box-footer -->
+                      </form>
+
+                    </div>
+                  </div><!-- row -->
+                  </form>
+                </div><!-- box form -->
+              </div><!-- /.col -->
+
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Laporan Anda</span>
+                    <span class="info-box-number">10</span>
+                  </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Telah Ditanggapi</span>
+                    <span class="info-box-number">2</span>
+                  </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+              </div>
+
               <div class="col-md-3">
-
-                <!-- Profile Image -->
+                  <!-- About Me Box -->
                 <div class="box box-primary">
-                  <div class="box-body box-profile" style="height:225px;">
-                    <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user2-160x160.jpg')}}" alt="User profile picture">
-                    <h3 class="profile-username text-center">Anton</h3>
-                    <p class="text-muted text-center">5 - Mei - 2016</p>
-
-                    <ul class="list-group list-group-unbordered">
-                      <li class="list-group-item">
-                        <b>Jumlah Tanggapan Pengaduan</b> <span class="pull-right badge bg-red">2</span>
-                      </li>
-                    </ul>
-                  </div><!-- /.box-body -->
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Laporan Terbaru</h3>
+                  </div><!-- /.box-header -->
                   <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
+                    <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
                     <p class="text-muted">
-                      32760621129010001
+                      B.S. in Computer Science from the University of Tennessee at Knoxville
                     </p>
 
-                    <hr style="margin-top:2px;margin-bottom:8px;">
+                    <hr>
 
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
-                    <p class="text-muted">081289087875</p>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
+                    <p class="text-muted">Malibu, California</p>
 
-                    <hr style="margin-top:2px;margin-bottom:8px;">
+                    <hr>
 
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
-                    <p class="text-muted">amanda@gmail.com</p>
-
-                    <hr style="margin-top:2px;margin-bottom:8px;">
-
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-                    <p class="text-muted">Wanita</p>
-
-                    <hr style="margin-top:2px;margin-bottom:8px;">
-
-
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-
+                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
                   </div><!-- /.box-body -->
                 </div><!-- /.box -->
               </div><!-- /.col -->
-              <div class="col-md-9">
-                <div class="nav-tabs-custom">
-                  <ul class="nav nav-tabs">
-                    <li id="tabHistoriTanggapan" class="active"><a href="#activity" data-toggle="tab">Histori Tanggapan</a></li>
-                    <li id="tabUbahProfile"><a href="#settings" data-toggle="tab">Ubah Profil</a></li>
-                  </ul>
-                  <div class="tab-content">
-                    <div class="active tab-pane" id="activity">
-                      <!-- Post -->
-                      <div class="post" style="color:#333;">
-                        <table class="table">
-                          <tr class="bg-green">
-                            <th>No. Pengaduan</th>
-                            <th>Judul Pengaduan</th>
-                            <th>Nama Pelapor</th>
-                            <th>Tanggal Pengaduan</th>
-                            <th>Tanggal Tanggapan</th>
-                            <th style="width: 40px">Aksi</th>
-                          </tr>
-                          <tr>
-                            <td>123123123</td>
-                            <td>Pembenahan Identitas Penerima Kartu KIS</td>
-                            <td>Amanda Satyarini</td>
-                            <td>24 April 2016</td>
-                            <td>25 April 2016</td>
-                            <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                          </tr>
-                          <tr>
-                            <td>234234234</td>
-                            <td>Perbaikan Data Kartu KIS</td>
-                            <td>Galang Dharmiko</td>
-                            <td>24 April 2016</td>
-                            <td>25 April 2016</td>
-                            <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                          </tr>
-                          <tr>
-                            <td>345345345</td>
-                            <td>Pelayanan Medis Non Obat</td>
-                            <td>Pardamean Ronaldo</td>
-                            <td>24 April 2016</td>
-                            <td>25 April 2016</td>
-                            <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                          </tr>
-                          <tr>
-                            <td>456456456</td>
-                            <td>Informasi Mengenai Iuran BPJS</td>
-                            <td>Ademira</td>
-                            <td>24 April 2016</td>
-                            <td>25 April 2016</td>
-                            <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                          </tr>
-                          <tr>
-                            <td>123123123</td>
-                            <td>Pembenahan Identitas Penerima Kartu KIS</td>
-                            <td>Amanda Satyarini</td>
-                            <td>24 April 2016</td>
-                            <td>25 April 2016</td>
-                            <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                          </tr>
-                          <tr>
-                            <td>234234234</td>
-                            <td>Perbaikan Data Kartu KIS</td>
-                            <td>Galang Dharmiko</td>
-                            <td>24 April 2016</td>
-                            <td>25 April 2016</td>
-                            <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                          </tr>
-                          <tr>
-                            <td>345345345</td>
-                            <td>Pelayanan Medis Non Obat</td>
-                            <td>Pardamean Ronaldo</td>
-                            <td>24 April 2016</td>
-                            <td>25 April 2016</td>
-                            <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                          </tr>
-                          <tr>
-                            <td>456456456</td>
-                            <td>Informasi Mengenai Iuran BPJS</td>
-                            <td>Ademira</td>
-                            <td>24 April 2016</td>
-                            <td>25 April 2016</td>
-                            <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                          </tr>
-                        </table>
-                      </div><!-- /.post -->
-
-                      <div class="clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                          <li><a href="#">&laquo;</a></li>
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">&raquo;</a></li>
-                        </ul>
-                      </div>
-
-                    </div><!-- /.tab-pane -->
-
-                    <div class="tab-pane" id="settings">
-                      <form class="form-horizontal">
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Nama</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="Name">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">No. KTP</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="No. KTP">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">No. Telepon</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="No. Telp">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Email</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" placeholder="Email">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Jenis Kelamin</label>
-                          <div class="col-sm-9" style="margin-left:30px; padding-left:0px; margin-top:5px; height:30px;">
-                            <div class="form-group">
-                              <label>
-                                <input type="radio" name="jk" class="minimal form-control">
-                              </label>
-                              &nbsp;
-                              <label>Pria</label>
-                              &nbsp;&nbsp;
-                              <label>
-                                <input type="radio" name="jk" class="minimal form-control">
-                              </label>
-                              &nbsp;
-                              <label>Wanita</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Alamat</label>
-                          <div class="col-sm-10">
-                            <textarea class="form-control" placeholder="Alamat" rows="5"></textarea>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                            <div>
-                              <label>
-                                <input type="checkbox" class="minimal">
-                                &nbsp;
-                                Saya menjamin data yang saya masukkan adalah benar.</a>
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                          </div>
-                        </div>
-                      </form>
-                    </div><!-- /.tab-pane -->
-                  </div><!-- /.tab-content -->
-                </div><!-- /.nav-tabs-custom -->
-              </div><!-- /.col -->
             </div><!-- /.row -->
+
           </section><!-- /.content -->
         </div>
       </div>
@@ -308,6 +246,8 @@
   <!-- DataTables -->
   <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+  <!-- bootstrap time picker -->
+  <script src="{{asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
   <!-- AdminLTE App -->
   <script src="{{asset('dist/js/app.min.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
