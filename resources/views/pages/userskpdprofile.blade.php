@@ -49,12 +49,12 @@
             <hr style="margin-top:2px;margin-bottom:8px;">
 
             <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
-            <p class="text-muted">amanda@gmail.com</p>
+            <p class="text-muted">anton@gmail.com</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
             <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-            <p class="text-muted">Wanita</p>
+            <p class="text-muted">Pria</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 

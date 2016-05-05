@@ -5,7 +5,7 @@
     @include('includes.head')
   </head>
 
-  <body class="hold-transition skin-blue-light layout-top-nav">
+  <body class="hold-transition skin-black-light layout-top-nav">
     <div class="wrapper">
 
       <header class="main-header">

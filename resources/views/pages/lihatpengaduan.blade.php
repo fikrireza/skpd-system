@@ -32,6 +32,7 @@
                 <th>Pelapor</th>
                 <th>Topik Aduan</th>
                 <th>Tanggal</th>
+                <th>Status Verifikasi</th>
                 <th>Status Aduan</th>
                 <th>Aksi</th>
               </tr>
@@ -42,9 +43,10 @@
                 <td>Bambang Pamungkis</td>
                 <td>E-KTP &amp; KK</td>
                 <td>24 April 2016</td>
-                <td><span class="label bg-primary">Telah Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -52,9 +54,10 @@
                 <td>Amanda Satyarini</td>
                 <td>Perizinan</td>
                 <td>25 April 2016</td>
-                <td><span class="label bg-red">Belum Ditanggapi</span></td>
+                <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
+                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -62,9 +65,10 @@
                 <td>Brenda Marsalia</td>
                 <td>Pendidikan</td>
                 <td>26 April 2016</td>
-                <td><span class="label bg-primary">Telah Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -72,9 +76,10 @@
                 <td>Bambang Pamungkis</td>
                 <td>E-KTP &amp; KK</td>
                 <td>24 April 2016</td>
-                <td><span class="label bg-primary">Telah Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -82,9 +87,10 @@
                 <td>Amanda Satyarini</td>
                 <td>Perizinan</td>
                 <td>25 April 2016</td>
-                <td><span class="label bg-red">Belum Ditanggapi</span></td>
+                <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
+                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -92,9 +98,10 @@
                 <td>Brenda Marsalia</td>
                 <td>Pendidikan</td>
                 <td>26 April 2016</td>
-                <td><span class="label bg-primary">Telah Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -102,9 +109,10 @@
                 <td>Bambang Pamungkis</td>
                 <td>E-KTP &amp; KK</td>
                 <td>24 April 2016</td>
-                <td><span class="label bg-primary">Telah Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -112,9 +120,10 @@
                 <td>Amanda Satyarini</td>
                 <td>Perizinan</td>
                 <td>25 April 2016</td>
-                <td><span class="label bg-red">Belum Ditanggapi</span></td>
+                <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
+                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -122,9 +131,10 @@
                 <td>Brenda Marsalia</td>
                 <td>Pendidikan</td>
                 <td>26 April 2016</td>
-                <td><span class="label bg-primary">Telah Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -132,9 +142,10 @@
                 <td>Bambang Pamungkis</td>
                 <td>E-KTP &amp; KK</td>
                 <td>24 April 2016</td>
-                <td><span class="label bg-primary">Telah Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -142,9 +153,10 @@
                 <td>Amanda Satyarini</td>
                 <td>Perizinan</td>
                 <td>25 April 2016</td>
-                <td><span class="label bg-red">Belum Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
               <tr>
@@ -152,9 +164,10 @@
                 <td>Brenda Marsalia</td>
                 <td>Pendidikan</td>
                 <td>26 April 2016</td>
-                <td><span class="label bg-primary">Telah Ditanggapi</span></td>
+                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
+                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
                 <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat Detail</a>
+                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
                 </td>
               </tr>
             </tbody>

@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col-lg-4 col-xs-12">
       <!-- small box -->
-      <div class="small-box bg-aqua">
+      <div class="small-box bg-teal">
         <div class="inner">
           <h3>150</h3>
           <p>Jumlah Pengaduan</p>
@@ -32,7 +32,7 @@
     </div><!-- ./col -->
     <div class="col-lg-4 col-xs-12">
       <!-- small box -->
-      <div class="small-box bg-green">
+      <div class="small-box bg-purple">
         <div class="inner">
           <h3>53<sup style="font-size: 20px">%</sup></h3>
           <p>Pengaduan Terproses</p>
@@ -45,7 +45,7 @@
     </div><!-- ./col -->
     <div class="col-lg-4 col-xs-12">
       <!-- small box -->
-      <div class="small-box bg-yellow">
+      <div class="small-box bg-maroon">
         <div class="inner">
           <h3>44</h3>
           <p>Pengguna Terdaftar</p>
@@ -67,7 +67,7 @@
         <ul class="nav nav-tabs pull-right">
           <li class="active"><a href="#revenue-chart" data-toggle="tab">Grafik</a></li>
           {{-- <li><a href="#sales-chart" data-toggle="tab">Donut</a></li> --}}
-          <li class="pull-left header"><i class="fa fa-area-chart"></i> Presentase Pengaduan Terproses</li>
+          <li class="pull-left header"><i class="fa fa-area-chart"></i> Presentase Jumlah Pengaduan Per Topik</li>
         </ul>
         <div class="tab-content no-padding">
           <!-- Morris chart - Sales -->
@@ -257,7 +257,7 @@
         <div class="box-header with-border">
           <h3 class="box-title"><i class="fa fa-user"></i> &nbsp;Identitas Pelapor</h3>
           <div class="box-tools pull-right">
-            <span class="label label-warning">8 Pelapor Baru</span>
+            <span class="label label-warning">8 Pendaftar Baru</span>
             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
@@ -307,9 +307,9 @@
           </ul><!-- /.users-list -->
         </div><!-- /.box-body -->
         <div class="box-footer text-center">
-          <button type="button" name="button" class="btn btn-primary">
+          <a class="btn btn-primary" href="{{url('datawarga')}}">
             <i class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Semua Identitas Pelapor
-          </button>
+          </a>
         </div><!-- /.box-footer -->
       </div><!--/.box -->
     </section><!-- right col -->

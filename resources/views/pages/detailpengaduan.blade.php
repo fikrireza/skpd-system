@@ -28,7 +28,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Mutasi Pengaduan Warga</h4>
         </div>
-        <form class="form" action="dudy.php" method="post">
+        <form class="form" action="#" method="post">
           <div>
             <div class="modal-body">
                   <div class="form-group">
@@ -42,11 +42,32 @@
                   </div>
             </div>
             <div class="modal-footer">
-              <button type="reset" class="btn btn-warning pull-left" data-dismiss="modal">Cancel</button>
+              <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
               <button type="submit" class="btn btn-primary" id="set">Proses Mutasi Pengaduan</button>
             </div>
           </div>
         </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="myModalVerifikasi" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Konfirmasi Verifikasi Pengaduan</h4>
+        </div>
+        <div class="modal-body">
+          Apakah anda yakin telah melakukan verifikasi terhadap pengaduan ini?
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Tidak</button>
+          <button type="submit" class="btn btn-primary" id="set">Ya, saya yakin!</button>
+        </div>
       </div>
 
     </div>
@@ -80,6 +101,7 @@
             <b>Data Pendukung</b><br>
             <i class="text-muted">gambar.jpg</i>
             <div class="pull-right">
+              <button class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#myModalVerifikasi" >Verifikasi Pengaduan</button>
               <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
               <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
             </div>
@@ -115,12 +137,4 @@
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
 
-  <script type="text/javascript">
-    $(function(){
-      $('a.hapus').click(function(){
-        var a = $(this).data('value');
-        $('#set').attr('href', "{{ url('/') }}/masterjabatan/hapusjabatan/"+a);
-      });
-    });
-  </script>
 @stop
