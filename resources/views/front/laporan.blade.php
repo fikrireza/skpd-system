@@ -5,7 +5,7 @@
     @include('includes.head')
   </head>
 
-  <body class="hold-transition skin-blue-light layout-top-nav">
+  <body class="hold-transition skin-black-light layout-top-nav">
     <div class="wrapper">
 
       <header class="main-header">
@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ url('laporan') }}">Laporan Saya <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Daftar Laporan</a></li>
+                <li><a href="{{ url('semualaporan') }}">Daftar Laporan</a></li>
               </ul>
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -84,6 +84,9 @@
                 <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Ajukan Keluhan Anda</h3>
+                  {{-- <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div> --}}
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form role="form">
@@ -152,6 +155,111 @@
                   </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
               </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-9">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Laporan Anda</h3>
+                  </div>
+                  <div class="box-body">
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <a href="#">Pelapor</a>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description">DiLaporkan - 7:30 PM Today</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Lorem ipsum represents a long-held tradition for designers,
+                        typographers and the like. Some people hate it and argue for
+                        its demise, but others ignore the hate as they create awesome
+                        tools to help create filler text for everyone from bacon lovers
+                        to Charlie Sheen fans.
+                      </p>
+                      <div class="box-footer box-comments">
+                        <div class="box-comment">
+                          <!-- User image -->
+                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user3-128x128.jpg') }}" alt="user image">
+                          <div class="comment-text">
+                            <span class="username">
+                              Administrator
+                              <span class="text-muted pull-right">8:03 AM Today</span>
+                            </span><!-- /.username -->
+                            It is a long established fact that a reader will be distracted
+                            by the readable content of a page when looking at its layout.
+                          </div><!-- /.comment-text -->
+                        </div><!-- /.box-comment -->
+                        <div class="box-comment">
+                          <!-- User image -->
+                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
+                          <div class="comment-text">
+                            <span class="username">
+                              SKPD Perhubungan
+                              <span class="text-muted pull-right">10:03 AM Today</span>
+                            </span><!-- /.username -->
+                            The point of using Lorem Ipsum is that it has a more-or-less
+                            normal distribution of letters, as opposed to using
+                            'Content here, content here', making it look like readable English.
+                          </div><!-- /.comment-text -->
+                        </div><!-- /.box-comment -->
+                      </div>
+                      </br>
+                      <ul class="list-inline">
+                        <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-repeat"></span>  Di-Alihkan</a></li>
+                        <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
+                      </ul>
+                    </div><!-- /.post -->
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <a href="#">Pelapor</a>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description">DiLaporkan - 9:30 PM Tuesday</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Lorem ipsum represents a long-held tradition for designers,
+                        typographers and the like. Some people hate it and argue for
+                        its demise, but others ignore the hate as they create awesome
+                        tools to help create filler text for everyone from bacon lovers
+                        to Charlie Sheen fans.
+                      </p>
+                      <ul class="list-inline">
+                        <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-ok"></span>  Ter-Verifikasi</a></li>
+                        <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
+                      </ul>
+                    </div><!-- /.post -->
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user7-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <a href="#">Sarah Ross</a>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description">DiLaporkan - 7:30 PM Yesterday</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Lorem ipsum represents a long-held tradition for designers,
+                        typographers and the like. Some people hate it and argue for
+                        its demise, but others ignore the hate as they create awesome
+                        tools to help create filler text for everyone from bacon lovers
+                        to Charlie Sheen fans.
+                      </p>
+                      <ul class="list-inline">
+                        <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-remove"></span>  Belum Ditanggapi</a></li>
+                        <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
+                      </ul>
+                    </div><!-- /.post -->
+                  </div>
+                </div>
+              </div><!-- col -->
 
               <div class="col-md-3">
                   <!-- About Me Box -->
@@ -164,16 +272,20 @@
                     <p class="text-muted">
                       B.S. in Computer Science from the University of Tennessee at Knoxville
                     </p>
-
                     <hr>
-
                     <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
                     <p class="text-muted">Malibu, California</p>
-
                     <hr>
-
                     <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
+                    <p class="text-muted">Malibu, California</p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
+                    <p class="text-muted">
+                      B.S. in Computer Science from the University of Tennessee at Knoxville
+                    </p>
                   </div><!-- /.box-body -->
                 </div><!-- /.box -->
               </div><!-- /.col -->

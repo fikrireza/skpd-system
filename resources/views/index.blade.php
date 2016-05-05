@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>SIMPEDU</title>
     @include('includes.head')
-    @yield('title')
   </head>
 
   <body class="hold-transition skin-white layout-top-nav">
@@ -186,11 +186,7 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
+
                     </div><!-- /.post -->
                     <!-- Post -->
                     <div class="post">
@@ -209,11 +205,7 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
+
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
                   <div class="tab-pane" id="perhubungan">
@@ -234,11 +226,7 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
+
                       <div class="box-footer box-comments">
                         <div class="box-comment">
                           <!-- User image -->
@@ -287,11 +275,7 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
+
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
                 </div><!-- /.tab-content -->
@@ -316,17 +300,6 @@
                   <p class="text-muted">Malibu, California</p>
 
                   <hr>
-
-                  {{-- <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-                  <p>
-                    <span class="label label-danger">UI Design</span>
-                    <span class="label label-success">Coding</span>
-                    <span class="label label-info">Javascript</span>
-                    <span class="label label-warning">PHP</span>
-                    <span class="label label-primary">Node.js</span>
-                  </p>
-
-                  <hr> --}}
 
                   <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>

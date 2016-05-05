@@ -28,6 +28,10 @@ Route::get('laporan', function(){
   return view('front.laporan');
 });
 
+Route::get('semualaporan', function(){
+  return view('front.semualaporan');
+});
+
 Route::get('/login', function () {
   return view('pages/login');
 });
