@@ -61,7 +61,7 @@
                       <!-- Menu Footer-->
                       <li class="user-footer">
                         <div class="pull-left">
-                          <a href="#" class="btn btn-default btn-flat">Profil</a>
+                          <a href="{{ url('profil') }}" class="btn btn-default btn-flat">Profil</a>
                         </div>
                         <div class="pull-right">
                           <a href="#" class="btn btn-default btn-flat">Sign out</a>
