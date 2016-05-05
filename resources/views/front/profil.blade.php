@@ -116,7 +116,7 @@
                           <div class="form-group">
                             <label class="col-sm-3 control-label">No. KTP</label>
                             <div class="col-sm-9">
-                              <div class="input-group">   
+                              <div class="input-group">
                                 <div class="input-group-addon">
                                   <i class="fa fa-credit-card"></i>
                                 </div>
@@ -236,6 +236,17 @@
           </section><!-- /.content -->
         </div>
       </div>
+    
+    <footer class="main-footer">
+      <div class="container">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.
+      </div><!-- /.container -->
+    </footer>
+  </div>
+
 
   <!-- jQuery 2.1.4 -->
   <script src="{{asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
