@@ -52,6 +52,10 @@ Route::get('pengaduanbytopik', function(){
   return view('pages.pengaduanbytopik');
 });
 
-Route::get('userprofile', function(){
-  return view('pages.userprofile');
+Route::get('wargaprofile', function(){
+  return view('pages.wargaprofile');
+});
+
+Route::get('userskpdprofile', function(){
+  return view('pages.userskpdprofile');
 });

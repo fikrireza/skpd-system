@@ -265,8 +265,13 @@
         <div class="box-body no-padding">
           <ul class="users-list clearfix">
             <li>
+              <img src="dist/img/user4-128x128.jpg" alt="User Image">
+              <a class="users-list-name" href="{{url('wargaprofile')}}">Amanda Satyarini</a>
+              <span class="users-list-date">15 Jan</span>
+            </li>
+            <li>
               <img src="dist/img/user1-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Alexander Pierce</a>
+              <a class="users-list-name" href="{{url('wargaprofile')}}">Alexander Pierce</a>
               <span class="users-list-date">Today</span>
             </li>
             <li>
@@ -293,11 +298,6 @@
               <img src="dist/img/user5-128x128.jpg" alt="User Image">
               <a class="users-list-name" href="#">Sarah</a>
               <span class="users-list-date">14 Jan</span>
-            </li>
-            <li>
-              <img src="dist/img/user4-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Nora</a>
-              <span class="users-list-date">15 Jan</span>
             </li>
             <li>
               <img src="dist/img/user3-128x128.jpg" alt="User Image">

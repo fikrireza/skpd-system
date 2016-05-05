@@ -1,18 +1,18 @@
 @extends('layouts.master')
 
 @section('title')
-  <title>Data Pengaduan Berdasarkan Topik</title>
-  <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
+  <title>Profil Warga</title>
+  <link rel="stylesheet" href="{{asset('plugins/iCheck/all.css')}}">
 @stop
 
 @section('breadcrumb')
   <h1>
-    Seluruh Data Pengaduan
-    <small>Pengaduan ditampilkan sesuai dengan topik pengaduan yang dipilih</small>
+    Profil Warga
+    <small>Berikut adalah profil warga terdaftar di sistem ini</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
-    <li class="active">Lihat Seluruh Pengaduan</li>
+    <li class="active">Profil Warga</li>
   </ol>
 @stop
 
@@ -24,43 +24,50 @@
 
         <!-- Profile Image -->
         <div class="box box-primary">
-          <div class="box-body box-profile">
+          <div class="box-body box-profile" style="height:225px;">
             <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
             <h3 class="profile-username text-center">Amanda Satyarini</h3>
             <p class="text-muted text-center">Warga Kabupaten Tangerang</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <b>Data Pengaduan</b> <a class="pull-right">1,322</a>
+                <b>Jumlah Laporan Pengaduan</b> <span class="pull-right badge bg-green">2</span>
               </li>
             </ul>
           </div><!-- /.box-body -->
           <div class="box-body">
-            <strong><i class="fa fa-book margin-r-5"></i>  Education</strong>
+            <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
             <p class="text-muted">
-              B.S. in Computer Science from the University of Tennessee at Knoxville
+              32760621129010001
             </p>
 
-            <hr>
+            <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-            <p class="text-muted">Malibu, California</p>
+            <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
+            <p class="text-muted">081289087875</p>
 
-            <hr>
+            <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-            <p>
-              <span class="label label-danger">UI Design</span>
-              <span class="label label-success">Coding</span>
-              <span class="label label-info">Javascript</span>
-              <span class="label label-warning">PHP</span>
-              <span class="label label-primary">Node.js</span>
-            </p>
+            <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
+            <p class="text-muted">amanda@gmail.com</p>
 
-            <hr>
+            <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+            <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
+            <p class="text-muted">Wanita</p>
+
+            <hr style="margin-top:2px;margin-bottom:8px;">
+
+
+            <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
+            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+
+            {{-- <hr style="margin-top:2px;margin-bottom:8px;">
+
+            <button type="button" class="btn btn-flat bg-purple btn-xs pull-right" name="button">
+              <i class="fa fa-edit"></i>&nbsp;&nbsp;
+              Ubah Profil Saya
+            </button> --}}
           </div><!-- /.box-body -->
         </div><!-- /.box -->
       </div><!-- /.col -->
@@ -68,7 +75,7 @@
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan</a></li>
-            <li><a href="#settings" data-toggle="tab">Ubah Profil</a></li>
+            {{-- <li><a href="#settings" data-toggle="tab">Ubah Profil</a></li> --}}
           </ul>
           <div class="tab-content">
             <div class="active tab-pane" id="activity">
@@ -107,7 +114,7 @@
               <div class="post">
                 <div class="user-block">
                   <span class='username' style="margin-left:0px;">
-                    Pengaduan Pemadaman Listrik
+                    Pengaduan Pelayanan BPJS Kesehatan
                   </span>
                   <span class='description' style="margin-left:0px;">
                     Kategori Pelayanan - 24 April 2016
@@ -150,52 +157,83 @@
                   </div><!-- /.box-comment -->
                 </div><!-- /.box-footer -->
               </div><!-- /.post -->
+
+              <div class="clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                  <li><a href="#">&laquo;</a></li>
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul>
+              </div>
+
             </div><!-- /.tab-pane -->
 
             <div class="tab-pane" id="settings">
               <form class="form-horizontal">
                 <div class="form-group">
-                  <label for="inputName" class="col-sm-2 control-label">Name</label>
+                  <label class="col-sm-2 control-label">Nama</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                    <input type="text" class="form-control" placeholder="Name">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                  <label class="col-sm-2 control-label">No. KTP</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    <input type="text" class="form-control" placeholder="No. KTP">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputName" class="col-sm-2 control-label">Name</label>
+                  <label class="col-sm-2 control-label">No. Telepon</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    <input type="text" class="form-control" placeholder="No. Telp">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+                  <label class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                    <input type="email" class="form-control" placeholder="Email">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+                  <label class="col-sm-2 control-label">Jenis Kelamin</label>
+                  <div class="col-sm-9" style="margin-left:30px; padding-left:0px; margin-top:5px; height:30px;">
+                    <div class="form-group">
+                      <label>
+                        <input type="radio" name="jk" class="minimal form-control">
+                      </label>
+                      &nbsp;
+                      <label>Pria</label>
+                      &nbsp;&nbsp;
+                      <label>
+                        <input type="radio" name="jk" class="minimal form-control">
+                      </label>
+                      &nbsp;
+                      <label>Wanita</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Alamat</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                    <textarea class="form-control" placeholder="Alamat" rows="5"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
+                    <div>
                       <label>
-                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                        <input type="checkbox" class="minimal">
+                        &nbsp;
+                        Saya menjamin data yang saya masukkan adalah benar.</a>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-danger">Submit</button>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                   </div>
                 </div>
               </form>
@@ -221,10 +259,15 @@
   <script src="{{asset('dist/js/app.min.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
+  {{-- icheck --}}
+  <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
 
   <script>
     $(function () {
-      $("#tabelpengaduan").DataTable();
+      $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+      });
     });
   </script>
 @stop
