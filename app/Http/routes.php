@@ -11,25 +11,30 @@
 |
 */
 
+// Front
 Route::get('/', function() {
   return view('index');
 });
 
-Route::get('/beranda', function () {
-  return view('pages/beranda');
+Route::get('beranda', function () {
+  return view('front.beranda');
+});
+
+Route::get('profil', function(){
+  return view('front.profile');
 });
 
 Route::get('/login', function () {
   return view('pages/login');
 });
 
-Route::get('dashboard', function(){
-  return view('pages/dashboard');
-})->middleware('IsAdmin');
-
 Route::get('register', function(){
   return view('pages/register');
 });
+
+Route::get('dashboard', function(){
+  return view('pages/dashboard');
+})->middleware('IsAdmin');
 
 Route::post('login', 'CustomAuthController@loginprocess');
 Route::get('logout', 'CustomAuthController@logoutprocess');
