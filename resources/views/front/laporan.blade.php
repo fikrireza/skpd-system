@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SIMPEDU | Profil</title>
+    <title>SIMPEDU | Laporan</title>
     @include('includes.head')
   </head>
 
@@ -28,7 +28,7 @@
             <!-- Menu Kiri -->
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
               <ul class="nav navbar-nav">
-                <li><a href="#">Laporan Saya <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="{{ url('laporan') }}">Laporan Saya <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Daftar Laporan</a></li>
               </ul>
               <form class="navbar-form navbar-left" role="search">
@@ -81,112 +81,58 @@
           <section class="content">
             <div class="row">
               <div class="col-md-9">
-                <div class="box box-info">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Alexander Pierce</h3>
-                  </div><!-- /.box-header -->
-                  <!-- form start -->
-                  <form class="form-horizontal">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <div class="box-body">
-                        <div class="widget-user-image">
-                          <img class="img-square" src="{{ asset('/dist/img/avatar04.png') }}" alt="User Avatar">
-                        </div><!-- /.widget-user-image -->
-                        <h5 class="widget-user-desc" align="center">Bergabung 5-Mei-2016</h5>
-                      </div>
-                      <div class="box-footer">
-                        <button type="file" class="btn">Pilih Foto</button>
-                      </div><!-- /.box-footer -->
+                <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ajukan Keluhan Anda</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label>Tuliskan Laporan Anda</label>
+                      <textarea class="form-control" rows="3" placeholder="Apa Laporan Anda...?"></textarea>
                     </div>
-                    <div class="col-md-9">
-                      <form class="form-horizontal">
-                        <div class="box-body">
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label">Nama</label>
-                            <div class="col-sm-9">
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-user"></i>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Nama" value="Alexander Pierce">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label">No. KTP</label>
-                            <div class="col-sm-9">
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-credit-card"></i>
-                                </div>
-                                <input type="text" class="form-control" placeholder="No. KTP" value="3277387748930002">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label">Tanggal Lahir</label>
-                            <div class="col-sm-9">
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control" value="30/03/1988">
-                              </div><!-- /.input group -->
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label">No. Telepon</label>
-                            <div class="col-sm-9">
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-phone"></i>
-                                </div>
-                                <input type="text" class="form-control" placeholder="No. Telp" value="021-778728678">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label">Email</label>
-                            <div class="col-sm-9">
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-envelope"></i>
-                                </div>
-                                <input type="email" class="form-control" placeholder="Email" value="alexander@mail.com">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label">Jenis Kelamin</label>
-                              <div class="col-sm-9">
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Pria
-                                  </label>
-                                  <label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option1">Wanita
-                                  </label>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label">Alamat</label>
-                            <div class="col-sm-9">
-                              <textarea class="form-control" placeholder="Alamat" rows="5">Jl. Kemuning Barat Tengah Utara Selatan No. 1234</textarea>
-                            </div>
-                          </div>
-                        </div><!-- /.box-body -->
-                        <div class="box-footer">
-                          <button type="submit" class="btn btn-info pull-right">Ubah Data</button>
-                        </div><!-- /.box-footer -->
-                      </form>
+                    <div class="form-group">
+                      <label>Kategori Pelaporan</label>
+                      <select class="form-control">
+                        <option>-- Pilih Kategori --</option>
+                        <option>Kesehatan</option>
+                        <option>Perhubungan</option>
+                        <option>Kependudukan</option>
+                        <option>Pekerjaan Umum</option>
+                        <option>Ketenagakerjaan</option>
+                      </select>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="exampleInputFile">Dokumen Pendukung</label>
+                          <input type="file" id="exampleInputFile">
+                          <p class="help-block">Dokumen yang akan dilampirkan</p>
+                        </div>
+                      </div><!-- /.col-lg-6 -->
+                      <div class="col-lg-6">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Anonim
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Laporan Rahasia
+                          </label>
+                        </div>
+                      </div><!-- /.col-lg-6 -->
+                    </div>
+                  </div><!-- /.box-body -->
 
-                    </div>
-                  </div><!-- row -->
-                  </form>
-                </div><!-- box form -->
-              </div><!-- /.col -->
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+              </div>
+              <!-- Kanan -->
 
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">

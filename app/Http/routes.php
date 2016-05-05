@@ -24,6 +24,10 @@ Route::get('profil', function(){
   return view('front.profil');
 });
 
+Route::get('laporan', function(){
+  return view('front.laporan');
+});
+
 Route::get('/login', function () {
   return view('pages/login');
 });
