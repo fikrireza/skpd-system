@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>SIMPEDU | Beranda</title>
     @include('includes.head')
-    @yield('title')
   </head>
 
-  <body class="hold-transition skin-white layout-top-nav">
+  <body class="hold-transition skin-blue-light layout-top-nav">
     <div class="wrapper">
 
       <header class="main-header">
@@ -24,6 +24,53 @@
                 </span>
               </a>
             </div>
+
+            <!-- Menu Kiri -->
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="#">Laporan Saya <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Daftar Laporan</a></li>
+              </ul>
+              <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                </div>
+              </form>
+            </div><!-- /.navbar-collapse -->
+            <!-- Navbar Right Menu -->
+              <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                  <!-- User Account Menu -->
+                  <li class="dropdown user user-menu">
+                    <!-- Menu Toggle Button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <!-- The user image in the navbar-->
+                      <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                      <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                      <span class="hidden-xs">Alexander Pierce</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <!-- The user image in the menu -->
+                      <li class="user-header">
+                        <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                        <p>
+                          Alexander Pierce
+                          <small>Member since Nov. 2015</small>
+                        </p>
+                      </li>
+                      <!-- Menu Footer-->
+                      <li class="user-footer">
+                        <div class="pull-left">
+                          <a href="#" class="btn btn-default btn-flat">Profil</a>
+                        </div>
+                        <div class="pull-right">
+                          <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
           </div><!-- /.container-fluid -->
         </nav>
       </header>
@@ -33,127 +80,78 @@
           <!-- Main content -->
           <section class="content">
             <div class="row">
-
               <div class="col-md-9">
-                <div class="box box-solid">
-                <!-- <div class="box-header with-border">
-                   <h3 class="box-title">Carousel</h3>
-                </div> /.box-header -->
-                <div class="box-body">
-                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="item active left">
-                        <img src="http://placehold.it/900x500/39CCCC/ffffff&amp;text=I+Love+Bootstrap" alt="First slide">
-                        <div class="carousel-caption">
-                          First Slide
-                        </div>
-                      </div>
-                      <div class="item next left">
-                        <img src="http://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
-                        <div class="carousel-caption">
-                          Second Slide
-                        </div>
-                      </div>
-                      <div class="item">
-                        <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
-                        <div class="carousel-caption">
-                          Third Slide
-                        </div>
-                      </div>
+                <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ajukan Keluhan Anda</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label>Tuliskan Laporan Anda</label>
+                      <textarea class="form-control" rows="3" placeholder="Apa Laporan Anda...?"></textarea>
                     </div>
-                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                      <span class="fa fa-angle-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                      <span class="fa fa-angle-right"></span>
-                    </a>
+                    <div class="form-group">
+                      <label>Kategori Pelaporan</label>
+                      <select class="form-control">
+                        <option>-- Pilih Kategori --</option>
+                        <option>Kesehatan</option>
+                        <option>Perhubungan</option>
+                        <option>Kependudukan</option>
+                        <option>Pekerjaan Umum</option>
+                        <option>Ketenagakerjaan</option>
+                      </select>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label for="exampleInputFile">Dokumen Pendukung</label>
+                          <input type="file" id="exampleInputFile">
+                          <p class="help-block">Dokumen yang akan dilampirkan</p>
+                        </div>
+                      </div><!-- /.col-lg-6 -->
+                      <div class="col-lg-6">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Anonim
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Laporan Rahasia
+                          </label>
+                        </div>
+                      </div><!-- /.col-lg-6 -->
+                    </div>
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
-
-            <div class="col-md-3">
-              <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
-                  <li><a href="#daftar" data-toggle="tab">Daftar</a></li>
-                </ul>
-                  <div class="tab-content">
-                    <div class="active tab-pane" id="login">
-                      <div class="login-box-body">
-                        <p class="login-box-msg">Login Pengguna</p>
-                        <form action="{{ url('login') }}" method="post">
-                          {!! csrf_field() !!}
-                          <div class="form-group has-feedback">
-                            <input name="email" type="email" class="form-control" placeholder="Email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                          </div>
-                          <div class="form-group has-feedback">
-                            <input name="password" type="password" class="form-control" placeholder="Password">
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                          </div>
-                          <div class="row">
-                            <div class="social-auth-links text-center">
-                              <div class="checkbox icheck">
-                                <label>
-                                  <input type="checkbox"> Ingat Saya
-                                </label>
-                              </div>
-                            </div><!-- /.col -->
-                            <div class="social-auth-links text-center">
-                              <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
-                            </div><!-- /.col -->
-                          </div>
-                        </form>
-                        <a href="#">Lupa Password</a><br>
-
-                      </div><!-- /.login-box-body -->
-                    </div>
-                    <div class="tab-pane" id="daftar">
-                      <div class="register-box-body">
-                        <p class="login-box-msg">Daftar Baru</p>
-                        <form action="{{ url('register') }}" method="post">
-                          {!! csrf_field() !!}
-                          <div class="form-group has-feedback">
-                            <input name="nama" type="text" class="form-control" placeholder="Nama">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                          </div>
-                          <div class="form-group has-feedback">
-                            <input name="email" type="email" class="form-control" placeholder="Email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                          </div>
-                          <div class="form-group has-feedback">
-                            <input name="password" type="password" class="form-control" placeholder="Password">
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                          </div>
-                          <div class="form-group has-feedback">
-                            <input name="kpassword" type="password" class="form-control" placeholder="Konfirmasi Password">
-                            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-                          </div>
-                          <div class="row">
-                            <div class="social-auth-links text-center">
-                              <div class="checkbox icheck">
-                                <label>
-                                  <input type="checkbox"> Saya Setuju <a href="#">Ketentuan</a>
-                                </label>
-                              </div>
-                            </div><!-- /.col -->
-                            <div class="social-auth-links text-center">
-                              <button type="submit" class="btn btn-primary btn-block btn-flat">Daftar</button>
-                            </div><!-- /.col -->
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div><!-- /.box -->
+                </form>
               </div>
-            </div>
-          </div>
+              </div>
+              <!-- Kanan -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Laporan Anda</span>
+                    <span class="info-box-number">10</span>
+                  </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Telah Ditanggapi</span>
+                    <span class="info-box-number">2</span>
+                  </div><!-- /.info-box-content -->
+                </div><!-- /.info-box -->
+              </div>
+            </div><!-- /.row -->
 
           <div class="row">
             <div class="col-md-9">
@@ -186,11 +184,6 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
                     </div><!-- /.post -->
                     <!-- Post -->
                     <div class="post">
@@ -209,11 +202,6 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
                   <div class="tab-pane" id="perhubungan">
@@ -234,11 +222,6 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
                       <div class="box-footer box-comments">
                         <div class="box-comment">
                           <!-- User image -->
@@ -287,11 +270,6 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      {{-- <ul class="list-inline">
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-                        <!-- <li class="pull-right"><a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li> -->
-                      </ul> --}}
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
                 </div><!-- /.tab-content -->
@@ -316,17 +294,6 @@
                   <p class="text-muted">Malibu, California</p>
 
                   <hr>
-
-                  {{-- <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-                  <p>
-                    <span class="label label-danger">UI Design</span>
-                    <span class="label label-success">Coding</span>
-                    <span class="label label-info">Javascript</span>
-                    <span class="label label-warning">PHP</span>
-                    <span class="label label-primary">Node.js</span>
-                  </p>
-
-                  <hr> --}}
 
                   <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
