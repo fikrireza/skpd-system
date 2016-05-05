@@ -21,7 +21,7 @@ Route::get('beranda', function () {
 });
 
 Route::get('profil', function(){
-  return view('front.profile');
+  return view('front.profil');
 });
 
 Route::get('/login', function () {
