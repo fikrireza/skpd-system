@@ -6,22 +6,35 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use Session;
 
 class CustomAuthController extends Controller
 {
     public function logoutprocess()
     {
+      session()->flush();
       Auth::logout();
       return redirect('/');
     }
 
     public function loginprocess(Request $request)
     {
-      if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
+      if($request->email=="userskpd")
+      {
+        session()->put('akses', 'userskpd');
         return redirect('dashboard');
       }
-      else {
-        return redirect('/');
+      else if($request->email=="administrator")
+      {
+        session()->put('akses', 'administrator');
+        return redirect('dashboard');
       }
+      // if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
+      //   session()->put('dudy', 'dudy nih');
+      //   return redirect('dashboard');
+      // }
+      // else {
+      //   return redirect('/');
+      // }
     }
 }
