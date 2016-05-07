@@ -131,30 +131,6 @@
                   </div>
                 </form>
               </div>
-              </div>
-              <!-- Kanan -->
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                  <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
-                  <div class="info-box-content">
-                    <span class="info-box-text">Laporan Anda</span>
-                    <span class="info-box-number">10</span>
-                  </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="info-box">
-                  <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
-                  <div class="info-box-content">
-                    <span class="info-box-text">Telah Ditanggapi</span>
-                    <span class="info-box-number">2</span>
-                  </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
-              </div>
-            </div><!-- /.row -->
-
-          <div class="row">
-            <div class="col-md-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#kesehatan" data-toggle="tab" aria-expanded="true">Kesehatan</a></li>
@@ -277,7 +253,40 @@
             </div>
 
             <div class="col-md-3">
-                <!-- About Me Box -->
+              <!-- About Me Box -->
+              <div class="box box-primary">
+                <div class="box-body box-profile" style="height:225px;">
+                  <img class="profile-user-img img-responsive img-circle" src="{{asset('/dist/img/user2-160x160.jpg')}}" alt="User profile picture">
+                  <h3 class="profile-username text-center">Alexander Pierce</h3>
+                  <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                      <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">10</span>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Telah Ditanggapi</b> <span class="pull-right badge bg-green">2</span>
+                    </li>
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-body">
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
+                  <p class="text-muted">081289087875</p>
+
+                  <hr style="margin-top:2px;margin-bottom:8px;">
+
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
+                  <p class="text-muted">alexamder@gmail.com</p>
+
+                  <hr style="margin-top:2px;margin-bottom:8px;">
+
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
+                  <p class="text-muted">Pria</p>
+
+                  <hr style="margin-top:2px;margin-bottom:8px;">
+
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
+                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Laporan Terbaru</h3>
@@ -301,18 +310,18 @@
               </div><!-- /.box -->
             </div><!-- /.col -->
           </div><!-- /.row -->
-          </section><!-- /.content -->
-        </div><!-- /.container -->
-      </div><!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="container">
-          <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.0
-          </div>
-          <strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.
-        </div><!-- /.container -->
-      </footer>
-    </div><!-- ./wrapper -->
+        </section><!-- /.content -->
+      </div><!-- /.container -->
+    </div><!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="container">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.
+      </div><!-- /.container -->
+    </footer>
+  </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
     <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
