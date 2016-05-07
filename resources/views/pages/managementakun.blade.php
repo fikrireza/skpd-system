@@ -31,8 +31,8 @@
 </script>
 <!-- END DURATION TIME ALERT -->
 
-  <!-- START MODAL TO ALERT DELETE-->
-  <div class="modal modal-warning fade" id="myModal" role="dialog">
+<!-- START MODAL TO ALERT DELETE-->
+  <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -43,13 +43,13 @@
           <p>Apakah anda yakin untuk menghapus data ini?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn btn-outline pull-left" data-dismiss="modal">Tidak</button>
-          <a href="{{url('managementakun')}}" class="btn btn btn-outline" id="set">Ya, saya yakin.</a>
+          <button type="reset" class="btn btn-primary pull-left btn-flat" data-dismiss="modal">Tidak</button>
+          <button type="submit" class="btn btn-danger  btn-flat" id="set">Ya, saya yakin</button>
         </div>
       </div>
     </div>
   </div>
-  <!-- END MODAL TO ALERT DELETE-->
+<!-- END MODAL TO ALERT DELETE-->
 
   <!-- START MESSAGE -->
   <div class="col-md-12">
@@ -79,8 +79,8 @@
                 </select>
               </div>
               <div class="col-md-14 {{ $errors->has('username') ? 'has-error' : '' }}">
-                <label class="control-label">Username</label>
-                <input type="text" name="namaskpd" class="form-control" placeholder="Username">
+                <label class="control-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email">
               </div>
               <div class="col-md-14 {{ $errors->has('password') ? 'has-error' : '' }}">
                 <label class="control-label">password</label>
@@ -94,28 +94,9 @@
                 <label class="control-label">Level</label>
                 <select class="form-control" name="level">
                   <option value="">-- Pilih Satu --</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                  <option value="admin">Administrator</option>
+                  <option value="userskpd">User SKPD</option>
                 </select>
-              </div>
-              <div class="col-md-14 {{ $errors->has('merokok') ? 'has-error' : '' }}">
-                <label class="control-label">Akun Akan Diaktifkan ?</label>
-                <div class="form-group">
-                  &nbsp;&nbsp;&nbsp;
-                  <label>
-                    <input type="radio" name="aktif" class="minimal" value="Ya">
-                  </label>
-                  &nbsp;
-                  <label>Ya</label>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <label>
-                    <input type="radio" name="aktif" class="minimal" value="Tidak">
-                  </label>
-                  &nbsp;
-                  <label>Tidak</label>
-                </div>
               </div>
             </div>
             <div class="box-footer">
@@ -150,12 +131,12 @@
             <tr>
               <td>1.</td>
               <td>SKPD001 - SPKD Kesehatan</td>
-              <td>3</td>
+              <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
@@ -163,108 +144,108 @@
             <tr>
               <td>2.</td>
               <td>SKPD002 - SPKD Pendidikan</td>
-              <td>4</td>
+              <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
             <tr>
               <td>3.</td>
               <td>SKPD003 - SPKD Perhubungan</td>
-              <td>1</td>
+              <td>Administrator</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
             <tr>
               <td>4.</td>
               <td>SKPD004 - SPKD Keuangan</td>
-              <td>1</td>
+              <td>User SKPD</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
             <tr>
               <td>5.</td>
               <td>SKPD005 - SPKD Perdagangan</td>
-              <td>3</td>
+              <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
             <tr>
               <td>6.</td>
               <td>SKPD006 - SPKD Pertanian</td>
-              <td>3</td>
+              <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
             <tr>
               <td>7.</td>
               <td>SKPD007 - SPKD Perindustrian</td>
-              <td>4</td>
+              <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
             <tr>
               <td>8.</td>
               <td>SKPD008 - SPKD Sosial</td>
-              <td>4</td>
+              <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
             <tr>
               <td>9.</td>
               <td>SKPD009 - SPKD Kebudayaan</td>
-              <td>2</td>
+              <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>
             <tr>
               <td>10.</td>
               <td>SKPD0010 - SPKD Teknologi</td>
-              <td>4</td>
+              <td>Administrator</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
               <td>
-                <a href="#" class="btn btn-warning btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
               </td>
             </tr>

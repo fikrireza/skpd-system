@@ -5,8 +5,14 @@
       <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
     </div>
     <div class="pull-left info">
-      <p>Anton</p>
-      <a href="#"><i class="fa fa-circle text-success"></i> User SKPD</a>
+      <p>Antons</p>
+      @if(Session::has('akses'))
+        @if(Session::get('akses')=="userskpd")
+          <a href="#"><i class="fa fa-circle text-success"></i> User SKPD</a>
+        @elseif(Session::get('akses')=="administrator")
+          <a href="#"><i class="fa fa-circle text-success"></i> Administrator</a>
+        @endif
+      @endif
     </div>
   </div>
   <!-- search form -->
@@ -47,7 +53,7 @@
       <ul class="treeview-menu">
         <li><a href="{{url('dataskpd')}}"><i class="fa fa-circle-o"></i> Tambah SKPD</a></li>
         <li><a href="{{url('listdataskpdbytopik')}}"><i class="fa fa-circle-o"></i>Daftar SKPD By Topik</a></li>
-        <li><a href="{{url('listdatapengaduanbyskpd')}}"><i class="fa fa-circle-o"></i>Daftar Pengaduan By SKPD</a></li>
+        {{-- <li><a href="{{url('listdatapengaduanbyskpd')}}"><i class="fa fa-circle-o"></i>Daftar Pengaduan By SKPD</a></li> --}}
       </ul>
     </li>
     <li class="treeview">
