@@ -48,21 +48,21 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="item active left">
-                        <img src="http://placehold.it/900x500/39CCCC/ffffff&amp;text=I+Love+Bootstrap" alt="First slide">
+                        <img src="{{asset('images/slider1.jpg')}}" alt="First slide">
                         <div class="carousel-caption">
-                          First Slide
+                          Judul : First Slide
                         </div>
                       </div>
                       <div class="item next left">
-                        <img src="http://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
+                        <img src="{{asset('images/slider2.jpg')}}" alt="Second slide">
                         <div class="carousel-caption">
-                          Second Slide
+                          Judul : Second Slide
                         </div>
                       </div>
                       <div class="item">
-                        <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
+                        <img src="{{asset('images/slider3.jpg')}}" alt="Third slide">
                         <div class="carousel-caption">
-                          Third Slide
+                          Judul : Third Slide
                         </div>
                       </div>
                     </div>
