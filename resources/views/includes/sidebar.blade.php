@@ -47,7 +47,7 @@
       <ul class="treeview-menu">
         <li><a href="{{url('dataskpd')}}"><i class="fa fa-circle-o"></i> Tambah SKPD</a></li>
         <li><a href="{{url('listdataskpdbytopik')}}"><i class="fa fa-circle-o"></i>Daftar SKPD By Topik</a></li>
-        <li><a href="{{url('listdatapengaduanbyskpd')}}"><i class="fa fa-circle-o"></i>Daftar Pengaduan By SKPD</a></li>
+        {{-- <li><a href="{{url('listdatapengaduanbyskpd')}}"><i class="fa fa-circle-o"></i>Daftar Pengaduan By SKPD</a></li> --}}
       </ul>
     </li>
     <li class="treeview">
