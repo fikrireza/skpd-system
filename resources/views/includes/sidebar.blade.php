@@ -5,7 +5,7 @@
       <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
     </div>
     <div class="pull-left info">
-      <p>Anton</p>
+      <p>Antons</p>
       @if(Session::has('akses'))
         @if(Session::get('akses')=="userskpd")
           <a href="#"><i class="fa fa-circle text-success"></i> User SKPD</a>
