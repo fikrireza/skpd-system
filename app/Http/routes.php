@@ -34,7 +34,7 @@ Route::get('register', function(){
 
 Route::get('dashboard', function(){
   return view('pages/dashboard');
-})->middleware('IsAdmin');
+});
 
 Route::post('login', 'CustomAuthController@loginprocess');
 Route::get('logout', 'CustomAuthController@logoutprocess');
