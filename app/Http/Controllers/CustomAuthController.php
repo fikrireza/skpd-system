@@ -29,6 +29,11 @@ class CustomAuthController extends Controller
         session()->put('akses', 'administrator');
         return redirect('dashboard');
       }
+      else if($request->email=="warga")
+      {
+        session()->put('akses', 'warga');
+        return redirect('beranda');
+      }
       // if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
       //   session()->put('dudy', 'dudy nih');
       //   return redirect('dashboard');
