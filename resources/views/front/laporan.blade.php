@@ -140,14 +140,15 @@
                   <h3 class="box-title">Laporan Anda</h3>
                 </div>
                 <div class="box-body">
+
                   <div class="post">
                     <div class="user-block">
-                      <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
-                      <span class="username">
-                        <a href="#">Pelapor</a>
-                        <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                      <span class="username" style="margin-left:0px;">
+                        Pengaduan Pemadaman Listrik
                       </span>
-                      <span class="description">DiLaporkan - 7:30 PM Today</span>
+                      <span class="description" style="margin-left:0px;">
+                        Kategori Pelayanan - 24 April 2016
+                      </span>
                     </div><!-- /.user-block -->
                     <p>
                       Lorem ipsum represents a long-held tradition for designers,
@@ -174,7 +175,7 @@
                         <img class="img-circle img-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
                         <div class="comment-text">
                           <span class="username">
-                            SKPD Perhubungan
+                            SKPD Penerangan
                             <span class="text-muted pull-right">10:03 AM Today</span>
                           </span><!-- /.username -->
                           The point of using Lorem Ipsum is that it has a more-or-less
@@ -186,18 +187,18 @@
                     </br>
                     <ul class="list-inline">
                       <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-repeat"></span>  Di-Alihkan</a></li>
-                      <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
+                      <li class="pull-right"><a href="{{ url('detail/laporan/pengaduan-pemadaman-listrik') }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
                     </ul>
                   </div><!-- /.post -->
                   <!-- Post -->
                   <div class="post">
                     <div class="user-block">
-                      <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
-                      <span class="username">
-                        <a href="#">Pelapor</a>
-                        <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                      <span class="username" style="margin-left:0px;">
+                        Pengaduan Pelayanan BPJS Kesehatan
                       </span>
-                      <span class="description">DiLaporkan - 9:30 PM Tuesday</span>
+                      <span class="description" style="margin-left:0px;">
+                        Kategori Pelayanan - 24 April 2016
+                      </span>
                     </div><!-- /.user-block -->
                     <p>
                       Lorem ipsum represents a long-held tradition for designers,
@@ -220,12 +221,12 @@
                   <!-- Post -->
                   <div class="post">
                     <div class="user-block">
-                      <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user7-128x128.jpg') }}" alt="user image">
-                      <span class="username">
-                        <a href="#">Sarah Ross</a>
-                        <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                      <span class="username" style="margin-left:0px;">
+                        Pengaduan Jalan Rusak
                       </span>
-                      <span class="description">DiLaporkan - 7:30 PM Yesterday</span>
+                      <span class="description" style="margin-left:0px;">
+                        Kategori Pelayanan - 24 April 2016
+                      </span>
                     </div><!-- /.user-block -->
                     <p>
                       Lorem ipsum represents a long-held tradition for designers,
