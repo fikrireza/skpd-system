@@ -499,6 +499,54 @@
 
               <div class="col-md-3">
                   <!-- About Me Box -->
+                  <div class="box box-primary">
+                    <div class="box-body box-profile" style="height:225px;">
+                      <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
+                      <h3 class="profile-username text-center">Alexander Pierce</h3>
+                      <p class="text-muted text-center">Bergabung Sejak 5-Mei-2016</p>
+
+                      <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                          <b>Jumlah Laporan Pengaduan</b> <span class="pull-right badge bg-green">2</span>
+                        </li>
+                      </ul>
+                    </div><!-- /.box-body -->
+                    <div class="box-body">
+                      <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
+                      <p class="text-muted">
+                        32760621129010001
+                      </p>
+
+                      <hr style="margin-top:2px;margin-bottom:8px;">
+
+                      <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
+                      <p class="text-muted">081289087875</p>
+
+                      <hr style="margin-top:2px;margin-bottom:8px;">
+
+                      <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
+                      <p class="text-muted">alexamder@gmail.com</p>
+
+                      <hr style="margin-top:2px;margin-bottom:8px;">
+
+                      <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
+                      <p class="text-muted">Pria</p>
+
+                      <hr style="margin-top:2px;margin-bottom:8px;">
+
+
+                      <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
+                      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+
+                      {{-- <hr style="margin-top:2px;margin-bottom:8px;">
+
+                      <button type="button" class="btn btn-flat bg-purple btn-xs pull-right" name="button">
+                        <i class="fa fa-edit"></i>&nbsp;&nbsp;
+                        Ubah Profil Saya
+                      </button> --}}
+                    </div><!-- /.box-body -->
+                  </div><!-- /.box -->
+
                 <div class="box box-primary">
                   <div class="box-header with-border">
                     <h3 class="box-title">Laporan Terbaru</h3>
