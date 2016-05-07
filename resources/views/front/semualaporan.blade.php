@@ -501,13 +501,14 @@
                   <!-- About Me Box -->
                   <div class="box box-primary">
                     <div class="box-body box-profile" style="height:225px;">
-                      <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
+                      <img class="profile-user-img img-responsive img-circle" src="{{asset('/dist/img/user2-160x160.jpg')}}" alt="User profile picture">
                       <h3 class="profile-username text-center">Alexander Pierce</h3>
-                      <p class="text-muted text-center">Bergabung Sejak 5-Mei-2016</p>
-
                       <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                          <b>Jumlah Laporan Pengaduan</b> <span class="pull-right badge bg-green">2</span>
+                          <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">10</span>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Telah Ditanggapi</b> <span class="pull-right badge bg-green">2</span>
                         </li>
                       </ul>
                     </div><!-- /.box-body -->
@@ -534,51 +535,36 @@
 
                       <hr style="margin-top:2px;margin-bottom:8px;">
 
-
                       <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
                       <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-
-                      {{-- <hr style="margin-top:2px;margin-bottom:8px;">
-
-                      <button type="button" class="btn btn-flat bg-purple btn-xs pull-right" name="button">
-                        <i class="fa fa-edit"></i>&nbsp;&nbsp;
-                        Ubah Profil Saya
-                      </button> --}}
                     </div><!-- /.box-body -->
                   </div><!-- /.box -->
 
-                <div class="box box-primary">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Laporan Terbaru</h3>
-                  </div><!-- /.box-header -->
-                  <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-                    <p class="text-muted">
-                      B.S. in Computer Science from the University of Tennessee at Knoxville
-                    </p>
-
-                    <hr>
-
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
-                    <p class="text-muted">Malibu, California</p>
-
-                    <hr>
-
-                    {{-- <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-                    <p>
-                      <span class="label label-danger">UI Design</span>
-                      <span class="label label-success">Coding</span>
-                      <span class="label label-info">Javascript</span>
-                      <span class="label label-warning">PHP</span>
-                      <span class="label label-primary">Node.js</span>
-                    </p>
-
-                    <hr> --}}
-
-                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                  </div><!-- /.box-body -->
-                </div><!-- /.box -->
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Laporan Terbaru</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                      <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
+                      <p class="text-muted">
+                        B.S. in Computer Science from the University of Tennessee at Knoxville
+                      </p>
+                      <hr>
+                      <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
+                      <p class="text-muted">Malibu, California</p>
+                      <hr>
+                      <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                      <hr>
+                      <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
+                      <p class="text-muted">Malibu, California</p>
+                      <hr>
+                      <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
+                      <p class="text-muted">
+                        B.S. in Computer Science from the University of Tennessee at Knoxville
+                      </p>
+                    </div><!-- /.box-body -->
+                  </div><!-- /.box -->
               </div><!-- /.col -->
             </div><!-- /.row -->
           </section><!-- /.content -->

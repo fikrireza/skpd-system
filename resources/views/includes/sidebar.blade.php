@@ -6,7 +6,13 @@
     </div>
     <div class="pull-left info">
       <p>Anton</p>
-      <a href="#"><i class="fa fa-circle text-success"></i> User SKPD</a>
+      @if(Session::has('akses'))
+        @if(Session::get('akses')=="userskpd")
+          <a href="#"><i class="fa fa-circle text-success"></i> User SKPD</a>
+        @elseif(Session::get('akses')=="administrator")
+          <a href="#"><i class="fa fa-circle text-success"></i> Administrator</a>
+        @endif
+      @endif
     </div>
   </div>
   <!-- search form -->
