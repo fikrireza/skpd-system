@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SIMPEDU | Beranda</title>
+    <title>SIMPEDU | Laporan</title>
     @include('includes.head')
   </head>
 
@@ -28,8 +28,8 @@
             <!-- Menu Kiri -->
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
               <ul class="nav navbar-nav">
-                <li><a href="{{ url('laporan') }}">Laporan Saya <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Daftar Laporan</a></li>
+                <li class="active"><a href="{{ url('laporan') }}">Laporan Saya <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ url('semualaporan') }}">Daftar Laporan</a></li>
               </ul>
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -55,7 +55,7 @@
                         <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                         <p>
                           Alexander Pierce
-                          <small>Member since Nov. 2015</small>
+                          <small>Bergabung Sejak 5-Mei-2016</small>
                         </p>
                       </li>
                       <!-- Menu Footer-->
@@ -84,6 +84,9 @@
                 <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Ajukan Keluhan Anda</h3>
+                  {{-- <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div> --}}
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form role="form">
@@ -133,6 +136,7 @@
               </div>
               </div>
               <!-- Kanan -->
+
               <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
@@ -151,61 +155,15 @@
                   </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
               </div>
-            </div><!-- /.row -->
+            </div>
 
-          <div class="row">
-            <div class="col-md-9">
-              <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#kesehatan" data-toggle="tab" aria-expanded="true">Kesehatan</a></li>
-                  <li class=""><a href="#perhubungan" data-toggle="tab" aria-expanded="false">Perhubungan</a></li>
-                  <li class=""><a href="#pendidikan" data-toggle="tab" aria-expanded="false">Pendidikan</a></li>
-                  <li class=""><a href="#kependudukan" data-toggle="tab" aria-expaded="false">Kependudukan</a></li>
-                  <li class=""><a href="#tenagakerja" data-toggle="tab" aria-expaded="false">Tenaga Kerja</a></li>
-                  <li class=""><a href="#polkam" data-toggle="tab" aria-expaded="false">Politik dan Keamanan</a></li>
-                  <li class=""><a href="#geografi" data-toggle="tab" aria-expaded="false">Geografi</a></li>
-                </ul>
-                <div class="tab-content">
-                  <div class="tab-pane active" id="kesehatan">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user1-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-                    </div><!-- /.post -->
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user7-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Sarah Ross</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-                    </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
-                  <div class="tab-pane" id="perhubungan">
-                    <!-- Post -->
+            <div class="row">
+              <div class="col-md-9">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Laporan Anda</h3>
+                  </div>
+                  <div class="box-body">
                     <div class="post">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
@@ -213,7 +171,7 @@
                           <a href="#">Pelapor</a>
                           <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
                         </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
+                        <span class="description">DiLaporkan - 7:30 PM Today</span>
                       </div><!-- /.user-block -->
                       <p>
                         Lorem ipsum represents a long-held tradition for designers,
@@ -229,7 +187,7 @@
                           <div class="comment-text">
                             <span class="username">
                               Administrator
-                              <span class="text-muted pull-right">8:03 PM Today</span>
+                              <span class="text-muted pull-right">8:03 AM Today</span>
                             </span><!-- /.username -->
                             It is a long established fact that a reader will be distracted
                             by the readable content of a page when looking at its layout.
@@ -241,7 +199,7 @@
                           <div class="comment-text">
                             <span class="username">
                               SKPD Perhubungan
-                              <span class="text-muted pull-right">8:03 PM Today</span>
+                              <span class="text-muted pull-right">10:03 AM Today</span>
                             </span><!-- /.username -->
                             The point of using Lorem Ipsum is that it has a more-or-less
                             normal distribution of letters, as opposed to using
@@ -249,19 +207,21 @@
                           </div><!-- /.comment-text -->
                         </div><!-- /.box-comment -->
                       </div>
+                      </br>
+                      <ul class="list-inline">
+                        <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-repeat"></span>  Di-Alihkan</a></li>
+                        <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
+                      </ul>
                     </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
-
-                  <div class="tab-pane" id="pendidikan">
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user4-128x128.jpg') }}" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
                         <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
+                          <a href="#">Pelapor</a>
                           <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
                         </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
+                        <span class="description">DiLaporkan - 9:30 PM Tuesday</span>
                       </div><!-- /.user-block -->
                       <p>
                         Lorem ipsum represents a long-held tradition for designers,
@@ -270,61 +230,105 @@
                         tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
+                      <ul class="list-inline">
+                        <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-ok"></span>  Ter-Verifikasi</a></li>
+                        <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
+                      </ul>
                     </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
-                </div><!-- /.tab-content -->
-              </div><!-- /.nav-tabs-custom -->
-            </div>
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user7-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <a href="#">Sarah Ross</a>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description">DiLaporkan - 7:30 PM Yesterday</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Lorem ipsum represents a long-held tradition for designers,
+                        typographers and the like. Some people hate it and argue for
+                        its demise, but others ignore the hate as they create awesome
+                        tools to help create filler text for everyone from bacon lovers
+                        to Charlie Sheen fans.
+                      </p>
+                      <ul class="list-inline">
+                        <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-remove"></span>  Belum Ditanggapi</a></li>
+                        <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
+                      </ul>
+                    </div><!-- /.post -->
+                  </div>
+                </div>
+              </div><!-- col -->
 
-            <div class="col-md-3">
-                <!-- About Me Box -->
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Laporan Terbaru</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-                  <p class="text-muted">
-                    B.S. in Computer Science from the University of Tennessee at Knoxville
-                  </p>
+              <div class="col-md-3">
+                  <!-- About Me Box -->
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">Laporan Terbaru</h3>
+                  </div><!-- /.box-header -->
+                  <div class="box-body">
+                    <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
+                    <p class="text-muted">
+                      B.S. in Computer Science from the University of Tennessee at Knoxville
+                    </p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
+                    <p class="text-muted">Malibu, California</p>
+                    <hr>
+                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                    <hr>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
+                    <p class="text-muted">Malibu, California</p>
+                    <hr>
+                    <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
+                    <p class="text-muted">
+                      B.S. in Computer Science from the University of Tennessee at Knoxville
+                    </p>
+                  </div><!-- /.box-body -->
+                </div><!-- /.box -->
+              </div><!-- /.col -->
+            </div><!-- /.row -->
 
-                  <hr>
-
-                  <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
-                  <p class="text-muted">Malibu, California</p>
-
-                  <hr>
-
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->
           </section><!-- /.content -->
-        </div><!-- /.container -->
-      </div><!-- /.content-wrapper -->
-      <footer class="main-footer">
-        <div class="container">
-          <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.0
-          </div>
-          <strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.
-        </div><!-- /.container -->
-      </footer>
-    </div><!-- ./wrapper -->
+        </div>
+      </div>
+    </div>
+    <footer class="main-footer">
+      <div class="container">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.
+      </div><!-- /.container -->
+    </footer>
+  </div>
 
-    <!-- jQuery 2.1.4 -->
-    <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- SlimScroll -->
-    <script src="{{ asset('/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-    <!-- FastClick -->
-    <script src="{{ asset('/plugins/fastclick/fastclick.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('/dist/js/app.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('/dist/js/demo.js') }}"></script>
-  </body>
-</html>
+
+  <!-- jQuery 2.1.4 -->
+  <script src="{{asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+  <!-- Bootstrap 3.3.5 -->
+  <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+  <!-- FastClick -->
+  <script src="{{asset('plugins/fastclick/fastclick.min.js')}}"></script>
+  <!-- DataTables -->
+  <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+  <!-- bootstrap time picker -->
+  <script src="{{asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
+  <!-- AdminLTE App -->
+  <script src="{{asset('dist/js/app.min.js')}}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{{asset('dist/js/demo.js')}}"></script>
+  {{-- icheck --}}
+  <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
+
+  <script>
+    $(function () {
+      $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+      });
+    });
+  </script>
