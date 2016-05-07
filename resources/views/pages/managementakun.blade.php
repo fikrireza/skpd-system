@@ -82,14 +82,6 @@
                 <label class="control-label">Email</label>
                 <input type="email" name="email" class="form-control" placeholder="Email">
               </div>
-              <div class="col-md-14 {{ $errors->has('password') ? 'has-error' : '' }}">
-                <label class="control-label">password</label>
-                <input type="password" name="namaskpd" class="form-control" placeholder="Password">
-              </div>
-              <div class="col-md-14 {{ $errors->has('password') ? 'has-error' : '' }}">
-                <label class="control-label">Konfirmasi password</label>
-                <input type="text" name="namaskpd" class="form-control" placeholder="Konfirmasi Password">
-              </div>
               <div class="col-md-14 {{ $errors->has('level') ? 'has-error' : '' }}">
                 <label class="control-label">Level</label>
                 <select class="form-control" name="level">
@@ -123,6 +115,7 @@
           <table class="table table-hover">
             <tr class="bg-green">
               <th style="width:10px;">No</th>
+              <th>Email</th>
               <th>Nama SKPD</th>
               <th>Level</th>
               <th>Status Akun Aktif ?</th>
@@ -130,6 +123,7 @@
             </tr>
             <tr>
               <td>1.</td>
+              <td>SPKDKesehatan@gmail.com</td>
               <td>SKPD001 - SPKD Kesehatan</td>
               <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
@@ -143,6 +137,7 @@
 
             <tr>
               <td>2.</td>
+              <td>SPKDPendidikan@gmail.com</td>
               <td>SKPD002 - SPKD Pendidikan</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
@@ -155,6 +150,7 @@
             </tr>
             <tr>
               <td>3.</td>
+              <td>SPKDPerhubungan@gmail.com</td>
               <td>SKPD003 - SPKD Perhubungan</td>
               <td>Administrator</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
@@ -167,6 +163,7 @@
             </tr>
             <tr>
               <td>4.</td>
+              <td>SPKDKeuangan@gmail.com</td>
               <td>SKPD004 - SPKD Keuangan</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
@@ -179,6 +176,7 @@
             </tr>
             <tr>
               <td>5.</td>
+              <td>SPKDPerdagangan@gmail.com</td>
               <td>SKPD005 - SPKD Perdagangan</td>
               <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
@@ -191,6 +189,7 @@
             </tr>
             <tr>
               <td>6.</td>
+              <td>SPKDPertanian@gmail.com</td>
               <td>SKPD006 - SPKD Pertanian</td>
               <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
@@ -203,6 +202,7 @@
             </tr>
             <tr>
               <td>7.</td>
+              <td>SPKDPerindustrian@gmail.com</td>
               <td>SKPD007 - SPKD Perindustrian</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
@@ -215,6 +215,7 @@
             </tr>
             <tr>
               <td>8.</td>
+              <td>SPKDSosial@gmail.com</td>
               <td>SKPD008 - SPKD Sosial</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
@@ -227,6 +228,7 @@
             </tr>
             <tr>
               <td>9.</td>
+              <td>SPKDKebudayaan@gmail.com</td>
               <td>SKPD009 - SPKD Kebudayaan</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
@@ -239,6 +241,7 @@
             </tr>
             <tr>
               <td>10.</td>
+              <td>SPKDTeknologi@gmail.com</td>
               <td>SKPD0010 - SPKD Teknologi</td>
               <td>Administrator</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
