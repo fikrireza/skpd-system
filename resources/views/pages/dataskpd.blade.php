@@ -50,6 +50,26 @@
   </div>
 <!-- END MODAL TO ALERT DELETE-->
 
+<!-- START MODAL TO ALERT DELETE-->
+  <div class="modal fade" id="myModalAktif" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Aktif Data SKPD</h4>
+        </div>
+        <div class="modal-body">
+          <p>Apakah anda yakin untuk mengaktif data ini?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-primary pull-left btn-flat" data-dismiss="modal">Tidak</button>
+          <button type="submit" class="btn btn-danger  btn-flat" id="set">Ya, saya yakin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END MODAL TO ALERT DELETE-->
+
   <!-- START MESSAGE -->
   <div class="col-md-12">
     @if(Session::has('message'))
@@ -119,7 +139,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD ?">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
               </td>
             </tr>
             <tr>
@@ -132,8 +154,10 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
-              </td>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD ?">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
+             </td>
             </tr>
             <tr>
               <td>3.</td>
@@ -145,7 +169,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Aktifkan SKPD ?">
+                  <a href="" class="btn btn-info btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                </span>
               </td>
             </tr>
             <tr>
@@ -158,7 +184,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Aktifkan SKPD ?">
+                  <a href="" class="btn btn-info btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                </span>
               </td>
             </tr>
             <tr>
@@ -171,7 +199,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD ?">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
               </td>
             </tr>
             <tr>
@@ -184,7 +214,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD ?">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
               </td>
             </tr>
             <tr>
@@ -197,7 +229,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD ?">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
               </td>
             </tr>
             <tr>
@@ -210,7 +244,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD ?">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
               </td>
             </tr>
             <tr>
@@ -223,7 +259,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD ?">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
               </td>
             </tr>
             <tr>
@@ -236,7 +274,9 @@
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
                 </span>
-                <a href="#" class="btn btn-info btn-xs btn-flat" data-toggle='tooltip' title='Non Aktifkan SKPD ?'><i class="fa fa-thumbs-o-up"></i></a>
+                <span data-toggle="tooltip" title="Aktifkan SKPD ?">
+                  <a href="" class="btn btn-info btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                </span>
               </td>
             </tr>
           </table>

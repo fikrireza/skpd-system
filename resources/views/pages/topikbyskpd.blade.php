@@ -51,17 +51,25 @@
                   <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
                 </div>
               </div><!-- /.attachment-block -->
-
-            </div><!-- /.box-body -->
-            <div class="box-footer">
-              <form action="#" method="post">
-                <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
-                <!-- .img-push is used to add margin to elements next to floating images -->
-                <div class="img-push">
-                  <textarea name="name" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
+              <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+                <div style="padding-bottom:5px;">
+                  <b>Tanggapan</b>
                 </div>
-              </form>
-            </div><!-- /.box-footer -->
+                <div class='box-comment'>
+                  <!-- User image -->
+                  <img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>
+                  <div class='comment-text'>
+                    <span class="username">
+                      Administrator SKPD Pelayanan Publik
+                      <span class='text-muted pull-right'>25 April 2016</span>
+                    </span><!-- /.username -->
+                    It is a long established fact that a reader will be distracted
+                    by the readable content of a page when looking at its layout.
+                  </div><!-- /.comment-text -->
+                </div><!-- /.box-comment -->
+              </div><!-- /.box-footer -->
+            </div><!-- /.box-body -->
+
           </div><!-- /.box -->
         </div><!--/.col -->
 
@@ -75,58 +83,81 @@
 <!-- END MODAL TO ALERT DELETE-->
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8">
      <div class="box box-solid">
        <div class="box-header with-border">
          <i class="fa fa-television"></i>
          <h3 class="box-title">Deskripsi SKPD</h3>
        </div>
-       <!-- /.box-header -->
        <div class="box-body">
-         <div class="row">
-           <div class="col-md-6">
-             <dl class="dl-horizontal">
-               <dt>Kode SKPD : </dt>
-                <dd>SKPD001</dd>
-               <dt>Nama SKPD : </dt>
-                <dd>SKPD Kesehatan</dd>
-               <dt>Status : </dt>
-                <dd><span class="pull-center badge  bg-green">Aktif</span></dd>
-               <dt>Belum Ditanggapi : </dt>
-                 <dd>20</span></dd>
-                <dt>Sudah Ditanggapi : </dt>
-                 <dd>10</dd>
-             </dl>
-           </div>
-           <div class="col-md-6">
-             <table class="table table-hover">
-               <tr class="bg-green">
-                 <th style="width:10px;">No</th>
-                 <th>Kode Topik Pengaduan</th>
-                 <th>Nama Topik Pengaduan</th>
-               </tr>
-               <tr>
-                 <td>1.</td>
-                 <td>TPP001</td>
-                 <td>TOPIK Kesehatan Masyarakat</td>
-               </tr>
-               <tr>
-                 <td>2.</td>
-                 <td>TPP002</td>
-                 <td>TOPIK Kesehatan Pemerintah</td>
-               </tr>
-               <tr>
-                 <td>3.</td>
-                 <td>TPP003</td>
-                 <td>TOPIK Kesehatan Warga</td>
-               </tr>
-             </table>
-           </div>
-         </div>
+         <dl class="dl-horizontal">
+           <dt>Kode SKPD : </dt>
+            <dd>SKPD001</dd>
+           <dt>Nama SKPD : </dt>
+            <dd>SKPD Kesehatan</dd>
+           <dt>Status : </dt>
+            <dd><span class="pull-center badge  bg-green">Aktif</span></dd>
+         </dl>
+         <div class="box-body no-padding">
+         <table class="table table-hover">
+           <tr class="bg-green">
+             <th style="width:10px;">No</th>
+             <th>Kode Topik Pengaduan</th>
+             <th>Nama Topik Pengaduan</th>
+           </tr>
+           <tr>
+             <td>1.</td>
+             <td>TPP001</td>
+             <td>TOPIK Kesehatan Masyarakat</td>
+           </tr>
+           <tr>
+             <td>2.</td>
+             <td>TPP002</td>
+             <td>TOPIK Kesehatan Pemerintah</td>
+           </tr>
+           <tr>
+             <td>3.</td>
+             <td>TPP003</td>
+             <td>TOPIK Kesehatan Warga</td>
+           </tr>
+         </table>
        </div>
+       <div class="box-footer">
+         <ul class="pagination pagination-sm no-margin pull-right">
+           <li><a href="#">&laquo;</a></li>
+           <li><a href="#">1</a></li>
+           <li><a href="#">2</a></li>
+           <li><a href="#">3</a></li>
+           <li><a href="#">&raquo;</a></li>
+         </ul>
+       </div>
+       </div>
+       <!-- /.box-header -->
        <!-- /.box-body -->
      </div>
      <!-- /.box -->
+   </div>
+   <div class="col-md-4">
+     <div class="small-box bg-aqua">
+       <div class="inner">
+         <h3>10</h3>
+         <p>Belum Ditanggapi</p>
+       </div>
+       <div class="icon">
+         <i class="fa fa-meh-o"></i>
+       </div>
+       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+     </div>
+     <div class="small-box bg-red">
+       <div class="inner">
+         <h3>20</h3>
+         <p>Sudah Ditanggapi</p>
+       </div>
+       <div class="icon">
+         <i class="fa fa-smile-o"></i>
+       </div>
+       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+     </div>
    </div>
  </div>
 
@@ -169,8 +200,8 @@
                <td>24 Januari 2016</td>
                <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
                <td>
-                 <span data-toggle="tooltip" title="Tanggapi Data">
-                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-edit"></i></a>
+                 <span data-toggle="tooltip" title="View Data">
+                   <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
                  </span>
                </td>
              </tr>

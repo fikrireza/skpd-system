@@ -32,7 +32,6 @@
                 <th>Jumlah Pengaduan</th>
                 <th>Jumlah Aduan Terproses</th>
                 <th>Status SKPD</th>
-                <th>Tanggal</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -41,10 +40,9 @@
                 <td>1.</td>
                 <td>SKPD001</td>
                 <td>SPKD Kesehatan</td>
-                <td>30</td>
-                <td>20 %</td>
+                <td><span class="pull-center badge bg-maroon">30</span></td>
+                <td><span class="pull-center badge bg-red">20 %</span></td>
                 <td><span class="pull-center badge bg-green">Aktif</span></td>
-                <td>24 Desember 2015</td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -53,10 +51,9 @@
                 <td>2.</td>
                 <td>SKPD002</td>
                 <td>SPKD Pendidikan</td>
-                <td>6</td>
-                <td>5 %</td>
+                <td><span class="pull-center badge bg-maroon">6</span></td>
+                <td><span class="pull-center badge bg-red">5 %</span></td>
                 <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>24 Januari 2016</td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -65,10 +62,9 @@
                 <td>3.</td>
                 <td>SKPD003</td>
                 <td>SPKD Perhubungan</td>
-                <td>34</td>
-                <td>45 %</td>
+                <td><span class="pull-center badge bg-maroon">34</span></td>
+                <td><span class="pull-center badge bg-yellow">45 %</span></td>
                 <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>24 Maret 2016</td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -77,10 +73,9 @@
                 <td>4.</td>
                 <td>SKPD004</td>
                 <td>SPKD Keuangan</td>
-                <td>42</td>
-                <td>67 %</td>
+                <td><span class="pull-center badge bg-maroon">42</span></td>
+                <td><span class="pull-center badge bg-blue">67 %</span></td>
                 <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>24 Juni 2016</td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -89,10 +84,9 @@
                 <td>5.</td>
                 <td>SKPD005</td>
                 <td>SPKD Perdagangan</td>
-                <td>21</td>
-                <td>34 %</td>
+                <td><span class="pull-center badge bg-maroon">21</span></td>
+                <td><span class="pull-center badge bg-yellow">34 %</span></td>
                 <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>24 Agustus 2016</td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -101,10 +95,9 @@
                 <td>6.</td>
                 <td>SKPD006</td>
                 <td>SPKD Pertanian</td>
-                <td>89</td>
-                <td>34 %</td>
+                <td><span class="pull-center badge bg-maroon">89</span></td>
+                <td><span class="pull-center badge bg-yellow">34 %</span></td>
                 <td><span class="pull-center badge bg-green">Aktif</span></td>
-                <td>24 November 2016</td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -113,10 +106,9 @@
                 <td>7.</td>
                 <td>SKPD007</td>
                 <td>SPKD Perindustrian</td>
-                <td>45</td>
-                <td>23 %</td>
+                <td><span class="pull-center badge bg-maroon">45</span></td>
+                <td><span class="pull-center badge bg-yellow">23 %</span></td>
                 <td><span class="pull-center badge bg-green">Aktif</span></td>
-                <td>24 Januari 2017</td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -125,10 +117,9 @@
                 <td>8.</td>
                 <td>SKPD008</td>
                 <td>SPKD Sosial</td>
-                <td>4</td>
-                <td>98 %</td>
-                <td><span class="pull-center badge bg-green">Tidak Aktif</span></td>
-                <td>24 April 2017</td>
+                <td><span class="pull-center badge bg-maroon">4</span></td>
+                <td><span class="pull-center badge bg-green">98 %</span></td>
+                <td><span class="pull-center badge">Tidak Aktif</span></td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -137,10 +128,9 @@
                 <td>9.</td>
                 <td>SKPD009</td>
                 <td>SPKD Kebudayaan</td>
-                <td>48</td>
-                <td>18 %</td>
-                <td><span class="pull-center badge bg-green">Tidak Aktif</span></td>
-                <td>24 Juli 2017</td>
+                <td><span class="pull-center badge bg-maroon">48</span></td>
+                <td><span class="pull-center badge bg-red">18 %</span></td>
+                <td><span class="pull-center badge">Tidak Aktif</span></td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
@@ -149,10 +139,9 @@
                 <td>10.</td>
                 <td>SKPD0010</td>
                 <td>SPKD Teknologi</td>
-                <td>53</td>
-                <td>50 %</td>
+                <td><span class="pull-center badge bg-maroon">53</span></td>
+                <td><span class="pull-center badge bg-blue">50 %</span</td>
                 <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>24 Agustus 2017</td>
                 <td>
                   <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                 </td>
