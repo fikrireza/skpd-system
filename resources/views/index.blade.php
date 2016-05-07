@@ -78,7 +78,7 @@
             </div><!-- /.col -->
 
             <div class="col-md-3">
-              <div class="nav-tabs-custom" style='max-height:467px'>
+              <div class="nav-tabs-custom" style='min-height:467px'>
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
                   <li><a href="#daftar" data-toggle="tab">Daftar</a></li>
@@ -118,9 +118,9 @@
                     </div>
                     <div class="tab-pane" id="daftar">
                       <div class="register-box-body">
-                        <p class="login-box-msg"><img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
-                        &nbsp;&nbsp;<b>SIMPEDU</b></p>
-                        <p class="login-box-msg">Daftar Baru</p>
+                        {{-- <p class="login-box-msg"><img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
+                        &nbsp;&nbsp;<b>SIMPEDU</b></p> --}}
+                        <p class="login-box-msg"><b>Daftar Pengguna Baru</b></p>
                         <form action="{{ url('register') }}" method="post">
                           {!! csrf_field() !!}
                           <div class="form-group has-feedback">
@@ -287,7 +287,6 @@
             </div>
 
             <div class="col-md-3">
-                <!-- About Me Box -->
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Laporan Terbaru</h3>
@@ -297,16 +296,20 @@
                   <p class="text-muted">
                     B.S. in Computer Science from the University of Tennessee at Knoxville
                   </p>
-
                   <hr>
-
                   <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
                   <p class="text-muted">Malibu, California</p>
-
                   <hr>
-
                   <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                  <hr>
+                  <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
+                  <p class="text-muted">Malibu, California</p>
+                  <hr>
+                  <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
+                  <p class="text-muted">
+                    B.S. in Computer Science from the University of Tennessee at Knoxville
+                  </p>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->
