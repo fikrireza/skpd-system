@@ -40,7 +40,7 @@
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-4 col-xs-12">
@@ -53,7 +53,7 @@
         <div class="icon">
           <i class="ion ion-person-stalker"></i>
         </div>
-        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
   </div><!-- /.row -->
@@ -107,8 +107,14 @@
                 gambar.jpg
               </p>
               <div class="pull-right">
-                <a href="#" class="btn btn-warning btn-sm btn-flat">Lihat Data Pendukung</a>
-                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                @if(Session::has('akses'))
+                  @if(Session::get('akses')=="userskpd")
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                  @else
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                  @endif
+                @endif
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
@@ -128,7 +134,13 @@
             </p>
             <div class="attachment">
               <div class="pull-right">
-                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                @if(Session::has('akses'))
+                  @if(Session::get('akses')=="userskpd")
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                  @else
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                  @endif
+                @endif
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
@@ -148,7 +160,13 @@
             </p>
             <div class="attachment">
               <div class="pull-right">
-                <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                @if(Session::has('akses'))
+                  @if(Session::get('akses')=="userskpd")
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                  @else
+                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                  @endif
+                @endif
               </div>
             </div><!-- /.attachment -->
           </div><!-- /.item -->
