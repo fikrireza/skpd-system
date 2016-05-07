@@ -28,6 +28,10 @@ Route::get('laporan', function(){
   return view('front.laporan');
 });
 
+Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
+  return view('front.detaillaporan');
+});
+
 Route::get('semualaporan', function(){
   return view('front.semualaporan');
 });

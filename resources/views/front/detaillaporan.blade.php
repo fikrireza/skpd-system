@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SIMPEDU | Laporan</title>
+    <title>SIMPEDU | Pengaduan Pemadaman Listrik</title>
     @include('includes.head')
   </head>
 
@@ -81,60 +81,6 @@
           <section class="content">
             <div class="row">
               <div class="col-md-9">
-                <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Ajukan Keluhan Anda</h3>
-                  {{-- <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                  </div> --}}
-                </div><!-- /.box-header -->
-                <!-- form start -->
-                <form role="form">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label>Tuliskan Laporan Anda</label>
-                      <textarea class="form-control" rows="3" placeholder="Apa Laporan Anda...?"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label>Kategori Pelaporan</label>
-                      <select class="form-control">
-                        <option>-- Pilih Kategori --</option>
-                        <option>Kesehatan</option>
-                        <option>Perhubungan</option>
-                        <option>Kependudukan</option>
-                        <option>Pekerjaan Umum</option>
-                        <option>Ketenagakerjaan</option>
-                      </select>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label for="exampleInputFile">Dokumen Pendukung</label>
-                          <input type="file" id="exampleInputFile">
-                          <p class="help-block">Dokumen yang akan dilampirkan</p>
-                        </div>
-                      </div><!-- /.col-lg-6 -->
-                      <div class="col-lg-6">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Anonim
-                          </label>
-                        </div>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Laporan Rahasia
-                          </label>
-                        </div>
-                      </div><!-- /.col-lg-6 -->
-                    </div>
-                  </div><!-- /.box-body -->
-
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                </form>
-              </div>
-
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Laporan Anda</h3>
@@ -151,12 +97,17 @@
                       </span>
                     </div><!-- /.user-block -->
                     <p>
-                      Lorem ipsum represents a long-held tradition for designers,
-                      typographers and the like. Some people hate it and argue for
-                      its demise, but others ignore the hate as they create awesome
-                      tools to help create filler text for everyone from bacon lovers
-                      to Charlie Sheen fans.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
+                    <p>
+                      Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
+                    </p>
+                    <div class="timeline-body">
+                      <img src="http://placehold.it/150x100" alt="..." class="margin">
+                      <img src="http://placehold.it/150x100" alt="..." class="margin">
+                      <img src="http://placehold.it/150x100" alt="..." class="margin">
+                      <img src="http://placehold.it/150x100" alt="..." class="margin">
+                    </div>
                     <div class="box-footer box-comments">
                       <div class="box-comment">
                         <!-- User image -->
@@ -187,57 +138,6 @@
                     </br>
                     <ul class="list-inline">
                       <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-repeat"></span>  Di-Alihkan</a></li>
-                      <li class="pull-right"><a href="{{ url('detail/laporan/pengaduan-pemadaman-listrik') }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
-                    </ul>
-                  </div><!-- /.post -->
-                  <!-- Post -->
-                  <div class="post">
-                    <div class="user-block">
-                      <span class="username" style="margin-left:0px;">
-                        Pengaduan Pelayanan BPJS Kesehatan
-                      </span>
-                      <span class="description" style="margin-left:0px;">
-                        Kategori Pelayanan - 24 April 2016
-                      </span>
-                    </div><!-- /.user-block -->
-                    <p>
-                      Lorem ipsum represents a long-held tradition for designers,
-                      typographers and the like. Some people hate it and argue for
-                      its demise, but others ignore the hate as they create awesome
-                      tools to help create filler text for everyone from bacon lovers
-                      to Charlie Sheen fans.
-                    </p>
-                    <div class="timeline-body">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                    </div>
-                    <ul class="list-inline">
-                      <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-ok"></span>  Ter-Verifikasi</a></li>
-                      <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
-                    </ul>
-                  </div><!-- /.post -->
-                  <!-- Post -->
-                  <div class="post">
-                    <div class="user-block">
-                      <span class="username" style="margin-left:0px;">
-                        Pengaduan Jalan Rusak
-                      </span>
-                      <span class="description" style="margin-left:0px;">
-                        Kategori Pelayanan - 24 April 2016
-                      </span>
-                    </div><!-- /.user-block -->
-                    <p>
-                      Lorem ipsum represents a long-held tradition for designers,
-                      typographers and the like. Some people hate it and argue for
-                      its demise, but others ignore the hate as they create awesome
-                      tools to help create filler text for everyone from bacon lovers
-                      to Charlie Sheen fans.
-                    </p>
-                    <ul class="list-inline">
-                      <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-remove"></span>  Belum Ditanggapi</a></li>
-                      <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
                     </ul>
                   </div><!-- /.post -->
                 </div>
@@ -261,13 +161,6 @@
                     </ul>
                   </div><!-- /.box-body -->
                   <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
-                    <p class="text-muted">
-                      32760621129010001
-                    </p>
-
-                    <hr style="margin-top:2px;margin-bottom:8px;">
-
                     <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
                     <p class="text-muted">081289087875</p>
 
