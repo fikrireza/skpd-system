@@ -130,6 +130,9 @@
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">12</span></td>
               <td>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -145,6 +148,9 @@
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">8</span></td>
               <td>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -159,6 +165,9 @@
               <td><span class="pull-center badge">Tidak Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">1</span></td>
               <td>
+                <span data-toggle="tooltip" title="Aktifkan SKPD">
+                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -173,6 +182,9 @@
               <td><span class="pull-center badge">Tidak Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">2</span></td>
               <td>
+                <span data-toggle="tooltip" title="Aktifkan SKPD">
+                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -187,6 +199,9 @@
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">45</span></td>
               <td>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -201,6 +216,9 @@
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">28</span></td>
               <td>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -215,6 +233,9 @@
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">44</span></td>
               <td>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -229,6 +250,9 @@
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">48</span></td>
               <td>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -243,6 +267,9 @@
               <td><span class="pull-center badge bg-green">Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">33</span></td>
               <td>
+                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
@@ -257,6 +284,9 @@
               <td><span class="pull-center badge">Tidak Aktif</span></td>
               <td><span class="pull-center badge bg-maroon">12</span></td>
               <td>
+                <span data-toggle="tooltip" title="Aktifkan SKPD">
+                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                </span>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
                   <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
