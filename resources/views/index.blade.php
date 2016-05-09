@@ -160,6 +160,48 @@
           </div>
 
           <div class="row">
+            <div class="col-lg-4 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-teal">
+                <div class="inner">
+                  <h3>150</h3>
+                  <p>Jumlah Pengaduan</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-speakerphone"></i>
+                </div>
+                {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-purple">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <p>Pengaduan Terproses</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-maroon">
+                <div class="inner">
+                  <h3>44</h3>
+                  <p>Pengguna Terdaftar</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-stalker"></i>
+                </div>
+                {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
+              </div>
+            </div><!-- ./col -->
+          </div>
+
+          <div class="row">
             <div class="col-md-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
