@@ -78,7 +78,7 @@
             </div><!-- /.col -->
 
             <div class="col-md-3">
-              <div class="nav-tabs-custom" style='min-height:467px'>
+              <div class="nav-tabs-custom" style='max-height:467px'>
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
                   <li><a href="#daftar" data-toggle="tab">Daftar</a></li>
@@ -130,6 +130,10 @@
                           <div class="form-group has-feedback">
                             <input name="email" type="email" class="form-control" placeholder="Email">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                          </div>
+                          <div class="form-group has-feedback">
+                            <input name="telp" type="text" class="form-control" placeholder="No. Telp">
+                            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
                           </div>
                           <div class="form-group has-feedback">
                             <input name="password" type="password" class="form-control" placeholder="Password">
