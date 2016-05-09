@@ -24,7 +24,7 @@
 
         <!-- Profile Image -->
         <div class="box box-primary">
-          <div class="box-body box-profile" style="height:225px;">
+          <div class="box-body box-profile" style="height:265px;">
             <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
             <h3 class="profile-username text-center">Amanda Satyarini</h3>
             <p class="text-muted text-center">Warga Kabupaten Tangerang</p>
@@ -32,6 +32,9 @@
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
                 <b>Jumlah Laporan Pengaduan</b> <span class="pull-right badge bg-green">2</span>
+              </li>
+              <li class="list-group-item">
+                <b>Jumlah Login</b> <span class="pull-right badge bg-maroon">12</span>
               </li>
             </ul>
           </div><!-- /.box-body -->

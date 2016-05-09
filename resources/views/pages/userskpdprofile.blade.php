@@ -24,14 +24,17 @@
 
         <!-- Profile Image -->
         <div class="box box-primary">
-          <div class="box-body box-profile" style="height:225px;">
+          <div class="box-body box-profile" style="height:265px;">
             <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user2-160x160.jpg')}}" alt="User profile picture">
             <h3 class="profile-username text-center">Anton</h3>
             <p class="text-muted text-center">User SKPD</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <b>Jumlah Tanggapan Pengaduan</b> <span class="pull-right badge bg-red">2</span>
+                <b>Jumlah Tanggapan Pengaduan</b> <span class="pull-right badge bg-green">2</span>
+              </li>
+              <li class="list-group-item">
+                <b>Jumlah Login</b> <span class="pull-right badge bg-maroon">32</span>
               </li>
             </ul>
           </div><!-- /.box-body -->

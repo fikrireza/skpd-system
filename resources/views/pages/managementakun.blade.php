@@ -118,15 +118,17 @@
               <th>Email</th>
               <th>Nama SKPD</th>
               <th>Level</th>
-              <th>Status Akun Aktif ?</th>
+              <th>Status Akun</th>
+              <th>Jumlah Login</th>
               <th>Aksi</th>
             </tr>
             <tr>
               <td>1.</td>
-              <td>SPKDKesehatan@gmail.com</td>
-              <td>SKPD001 - SPKD Kesehatan</td>
+              <td>bambang@gmail.com</td>
+              <td>SPKD Kesehatan</td>
               <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">12</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -137,10 +139,11 @@
 
             <tr>
               <td>2.</td>
-              <td>SPKDPendidikan@gmail.com</td>
-              <td>SKPD002 - SPKD Pendidikan</td>
+              <td>fikri@gmail.com</td>
+              <td>SPKD Pendidikan</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">8</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -150,10 +153,11 @@
             </tr>
             <tr>
               <td>3.</td>
-              <td>SPKDPerhubungan@gmail.com</td>
-              <td>SKPD003 - SPKD Perhubungan</td>
+              <td>rojali@gmail.com</td>
+              <td>SPKD Perhubungan</td>
               <td>Administrator</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">1</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -163,10 +167,11 @@
             </tr>
             <tr>
               <td>4.</td>
-              <td>SPKDKeuangan@gmail.com</td>
-              <td>SKPD004 - SPKD Keuangan</td>
+              <td>dudy@gmail.com</td>
+              <td>SPKD Keuangan</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">2</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -176,10 +181,11 @@
             </tr>
             <tr>
               <td>5.</td>
-              <td>SPKDPerdagangan@gmail.com</td>
-              <td>SKPD005 - SPKD Perdagangan</td>
+              <td>santoso@gmail.com</td>
+              <td>SPKD Perdagangan</td>
               <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">45</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -189,10 +195,11 @@
             </tr>
             <tr>
               <td>6.</td>
-              <td>SPKDPertanian@gmail.com</td>
-              <td>SKPD006 - SPKD Pertanian</td>
+              <td>brenda@gmail.com</td>
+              <td>SPKD Pertanian</td>
               <td>Administrator</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">28</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -202,10 +209,11 @@
             </tr>
             <tr>
               <td>7.</td>
-              <td>SPKDPerindustrian@gmail.com</td>
-              <td>SKPD007 - SPKD Perindustrian</td>
+              <td>marzuki@gmail.com</td>
+              <td>SPKD Perindustrian</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">44</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -215,10 +223,11 @@
             </tr>
             <tr>
               <td>8.</td>
-              <td>SPKDSosial@gmail.com</td>
-              <td>SKPD008 - SPKD Sosial</td>
+              <td>benfahiran@gmail.com</td>
+              <td>SPKD Sosial</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">48</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -228,10 +237,11 @@
             </tr>
             <tr>
               <td>9.</td>
-              <td>SPKDKebudayaan@gmail.com</td>
-              <td>SKPD009 - SPKD Kebudayaan</td>
+              <td>sutomo@gmail.com</td>
+              <td>SPKD Kebudayaan</td>
               <td>User SKPD</td>
               <td><span class="pull-center badge bg-green">Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">33</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -241,10 +251,11 @@
             </tr>
             <tr>
               <td>10.</td>
-              <td>SPKDTeknologi@gmail.com</td>
-              <td>SKPD0010 - SPKD Teknologi</td>
+              <td>ronaldo@gmail.com</td>
+              <td>SPKD Teknologi</td>
               <td>Administrator</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
+              <td><span class="pull-center badge bg-maroon">12</span></td>
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">

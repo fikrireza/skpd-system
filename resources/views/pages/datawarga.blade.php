@@ -30,9 +30,10 @@
               <tr class="bg-blue">
                 <th>#</th>
                 <th>Nama Pelapor</th>
-                <th>Jumlah Aduan</th>
                 <th>Tanggal Terdaftar</th>
                 <th>Terakhir Login</th>
+                <th>Jumlah Aduan</th>
+                <th>Jumlah Login</th>
                 <th>Status Akun</th>
                 <th>Aksi</th>
               </tr>
@@ -41,9 +42,10 @@
               <tr>
                 <td>1</td>
                 <td>Bambang Pamungkis</td>
-                <td><span class="badge bg-blue">6</span></td>
                 <td>24 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">9</span></td>
+                <td><span class="badge bg-maroon">6</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -52,9 +54,10 @@
               <tr>
                 <td>2</td>
                 <td>Amanda Satyarini</td>
-                <td><span class="badge bg-blue">9</span></td>
                 <td>25 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">9</span></td>
+                <td><span class="badge bg-maroon">12</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Tidak Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -63,9 +66,10 @@
               <tr>
                 <td>3</td>
                 <td>Brenda Marsalia</td>
-                <td><span class="badge bg-blue">5</span></td>
                 <td>26 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">5</span></td>
+                <td><span class="badge bg-maroon">6</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -74,9 +78,10 @@
               <tr>
                 <td>4</td>
                 <td>Bambang Pamungkis</td>
+                <td>24 April 2016</td>
+                <td>24 April 2016</td>
                 <td><span class="badge bg-blue">8</span></td>
-                <td>24 April 2016</td>
-                <td>24 April 2016</td>
+                <td><span class="badge bg-maroon">10</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -85,9 +90,10 @@
               <tr>
                 <td>5</td>
                 <td>Amanda Satyarini</td>
-                <td><span class="badge bg-blue">12</span></td>
                 <td>25 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">12</span></td>
+                <td><span class="badge bg-maroon">14</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Tidak Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -96,9 +102,10 @@
               <tr>
                 <td>6</td>
                 <td>Brenda Marsalia</td>
-                <td><span class="badge bg-blue">6</span></td>
                 <td>26 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">6</span></td>
+                <td><span class="badge bg-maroon">9</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -107,9 +114,10 @@
               <tr>
                 <td>7</td>
                 <td>Bambang Pamungkis</td>
+                <td>24 April 2016</td>
+                <td>24 April 2016</td>
                 <td><span class="badge bg-blue">3</span></td>
-                <td>24 April 2016</td>
-                <td>24 April 2016</td>
+                <td><span class="badge bg-maroon">6</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -118,9 +126,10 @@
               <tr>
                 <td>8</td>
                 <td>Amanda Satyarini</td>
-                <td><span class="badge bg-blue">9</span></td>
                 <td>25 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">9</span></td>
+                <td><span class="badge bg-maroon">16</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Tidak Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -129,9 +138,10 @@
               <tr>
                 <td>9</td>
                 <td>Brenda Marsalia</td>
-                <td><span class="badge bg-blue">1</span></td>
                 <td>26 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">1</span></td>
+                <td><span class="badge bg-maroon">7</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Tidak Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -140,9 +150,10 @@
               <tr>
                 <td>10</td>
                 <td>Bambang Pamungkis</td>
+                <td>24 April 2016</td>
+                <td>24 April 2016</td>
                 <td><span class="badge bg-blue">2</span></td>
-                <td>24 April 2016</td>
-                <td>24 April 2016</td>
+                <td><span class="badge bg-maroon">5</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -151,9 +162,10 @@
               <tr>
                 <td>11</td>
                 <td>Amanda Satyarini</td>
-                <td><span class="badge bg-blue">5</span></td>
                 <td>25 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">5</span></td>
+                <td><span class="badge bg-maroon">9</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Tidak Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
@@ -162,9 +174,10 @@
               <tr>
                 <td>12</td>
                 <td>Brenda Marsalia</td>
-                <td><span class="badge bg-blue">45</span></td>
                 <td>26 April 2016</td>
                 <td>24 April 2016</td>
+                <td><span class="badge bg-blue">45</span></td>
+                <td><span class="badge bg-maroon">48</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span></td>
                 <td>
                   <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
