@@ -89,10 +89,6 @@
                 <form role="form">
                   <div class="box-body">
                     <div class="form-group">
-                      <label>Tuliskan Laporan Anda</label>
-                      <textarea class="form-control" rows="3" placeholder="Apa Laporan Anda...?"></textarea>
-                    </div>
-                    <div class="form-group">
                       <label>Kategori Pelaporan</label>
                       <select class="form-control">
                         <option>-- Pilih Kategori --</option>
@@ -102,6 +98,10 @@
                         <option>Pekerjaan Umum</option>
                         <option>Ketenagakerjaan</option>
                       </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Tuliskan Laporan Anda</label>
+                      <textarea class="form-control" rows="3" placeholder="Apa Laporan Anda...?"></textarea>
                     </div>
                     <div class="row">
                       <div class="col-lg-6">
@@ -114,12 +114,12 @@
                       <div class="col-lg-6">
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox"> Anonim
+                            <input type="checkbox"> Anonim <sub><font color="red">Identitas Anda Tidak Akan Ditampilkan</font></sub>
                           </label>
                         </div>
                         <div class="checkbox">
                           <label>
-                            <input type="checkbox"> Laporan Rahasia
+                            <input type="checkbox"> Laporan Rahasia <sub><font color="red">Laporan Anda Akan Kami Rahasiakan Terhadap Publik </font></sub>
                           </label>
                         </div>
                       </div><!-- /.col-lg-6 -->
