@@ -6,7 +6,15 @@
 
 @section('breadcrumb')
   <h1>
-    Halaman Utama Administrator SKPD
+    @if(Session::has('akses'))
+      @if(Session::get('akses')=="administrator")
+        Halaman Utama Administrator Utama
+      @elseif(Session::get('akses')=="kesehatan")
+        Halaman Utama Admin SKPD Kesehatan
+      @elseif(Session::get('akses')=="pendidikan")
+        Halaman Utama Admin SKPD Pendidikan
+      @endif
+    @endif
     <small>Data Statistik</small>
   </h1>
   <ol class="breadcrumb">
