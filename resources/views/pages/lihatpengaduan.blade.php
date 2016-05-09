@@ -22,7 +22,7 @@
       <!-- Horizontal Form -->
       <div class="box box-success">
         <div class="box-header">
-          <h3 class="box-title">Seluruh Data Pengaduan Untuk SKPD Terkait</h3>
+          <h3 class="box-title">Seluruh Data Pengaduan Untuk SKPD Kesehatan</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelpengaduan" class="table table-hover">
@@ -40,8 +40,8 @@
             <tbody>
               <tr>
                 <td>1</td>
-                <td>Bambang Pamungkis</td>
-                <td>E-KTP &amp; KK</td>
+                <td><a href="{{url('wargaprofile')}}">Bambang Pamungkis</a></td>
+                <td>BPJS Kesehatan</td>
                 <td>24 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
@@ -51,8 +51,8 @@
               </tr>
               <tr>
                 <td>2</td>
-                <td>Amanda Satyarini</td>
-                <td>Perizinan</td>
+                <td><a href="{{url('wargaprofile')}}">Amanda Satyarini</a></td>
+                <td>Pelayanan Administrasi</td>
                 <td>25 April 2016</td>
                 <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
@@ -62,8 +62,8 @@
               </tr>
               <tr>
                 <td>3</td>
-                <td>Brenda Marsalia</td>
-                <td>Pendidikan</td>
+                <td><a href="{{url('wargaprofile')}}">Brenda Marsalia</a></td>
+                <td>Pelayanan Kesehatan</td>
                 <td>26 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
@@ -73,8 +73,8 @@
               </tr>
               <tr>
                 <td>4</td>
-                <td>Bambang Pamungkis</td>
-                <td>E-KTP &amp; KK</td>
+                <td><a href="{{url('wargaprofile')}}">Bambang Pamungkis</a></td>
+                <td>Pelayanan Obat</td>
                 <td>24 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
@@ -84,8 +84,8 @@
               </tr>
               <tr>
                 <td>5</td>
-                <td>Amanda Satyarini</td>
-                <td>Perizinan</td>
+                <td><a href="{{url('wargaprofile')}}">Amanda Satyarini</a></td>
+                <td>BPJS Kesehatan</td>
                 <td>25 April 2016</td>
                 <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
@@ -95,8 +95,8 @@
               </tr>
               <tr>
                 <td>6</td>
-                <td>Brenda Marsalia</td>
-                <td>Pendidikan</td>
+                <td><a href="{{url('wargaprofile')}}">Brenda Marsalia</a></td>
+                <td>Pelayanan Administrasi</td>
                 <td>26 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
@@ -106,8 +106,8 @@
               </tr>
               <tr>
                 <td>7</td>
-                <td>Bambang Pamungkis</td>
-                <td>E-KTP &amp; KK</td>
+                <td><a href="{{url('wargaprofile')}}">Bambang Pamungkis</a></td>
+                <td>Pelayanan Kesehatan</td>
                 <td>24 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
@@ -117,8 +117,8 @@
               </tr>
               <tr>
                 <td>8</td>
-                <td>Amanda Satyarini</td>
-                <td>Perizinan</td>
+                <td><a href="{{url('wargaprofile')}}">Amanda Satyarini</a></td>
+                <td>Pelayanan Obat</td>
                 <td>25 April 2016</td>
                 <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
@@ -128,8 +128,8 @@
               </tr>
               <tr>
                 <td>9</td>
-                <td>Brenda Marsalia</td>
-                <td>Pendidikan</td>
+                <td><a href="{{url('wargaprofile')}}">Brenda Marsalia</a></td>
+                <td>BPJS Kesehatan</td>
                 <td>26 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
@@ -139,8 +139,8 @@
               </tr>
               <tr>
                 <td>10</td>
-                <td>Bambang Pamungkis</td>
-                <td>E-KTP &amp; KK</td>
+                <td><a href="{{url('wargaprofile')}}">Bambang Pamungkis</a></td>
+                <td>Pelayanan Administrasi</td>
                 <td>24 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
@@ -150,8 +150,8 @@
               </tr>
               <tr>
                 <td>11</td>
-                <td>Amanda Satyarini</td>
-                <td>Perizinan</td>
+                <td><a href="{{url('wargaprofile')}}">Amanda Satyarini</a></td>
+                <td>Pelayanan Kesehatan</td>
                 <td>25 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
@@ -161,8 +161,8 @@
               </tr>
               <tr>
                 <td>12</td>
-                <td>Brenda Marsalia</td>
-                <td>Pendidikan</td>
+                <td><a href="{{url('wargaprofile')}}">Brenda Marsalia</a></td>
+                <td>Pelayanan Obat</td>
                 <td>26 April 2016</td>
                 <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
                 <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>

@@ -43,24 +43,24 @@
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
+            <strong><i class="fa fa-phone-square margin-r-5"></i> No. Telp</strong>
             <p class="text-muted">081289087875</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
+            <strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
             <p class="text-muted">amanda@gmail.com</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
+            <strong><i class="fa fa-female margin-r-5"></i> Jenis Kelamin</strong>
             <p class="text-muted">Wanita</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+            <strong><i class="fa fa-home margin-r-5"></i> Alamat</strong>
+            <p class="text-muted">Jalan Perumahan NEO Bintaro Blok I/2 Jakarta Selatan</p>
 
             {{-- <hr style="margin-top:2px;margin-bottom:8px;">
 
@@ -74,7 +74,7 @@
       <div class="col-md-9">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan</a></li>
+            <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan SKPD Kesehatan</a></li>
             {{-- <li><a href="#settings" data-toggle="tab">Ubah Profil</a></li> --}}
           </ul>
           <div class="tab-content">
@@ -83,21 +83,17 @@
               <div class="post">
                 <div class="user-block">
                   <span class='username' style="margin-left:0px;">
-                    Pengaduan Pemadaman Listrik
+                    Obat yg sebelumnya dicover BPJS menjadi harus bayar
                   </span>
                   <span class='description' style="margin-left:0px;">
-                    Kategori Pelayanan - 24 April 2016
+                    Kategori Pelayanan Obat - 24 April 2016
                   </span>
                   <span class='description' style="margin-left:0px; padding-top:3px;">
                     <span class="label bg-red">Belum ditanggapi</span>
                   </span>
                 </div><!-- /.user-block -->
                 <p>
-                  Lorem ipsum represents a long-held tradition for designers,
-                  typographers and the like. Some people hate it and argue for
-                  its demise, but others ignore the hate as they create awesome
-                  tools to help create filler text for everyone from bacon lovers
-                  to Charlie Sheen fans.
+                  Saya sedang dirawat di rs santosa central kebon jati - bandung. hari ini sabtu, 7 mei 2016 saya diberi copy resep yg harus ditebus di farmasi sebesar 117rb berupa lasix 2ampul. padahal dengan keluhan yg sama sebelumnya dengan obat yg sama tidak ada biaya apapun. saya kecewa sebagai pengguna bpjs kelas 1 non pbi, ditempatkan di ruang kelas 3 karena penuh. masih juga diminta bayar obat yg sebelumnya tidak dipungut biaya apapun. iuran naik tapi fasilitas menurun. harap segera ditindaklanjuti. trims
                 </p>
 
                 <div class="attachment-block clearfix">
@@ -114,21 +110,17 @@
               <div class="post">
                 <div class="user-block">
                   <span class='username' style="margin-left:0px;">
-                    Pengaduan Pelayanan BPJS Kesehatan
+                    Aktifasi pendaftaran BPJS Kesehatan
                   </span>
                   <span class='description' style="margin-left:0px;">
-                    Kategori Pelayanan - 24 April 2016
+                    Kategori BPJS Kesehatan - 24 April 2016
                   </span>
                   <span class='description' style="margin-left:0px; padding-top:3px;">
                     <span class="label bg-green">Telah ditanggapi</span>
                   </span>
                 </div><!-- /.user-block -->
                 <p>
-                  Lorem ipsum represents a long-held tradition for designers,
-                  typographers and the like. Some people hate it and argue for
-                  its demise, but others ignore the hate as they create awesome
-                  tools to help create filler text for everyone from bacon lovers
-                  to Charlie Sheen fans.
+                  Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double? (saya sudah coba refres-f5 beberapa kali tetapi data aktivasi tetap tidak muncul. mohon informasinya no registrasi : bpjs-0000016816961 terima kasih banyak.
                 </p>
 
                 <div class="attachment-block clearfix">
@@ -148,11 +140,10 @@
                     <img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>
                     <div class='comment-text'>
                       <span class="username">
-                        Administrator SKPD Pelayanan Publik
+                        Administrator SKPD Kesehatan
                         <span class='text-muted pull-right'>25 April 2016</span>
                       </span><!-- /.username -->
-                      It is a long established fact that a reader will be distracted
-                      by the readable content of a page when looking at its layout.
+                      Terima kasih atas keluhan yang disampaikan dan dengan ini kami sampaikan permohonan maaf atas ketidaknyamanan yang di alami Menjawab pertanyaan Bapak dapat kami sarankan agar peserta mencoba melakukan kembali pendaftaran online untuk anak Bapak dengan menggunakan nomor registrasi Bapak Stefanus dengan klik registrasi anggota keluarga dan masukan nomor registrasi Bapak stefanus setelah 1x24 jam dari pendaftaran sebelumnya. JIka peserta masih mendapatkan kendala dalam pendaftaran online, peserta dapat mendaftar di kantor cabang atau mendaftar di Bank BNI, BRI dan Mandiri Untuk informasi selanjutnya dapat menghubungi Call Centre BPJS Kesehatan di 500 400 Demikian informasi yang dapat kami sampaikan. Semoga Bapak beserta keluarga selalu dalam keadaan sehat. Terima kasih telah mengunjungi website BPJS Kesehatan. Salam BPJS Kesehatan
                     </div><!-- /.comment-text -->
                   </div><!-- /.box-comment -->
                 </div><!-- /.box-footer -->

@@ -82,7 +82,7 @@
           <div class='user-block'>
             <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
             <span class='username'><a href="#">Bambang Pamungkis</a></span>
-            <span class='description'>24 Mei 2016 | Pemadaman Listrik</span>
+            <span class='description'>24 Mei 2016 | BPJS Kesehatan</span>
           </div><!-- /.user-block -->
           <div class='box-tools'>
             <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
@@ -92,7 +92,7 @@
         <div class='box-body'>
           <!-- post text -->
           <p>Yth. SKPD terkait,</p>
-          <p>Mohon bantuannya untuk menghubungi pihak PLN Untuk segera menyalakan kembali aliran listriknya di Wilayah Jalan songsi raya RT.011/05 Tambora, Tanah sereal Jakarta Barat dikarenakan telah sering mati lampu seperti hari ini, dari tadi siang mati lampu dan sampai sekarang belum menyala, sudah lebih dari 6 jam.</p>
+          <p>Mohon bantuannya untuk menghubungi bagian pelayanan BPJS pada rumah sakit contoh. Kartu kami dikatakan tidak dapat digunakan pada rumah sakit tersebut.</p>
           <p>Mohon ditindaklanjuti, terima kasih.</p>
 
 
@@ -102,7 +102,7 @@
             <i class="text-muted">gambar.jpg</i>
             <div class="pull-right">
               @if(Session::has('akses'))
-                @if(Session::get('akses')=="userskpd")
+                @if(Session::get('akses')!="administrator")
                   <button class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#myModalVerifikasi" >Verifikasi Pengaduan</button>
                   <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
                 @endif
@@ -113,7 +113,7 @@
 
 
         @if(Session::has('akses'))
-          @if(Session::get('akses')=="userskpd")
+          @if(Session::get('akses')!="administrator")
             <div class="box-footer">
               <form action="#" method="post">
                 <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
@@ -126,7 +126,7 @@
                 </div>
               </form>
             </div><!-- /.box-footer -->
-          @elseif(Session::get('akses')=="administrator")
+          @else
             <div class='box-footer box-comments' style="border:1px solid #00a65a;">
               <div style="padding-bottom:5px;">
                 <b>Tanggapan</b>

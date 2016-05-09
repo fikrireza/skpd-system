@@ -63,14 +63,25 @@
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-          <span class="hidden-xs">Anton</span>
+          @if(Session::has('akses'))
+            <span class="hidden-xs">{{ Session::get('namalogin') }}</span>
+          @endif
         </a>
         <ul class="dropdown-menu">
           <!-- User image -->
           <li class="user-header">
             <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
             <p>
-              Anton - User SKPD
+              @if(Session::has('akses'))
+                {{ Session::get('namalogin') }} -
+                @if(Session::get('akses')=="kesehatan")
+                  SKPD Kesehatan
+                @elseif(Session::get('akses')=="pendidikan")
+                  SKPD Pendidikan
+                @elseif(Session::get('akses')=="administrator")
+                  Administrator
+                @endif
+              @endif
               <small>Member since Nov. 2012</small>
             </p>
           </li>

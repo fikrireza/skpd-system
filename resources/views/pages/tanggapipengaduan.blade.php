@@ -25,7 +25,7 @@
           <div class='user-block'>
             <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
             <span class='username'><a href="#">Bambang Pamungkis</a></span>
-            <span class='description'>24 Mei 2016 | Pemadaman Listrik</span>
+            <span class='description'>24 Mei 2016 | BPJS Kesehatan</span>
           </div><!-- /.user-block -->
           <div class='box-tools'>
             <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
@@ -35,7 +35,7 @@
         <div class='box-body'>
           <!-- post text -->
           <p>Yth. SKPD terkait,</p>
-          <p>Mohon bantuannya untuk menghubungi pihak PLN Untuk segera menyalakan kembali aliran listriknya di Wilayah Jalan songsi raya RT.011/05 Tambora, Tanah sereal Jakarta Barat dikarenakan telah sering mati lampu seperti hari ini, dari tadi siang mati lampu dan sampai sekarang belum menyala, sudah lebih dari 6 jam.</p>
+          <p>Mohon bantuannya untuk menghubungi bagian pelayanan BPJS pada rumah sakit contoh. Kartu kami dikatakan tidak dapat digunakan pada rumah sakit tersebut.</p>
           <p>Mohon ditindaklanjuti, terima kasih.</p>
 
 
@@ -87,70 +87,70 @@
             <tr>
               <td>1.</td>
               <td>Joni Sangsoko</td>
-              <td>E-KTP &amp; KK</td>
+              <td>BPJS Kesehatan</td>
               <td>21 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>2.</td>
               <td>Charlie Sumanto</td>
-              <td>Perizinan</td>
+              <td>Pelayanan Kesehatan</td>
               <td>22 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>3.</td>
               <td>Amanda Satyarini</td>
-              <td>Pendidikan</td>
+              <td>Pelayanan Obat</td>
               <td>21 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>4.</td>
               <td>Dana Suseno</td>
-              <td>Teknologi</td>
+              <td>Pelayanan Administrasi</td>
               <td>20 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>5.</td>
               <td>Joni Sangsoko</td>
-              <td>E-KTP &amp; KK</td>
+              <td>BPJS Kesehatan</td>
               <td>21 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>6.</td>
               <td>Charlie Sumanto</td>
-              <td>Perizinan</td>
+              <td>Pelayanan Kesehatan</td>
               <td>22 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>7.</td>
               <td>Amanda Satyarini</td>
-              <td>Pendidikan</td>
+              <td>Pelayanan Obat</td>
               <td>21 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>8.</td>
               <td>Dana Suseno</td>
-              <td>Teknologi</td>
+              <td>Pelayanan Administrasi</td>
               <td>20 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>9.</td>
               <td>Amanda Satyarini</td>
-              <td>Pendidikan</td>
+              <td>BPJS Kesehatan</td>
               <td>21 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>
             <tr>
               <td>10.</td>
               <td>Dana Suseno</td>
-              <td>Teknologi</td>
+              <td>Pelayanan Kesehatan</td>
               <td>20 April 2016</td>
               <td><a class="btn btn-xs btn-success">Lihat</a></td>
             </tr>

@@ -5,10 +5,12 @@
       <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
     </div>
     <div class="pull-left info">
-      <p>Anton</p>
       @if(Session::has('akses'))
-        @if(Session::get('akses')=="userskpd")
-          <a href="#"><i class="fa fa-circle text-success"></i> User SKPD</a>
+        <p>{{ Session::get('namalogin') }}</p>
+        @if(Session::get('akses')=="kesehatan")
+          <a href="#"><i class="fa fa-circle text-success"></i> SKPD Kesehatan</a>
+        @elseif(Session::get('akses')=="pendidikan")
+          <a href="#"><i class="fa fa-circle text-success"></i> SKPD Pendidikan</a>
         @elseif(Session::get('akses')=="administrator")
           <a href="#"><i class="fa fa-circle text-success"></i> Administrator</a>
         @endif
@@ -42,7 +44,7 @@
       <ul class="treeview-menu">
         <li><a href="{{url('lihatpengaduan')}}"><i class="fa fa-circle-o"></i> Lihat Seluruh Pengaduan</a></li>
         @if(Session::has('akses'))
-          @if(Session::get('akses')=="userskpd")
+          @if(Session::get('akses')!="administrator")
             <li><a href="{{url('tanggap')}}"><i class="fa fa-circle-o"></i> Tanggapi Pengaduan</a></li>
           @endif
         @endif

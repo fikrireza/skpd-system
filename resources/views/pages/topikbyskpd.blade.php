@@ -184,7 +184,7 @@
              <tr>
                <td>1.</td>
                <td>Bambang Pamungkis</td>
-               <td>E-KTP &amp; KK</td>
+               <td>BPJS Kesehatan</td>
                <td>24 April 2016</td>
                <td><span class="pull-center badge bg-aqua">Sudah Ditanggapi</span></td>
                <td>
@@ -196,7 +196,31 @@
              <tr>
                <td>2.</td>
                <td>Amanda Satyarini</td>
-               <td>Perizinan</td>
+               <td>Pelayanan Obat</td>
+               <td>24 Januari 2016</td>
+               <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
+               <td>
+                 <span data-toggle="tooltip" title="View Data">
+                   <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
+                 </span>
+               </td>
+             </tr>
+             <tr>
+               <td>3.</td>
+               <td>Bambang Pamungkis</td>
+               <td>BPJS Kesehatan</td>
+               <td>24 April 2016</td>
+               <td><span class="pull-center badge bg-aqua">Sudah Ditanggapi</span></td>
+               <td>
+                 <span data-toggle="tooltip" title="View Data">
+                   <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
+                 </span>
+              </td>
+             </tr>
+             <tr>
+               <td>4.</td>
+               <td>Amanda Satyarini</td>
+               <td>Pelayanan Obat</td>
                <td>24 Januari 2016</td>
                <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
                <td>
