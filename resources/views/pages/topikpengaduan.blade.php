@@ -113,7 +113,7 @@
               <th>Kode Topik Pengaduan</th>
               <th>Nama Topik Pengaduan</th>
               <th>Nama SKPD</th>
-              <th>Wajib Proses</th>
+              {{-- <th>Wajib Proses</th> --}}
               <th>Aksi</th>
             </tr>
             <tr>
@@ -121,7 +121,7 @@
               <td>TPP001</td>
               <td>TOPIK Kesehatan</td>
               <td>SKPD Kesehatan</td>
-              <td><span class="pull-center badge bg-green">Ya</span></td>
+              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -134,7 +134,7 @@
               <td>TPP002</td>
               <td>TOPIK Pendidikan</td>
               <td>SPKD Pendidikan</td>
-              <td><span class="pull-center badge">Tidak</span></td>
+              {{-- <td><span class="pull-center badge">Tidak</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -147,7 +147,7 @@
               <td>TPP003</td>
               <td>TOPIK Perhubungan</td>
               <td>SPKD Perhubungan</td>
-              <td><span class="pull-center badge">Tidak</span></td>
+              {{-- <td><span class="pull-center badge">Tidak</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -160,7 +160,7 @@
               <td>TPP004</td>
               <td>TOPIK Keuangan</td>
               <td>SPKD Keuangan</td>
-              <td><span class="pull-center badge">Tidak</span></td>
+              {{-- <td><span class="pull-center badge">Tidak</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -173,7 +173,7 @@
               <td>TPP005</td>
               <td>TOPIK Perdagangan</td>
               <td>SPKD Perdagangan</td>
-              <td><span class="pull-center badge bg-green">Ya</span></td>
+              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -186,7 +186,7 @@
               <td>TPP006</td>
               <td>TOPIK Pertanian</td>
               <td>SPKD Pertanian</td>
-              <td><span class="pull-center badge bg-green">Ya</span></td>
+              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -199,7 +199,7 @@
               <td>TPP007</td>
               <td>TOPIK Perindustrian</td>
               <td>SPKD Perindustrian</td>
-              <td><span class="pull-center badge bg-green">Ya</span></td>
+              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -212,7 +212,7 @@
               <td>TPP008</td>
               <td>TOPIK Sosial</td>
               <td>SPKD Sosial</td>
-              <td><span class="pull-center badge bg-green">Ya</span></td>
+              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -225,7 +225,7 @@
               <td>TPP009</td>
               <td>TOPIK Kebudayaan</td>
               <td>SPKD Kebudayaan</td>
-              <td><span class="pull-center badge bg-green">Ya</span></td>
+              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
@@ -238,7 +238,7 @@
               <td>TPP0010</td>
               <td>TOPIK Teknologi</td>
               <td>SPKD Teknologi</td>
-              <td><span class="pull-center badge">Tidak</span></td>
+              {{-- <td><span class="pull-center badge">Tidak</span></td> --}}
               <td>
                 <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                 <span data-toggle="tooltip" title="Hapus Data">
