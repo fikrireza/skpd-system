@@ -15,12 +15,11 @@
               <a href="{{ url('/')}}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
-                  <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
+                  <img src="{{asset('images/new-logo2.png')}}" alt="SPD" />
                 </span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">
-                  <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
-                  &nbsp;&nbsp;<b>SIMPEDU</b>
+                  <img src="{{asset('images/new-logo2.png')}}" alt="SPD" />
                 </span>
               </a>
             </div>
