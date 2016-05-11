@@ -47,13 +47,13 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="item active left">
-                        <img src="{{asset('images/slider1.jpg')}}" alt="First slide">
+                        <img src="{{asset('images/slider3.jpg')}}" alt="First slide">
                         <div class="carousel-caption">
                           Judul : First Slide
                         </div>
                       </div>
                       <div class="item next left">
-                        <img src="{{asset('images/slider2.jpg')}}" alt="Second slide">
+                        <img src="{{asset('images/slider3.jpg')}}" alt="Second slide">
                         <div class="carousel-caption">
                           Judul : Second Slide
                         </div>
