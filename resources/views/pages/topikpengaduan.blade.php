@@ -66,7 +66,7 @@
     <!-- START FORM-->
     <form class="form-horizontal" method="post" action="#">
         <div class="col-md-4">
-          <div class="box box-success">
+          <div class="box box-warning">
             <div class="box-header with-border">
                 <h3 class="box-title">Formulir Tambah Data Topik Pengaduan</h3>
             </div>
@@ -96,7 +96,7 @@
     <!-- END FORM-->
     <!-- START TABLE-->
     <div class="col-md-8">
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header with-border">
           <div class="box-title">
             Seluruh Data Topik Pengaduan
@@ -108,7 +108,7 @@
         </div>
         <div class="box-body no-padding">
           <table class="table table-hover">
-            <tr class="bg-green">
+            <tr class="bg-yellow">
               <th style="width:10px;">No</th>
               <th>Kode Topik Pengaduan</th>
               <th>Nama Topik Pengaduan</th>

@@ -3,14 +3,14 @@
 
 <!-- START CONDITION SECTION TITLE-->
 @section('title')
-    <title>List Data Topik Berdasarkan SKPD</title>
+    <title>List Data Pengduan All</title>
     <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
 @stop
 <!-- END CONDITION SECTION TITLE-->
 
 @section('breadcrumb')
   <h1>
-      Data Topik Pengaduan Berbadasarkan SKPD <small>Kelola Data SKPD</small>
+      Data Pengaduan<small>Kelola Data Pengaduan</small>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -83,91 +83,12 @@
 </div>
 <!-- END MODAL TO ALERT DELETE-->
 
-<div class="row">
-  <div class="col-md-8">
-     <div class="box box-solid">
-       <div class="box-header with-border">
-         <i class="fa fa-television"></i>
-         <h3 class="box-title">Deskripsi SKPD</h3>
-       </div>
-       <div class="box-body">
-         <dl class="dl-horizontal">
-           <dt>Kode SKPD : </dt>
-            <dd>SKPD001</dd>
-           <dt>Nama SKPD : </dt>
-            <dd>SKPD Kesehatan</dd>
-           <dt>Status : </dt>
-            <dd><span class="pull-center badge  bg-green">Aktif</span></dd>
-         </dl>
-         <div class="box-body no-padding">
-         <table class="table table-hover">
-           <tr class="bg-yellow">
-             <th style="width:10px;">No</th>
-             <th>Kode Topik Pengaduan</th>
-             <th>Nama Topik Pengaduan</th>
-           </tr>
-           <tr>
-             <td>1.</td>
-             <td>TPP001</td>
-             <td>TOPIK Kesehatan Masyarakat</td>
-           </tr>
-           <tr>
-             <td>2.</td>
-             <td>TPP002</td>
-             <td>TOPIK Kesehatan Pemerintah</td>
-           </tr>
-           <tr>
-             <td>3.</td>
-             <td>TPP003</td>
-             <td>TOPIK Kesehatan Warga</td>
-           </tr>
-         </table>
-       </div>
-       <div class="box-footer">
-         <ul class="pagination pagination-sm no-margin pull-right">
-           <li><a href="#">&laquo;</a></li>
-           <li><a href="#">1</a></li>
-           <li><a href="#">2</a></li>
-           <li><a href="#">3</a></li>
-           <li><a href="#">&raquo;</a></li>
-         </ul>
-       </div>
-       </div>
-       <!-- /.box-header -->
-       <!-- /.box-body -->
-     </div>
-     <!-- /.box -->
-   </div>
-   <div class="col-md-4">
-     <div class="small-box bg-red">
-       <div class="inner">
-         <h3>10</h3>
-         <p>Belum Ditanggapi</p>
-       </div>
-       <div class="icon">
-         <i class="fa fa-meh-o"></i>
-       </div>
-       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-     </div>
-     <div class="small-box bg-aqua">
-       <div class="inner">
-         <h3>20</h3>
-         <p>Sudah Ditanggapi</p>
-       </div>
-       <div class="icon">
-         <i class="fa fa-smile-o"></i>
-       </div>
-       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-     </div>
-   </div>
- </div>
-
  <div class="row">
    <div class="col-md-12">
      <!-- Horizontal Form -->
      <div class="box box-warning">
        <div class="box-header">
-         <h3 class="box-title">Seluruh Data Pengaduan Terkait SKPD</h3>
+         <h3 class="box-title">Seluruh Data Pengaduan</h3>
        </div><!-- /.box-header -->
        <div class="box-body">
          <table id="tabeluser" class="table table-hover">
@@ -201,8 +122,8 @@
                 <td>24 Januari 2016</td>
                 <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
                 <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
+                  <span data-toggle="tooltip" title="Edit Data">
+                    <a href="" class="btn btn-warning btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-edit"></i></a>
                   </span>
                 </td>
               </tr>
@@ -225,8 +146,8 @@
                 <td>24 Januari 2016</td>
                 <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
                 <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
+                  <span data-toggle="tooltip" title="Edit Data">
+                    <a href="" class="btn btn-warning btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-edit"></i></a>
                   </span>
                 </td>
               </tr>

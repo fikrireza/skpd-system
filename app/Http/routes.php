@@ -101,6 +101,14 @@ Route::get('topikbyskpd', function(){
   return view('pages.topikbyskpd');
 });
 
+Route::get('historipengaduan', function(){
+  return view('pages.historipengaduan');
+});
+
+Route::get('listhistoripengaduanall', function(){
+  return view('pages.listhistoripengaduanall');
+});
+
 Route::get('topikpengaduan', function(){
   return view('pages.topikpengaduan');
 });

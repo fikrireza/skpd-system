@@ -54,7 +54,7 @@
   <!-- START MESSAGE -->
   <div class="col-md-12">
     @if(Session::has('message'))
-      <div class="alert alert-success">
+      <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
         <p>{{ Session::get('message') }}</p>
@@ -67,7 +67,7 @@
     <!-- START FORM-->
     <form class="form-horizontal" method="post" action="#">
         <div class="col-md-4">
-          <div class="box box-success">
+          <div class="box box-warning">
             <div class="box-header with-border">
                 <h3 class="box-title">Formulir Tambah Akun SKPD</h3>
             </div>
@@ -101,7 +101,7 @@
     <!-- END FORM-->
     <!-- START TABLE-->
     <div class="col-md-8">
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header with-border">
           <div class="box-title">
             Seluruh Data Akun SKPD
@@ -113,7 +113,7 @@
         </div>
         <div class="box-body no-padding">
           <table class="table table-hover">
-            <tr class="bg-green">
+            <tr class="bg-yellow">
               <th style="width:10px;">No</th>
               <th>Email</th>
               <th>Nama SKPD</th>

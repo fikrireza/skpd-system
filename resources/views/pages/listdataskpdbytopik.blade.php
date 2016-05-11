@@ -18,14 +18,14 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Horizontal Form -->
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header">
           <h3 class="box-title">Seluruh Data SKPD Terkait</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelpengaduan" class="table table-hover">
             <thead>
-              <tr class="bg-green">
+              <tr class="bg-yellow">
                 <th>No</th>
                 <th>Kode SKPD</th>
                 <th>Nama SKPD</th>
