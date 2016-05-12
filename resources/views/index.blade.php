@@ -49,19 +49,19 @@
                       <div class="item active left">
                         <img src="{{asset('images/slider3.jpg')}}" alt="First slide">
                         <div class="carousel-caption">
-                          Judul : First Slide
+                          Judul : Cara Pengaduan
                         </div>
                       </div>
                       <div class="item next left">
                         <img src="{{asset('images/slider3.jpg')}}" alt="Second slide">
                         <div class="carousel-caption">
-                          Judul : Second Slide
+                          Judul : Cara Pengaduan
                         </div>
                       </div>
                       <div class="item">
                         <img src="{{asset('images/slider3.jpg')}}" alt="Third slide">
                         <div class="carousel-caption">
-                          Judul : Third Slide
+                          Judul : Cara Pengaduan
                         </div>
                       </div>
                     </div>
@@ -205,159 +205,373 @@
           </div>
 
           <div class="row">
-            <div class="col-md-9">
-              <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                  <li class="active"><a href="#kesehatan" data-toggle="tab" aria-expanded="true">Kesehatan</a></li>
-                  <li class=""><a href="#perhubungan" data-toggle="tab" aria-expanded="false">Perhubungan</a></li>
-                  <li class=""><a href="#pendidikan" data-toggle="tab" aria-expanded="false">Pendidikan</a></li>
-                  <li class=""><a href="#kependudukan" data-toggle="tab" aria-expaded="false">Kependudukan</a></li>
-                  <li class=""><a href="#tenagakerja" data-toggle="tab" aria-expaded="false">Tenaga Kerja</a></li>
-                  <li class=""><a href="#polkam" data-toggle="tab" aria-expaded="false">Politik dan Keamanan</a></li>
-                  <li class=""><a href="#geografi" data-toggle="tab" aria-expaded="false">Geografi</a></li>
-                </ul>
-                <div class="tab-content">
-                  <div class="tab-pane active" id="kesehatan">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user1-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-
-                    </div><!-- /.post -->
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user7-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Sarah Ross</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-
-                    </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
-                  <div class="tab-pane" id="perhubungan">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Pelapor</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-
-                      <div class="box-footer box-comments">
-                        <div class="box-comment">
-                          <!-- User image -->
-                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user3-128x128.jpg') }}" alt="user image">
-                          <div class="comment-text">
-                            <span class="username">
-                              Administrator
-                              <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            It is a long established fact that a reader will be distracted
-                            by the readable content of a page when looking at its layout.
-                          </div><!-- /.comment-text -->
-                        </div><!-- /.box-comment -->
-                        <div class="box-comment">
-                          <!-- User image -->
-                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
-                          <div class="comment-text">
-                            <span class="username">
-                              SKPD Perhubungan
-                              <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            The point of using Lorem Ipsum is that it has a more-or-less
-                            normal distribution of letters, as opposed to using
-                            'Content here, content here', making it look like readable English.
-                          </div><!-- /.comment-text -->
-                        </div><!-- /.box-comment -->
-                      </div>
-                    </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
-
-                  <div class="tab-pane" id="pendidikan">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user4-128x128.jpg') }}" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-                        </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
-                      </div><!-- /.user-block -->
-                      <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
-                      </p>
-
-                    </div><!-- /.post -->
-                  </div><!-- /.tab-pane -->
-                </div><!-- /.tab-content -->
-              </div><!-- /.nav-tabs-custom -->
-            </div>
-
-            <div class="col-md-3">
-              <div class="box box-primary">
+            <div class="col-md-12">
+              <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Laporan Terbaru</h3>
+                  <img src="{{asset('images/logokabtangerang.png')}}">
+                  <h3 class="box-title">&nbsp;&nbsp;&nbsp;Tentang SIMPEDU</h3>
                 </div><!-- /.box-header -->
-                <div class="box-body">
-                  <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-                  <p class="text-muted">
-                    B.S. in Computer Science from the University of Tennessee at Knoxville
-                  </p>
-                  <hr>
-                  <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
-                  <p class="text-muted">Malibu, California</p>
-                  <hr>
-                  <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                  <hr>
-                  <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
-                  <p class="text-muted">Malibu, California</p>
-                  <hr>
-                  <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-                  <p class="text-muted">
-                    B.S. in Computer Science from the University of Tennessee at Knoxville
-                  </p>
+                <div class="box-body clearfix">
+                  <blockquote class="pull-left">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <small>Pemerintah Kabupaten Tangerang</small>
+                  </blockquote>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
-            </div><!-- /.col -->
+            </div>
+          </div>
+
+          <div class="row">
+            <section class="col-lg-3">
+              <!-- Populer Pertama -->
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                <div class="user-block">
+                  <img class="img-circle img-bordered-sm" src="{{asset('images/one.gif')}}" alt="user image">
+                  <span class="username">
+                      <h4>Kependudukan</h4>
+                  </span>
+                </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Samsung TV</a>
+                        <span class="product-description">
+                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bicycle</a>
+                        <span class="product-description">
+                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Xbox One</a>
+                        <span class="product-description">
+                          Xbox One Console Bundle with Halo Master Chief Collection.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="uppercase">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Akhir Popular Pertama -->
+
+            <!-- Populer Kedua -->
+            <section class="col-lg-3">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/two.gif')}}" alt="user image">
+                    <span class="username">
+                        <h4>Kesehatan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Samsung TV</a>
+                        <span class="product-description">
+                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bicycle</a>
+                        <span class="product-description">
+                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Xbox One</a>
+                        <span class="product-description">
+                          Xbox One Console Bundle with Halo Master Chief Collection.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="uppercase">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+
+            <!-- Populer Ketiga -->
+            <section class="col-lg-3">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/three.gif')}}" alt="user image">
+                    <span class="username">
+                        <h4>Ketenagakerjaan</h4>
+                    </span>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Samsung TV</a>
+                        <span class="product-description">
+                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bicycle</a>
+                        <span class="product-description">
+                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Xbox One</a>
+                        <span class="product-description">
+                          Xbox One Console Bundle with Halo Master Chief Collection.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="uppercase">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+
+            <!-- Populer Keempat -->
+            <section class="col-lg-3">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/four.gif')}}" alt="user image">
+                    <span class="username">
+                        <h4>Pendidikan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Samsung TV</a>
+                        <span class="product-description">
+                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bicycle</a>
+                        <span class="product-description">
+                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bicycle</a>
+                        <span class="product-description">
+                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="uppercase">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Populer 4 Habis -->
+
+            <!-- Populer KeLima -->
+            <section class="col-lg-3">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/five.gif')}}" alt="user image">
+                    <span class="username">
+                        <h4>Jalan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Samsung TV</a>
+                        <span class="product-description">
+                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bicycle</a>
+                        <span class="product-description">
+                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="uppercase">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Populer 5 Habis -->
+
+            <!-- Populer KeEnam -->
+            <section class="col-lg-3">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/harapan.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Perizinan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Samsung TV</a>
+                        <span class="product-description">
+                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bicycle</a>
+                        <span class="product-description">
+                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="uppercase">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Populer 6 Habis -->
+
+            <!-- Populer KeTujuh -->
+            <section class="col-lg-3">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/harapan.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Perdagangan</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <ul class="products-list product-list-in-box">
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Samsung TV</a>
+                        <span class="product-description">
+                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/default-50x50.gif">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bicycle</a>
+                        <span class="product-description">
+                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                        </span>
+                      </div>
+                    </li><!-- /.item -->
+                  </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="uppercase">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- Populer 7 Habis -->
+
           </div><!-- /.row -->
           </section><!-- /.content -->
         </div><!-- /.container -->
@@ -367,7 +581,7 @@
           <div class="pull-right hidden-xs">
             <b>Version</b> 1.0.0
           </div>
-          <strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.
+          <strong>Copyright © 2016 - 2017 <a href="http://9tins.com">Pemerintahan Kabupaten Tangerang</a>.</strong> All rights reserved.
         </div><!-- /.container -->
       </footer>
     </div><!-- ./wrapper -->
