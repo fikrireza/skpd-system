@@ -237,12 +237,12 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user4-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Samsung TV</a>
+                        <a href="" class="product-title">Amanda Satyarini</a>
                         <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca pada saat Pendaftaran online bagaimana? Mohon informasinya, terima kasih.
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -251,20 +251,20 @@
                         <img src="dist/img/default-50x50.gif">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Bicycle</a>
+                        <a href="" class="product-title">Bayu Widia</a>
                         <span class="product-description">
-                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                          Pak tolong dong pak...
                         </span>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user1-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Xbox One</a>
+                        <a href="" class="product-title">Dudy</a>
                         <span class="product-description">
-                          Xbox One Console Bundle with Halo Master Chief Collection.
+                          Setahun yang lalu saya melakukan itu
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -295,9 +295,9 @@
                         <img src="dist/img/default-50x50.gif">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Samsung TV</a>
+                        <a href="" class="product-title">Anonymous</a>
                         <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                          Tolong semprot fogging didaerah
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -306,9 +306,9 @@
                         <img src="dist/img/default-50x50.gif">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Bicycle</a>
+                        <a href="" class="product-title">Silviano</a>
                         <span class="product-description">
-                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                          Pelayanan Puskesmas...
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -317,9 +317,9 @@
                         <img src="dist/img/default-50x50.gif">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Xbox One</a>
+                        <a href="" class="product-title">Maryani</a>
                         <span class="product-description">
-                          Xbox One Console Bundle with Halo Master Chief Collection.
+                          Apakah BPJS bisa menangani...
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -455,23 +455,23 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user3-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Samsung TV</a>
+                        <a href="" class="product-title">Clara Lupita</a>
                         <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                          Kepada Yth. Pemerintah Provinsi DKI Jakarta. Jalan di sebelah Untar (JL. Taman S Parman Blok C) jalannya sudah rusak parah dan kalau hujan sudah pasti tergenang. Sudah hampir setahun kondisinya begini dan kian hari makin parah. Mohon bantuannya untuk diperbaiki. Terima kasih.
                         </span>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user2-160x160.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Bicycle</a>
+                        <a href="" class="product-title">Bambang Pamungkis </a>
                         <span class="product-description">
-                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                          Saya ingin melaporkan bahwa kini penjualan satwa liar (dilindungi) tidak hanya terjadi di pinggir jalan saja, namun makin merambah dalam bentuk media sosial yang sangat sulit untuk dideteksi. Mohon responnya. Tks.
                         </span>
                       </div>
                     </li><!-- /.item -->
