@@ -251,15 +251,9 @@
                         <img src="dist/img/default-50x50.gif">
                       </div>
                       <div class="product-info">
-<<<<<<< HEAD
-                        <a href="" class="product-title">Dudy</a>
-                        <span class="product-description">
-                          Tentang pembuatan ktp nih....
-=======
                         <a href="" class="product-title">Bayu Widia</a>
                         <span class="product-description">
                           Pak tolong dong pak...
->>>>>>> 91aca709e79ba0da2cc1d357dd2a0bc86785af3b
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -268,15 +262,9 @@
                         <img src="dist/img/user1-128x128.jpg">
                       </div>
                       <div class="product-info">
-<<<<<<< HEAD
-                        <a href="" class="product-title">Bayu</a>
-                        <span class="product-description">
-                          Tolong diinformasikan tentang....
-=======
                         <a href="" class="product-title">Dudy</a>
                         <span class="product-description">
                           Setahun yang lalu saya melakukan itu
->>>>>>> 91aca709e79ba0da2cc1d357dd2a0bc86785af3b
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -307,15 +295,9 @@
                         <img src="dist/img/default-50x50.gif">
                       </div>
                       <div class="product-info">
-<<<<<<< HEAD
-                        <a href="" class="product-title">Contoh</a>
-                        <span class="product-description">
-                          Ini hanya sebagai contoh...
-=======
                         <a href="" class="product-title">Anonymous</a>
                         <span class="product-description">
                           Tolong semprot fogging didaerah
->>>>>>> 91aca709e79ba0da2cc1d357dd2a0bc86785af3b
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -324,15 +306,9 @@
                         <img src="dist/img/default-50x50.gif">
                       </div>
                       <div class="product-info">
-<<<<<<< HEAD
-                        <a href="" class="product-title">Contoh</a>
-                        <span class="product-description">
-                          Ini hanya sebagai contoh...
-=======
                         <a href="" class="product-title">Silviano</a>
                         <span class="product-description">
                           Pelayanan Puskesmas...
->>>>>>> 91aca709e79ba0da2cc1d357dd2a0bc86785af3b
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -341,15 +317,9 @@
                         <img src="dist/img/default-50x50.gif">
                       </div>
                       <div class="product-info">
-<<<<<<< HEAD
-                        <a href="" class="product-title">Contoh</a>
-                        <span class="product-description">
-                          Ini hanya sebagai contoh...
-=======
                         <a href="" class="product-title">Maryani</a>
                         <span class="product-description">
                           Apakah BPJS bisa menangani...
->>>>>>> 91aca709e79ba0da2cc1d357dd2a0bc86785af3b
                         </span>
                       </div>
                     </li><!-- /.item -->
@@ -499,11 +469,7 @@
                         <img src="dist/img/user2-160x160.jpg">
                       </div>
                       <div class="product-info">
-<<<<<<< HEAD
                         <a href="" class="product-title">Bambang Pamungkis</a>
-=======
-                        <a href="" class="product-title">Bambang Pamungkis </a>
->>>>>>> 91aca709e79ba0da2cc1d357dd2a0bc86785af3b
                         <span class="product-description">
                           Saya ingin melaporkan bahwa kini penjualan satwa liar (dilindungi) tidak hanya terjadi di pinggir jalan saja, namun makin merambah dalam bentuk media sosial yang sangat sulit untuk dideteksi. Mohon responnya. Tks.
                         </span>
