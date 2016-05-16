@@ -176,7 +176,9 @@
                <th>No</th>
                <th>Pelapor</th>
                <th>Topik Aduan</th>
-               <th>Tanggal</th>
+               <th>Tanggal Aduan</th>
+               <th>Tanggal Terproses</th>
+               <th>Durasi Pemrosesan</th>
                <th>Status Aduan</th>
                <th>Aksi</th>
              </tr>
@@ -187,6 +189,8 @@
                 <td>Bambang Pamungkis</td>
                 <td>BPJS Kesehatan</td>
                 <td>24 April 2016</td>
+                <td>27 April 2016</td>
+                <td><span class="pull-center badge bg-purple">3 Hari</span></td>
                 <td><span class="pull-center badge bg-aqua">Sudah Ditanggapi</span></td>
                 <td>
                   <span data-toggle="tooltip" title="View Data">
@@ -199,6 +203,8 @@
                 <td>Amanda Satyarini</td>
                 <td>Pelayanan Obat</td>
                 <td>24 Januari 2016</td>
+                <td> - </td>
+                <td><span class="pull-center badge bg-purple"> - </span></td>
                 <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
                 <td>
                   <span data-toggle="tooltip" title="View Data">
@@ -211,6 +217,8 @@
                 <td>Bambang Pamungkis</td>
                 <td>BPJS Kesehatan</td>
                 <td>24 April 2016</td>
+                <td>27 April 2016</td>
+                <td><span class="pull-center badge bg-purple">3 Hari</span></td>
                 <td><span class="pull-center badge bg-aqua">Sudah Ditanggapi</span></td>
                 <td>
                   <span data-toggle="tooltip" title="View Data">
@@ -223,6 +231,8 @@
                 <td>Amanda Satyarini</td>
                 <td>Pelayanan Obat</td>
                 <td>24 Januari 2016</td>
+                <td> - </td>
+                <td><span class="pull-center badge bg-purple"> - </span></td>
                 <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
                 <td>
                   <span data-toggle="tooltip" title="View Data">

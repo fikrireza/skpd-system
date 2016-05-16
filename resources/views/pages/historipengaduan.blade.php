@@ -77,7 +77,7 @@
       <!-- Custom tabs (Charts with tabs)-->
       <div class="box box-warning">
          <div class="box-header with-border">
-           <h3 class="box-title"><i class="fa fa-area-chart"></i> Rata-rata Pengaduan Warga Per SKPD (Belum Ditanggapi)</h3>
+           <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Per SKPD (Belum Ditanggapi)</h3>
 
            <div class="box-tools pull-right">
              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -95,7 +95,7 @@
       <!-- Custom tabs (Charts with tabs)-->
       <div class="box box-warning">
          <div class="box-header with-border">
-           <h3 class="box-title"><i class="fa fa-area-chart"></i> Rata-rata Pengaduan Warga Per SKPD (Sudah Ditanggapi)</h3>
+           <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Per SKPD (Sudah Ditanggapi)</h3>
 
            <div class="box-tools pull-right">
              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
