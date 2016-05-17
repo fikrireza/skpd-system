@@ -124,7 +124,7 @@
                             </div><!-- /.col -->
                           </div>
                         </form>
-                        <a href="#">Lupa Password</a><br>
+                        <a href="#">Lupa Password? Klik disini.</a><br>
 
                       </div><!-- /.login-box-body -->
                     </div>
@@ -176,7 +176,7 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-4 col-xs-12">
+            <div class="col-lg-3 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-teal">
                 <div class="inner">
@@ -189,7 +189,7 @@
                 {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-4 col-xs-12">
+            <div class="col-lg-3 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-purple">
                 <div class="inner">
@@ -202,7 +202,7 @@
                 {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-4 col-xs-12">
+            <div class="col-lg-3 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-maroon">
                 <div class="inner">
@@ -211,6 +211,20 @@
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-stalker"></i>
+                </div>
+                {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
+              </div>
+            </div><!-- ./col -->
+
+            <div class="col-lg-3 col-xs-12">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>12378</h3>
+                  <p>Jumlah Views</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-eye"></i>
                 </div>
                 {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
@@ -226,7 +240,9 @@
                 </div><!-- /.box-header -->
                 <div class="box-body clearfix">
                   <blockquote class="pull-left">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <p style="font-size:15px;">
+                      SIMPEDU (Sistem Informasi Pengaduan Terpadu) adalah sebuah sarana pengaduan untuk warga Kabupaten Tangerang berbasis website yang mudah diakses dan terpadu dengan 36 Satuan Kerja Pemerintah Daerah di Kabupaten Tangerang. SIMPEDU dikembangkan dalam rangka meningkatkan partisipasi masyarakat untuk pengawasan program dan kinerja pemerintah daerah dalam penyelenggaraan pembangunan dan pelayanan publik.
+                    </p>
                     <small>Pemerintah Kabupaten Tangerang</small>
                   </blockquote>
                 </div><!-- /.box-body -->
@@ -240,7 +256,7 @@
               <div class="box box-primary">
                 <div class="box-header with-border">
                 <div class="user-block">
-                  <img class="img-circle img-bordered-sm" src="{{asset('images/one.gif')}}" alt="user image">
+                  <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
                   <span class="username">
                       <h4>Kependudukan</h4>
                   </span>
@@ -254,20 +270,26 @@
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Amanda Satyarini</a>
-                        <span class="product-description">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca pada saat Pendaftaran online bagaimana? Mohon informasinya, terima kasih.
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user5-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Bayu Widia</a>
-                        <span class="product-description">
-                          Pak tolong dong pak...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
@@ -276,9 +298,12 @@
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Dudy</a>
-                        <span class="product-description">
-                          Setahun yang lalu saya melakukan itu
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                   </ul>
@@ -295,7 +320,7 @@
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/two.gif')}}" alt="user image">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
                     <span class="username">
                         <h4>Kesehatan</h4>
                     </span>
@@ -305,35 +330,44 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user6-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Anonymous</a>
-                        <span class="product-description">
-                          Tolong semprot fogging didaerah
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user7-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Silviano</a>
-                        <span class="product-description">
-                          Pelayanan Puskesmas...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user8-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Maryani</a>
-                        <span class="product-description">
-                          Apakah BPJS bisa menangani...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                   </ul>
@@ -349,7 +383,7 @@
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/three.gif')}}" alt="user image">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
                     <span class="username">
                         <h4>Ketenagakerjaan</h4>
                     </span>
@@ -359,35 +393,44 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user1-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Parjo</a>
-                        <span class="product-description">
-                          Biaya upah pekerja sini...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user3-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Prita</a>
-                        <span class="product-description">
-                          Upah minimum daerah sini....
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user4-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Tarjo</a>
-                        <span class="product-description">
-                          Para buruh ini semakin...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                   </ul>
@@ -403,7 +446,7 @@
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/four.gif')}}" alt="user image">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
                     <span class="username">
                         <h4>Pendidikan</h4>
                     </span>
@@ -413,35 +456,44 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user5-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Silvi</a>
-                        <span class="product-description">
-                          Honor Guru Lepas
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user6-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Budi Karno</a>
-                        <span class="product-description">
-                          Ruangan Kelas Sekolah sini
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user7-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Anonymous</a>
-                        <span class="product-description">
-                          Tolong diperhatikan anak....
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                   </ul>
@@ -458,7 +510,7 @@
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/five.gif')}}" alt="user image">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
                     <span class="username">
                         <h4>Jalan</h4>
                     </span>
@@ -472,9 +524,12 @@
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Clara Lupita</a>
-                        <span class="product-description">
-                          Kepada Yth. Pemerintah Provinsi DKI Jakarta. Jalan di sebelah Untar (JL. Taman S Parman Blok C) jalannya sudah rusak parah dan kalau hujan sudah pasti tergenang. Sudah hampir setahun kondisinya begini dan kian hari makin parah. Mohon bantuannya untuk diperbaiki. Terima kasih.
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
@@ -483,9 +538,26 @@
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Bambang Pamungkis</a>
-                        <span class="product-description">
-                          Saya ingin melaporkan bahwa kini penjualan satwa liar (dilindungi) tidak hanya terjadi di pinggir jalan saja, namun makin merambah dalam bentuk media sosial yang sangat sulit untuk dideteksi. Mohon responnya. Tks.
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user2-160x160.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Bambang Pamungkis</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                   </ul>
@@ -502,7 +574,7 @@
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/harapan.png')}}" alt="user image">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
                     <span class="username">
                         <h4>Perizinan</h4>
                     </span>
@@ -512,24 +584,44 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user4-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Contoh</a>
-                        <span class="product-description">
-                          Ini hanya sebagai contoh...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user5-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Contoh</a>
-                        <span class="product-description">
-                          Ini hanya sebagai contoh...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user6-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Contoh</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                   </ul>
@@ -546,7 +638,7 @@
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/harapan.png')}}" alt="user image">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
                     <span class="username">
                         <h4>Perdagangan</h4>
                     </span>
@@ -556,24 +648,44 @@
                   <ul class="products-list product-list-in-box">
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user7-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Contoh</a>
-                        <span class="product-description">
-                          Ini hanya sebagai contoh...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/default-50x50.gif">
+                        <img src="dist/img/user4-128x128.jpg">
                       </div>
                       <div class="product-info">
                         <a href="" class="product-title">Contoh</a>
-                        <span class="product-description">
-                          Ini hanya sebagai contoh...
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
+                      </div>
+                    </li><!-- /.item -->
+                    <li class="item">
+                      <div class="product-img">
+                        <img src="dist/img/user8-128x128.jpg">
+                      </div>
+                      <div class="product-info">
+                        <a href="" class="product-title">Contoh</a>
+                        <span class="product-description-custom">
+                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        </span>
+                        <a href="#">
+                          [Selengkapnya]
+                        </a>
                       </div>
                     </li><!-- /.item -->
                   </ul>

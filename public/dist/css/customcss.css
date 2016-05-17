@@ -39,3 +39,10 @@
   font-size: 12px;
   height: 30px;
 }
+
+.product-description-custom {
+  display: block;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
