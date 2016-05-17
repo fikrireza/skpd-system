@@ -11,16 +11,28 @@
 
       <header class="main-header">
         <nav class="navbar navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <a href="{{ url('/')}}" class="logo">
+          <div class="container heightcustom">
+            <div class="navbar-header heightcustom" style="width:400px;">
+              <a class="logo" style="margin-top:5px;width:400px;height:80px;">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">
-                  <img src="{{asset('images/new-logo2.png')}}" alt="SPD" />
+                  <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
                 </span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">
-                  <img src="{{asset('images/new-logo2.png')}}" alt="SPD" />
+                  <div>
+                    <div class="boxlogo-custom">
+                      <img src="{{asset('images/logologinkabtangerang.png')}}" width="60px" alt="SPD" />
+                    </div>
+                    <div class="boxtitle-custom">
+                      <div class="boxtitlehead-custom">
+                        Simpedu
+                      </div>
+                      <div class="boxtitlebody-custom">
+                        Sistem Informasi Pengaduan Terpadu Kabupaten Tangerang
+                      </div>
+                    </div>
+                  </div>
                 </span>
               </a>
             </div>
