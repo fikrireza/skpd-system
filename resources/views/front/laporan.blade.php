@@ -103,8 +103,12 @@
                       </select>
                     </div>
                     <div class="form-group">
+                      <label>Tuliskan Judul Laporan Anda</label>
+                      <input type="text" name="name" class="form-control" placeholder="Judul Pengaduan">
+                    </div>
+                    <div class="form-group">
                       <label>Tuliskan Laporan Anda</label>
-                      <textarea class="form-control" rows="3" placeholder="Apa Laporan Anda...?"></textarea>
+                      <textarea class="form-control" rows="5" placeholder="Apa Laporan Anda...?"></textarea>
                     </div>
                     <div class="row">
                       <div class="col-lg-6">
@@ -170,23 +174,10 @@
                           by the readable content of a page when looking at its layout.
                         </div><!-- /.comment-text -->
                       </div><!-- /.box-comment -->
-                      <div class="box-comment">
-                        <!-- User image -->
-                        <img class="img-circle img-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
-                        <div class="comment-text">
-                          <span class="username">
-                            SKPD Penerangan
-                            <span class="text-muted pull-right">10:03 AM Today</span>
-                          </span><!-- /.username -->
-                          The point of using Lorem Ipsum is that it has a more-or-less
-                          normal distribution of letters, as opposed to using
-                          'Content here, content here', making it look like readable English.
-                        </div><!-- /.comment-text -->
-                      </div><!-- /.box-comment -->
                     </div>
                     </br>
                     <ul class="list-inline">
-                      <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-repeat"></span>  Di-Alihkan</a></li>
+                      <li><a href="#" class="link-black text-sm"><span class="label bg-yellow"><span class="glyphicon glyphicon-repeat"></span> &nbsp;Dialihkan</span></a></li>
                       <li class="pull-right"><a href="{{ url('detail/laporan/pengaduan-pemadaman-listrik') }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
                     </ul>
                   </div><!-- /.post -->
@@ -214,7 +205,7 @@
                       <img src="http://placehold.it/150x100" alt="..." class="margin">
                     </div>
                     <ul class="list-inline">
-                      <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-ok"></span>  Ter-Verifikasi</a></li>
+                      <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>
                       <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
                     </ul>
                   </div><!-- /.post -->
@@ -236,7 +227,7 @@
                       to Charlie Sheen fans.
                     </p>
                     <ul class="list-inline">
-                      <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-remove"></span>  Belum Ditanggapi</a></li>
+                      <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
                       <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
                     </ul>
                   </div><!-- /.post -->
