@@ -1,0 +1,4 @@
+.custombackground {
+  background-image: url("../img/boxed-bg.jpg");
+  background-repeat: repeat-x repeat-y;
+}
