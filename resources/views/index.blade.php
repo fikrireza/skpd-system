@@ -699,7 +699,7 @@
 
             <!-- List Tidak Populer -->
             <section class="col-lg-3">
-              <div class="box box-warning">
+              <div class="box box-success">
                 <div class="box-header with-border">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('images/megaphone.png')}}" alt="user image">

@@ -3,6 +3,7 @@
   <head>
     <title>SIMPEDU | Laporan</title>
     @include('includes.head')
+    <link rel="stylesheet" href="{{asset('dist/css/customcss.css')}}" media="screen" title="no title" charset="utf-8">
   </head>
 
   <body class="hold-transition skin-black-light layout-top-nav">
@@ -75,7 +76,7 @@
         </nav>
       </header>
       <!-- Full Width Column -->
-      <div class="content-wrapper">
+      <div class="content-wrapper custombackground">
         <div class="container">
           <!-- Main content -->
           <section class="content">
