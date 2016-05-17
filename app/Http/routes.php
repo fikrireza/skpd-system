@@ -32,6 +32,10 @@ Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
   return view('front.detaillaporan');
 });
 
+Route::get('detail/pengaduan-warga', function(){
+  return view('front.detailpengaduan');
+});
+
 Route::get('semualaporan', function(){
   return view('front.semualaporan');
 });

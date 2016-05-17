@@ -273,7 +273,7 @@
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
-                        <a href="#">
+                        <a href="{{url('detail/pengaduan-warga')}}">
                           [Selengkapnya]
                         </a>
                       </div>
@@ -287,7 +287,7 @@
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
-                        <a href="#">
+                        <a href="{{url('detail/pengaduan-warga')}}">
                           [Selengkapnya]
                         </a>
                       </div>
@@ -301,7 +301,7 @@
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
-                        <a href="#">
+                        <a href="{{url('detail/pengaduan-warga')}}">
                           [Selengkapnya]
                         </a>
                       </div>
