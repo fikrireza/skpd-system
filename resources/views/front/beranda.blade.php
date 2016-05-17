@@ -100,8 +100,12 @@
                       </select>
                     </div>
                     <div class="form-group">
+                      <label>Tuliskan Judul Laporan Anda</label>
+                      <input type="text" name="name" class="form-control" placeholder="Judul Pengaduan">
+                    </div>
+                    <div class="form-group">
                       <label>Tuliskan Laporan Anda</label>
-                      <textarea class="form-control" rows="3" placeholder="Apa Laporan Anda...?"></textarea>
+                      <textarea class="form-control" rows="5" placeholder="Apa Laporan Anda...?"></textarea>
                     </div>
                     <div class="row">
                       <div class="col-lg-6">

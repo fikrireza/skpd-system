@@ -309,7 +309,7 @@
                   </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="" class="uppercase">Lihat Semua</a>
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
                 </div><!-- /.box-footer -->
               </div>
             </section>
@@ -317,7 +317,7 @@
 
             <!-- Populer Kedua -->
             <section class="col-lg-3">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-header with-border">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
@@ -373,14 +373,14 @@
                   </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="" class="uppercase">Lihat Semua</a>
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
                 </div><!-- /.box-footer -->
               </div>
             </section>
 
             <!-- Populer Ketiga -->
             <section class="col-lg-3">
-              <div class="box box-primary">
+              <div class="box box-warning">
                 <div class="box-header with-border">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
@@ -436,14 +436,14 @@
                   </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="" class="uppercase">Lihat Semua</a>
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
                 </div><!-- /.box-footer -->
               </div>
             </section>
 
             <!-- Populer Keempat -->
             <section class="col-lg-3">
-              <div class="box box-primary">
+              <div class="box box-success">
                 <div class="box-header with-border">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
@@ -499,7 +499,7 @@
                   </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="" class="uppercase">Lihat Semua</a>
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
                 </div><!-- /.box-footer -->
               </div>
             </section>
@@ -563,7 +563,7 @@
                   </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="" class="uppercase">Lihat Semua</a>
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
                 </div><!-- /.box-footer -->
               </div>
             </section>
@@ -571,7 +571,7 @@
 
             <!-- Populer KeEnam -->
             <section class="col-lg-3">
-              <div class="box box-primary">
+              <div class="box box-danger">
                 <div class="box-header with-border">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
@@ -627,7 +627,7 @@
                   </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="" class="uppercase">Lihat Semua</a>
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
                 </div><!-- /.box-footer -->
               </div>
             </section>
@@ -635,7 +635,7 @@
 
             <!-- Populer KeTujuh -->
             <section class="col-lg-3">
-              <div class="box box-primary">
+              <div class="box box-warning">
                 <div class="box-header with-border">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
@@ -691,11 +691,78 @@
                   </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="" class="uppercase">Lihat Semua</a>
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
                 </div><!-- /.box-footer -->
               </div>
             </section>
             <!-- Populer 7 Habis -->
+
+            <!-- List Tidak Populer -->
+            <section class="col-lg-3">
+              <div class="box box-warning">
+                <div class="box-header with-border">
+                  <div class="user-block">
+                    <img class="img-circle img-bordered-sm" src="{{asset('images/megaphone.png')}}" alt="user image">
+                    <span class="username">
+                        <h4>Pengaduan Lainnya</h4>
+                    </span>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <ul class="nav nav-pills nav-stacked">
+                      <li>
+                        <a href="{{url('pengaduanbytopik')}}">
+                          Pengaduan Listrik
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          Lalu Lintas
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          Kerusakan Bangunan
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          Pelayanan Administrasi
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('pengaduanbytopik')}}">
+                          Pariwisata
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          Kebudayaan
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('pengaduanbytopik')}}">
+                          Perpajakan
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{url('pengaduanbytopik')}}">
+                          Transportasi Publik
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          Lainnya
+                        </a>
+                      </li>
+                    </ul>
+                </div><!-- /.box-body -->
+                <div class="box-footer text-center">
+                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                </div><!-- /.box-footer -->
+              </div>
+            </section>
+            <!-- List tidak poluler -->
 
           </div><!-- /.row -->
           </section><!-- /.content -->
