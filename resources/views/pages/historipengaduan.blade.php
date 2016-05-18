@@ -3,6 +3,7 @@
 @section('title')
   <title>Histori Pengaduan - SKPD Pengaduan Online</title>
   <link rel="stylesheet" href="{{asset('plugins/morris/morris.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
 @stop
 
 @section('breadcrumb')
@@ -72,62 +73,138 @@
     </div>
   </div><!-- /.row (main row) -->
   <div class="row">
-    <!-- Left col -->
-    <section class="col-lg-6 connectedSortable">
-      <!-- Custom tabs (Charts with tabs)-->
+    <div class="col-md-12">
+      <!-- Horizontal Form -->
       <div class="box box-warning">
-         <div class="box-header with-border">
-           <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Per SKPD (Belum Ditanggapi)</h3>
+        <div class="box-header">
+          <h3 class="box-title">Seluruh Data SKPD</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <table id="tabeluser" class="table table-hover">
+            <thead>
+              <tr class="bg-yellow">
+                <th>No</th>
+                <th>SKPD</th>
+                <th>Tahun</th>
+                <th>Bulan</th>
+                <th>Jumlah Pengaduan</th>
+                <th>Sudah Ditanggapi</th>
+                <th>Belum Ditanggapi</th>
+                <th>Topik Pengaduan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              	<td>1.</td>
+              	<td>SKPD Kesehatan</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">31</span></td>
+              	<td><span class="pull-center badge bg-aqua">21</span></td>
+              	<td><span class="pull-center badge bg-red">10</span></td>
+              	<td><span class="pull-center badge bg-navy">5</span></td>
+              </tr>
+              <tr>
+              	<td>2.</td>
+              	<td>SPKD Pendidikan</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">51</span></td>
+              	<td><span class="pull-center badge bg-aqua">31</span></td>
+              	<td><span class="pull-center badge bg-red">20</span></td>
+              	<td><span class="pull-center badge bg-navy">15</span></td>
+              </tr><tr>
+              	<td>3.</td>
+              	<td>SKPD Perhubungan</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">3</span></td>
+              	<td><span class="pull-center badge bg-aqua">3</span></td>
+              	<td><span class="pull-center badge bg-red">0</span></td>
+              	<td><span class="pull-center badge bg-navy">2</span></td>
+              </tr>
+              <tr>
+              	<td>4.</td>
+              	<td>SKPD Keuangan</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">24</span></td>
+              	<td><span class="pull-center badge bg-aqua">19</span></td>
+              	<td><span class="pull-center badge bg-red">5</span></td>
+              	<td><span class="pull-center badge bg-navy">23</span></td>
+              </tr>
+              <tr>
+              	<td>5.</td>
+              	<td>SKPD Perdagangan</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">70</span></td>
+              	<td><span class="pull-center badge bg-aqua">23</span></td>
+              	<td><span class="pull-center badge bg-red">47</span></td>
+              	<td><span class="pull-center badge bg-navy">9</span></td>
+              </tr>
+              <tr>
+              	<td>6.</td>
+              	<td>SKPD Pertanian</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">56</span></td>
+              	<td><span class="pull-center badge bg-aqua">45</span></td>
+              	<td><span class="pull-center badge bg-red">11</span></td>
+              	<td><span class="pull-center badge bg-navy">34</span></td>
+              </tr>
+              <tr>
+              	<td>7.</td>
+              	<td>SKPD Perindustrian</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">67</span></td>
+              	<td><span class="pull-center badge bg-aqua">34</span></td>
+              	<td><span class="pull-center badge bg-red">33</span></td>
+              	<td><span class="pull-center badge bg-navy">35</span></td>
+              </tr>
+              <tr>
+              	<td>8.</td>
+              	<td>SKPD Sosial</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">56</span></td>
+              	<td><span class="pull-center badge bg-aqua">44</span></td>
+              	<td><span class="pull-center badge bg-red">12</span></td>
+              	<td><span class="pull-center badge bg-navy">6</span></td>
+              </tr>
+              <tr>
+              	<td>9.</td>
+              	<td>SKPD Kebudayaan</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">84</span></td>
+              	<td><span class="pull-center badge bg-aqua">56</span></td>
+              	<td><span class="pull-center badge bg-red">28</span></td>
+              	<td><span class="pull-center badge bg-navy">35</span></td>
+              </tr>
+              <tr>
+              	<td>10.</td>
+              	<td>SKPD Teknologi</td>
+              	<td>2010</td>
+              	<td>Mei</td>
+              	<td><span class="pull-center badge bg-purple">78</span></td>
+              	<td><span class="pull-center badge bg-aqua">34</span></td>
+              	<td><span class="pull-center badge bg-red">44</span></td>
+              	<td><span class="pull-center badge bg-navy">56</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!--/.col -->
 
-           <div class="box-tools pull-right">
-             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-             </button>
-             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-           </div>
-         </div>
-         <div class="box-body chart-responsive">
-           <div class="chart tab-pane active" id="pengaduan-warga-SKPD-Belum-Ditanggapi" style="position: relative; height: 300px;"></div>
-         </div>
-         <!-- /.box-body -->
-       </div>
-    </section>
-    <section class="col-lg-6 connectedSortable">
-      <!-- Custom tabs (Charts with tabs)-->
-      <div class="box box-warning">
-         <div class="box-header with-border">
-           <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Per SKPD (Sudah Ditanggapi)</h3>
-
-           <div class="box-tools pull-right">
-             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-             </button>
-             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-           </div>
-         </div>
-         <div class="box-body chart-responsive">
-           <div class="chart tab-pane active" id="pengaduan-warga-SKPD-Sudah-Ditanggapi" style="position: relative; height: 300px;"></div>
-         </div>
-         <!-- /.box-body -->
-       </div>
-    </section>
-  </div><!-- /.row (main row) -->
+  </div>   <!-- /.row -->
 
 
-  <!-- jQuery UI 1.11.4 -->
-  <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
-  {{-- <script src="{{ asset('/plugins/jQueryUI/jquery-ui.min.js') }}"></script> --}}
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $.widget.bridge('uibutton', $.ui.button);
-  </script>
   <!-- Bootstrap 3.3.5 -->
   <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
-  {{-- <script src="{{ asset('/plugins/jQueryUI/jquery-ui.min.js') }}"></script> --}}
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $.widget.bridge('uibutton', $.ui.button);
-  </script>
+
   <!-- Bootstrap 3.3.5 -->
   <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
   <!-- Morris.js charts -->
@@ -135,25 +212,20 @@
   <script src="{{ asset('/plugins/morris/morris.min.js') }}"></script>
   <!-- Sparkline -->
   <script src="{{ asset('/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-  <!-- jvectormap -->
-  <script src="{{ asset('/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-  <script src="{{ asset('/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
   <!-- jQuery Knob Chart -->
   <script src="{{ asset('/plugins/knob/jquery.knob.js') }}"></script>
-  <!-- daterangepicker -->
-  <script src="{{ asset('/bootstrap/js/moment.min.js') }}"></script>
-  <script src="{{ asset('/plugins/daterangepicker/daterangepicker.js') }}"></script>
-  <!-- datepicker -->
-  <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-  <!-- Bootstrap WYSIHTML5 -->
-  <script src="{{ asset('/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
-  <!-- Slimscroll -->
-  <script src="{{ asset('/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-  {{-- Chart JS --}}
-  <script src="{{asset('plugins/chartjs/Chart.min.js')}}"></script>
   <!-- FastClick -->
   <script src="{{ asset('plugins/fastclick/fastclick.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('dist/js/app.min.js') }}"></script>
+
+  <script src="{{ asset('dist/js/demo.js')}}"></script>
+  <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+  <script>
+    $(function () {
+      $("#tabeluser").DataTable();
+    });
+  </script>
   <script src="{{ asset('dist/js/pages/historipengaduan.js') }}"></script>
 @stop
