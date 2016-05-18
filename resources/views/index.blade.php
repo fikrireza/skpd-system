@@ -26,21 +26,21 @@
                 <div class="box-body">
                   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                      <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
                       <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
                     </ol>
                     <div class="carousel-inner">
-                      <div class="item active left">
-                        <img src="{{asset('images/tatacarapengaduan.png')}}" alt="First slide">
+                      <div class="item">
+                        <img src="{{asset('images/slider2.png')}}" alt="First slide">
                         {{-- <div class="carousel-caption">
                           Judul : Cara Pengaduan
                         </div> --}}
                       </div>
-                      <div class="item next left">
-                        <img src="{{asset('images/tatacarapengaduan.png')}}" alt="Second slide">
+                      <div class="item active left">
+                        <img src="{{asset('images/slider3.png')}}" alt="Second slide">
                       </div>
-                      <div class="item">
+                      <div class="item next left">
                         <img src="{{asset('images/tatacarapengaduan.png')}}" alt="Third slide">
                       </div>
                     </div>
