@@ -724,7 +724,7 @@
                     </ul>
                 </div><!-- /.box-body -->
                 <div class="box-footer text-center">
-                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
+                  <a href="{{url('detail/semua-pengaduan-lainnya')}}" class="label uppercase bg-blue">Lihat Semua</a>
                 </div><!-- /.box-footer -->
               </div>
             </section>
