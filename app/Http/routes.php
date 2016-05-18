@@ -44,6 +44,10 @@ Route::get('semualaporan', function(){
   return view('front.semualaporan');
 });
 
+Route::get('detail/semua-pengaduan-lainnya', function(){
+  return view('front.detailpengaduanlainnya');
+});
+
 Route::get('/login', function () {
   return view('pages/login');
 });
