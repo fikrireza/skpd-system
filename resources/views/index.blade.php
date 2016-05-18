@@ -711,47 +711,47 @@
                 <div class="box-body">
                     <ul class="nav nav-pills nav-stacked">
                       <li>
-                        <a href="{{url('pengaduanbytopik')}}">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Pengaduan Listrik
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Lalu Lintas
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Kerusakan Bangunan
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Pelayanan Administrasi
                         </a>
                       </li>
                       <li>
-                        <a href="{{url('pengaduanbytopik')}}">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Pariwisata
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Kebudayaan
                         </a>
                       </li>
                       <li>
-                        <a href="{{url('pengaduanbytopik')}}">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Perpajakan
                         </a>
                       </li>
                       <li>
-                        <a href="{{url('pengaduanbytopik')}}">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Transportasi Publik
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a href="{{url('viewall/topik-aduan')}}">
                           Lainnya
                         </a>
                       </li>

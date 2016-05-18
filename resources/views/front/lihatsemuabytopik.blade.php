@@ -77,7 +77,7 @@
                         Yth. PT PLN (Persero), Halo PLN. Sampai kapan berakhir Pemadaman aliran listrik di kota palu Sulawesi Tengah ? Dunia terasa sudah mau kiamat kalau kota palu gelap gulita. Pelapor: Sudarsono Himawan,SE Aparatur Sipil Negara di unit kerja Badan Pemberdayaan Masyarakat ...
                       </p>
                       <p>
-                        <a href="#">[Selengkapnya]</a>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
                       </p>
                     </div><!-- /.post -->
                     <div class="post">
@@ -96,7 +96,7 @@
                         Yth. Dinas Pekerjaan Umum Kab. Bojonegoro, kayangan api minta jalan dander ke ngasem di kasih lampu jalan sepanjang 10km dander ke barat/ngasem blm ada lampu penerangan jalan. Mohon ditindaklanjuti, terima kasih...
                       </p>
                       <p>
-                        <a href="#">[Selengkapnya]</a>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
                       </p>
                     </div><!-- /.post -->
                     <div class="post">
@@ -115,7 +115,7 @@
                         Yth. Kementerian Badan Usaha Milik Negara (BUMN), Saya, Herman Syahputra, alamat Jalan Sidomulyo gang Sahabat Lingkungan 24 Tj. Mulia- Medandeli, Medan (Sumatera Utara) No KTP : xxx Tanggal permohonan pasang baru : 29-02-2016 No registrasi : ...
                       </p>
                       <p>
-                        <a href="#">[Selengkapnya]</a>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
                       </p>
                     </div><!-- /.post -->
                     <div class="post">
@@ -134,7 +134,7 @@
                         Yth. BPJS Kesehatan KC Prabumulih, SAYA MAU TANYA APA SYARAT PENDAFTARAN UNTUK PENAMBAHAN ANGGOTA KELUARGA PESERTA MANDIRI/ PBPU BPJS KESEHATAN? Mohon informasinya, terima kasih ...
                       </p>
                       <p>
-                        <a href="#">[Selengkapnya]</a>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
                       </p>
                     </div><!-- /.post -->
                     <div class="post">
@@ -153,7 +153,7 @@
                         Yth. Dinas Pendidikan (Disdik) Kota Bandung, pak wali kenapa uang sertifikasi guru guru kota bandung blm cair Mohon ditindaklanjuti, terima kasih ...
                       </p>
                       <p>
-                        <a href="#">[Selengkapnya]</a>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
                       </p>
                     </div><!-- /.post -->
                   </div>
