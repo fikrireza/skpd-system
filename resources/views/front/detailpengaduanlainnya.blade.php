@@ -70,9 +70,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">54</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">30</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">24</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">54</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">30</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">24</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -92,9 +95,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">81</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">50</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">31</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">81</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">50</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">31</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -114,9 +120,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">12</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">12</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -136,9 +145,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">90</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">80</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">90</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">80</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -158,9 +170,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">120</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">110</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">120</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">110</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -180,9 +195,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">12</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">12</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -203,9 +221,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">20</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">20</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">10</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -225,9 +246,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">40</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">30</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">40</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">30</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">10</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -247,9 +271,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">3</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">1</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">3</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">1</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">2</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -270,9 +297,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">45</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">34</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">11</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">45</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">34</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">11</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -292,9 +322,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">76</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">70</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">6</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">76</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">70</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">6</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
@@ -314,9 +347,12 @@
                     </div>
                     <div class="box-footer no-padding">
                       <ul class="nav nav-stacked">
-                        <li><a href="{{url('viewall/topik-aduan')}}">Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">23</span></a></li>
-                        <li><a href="#">Belum Ditanggapi <span class="pull-right badge bg-red">12</span></a></li>
-                        <li><a href="#">Sudah Ditanggapi <span class="pull-right badge bg-green">11</span></a></li>
+                        <li><a>Jumlah Topik Pengaduan<span class="pull-right badge bg-blue">23</span></a></li>
+                        <li><a>Belum Ditanggapi <span class="pull-right badge bg-red">12</span></a></li>
+                        <li><a>Sudah Ditanggapi <span class="pull-right badge bg-green">11</span></a></li>
+                        <div class="box-footer text-center">
+                          <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                        </div>
                       </ul>
                     </div>
                   </div>
