@@ -32,22 +32,16 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="item active left">
-                        <img src="{{asset('images/slider3.jpg')}}" alt="First slide">
-                        <div class="carousel-caption">
+                        <img src="{{asset('images/tatacarapengaduan.png')}}" alt="First slide">
+                        {{-- <div class="carousel-caption">
                           Judul : Cara Pengaduan
-                        </div>
+                        </div> --}}
                       </div>
                       <div class="item next left">
-                        <img src="{{asset('images/slider3.jpg')}}" alt="Second slide">
-                        <div class="carousel-caption">
-                          Judul : Cara Pengaduan
-                        </div>
+                        <img src="{{asset('images/tatacarapengaduan.png')}}" alt="Second slide">
                       </div>
                       <div class="item">
-                        <img src="{{asset('images/slider3.jpg')}}" alt="Third slide">
-                        <div class="carousel-caption">
-                          Judul : Cara Pengaduan
-                        </div>
+                        <img src="{{asset('images/tatacarapengaduan.png')}}" alt="Third slide">
                       </div>
                     </div>
                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
