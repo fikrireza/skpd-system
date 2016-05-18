@@ -57,7 +57,6 @@
 
 
         <a href="#">Lupa password? Klik disini</a><br>
-        <a href="{{ url('register') }}">Belum memiliki akun? Klik disini</a><br>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

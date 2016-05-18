@@ -197,7 +197,7 @@
               <div class="box box-primary">
                 <div class="box-body box-profile" style="height:225px;">
                   <img class="profile-user-img img-responsive img-circle" src="{{asset('/dist/img/user2-160x160.jpg')}}" alt="User profile picture">
-                  <h3 class="profile-username text-center">Alexander Pierce</h3>
+                  <h3 class="profile-username text-center">Dwi Handika Putro</h3>
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
                       <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">10</span>
