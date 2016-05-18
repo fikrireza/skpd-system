@@ -36,6 +36,10 @@ Route::get('detail/pengaduan-warga', function(){
   return view('front.detailpengaduan');
 });
 
+Route::get('viewall/topik-aduan', function(){
+  return view('front.lihatsemuabytopik');
+});
+
 Route::get('semualaporan', function(){
   return view('front.semualaporan');
 });
