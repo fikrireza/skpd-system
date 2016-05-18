@@ -78,7 +78,7 @@
 
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Laporan Anda</h3>
+                  <h3 class="box-title">Pengaduan Anda</h3>
                 </div>
                 <div class="box-body">
 
@@ -98,21 +98,6 @@
                       tools to help create filler text for everyone from bacon lovers
                       to Charlie Sheen fans.
                     </p>
-                    <div class="box-footer box-comments">
-                      <div class="box-comment">
-                        <!-- User image -->
-                        <img class="img-circle img-sm" src="{{ asset('/dist/img/user3-128x128.jpg') }}" alt="user image">
-                        <div class="comment-text">
-                          <span class="username">
-                            Administrator
-                            <span class="text-muted pull-right">8:03 AM Today</span>
-                          </span><!-- /.username -->
-                          It is a long established fact that a reader will be distracted
-                          by the readable content of a page when looking at its layout.
-                        </div><!-- /.comment-text -->
-                      </div><!-- /.box-comment -->
-                    </div>
-                    </br>
                     <ul class="list-inline">
                       <li><a href="#" class="link-black text-sm"><span class="label bg-yellow"><span class="glyphicon glyphicon-repeat"></span> &nbsp;Dialihkan</span></a></li>
                       <li class="pull-right"><a href="{{ url('detail/laporan/pengaduan-pemadaman-listrik') }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
@@ -135,12 +120,6 @@
                       tools to help create filler text for everyone from bacon lovers
                       to Charlie Sheen fans.
                     </p>
-                    <div class="timeline-body">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                    </div>
                     <ul class="list-inline">
                       <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>
                       <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>

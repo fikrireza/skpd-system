@@ -208,6 +208,13 @@
                   </ul>
                 </div><!-- /.box-body -->
                 <div class="box-body" style="margin-top:10px;">
+                  <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
+                  <p class="text-muted">
+                    32760621129010001
+                  </p>
+
+                  <hr style="margin-top:2px;margin-bottom:8px;">
+
                   <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
                   <p class="text-muted">081289087875</p>
 

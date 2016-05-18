@@ -19,7 +19,7 @@
               <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Laporan Anda</h3>
+                  <h3 class="box-title">Detail Pengaduan Anda</h3>
                 </div>
                 <div class="box-body">
 
@@ -33,50 +33,83 @@
                       </span>
                     </div><!-- /.user-block -->
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      Yth SKPD Kesehatan.
                     </p>
                     <p>
-                      Lorem ipsum represents a long-held tradition for designers, typographers and the like. Some people hate it and argue for its demise, but others ignore the hate as they create awesome tools to help create filler text for everyone from bacon lovers to Charlie Sheen fans.
+                      Saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double? (saya sudah coba refres-f5 beberapa kali tetapi data aktivasi tetap tidak muncul. mohon informasinya no registrasi : BPJS-0000016816961.
                     </p>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-                    </p>
-                    <div class="timeline-body">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      <img src="http://placehold.it/150x100" alt="..." class="margin">
-                    </div>
-                    <div class="box-footer box-comments">
-                      <div class="box-comment">
+                    <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+                      <div style="padding-bottom:5px;">
+                        <b>Tanggapan</b>
+                      </div>
+                      <div class='box-comment'>
                         <!-- User image -->
-                        <img class="img-circle img-sm" src="{{ asset('/dist/img/user3-128x128.jpg') }}" alt="user image">
-                        <div class="comment-text">
+                        <img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>
+                        <div class='comment-text'>
                           <span class="username">
-                            Administrator
-                            <span class="text-muted pull-right">8:03 AM Today</span>
+                            Administrator SKPD Kesehatan
+                            <span class='text-muted pull-right'>25 April 2016</span>
                           </span><!-- /.username -->
-                          It is a long established fact that a reader will be distracted
-                          by the readable content of a page when looking at its layout.
+                          Terima kasih atas keluhan yang disampaikan dan dengan ini kami sampaikan permohonan maaf atas ketidaknyamanan yang di alami Menjawab pertanyaan Bapak dapat kami sarankan agar peserta mencoba melakukan kembali pendaftaran online untuk anak Bapak dengan menggunakan nomor registrasi Bapak Stefanus dengan klik registrasi anggota keluarga dan masukan nomor registrasi Bapak stefanus setelah 1x24 jam dari pendaftaran sebelumnya. JIka peserta masih mendapatkan kendala dalam pendaftaran online, peserta dapat mendaftar di kantor cabang atau mendaftar di Bank BNI, BRI dan Mandiri Untuk informasi selanjutnya dapat menghubungi Call Centre BPJS Kesehatan di 500 400 Demikian informasi yang dapat kami sampaikan. Semoga Bapak beserta keluarga selalu dalam keadaan sehat. Terima kasih telah mengunjungi website BPJS Kesehatan. Salam BPJS Kesehatan
                         </div><!-- /.comment-text -->
                       </div><!-- /.box-comment -->
-                      <div class="box-comment">
-                        <!-- User image -->
-                        <img class="img-circle img-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
-                        <div class="comment-text">
-                          <span class="username">
-                            SKPD Penerangan
-                            <span class="text-muted pull-right">10:03 AM Today</span>
-                          </span><!-- /.username -->
-                          The point of using Lorem Ipsum is that it has a more-or-less
-                          normal distribution of letters, as opposed to using
-                          'Content here, content here', making it look like readable English.
-                        </div><!-- /.comment-text -->
-                      </div><!-- /.box-comment -->
-                    </div>
+                    </div><!-- /.box-footer -->
                     </br>
                     <ul class="list-inline">
-                      <li><a href="#" class="link-black text-sm"><span class="glyphicon glyphicon-repeat"></span>  Di-Alihkan</a></li>
+                      <li><a href="#" class="link-black text-sm"><span class="label bg-yellow"><span class=" glyphicon glyphicon-repeat"></span>  Di-Alihkan</span></a></li>
+                    </ul>
+                  </div><!-- /.post -->
+                </div>
+              </div>
+
+
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Pengaduan Anda Lainnya</h3>
+                </div>
+                <div class="box-body">
+                  <!-- Post -->
+                  <div class="post">
+                    <div class="user-block">
+                      <span class="username" style="margin-left:0px;">
+                        Pengaduan Pelayanan BPJS Kesehatan
+                      </span>
+                      <span class="description" style="margin-left:0px;">
+                        Kategori Pelayanan - 24 April 2016
+                      </span>
+                    </div><!-- /.user-block -->
+                    <p>
+                      Lorem ipsum represents a long-held tradition for designers,
+                      typographers and the like. Some people hate it and argue for
+                      its demise, but others ignore the hate as they create awesome
+                      tools to help create filler text for everyone from bacon lovers
+                      to Charlie Sheen fans.
+                    </p>
+                    <ul class="list-inline">
+                      <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>
+                      <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
+                    </ul>
+                  </div><!-- /.post -->
+                  <!-- Post -->
+                  <div class="post">
+                    <div class="user-block">
+                      <span class="username" style="margin-left:0px;">
+                        Pengaduan Jalan Rusak
+                      </span>
+                      <span class="description" style="margin-left:0px;">
+                        Kategori Pelayanan - 24 April 2016
+                      </span>
+                    </div><!-- /.user-block -->
+                    <p>
+                      Lorem ipsum represents a long-held tradition for designers,
+                      typographers and the like. Some people hate it and argue for
+                      its demise, but others ignore the hate as they create awesome
+                      tools to help create filler text for everyone from bacon lovers
+                      to Charlie Sheen fans.
+                    </p>
+                    <ul class="list-inline">
+                      <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
+                      <li class="pull-right"><button type="submit" class="btn btn-xs">Selengkapnya</button></li>
                     </ul>
                   </div><!-- /.post -->
                 </div>
@@ -89,7 +122,7 @@
                 <div class="box box-primary">
                   <div class="box-body box-profile" style="height:225px;">
                     <img class="profile-user-img img-responsive img-circle" src="{{asset('/dist/img/user2-160x160.jpg')}}" alt="User profile picture">
-                    <h3 class="profile-username text-center">Alexander Pierce</h3>
+                    <h3 class="profile-username text-center">Dwi Handika Putro</h3>
                     <ul class="list-group list-group-unbordered">
                       <li class="list-group-item">
                         <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">10</span>
@@ -99,7 +132,13 @@
                       </li>
                     </ul>
                   </div><!-- /.box-body -->
-                  <div class="box-body">
+                  <div class="box-body" style="margin-top:10px">
+                    <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
+                    <p class="text-muted">
+                      32760621129010001
+                    </p>
+
+                    <hr style="margin-top:2px;margin-bottom:8px;">
                     <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
                     <p class="text-muted">081289087875</p>
 
@@ -122,27 +161,49 @@
 
                 <div class="box box-primary">
                   <div class="box-header with-border">
-                    <h3 class="box-title">Laporan Terbaru</h3>
+                    <h3 class="box-title">Pengaduan Terbaru</h3>
                   </div><!-- /.box-header -->
                   <div class="box-body">
                     <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-                    <p class="text-muted">
-                      B.S. in Computer Science from the University of Tennessee at Knoxville
+                    <p>
+                      <div class="">
+                        <a href="" class="text-muted">
+                          Biaya sekolah terlalu mahal
+                        </a>
+                      </div>
+                      <div class="">
+                        <a href="" class="text-muted">
+                          Buku paket tidak tersedia di sekolah
+                        </a>
+                      </div>
+                      <div class="">
+                        <a href="" class="text-muted">
+                          Guru sering datang terlambat
+                        </a>
+                      </div>
                     </p>
+
                     <hr>
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
-                    <p class="text-muted">Malibu, California</p>
-                    <hr>
-                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                    <hr>
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
-                    <p class="text-muted">Malibu, California</p>
-                    <hr>
-                    <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-                    <p class="text-muted">
-                      B.S. in Computer Science from the University of Tennessee at Knoxville
+
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Jalan</strong>
+                    <p>
+                      <div class="">
+                        <a href="" class="text-muted">
+                          Jalan talagasari banyak lubang
+                        </a>
+                      </div>
+                      <div class="">
+                        <a href="" class="text-muted">
+                          Mohon rambu jalan diperjelas
+                        </a>
+                      </div>
+                      <div class="">
+                        <a href="" class="text-muted">
+                          Marka jalan tidak terlihat di tol balaraja
+                        </a>
+                      </div>
                     </p>
+
                   </div><!-- /.box-body -->
                 </div><!-- /.box -->
               </div>

@@ -19,8 +19,8 @@
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
           <li><a href="{{ url('beranda') }}">Beranda <span class="sr-only">(current)</span></a></li>
-          <li><a href="{{ url('laporan') }}">Laporan Saya <span class="sr-only"></span></a></li>
-          <li><a href="{{url('semualaporan')}}">Daftar Laporan</a></li>
+          <li><a href="{{ url('laporan') }}">Pengaduan Saya <span class="sr-only"></span></a></li>
+          <li><a href="{{url('semualaporan')}}">Daftar Pengaduan</a></li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
