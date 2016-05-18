@@ -25,7 +25,7 @@
 @section('content')
 
   <div class="row">
-    <div class="col-lg-4 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-teal">
         <div class="inner">
@@ -46,7 +46,7 @@
          class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
-    <div class="col-lg-4 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-purple">
         <div class="inner">
@@ -59,7 +59,7 @@
         <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
-    <div class="col-lg-4 col-xs-12">
+    <div class="col-lg-4 col-md-4 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-maroon">
         <div class="inner">
@@ -76,7 +76,7 @@
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <section class="col-lg-7 connectedSortable">
+    <section class="col-lg-7 col-md-7 connectedSortable">
       <!-- Custom tabs (Charts with tabs)-->
       <div class="nav-tabs-custom">
         <!-- Tabs within a box -->
@@ -194,7 +194,7 @@
 
     </section><!-- /.Left col -->
     <!-- right col (We are only adding the ID to make the widgets sortable)-->
-    <section class="col-lg-5 connectedSortable">
+    <section class="col-lg-5 col-md-5 connectedSortable">
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title"><i class="fa fa-pie-chart"></i> Presentase Total Pengaduan</h3>

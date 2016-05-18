@@ -22,7 +22,7 @@
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
-    <section class="col-lg-8 connectedSortable">
+    <section class="col-lg-8 col-md-8 connectedSortable">
       <div class="box box-warning">
          <div class="box-header with-border">
            <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Warga Setiap Tahun</h3>
@@ -39,7 +39,7 @@
          <!-- /.box-body -->
        </div>
     </section>
-    <div class="col-md-4">
+    <div class="col-md-4 col-md-4">
       <div class="small-box bg-purple">
         <div class="inner">
           <h3>1217</h3>

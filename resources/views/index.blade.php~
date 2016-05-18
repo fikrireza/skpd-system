@@ -142,7 +142,7 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-3 col-md-6 col-xs-12">
+            <div class="col-lg-3 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-teal">
                 <div class="inner">
@@ -155,7 +155,7 @@
                 {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-3 col-md-6 col-xs-12">
+            <div class="col-lg-3 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-purple">
                 <div class="inner">
@@ -168,7 +168,7 @@
                 {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-3 col-md-6 col-xs-12">
+            <div class="col-lg-3 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-maroon">
                 <div class="inner">
@@ -182,7 +182,7 @@
               </div>
             </div><!-- ./col -->
 
-            <div class="col-lg-3 col-md-6 col-xs-12">
+            <div class="col-lg-3 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
@@ -217,7 +217,7 @@
           </div>
 
           <div class="row">
-            <section class="col-lg-3 col-md-3 col-xs-12">
+            <section class="col-lg-3">
               <!-- Populer Pertama -->
               <div class="box box-primary">
                 <div class="box-header with-border">
@@ -282,7 +282,7 @@
             <!-- Akhir Popular Pertama -->
 
             <!-- Populer Kedua -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
+            <section class="col-lg-3">
               <div class="box box-danger">
                 <div class="box-header with-border">
                   <div class="user-block">
@@ -345,7 +345,7 @@
             </section>
 
             <!-- Populer Ketiga -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
+            <section class="col-lg-3">
               <div class="box box-warning">
                 <div class="box-header with-border">
                   <div class="user-block">
@@ -408,7 +408,7 @@
             </section>
 
             <!-- Populer Keempat -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
+            <section class="col-lg-3">
               <div class="box box-success">
                 <div class="box-header with-border">
                   <div class="user-block">
@@ -472,7 +472,7 @@
             <!-- Populer 4 Habis -->
 
             <!-- Populer KeLima -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
+            <section class="col-lg-3">
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="user-block">
@@ -536,7 +536,7 @@
             <!-- Populer 5 Habis -->
 
             <!-- Populer KeEnam -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
+            <section class="col-lg-3">
               <div class="box box-danger">
                 <div class="box-header with-border">
                   <div class="user-block">
@@ -600,7 +600,7 @@
             <!-- Populer 6 Habis -->
 
             <!-- Populer KeTujuh -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
+            <section class="col-lg-3">
               <div class="box box-warning">
                 <div class="box-header with-border">
                   <div class="user-block">
@@ -664,7 +664,7 @@
             <!-- Populer 7 Habis -->
 
             <!-- List Tidak Populer -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
+            <section class="col-lg-3">
               <div class="box box-success">
                 <div class="box-header with-border">
                   <div class="user-block">

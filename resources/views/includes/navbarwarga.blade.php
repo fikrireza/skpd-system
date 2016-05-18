@@ -2,7 +2,7 @@
   <nav class="navbar navbar-static-top">
     <div class="container">
       <div class="navbar-header">
-        <a href="{{ url('/')}}" class="logo">
+        <a href="{{ url('beranda') }}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini">
             <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
@@ -18,7 +18,7 @@
       <!-- Menu Kiri -->
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="{{ url('beranda') }}">Beranda <span class="sr-only">(current)</span></a></li>
+          {{-- <li><a href="{{ url('beranda') }}">Beranda <span class="sr-only">(current)</span></a></li> --}}
           <li><a href="{{ url('laporan') }}">Pengaduan Saya <span class="sr-only"></span></a></li>
           <li><a href="{{url('semualaporan')}}">Daftar Pengaduan</a></li>
         </ul>
