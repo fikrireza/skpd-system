@@ -9,36 +9,8 @@
   <body class="hold-transition skin-white layout-top-nav">
     <div class="wrapper">
 
-      <header class="main-header">
-        <nav class="navbar navbar-static-top">
-          <div class="container heightcustom">
-            <div class="navbar-header heightcustom" style="width:400px;">
-              <a class="logo" style="margin-top:5px;width:400px;height:80px;">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini">
-                  <img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
-                </span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg">
-                  <div>
-                    <div class="boxlogo-custom">
-                      <img src="{{asset('images/logologinkabtangerang.png')}}" width="60px" alt="SPD" />
-                    </div>
-                    <div class="boxtitle-custom">
-                      <div class="boxtitlehead-custom">
-                        Simpedu
-                      </div>
-                      <div class="boxtitlebody-custom">
-                        Sistem Informasi Pengaduan Terpadu Kabupaten Tangerang
-                      </div>
-                    </div>
-                  </div>
-                </span>
-              </a>
-            </div>
-          </div><!-- /.container-fluid -->
-        </nav>
-      </header>
+      @include('includes.navbarumum')
+
       <!-- Full Width Column -->
       <div class="content-wrapper custombackground">
         <div class="container">
@@ -269,7 +241,7 @@
                         <img src="dist/img/user4-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Amanda Satyarini</a>
+                        <span class="product-title">Amanda Satyarini</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -283,7 +255,7 @@
                         <img src="dist/img/user5-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Bayu Widia</a>
+                        <span href="" class="product-title">Bayu Widia</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -297,7 +269,7 @@
                         <img src="dist/img/user1-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Dudy</a>
+                        <span href="" class="product-title">Dudy</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -333,7 +305,7 @@
                         <img src="dist/img/user6-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Anonymous</a>
+                        <span href="" class="product-title">Anonymous</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -347,7 +319,7 @@
                         <img src="dist/img/user7-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Silviano</a>
+                        <span href="" class="product-title">Silviano</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -361,7 +333,7 @@
                         <img src="dist/img/user8-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Maryani</a>
+                        <span href="" class="product-title">Maryani</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -396,7 +368,7 @@
                         <img src="dist/img/user1-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Parjo</a>
+                        <span href="" class="product-title">Parjo</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -410,7 +382,7 @@
                         <img src="dist/img/user3-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Prita</a>
+                        <span href="" class="product-title">Prita</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -424,7 +396,7 @@
                         <img src="dist/img/user4-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Tarjo</a>
+                        <span href="" class="product-title">Tarjo</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -459,7 +431,7 @@
                         <img src="dist/img/user5-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Silvi</a>
+                        <span href="" class="product-title">Silvi</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -473,7 +445,7 @@
                         <img src="dist/img/user6-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Budi Karno</a>
+                        <span href="" class="product-title">Budi Karno</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -487,7 +459,7 @@
                         <img src="dist/img/user7-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Anonymous</a>
+                        <span href="" class="product-title">Anonymous</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -523,7 +495,7 @@
                         <img src="dist/img/user3-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Clara Lupita</a>
+                        <span href="" class="product-title">Clara Lupita</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -537,7 +509,7 @@
                         <img src="dist/img/user2-160x160.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Bambang Pamungkis</a>
+                        <span href="" class="product-title">Bambang Pamungkis</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -551,7 +523,7 @@
                         <img src="dist/img/user2-160x160.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Bambang Pamungkis</a>
+                        <span href="" class="product-title">Rosi Angky</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -587,7 +559,7 @@
                         <img src="dist/img/user4-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Contoh</a>
+                        <span href="" class="product-title">Contoh</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -601,7 +573,7 @@
                         <img src="dist/img/user5-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Contoh</a>
+                        <span href="" class="product-title">Contoh</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -615,7 +587,7 @@
                         <img src="dist/img/user6-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Contoh</a>
+                        <span href="" class="product-title">Contoh</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -651,7 +623,7 @@
                         <img src="dist/img/user7-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Contoh</a>
+                        <span href="" class="product-title">Contoh</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -665,7 +637,7 @@
                         <img src="dist/img/user4-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Contoh</a>
+                        <span href="" class="product-title">Contoh</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
@@ -679,7 +651,7 @@
                         <img src="dist/img/user8-128x128.jpg">
                       </div>
                       <div class="product-info">
-                        <a href="" class="product-title">Contoh</a>
+                        <span href="" class="product-title">Contoh</span>
                         <span class="product-description-custom">
                           Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
                         </span>
