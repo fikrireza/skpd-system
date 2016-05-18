@@ -88,17 +88,17 @@
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user1-128x128.jpg') }}" alt="user image">
                         <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
+                          <span>Pelayanan BPJS semakin tidak memuaskan</span>
                           <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
                         </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
+                        <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
                       </div><!-- /.user-block -->
                       <p>
-                        Lorem ipsum represents a long-held tradition for designers,
-                        typographers and the like. Some people hate it and argue for
-                        its demise, but others ignore the hate as they create awesome
-                        tools to help create filler text for everyone from bacon lovers
-                        to Charlie Sheen fans.
+                        Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
+                        Mohon perhatiannya. Terima Kasih.
+                      </p>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
                       </p>
                     </div><!-- /.post -->
                     <!-- Post -->
@@ -106,17 +106,40 @@
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user7-128x128.jpg') }}" alt="user image">
                         <span class="username">
-                          <a href="#">Sarah Ross</a>
+                          <span>Mohon perhatikan kesehatan warga tangerang</span>
                           <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
                         </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
+                        <span class="description"><span class="label bg-red">Belum ditanggapi</span> - 7:30 PM today</span>
                       </div><!-- /.user-block -->
                       <p>
                         Lorem ipsum represents a long-held tradition for designers,
                         typographers and the like. Some people hate it and argue for
                         its demise, but others ignore the hate as they create awesome
                         tools to help create filler text for everyone from bacon lovers
+                        to Charlie Sheen fans. Some people hate it and argue for
+                        its demise, but others ignore the hate as they create awesome
+                        tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
+                      </p>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
+                      </p>
+                    </div><!-- /.post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user6-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <span>Penyelenggaraan imunisasi nasional di tangerang</span>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
+                        Mohon perhatiannya. Terima Kasih.
+                      </p>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
                       </p>
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
@@ -124,47 +147,61 @@
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user4-128x128.jpg') }}" alt="user image">
                         <span class="username">
-                          <a href="#">Pelapor</a>
+                          <span>Contoh pengaduan warga</span>
                           <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
                         </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
+                        <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
+                        Mohon perhatiannya. Terima Kasih.
+                      </p>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
+                      </p>
+                    </div><!-- /.post -->
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <span>Contoh pengaduan warga</span>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description"><span class="label bg-red">Belum ditanggapi</span> - 7:30 PM today</span>
                       </div><!-- /.user-block -->
                       <p>
                         Lorem ipsum represents a long-held tradition for designers,
                         typographers and the like. Some people hate it and argue for
                         its demise, but others ignore the hate as they create awesome
                         tools to help create filler text for everyone from bacon lovers
+                        to Charlie Sheen fans. Some people hate it and argue for
+                        its demise, but others ignore the hate as they create awesome
+                        tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
                       </p>
-                      <div class="box-footer box-comments">
-                        <div class="box-comment">
-                          <!-- User image -->
-                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user3-128x128.jpg') }}" alt="user image">
-                          <div class="comment-text">
-                            <span class="username">
-                              Administrator
-                              <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            It is a long established fact that a reader will be distracted
-                            by the readable content of a page when looking at its layout.
-                          </div><!-- /.comment-text -->
-                        </div><!-- /.box-comment -->
-                        <div class="box-comment">
-                          <!-- User image -->
-                          <img class="img-circle img-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
-                          <div class="comment-text">
-                            <span class="username">
-                              SKPD Perhubungan
-                              <span class="text-muted pull-right">8:03 PM Today</span>
-                            </span><!-- /.username -->
-                            The point of using Lorem Ipsum is that it has a more-or-less
-                            normal distribution of letters, as opposed to using
-                            'Content here, content here', making it look like readable English.
-                          </div><!-- /.comment-text -->
-                        </div><!-- /.box-comment -->
-                      </div>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
+                      </p>
+                    </div><!-- /.post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <span>Contoh pengaduan warga</span>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
+                        Mohon perhatiannya. Terima Kasih.
+                      </p>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
+                      </p>
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->
 
@@ -174,17 +211,58 @@
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user4-128x128.jpg') }}" alt="user image">
                         <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
+                          <span>Contoh pengaduan warga</span>
                           <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
                         </span>
-                        <span class="description">Shared publicly - 7:30 PM today</span>
+                        <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
+                        Mohon perhatiannya. Terima Kasih.
+                      </p>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
+                      </p>
+                    </div><!-- /.post -->
+                    <!-- Post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <span>Contoh pengaduan warga</span>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description"><span class="label bg-red">Belum ditanggapi</span> - 7:30 PM today</span>
                       </div><!-- /.user-block -->
                       <p>
                         Lorem ipsum represents a long-held tradition for designers,
                         typographers and the like. Some people hate it and argue for
                         its demise, but others ignore the hate as they create awesome
                         tools to help create filler text for everyone from bacon lovers
+                        to Charlie Sheen fans. Some people hate it and argue for
+                        its demise, but others ignore the hate as they create awesome
+                        tools to help create filler text for everyone from bacon lovers
                         to Charlie Sheen fans.
+                      </p>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
+                      </p>
+                    </div><!-- /.post -->
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
+                        <span class="username">
+                          <span>Contoh pengaduan warga</span>
+                          <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
+                        </span>
+                        <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
+                      </div><!-- /.user-block -->
+                      <p>
+                        Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
+                        Mohon perhatiannya. Terima Kasih.
+                      </p>
+                      <p>
+                        <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
                       </p>
                     </div><!-- /.post -->
                   </div><!-- /.tab-pane -->

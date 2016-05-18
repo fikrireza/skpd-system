@@ -35,7 +35,15 @@
         <div class="icon">
           <i class="ion ion-speakerphone"></i>
         </div>
-        <a href="{{url('historipengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a
+          @if(Session::has('akses'))
+            @if(Session::get('akses')=="administrator")
+              href="{{url('historipengaduan')}}"
+            @else
+              href="{{url('lihatpengaduan')}}"
+            @endif
+          @endif
+         class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-4 col-xs-12">
