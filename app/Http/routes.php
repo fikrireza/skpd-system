@@ -61,6 +61,10 @@ Route::get('dashboard', function(){
   return view('pages/dashboard');
 });
 
+Route::get('homepages', ['as' => 'homepages', function(){
+  return view('index');
+}]);
+
 
 //authentication
 Route::post('login', 'CustomAuthController@loginprocess');
@@ -70,6 +74,10 @@ Route::get('register', function(){
   return view('pages/register');
 });
 Route::post('register', 'RegisterController@wargaregisterprocess');
+
+Route::get('/register/verify/{code}', 'RegisterController@verify');
+
+
 
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');

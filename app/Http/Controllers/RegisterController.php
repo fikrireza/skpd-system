@@ -33,6 +33,16 @@ class RegisterController extends Controller
         $message->to(Input::get('email'), Input::get('name'))->subject('Aktifasi Akun SIMPEDU');
       });
 
-      return view('pages.index')->with('message', "Silahkan lakukan aktivasi akun pada email anda.");
+      return redirect()->route('homepages')->with('message', "Silahkan lakukan aktivasi akun pada email anda.");
+    }
+
+    public function verify($code)
+    {
+      $user = User::where('activation_code', $code)->first();
+      $user->activation_code = null;
+      $user->activated = 1;
+      $user->save();
+
+      return redirect()->route('homepages')->with('message', "Akun anda telah aktif. Silahkan lakukan login.");
     }
 }
