@@ -17,6 +17,11 @@ class CustomAuthController extends Controller
       return redirect('/login');
     }
 
+    public function doRegister(Request $request)
+    {
+      dd($request);
+    }
+
     public function loginprocess(Request $request)
     {
       if($request->email=="dudy@gmail.com")
@@ -43,12 +48,5 @@ class CustomAuthController extends Controller
         session()->put('akses', 'warga');
         return redirect('beranda');
       }
-      // if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
-      //   session()->put('dudy', 'dudy nih');
-      //   return redirect('dashboard');
-      // }
-      // else {
-      //   return redirect('/');
-      // }
     }
 }

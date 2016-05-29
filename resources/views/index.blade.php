@@ -16,6 +16,15 @@
         <div class="container">
           <!-- Main content -->
           <section class="content">
+
+            @if(Session::has('message'))
+              <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-info"></i> Informasi</h4>
+                {{ Session::get('message') }}
+              </div>
+            @endif
+
             <div class="row">
 
               <div class="col-md-9">

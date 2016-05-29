@@ -56,18 +56,20 @@ Route::get('/loginskpd', function () {
   return view('pages/loginskpd');
 });
 
-Route::get('register', function(){
-  return view('pages/register');
-});
 
 Route::get('dashboard', function(){
   return view('pages/dashboard');
 });
 
+
+//authentication
 Route::post('login', 'CustomAuthController@loginprocess');
 Route::get('logout', 'CustomAuthController@logoutprocess');
 
-Route::post('register', 'RegisterController@registerprocess');
+Route::get('register', function(){
+  return view('pages/register');
+});
+Route::post('register', 'RegisterController@wargaregisterprocess');
 
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
