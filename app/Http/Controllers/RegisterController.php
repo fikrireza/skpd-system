@@ -21,7 +21,7 @@ class RegisterController extends Controller
       $user->nama = $request->nama;
       $user->email = $request->email;
       $user->password = Hash::make($request->password);
-      //0:superadmin, 1:warga, 2:skpd
+      //0:admin, 1:warga, 2:skpd
       $user->level = 1;
       //0:tidak aktif, 1:aktif, 2:blocked
       $user->activated = 0;
