@@ -28,8 +28,13 @@ class RegisterController extends Controller
       $user->activation_code = $activation_code;
       $user->save();
 
-      Mail::send('verify', ['activation_code' => $activation_code], function($message){
-        $message->from('no-reply@simpedu.tangerangkab.go.id', 'Administrator');
+      $data = array([
+          'nama' => $request->nama,
+          'activation_code' => $activation_code
+        ]);
+
+      Mail::send('verify', ['data' => $data], function($message) {
+        // $message->from('no-reply@simpedu.tangerangkab.go.id', 'Administrator');
         $message->to(Input::get('email'), Input::get('name'))->subject('Aktifasi Akun SIMPEDU');
       });
 
