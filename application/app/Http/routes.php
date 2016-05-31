@@ -85,8 +85,6 @@ Route::resource('dataskpd', 'MasterSKPDController');
 
 
 
-
-
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
 });

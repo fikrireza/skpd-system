@@ -84,20 +84,28 @@
 
   <div class="row">
     <!-- START FORM-->
-    <form class="form-horizontal" method="post" action="{{ route('dataskpd.create') }}">
+    <form class="form-horizontal" method="post" action="{{ route('dataskpd.store') }}">
+      {!! csrf_field(); !!}
         <div class="col-md-4">
           <div class="box box-warning">
             <div class="box-header with-border">
                 <h3 class="box-title">Formulir Tambah Data SKPD</h3>
             </div>
             <div class="box-body">
-              <div class="col-md-14 {{ $errors->has('kodeskpd') ? 'has-error' : '' }}">
+              <div class="col-md-12 {{ $errors->has('kodeskpd') ? 'has-error' : '' }}">
                 <label class="control-label">Kode SKPD</label>
                 <input type="text" name="kodeskpd" class="form-control" placeholder="Kode SKPD">
               </div>
-              <div class="col-md-14 {{ $errors->has('namaskpd') ? 'has-error' : '' }}">
+              <div class="col-md-12 {{ $errors->has('namaskpd') ? 'has-error' : '' }}">
                 <label class="control-label">Nama SKPD</label>
                 <input type="text" name="namaskpd" class="form-control" placeholder="Nama SKPD">
+              </div>
+              <div class="col-md-12 {{ $errors->has('namaskpd') ? 'has-error' : '' }}">
+                <label class="control-label">Status</label>
+                <select class="form-control" name="flagskpd">
+                  <option value="1">Aktif</option>
+                  <option value="0">Tidak Aktif</option>
+                </select>
               </div>
             </div>
             <div class="box-footer">
@@ -145,129 +153,9 @@
               </td>
             </tr>
             <tr>
-              <td>2.</td>
-              <td>SKPD002</td>
-              <td>SPKD Pendidikan</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-             </td>
-            </tr>
-            <tr>
               <td>3.</td>
               <td>SKPD003</td>
               <td>SPKD Perhubungan</td>
-              <td><span class="pull-center badge">Tidak Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Aktifkan SKPD">
-                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td>SKPD004</td>
-              <td>SPKD Keuangan</td>
-              <td><span class="pull-center badge">Tidak Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Aktifkan SKPD">
-                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>5.</td>
-              <td>SKPD005</td>
-              <td>SPKD Perdagangan</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>6.</td>
-              <td>SKPD006</td>
-              <td>SPKD Pertanian</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>7.</td>
-              <td>SKPD007</td>
-              <td>SPKD Perindustrian</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>8.</td>
-              <td>SKPD008</td>
-              <td>SPKD Sosial</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>9.</td>
-              <td>SKPD009</td>
-              <td>SPKD Kebudayaan</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>10.</td>
-              <td>SKPD0010</td>
-              <td>SPKD Teknologi</td>
               <td><span class="pull-center badge">Tidak Aktif</span></td>
               <td>
                 <span data-toggle="tooltip" title="Aktifkan SKPD">

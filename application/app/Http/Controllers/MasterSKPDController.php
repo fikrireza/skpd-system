@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\MasterSKPD;
 
 class MasterSKPDController extends Controller
 {
@@ -25,7 +26,7 @@ class MasterSKPDController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -36,7 +37,13 @@ class MasterSKPDController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $set = new MasterSKPD;
+        $set->kode_skpd = $request->kodeskpd;
+        $set->nama_skpd = $request->namaskpd;
+        $set->flag_skpd = $request->flagskpd;
+        $set->save();
+
+        return redirect()->route('dataskpd.index')->with('message', "Berhasil menambahkan data SKPD baru.");
     }
 
     /**
