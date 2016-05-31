@@ -27,7 +27,7 @@
     $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove();
     });
-  }, 2000);
+  }, 5000);
 </script>
 <!-- END DURATION TIME ALERT -->
 
@@ -51,21 +51,22 @@
   </div>
 <!-- END MODAL TO ALERT DELETE-->
 
-  <!-- START MESSAGE -->
-  <div class="col-md-12">
-    @if(Session::has('message'))
-      <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
-        <p>{{ Session::get('message') }}</p>
-      </div>
-    @endif
-  </div>
-  <!-- END MESSAGE -->
 
   <div class="row">
+    <!-- START MESSAGE -->
+    <div class="col-md-12">
+      @if(Session::has('message'))
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+          <p>{{ Session::get('message') }}</p>
+        </div>
+      @endif
+    </div>
+    <!-- END MESSAGE -->
     <!-- START FORM-->
-    <form class="form-horizontal" method="post" action="#">
+    <form class="form-horizontal" method="post" action="{{ url('managementakun/create') }}">
+      {{ csrf_field() }}
         <div class="col-md-4">
           <div class="box box-warning">
             <div class="box-header with-border">
@@ -74,8 +75,11 @@
             <div class="box-body">
               <div class="col-md-14 {{ $errors->has('status') ? 'has-error' : '' }}">
                 <label class="control-label">SKPD</label>
-                <select class="form-control" name="status">
-                  <option value="">-- Pilih Satu --</option>
+                <select class="form-control" name="id_skpd">
+                  <option value="">-- Pilih --</option>
+                  @foreach($getskpd as $key)
+                    <option value="{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="col-md-14 {{ $errors->has('username') ? 'has-error' : '' }}">
@@ -86,8 +90,8 @@
                 <label class="control-label">Level</label>
                 <select class="form-control" name="level">
                   <option value="">-- Pilih Satu --</option>
-                  <option value="admin">Administrator</option>
-                  <option value="userskpd">User SKPD</option>
+                  <option value="0">Administrator</option>
+                  <option value="2">User SKPD</option>
                 </select>
               </div>
             </div>

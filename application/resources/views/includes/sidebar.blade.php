@@ -64,7 +64,7 @@
       </a>
       <ul class="treeview-menu">
         <li><a href="{{url('listdataskpdbytopik')}}"><i class="fa fa-circle-o"></i> Lihat Data SKPD</a></li>
-        <li><a href="{{url('dataskpd')}}"><i class="fa fa-circle-o"></i> Kelola Data SKPD</a></li>
+        <li><a href="{{route('dataskpd.index')}}"><i class="fa fa-circle-o"></i> Kelola Data SKPD</a></li>
         {{-- <li><a href="{{url('listdatapengaduanbyskpd')}}"><i class="fa fa-circle-o"></i>Daftar Pengaduan By SKPD</a></li> --}}
       </ul>
     </li>
@@ -75,7 +75,7 @@
         <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a href="{{ route('topikpengaduan.index') }}"><i class="fa fa-circle-o"></i> Tambah Topik pengaduan</a></li>
+        <li><a href="{{ route('topikpengaduan.index') }}"><i class="fa fa-circle-o"></i> Kelola Topik pengaduan</a></li>
       </ul>
     </li>
 
@@ -99,7 +99,7 @@
         <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a href="{{url('managementakun')}}"><i class="fa fa-circle-o"></i> Tambah Akun SKPD</a></li>
+        <li><a href="{{route('managementakun.index')}}"><i class="fa fa-circle-o"></i> Kelola Akun SKPD</a></li>
       </ul>
     </li>
   </ul>

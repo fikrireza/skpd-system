@@ -92,6 +92,9 @@ Route::get('topikpengaduan/delete/{id}', 'TopikAduanController@delete');
 Route::get('topikpengaduan/bind/{id}', 'TopikAduanController@bind');
 Route::post('topikpengaduan/update', 'TopikAduanController@update');
 
+Route::get('managementakun', ['as'=>'managementakun.index', 'uses'=>'ManagementAkunController@index']);
+Route::post('managementakun/create', 'ManagementAkunController@create');
+
 
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
@@ -140,8 +143,4 @@ Route::get('historipengaduan', function(){
 
 Route::get('listhistoripengaduanall', function(){
   return view('pages.listhistoripengaduanall');
-});
-
-Route::get('/managementakun', function () {
-  return view('pages/managementakun');
 });
