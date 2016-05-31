@@ -15,7 +15,7 @@ class ManagementAkunController extends Controller
     public function index()
     {
       $getskpd = MasterSKPD::all();
-      $getakun = User::where('level', '<>', 1)->get();
+      $getakun = User::where([['level', '<>', 1], ['flag_user', 1]])->get();
       return view('pages.managementakun', compact('getskpd', 'getakun'));
     }
 
@@ -33,6 +33,7 @@ class ManagementAkunController extends Controller
         //0:belum aktifasi, 1:sudah aktif
         $user->activated = 0;
         $user->activation_code = $activation_code;
+        $user->flag_user = 1;
         $user->save();
       }
       else if($request->level==2){
@@ -41,10 +42,11 @@ class ManagementAkunController extends Controller
         $user->email = $request->email;
         //0:admin, 1:warga, 2:skpd
         $user->level = $request->level;
-        //0:tidak aktif, 1:aktif, 2:blocked
+        //0:belum aktifasi, 1:sudah aktif
         $user->activated = 0;
         $user->id_skpd = $request->id_skpd;
         $user->activation_code = $activation_code;
+        $user->flag_user = 1;
         $user->save();
       }
 

@@ -140,7 +140,7 @@
               <th>Email</th>
               <th>Level</th>
               <th>Nama SKPD</th>
-              <th>Status</th>
+              <th>Aktifasi</th>
               <th>Jumlah Login</th>
               <th>Aksi</th>
             </tr>
@@ -166,10 +166,10 @@
                     @endif
                   </td>
                   <td>
-                    @if($key->flag_user==0)
-                      <span class="pull-center badge">Tidak Aktif</span>
-                    @elseif($key->flag_user==1)
-                      <span class="pull-center badge bg-green">Aktif</span>
+                    @if($key->activated==0)
+                      <span class="pull-center badge">Belum Aktifasi</span>
+                    @elseif($key->activated==1)
+                      <span class="pull-center badge bg-green">Sudah Aktifasi</span>
                     @endif
                   </td>
                   <td>
@@ -180,20 +180,11 @@
                     @endif
                   </td>
                   <td>
-                    @if($key->flag_user==1)
-                      <span data-toggle="tooltip" title="Non Aktifkan Akun">
-                        <a href="" data-value="{{ $key->id }}" class="btn btn-default btn-xs btn-flat nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                      </span>
-                    @else
-                      <span data-toggle="tooltip" title="Aktifkan Akun">
-                        <a href="" data-value="{{ $key->id }}" class="btn btn-primary btn-xs btn-flat aktif" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
-                      </span>
-                    @endif
                     <span data-toggle="tooltip" title="Edit Data">
                       <a href="" class="btn btn-warning btn-flat btn-xs" data-toggle="modal" data-target="#myModalEdit" data-value="#"><i class="fa fa-edit"></i></a>
                     </span>
                     <span data-toggle="tooltip" title="Hapus Data">
-                      <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModalHapus" data-value="#"><i class="fa fa-remove"></i></a>
+                      <a href="" class="btn btn-danger btn-flat btn-xs nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="{{ $key->id }}"><i class="fa fa-remove"></i></a>
                     </span>
                   </td>
                 </tr>
