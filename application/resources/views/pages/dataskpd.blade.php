@@ -84,7 +84,7 @@
 
   <div class="row">
     <!-- START FORM-->
-    <form class="form-horizontal" method="post" action="#">
+    <form class="form-horizontal" method="post" action="{{ route('dataskpd.create') }}">
         <div class="col-md-4">
           <div class="box box-warning">
             <div class="box-header with-border">

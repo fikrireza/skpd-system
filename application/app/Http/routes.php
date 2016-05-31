@@ -78,6 +78,14 @@ Route::post('register', 'RegisterController@wargaregisterprocess');
 Route::get('/register/verify/{code}', 'RegisterController@verify');
 
 
+// administrator akses
+Route::resource('dataskpd', 'MasterSKPDController');
+
+
+
+
+
+
 
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
@@ -107,9 +115,6 @@ Route::get('datawarga', function(){
   return view('pages.datawarga');
 });
 
-Route::get('dataskpd', function(){
-  return view('pages.dataskpd');
-});
 
 Route::get('listdataskpdbytopik', function(){
   return view('pages.listdataskpdbytopik');

@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             //0:tidak aktif, 1:aktif, 2:blocked
             $table->integer('activated')->default(1);
             $table->string('activation_code')->nullable();
+            $table->integer('creator')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
