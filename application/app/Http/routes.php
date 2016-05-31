@@ -94,6 +94,8 @@ Route::post('topikpengaduan/update', 'TopikAduanController@update');
 
 Route::get('managementakun', ['as'=>'managementakun.index', 'uses'=>'ManagementAkunController@index']);
 Route::post('managementakun/create', 'ManagementAkunController@create');
+Route::get('managementakun/nonaktif/{id}', 'ManagementAkunController@nonaktif');
+Route::get('managementakun/aktif/{id}', 'ManagementAkunController@aktif');
 
 
 Route::get('tanggap', function(){

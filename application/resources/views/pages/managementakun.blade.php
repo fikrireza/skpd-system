@@ -32,19 +32,37 @@
 <!-- END DURATION TIME ALERT -->
 
 <!-- START MODAL TO ALERT DELETE-->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="myModalNonAktif" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Hapus Data Akun SKPD</h4>
+          <h4 class="modal-title">Non-Aktifkan Akun SKPD</h4>
         </div>
         <div class="modal-body">
-          <p>Apakah anda yakin untuk menghapus data ini?</p>
+          <p>Apakah anda yakin untuk non-aktifkan akun ini?</p>
         </div>
         <div class="modal-footer">
-          <button type="reset" class="btn btn-primary pull-left btn-flat" data-dismiss="modal">Tidak</button>
-          <button type="submit" class="btn btn-danger  btn-flat" id="set">Ya, saya yakin</button>
+          <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
+          <a class="btn btn-danger btn-flat" id="setnonaktif">Ya, saya yakin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModalAktif" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Aktifkan Akun SKPD</h4>
+        </div>
+        <div class="modal-body">
+          <p>Apakah anda yakin untuk mengaktifkan akun ini?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
+          <a class="btn btn-danger btn-flat" id="setaktif">Ya, saya yakin</a>
         </div>
       </div>
     </div>
@@ -56,7 +74,7 @@
     <!-- START MESSAGE -->
     <div class="col-md-12">
       @if(Session::has('message'))
-        <div class="alert alert-success">
+        <div class="alert alert-success panjang">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
           <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
           <p>{{ Session::get('message') }}</p>
@@ -120,183 +138,67 @@
             <tr class="bg-yellow">
               <th style="width:10px;">No</th>
               <th>Email</th>
-              <th>Nama SKPD</th>
               <th>Level</th>
-              <th>Status Akun</th>
+              <th>Nama SKPD</th>
+              <th>Status</th>
               <th>Jumlah Login</th>
               <th>Aksi</th>
             </tr>
-            <tr>
-              <td>1.</td>
-              <td>bambang@gmail.com</td>
-              <td>SPKD Kesehatan</td>
-              <td>Administrator</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">12</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
+            @if($getakun->isEmpty())
 
-            <tr>
-              <td>2.</td>
-              <td>fikri@gmail.com</td>
-              <td>SPKD Pendidikan</td>
-              <td>User SKPD</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">8</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>rojali@gmail.com</td>
-              <td>SPKD Perhubungan</td>
-              <td>Administrator</td>
-              <td><span class="pull-center badge">Tidak Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">1</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Aktifkan SKPD">
-                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td>dudy@gmail.com</td>
-              <td>SPKD Keuangan</td>
-              <td>User SKPD</td>
-              <td><span class="pull-center badge">Tidak Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">2</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Aktifkan SKPD">
-                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>5.</td>
-              <td>santoso@gmail.com</td>
-              <td>SPKD Perdagangan</td>
-              <td>Administrator</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">45</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>6.</td>
-              <td>brenda@gmail.com</td>
-              <td>SPKD Pertanian</td>
-              <td>Administrator</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">28</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>7.</td>
-              <td>marzuki@gmail.com</td>
-              <td>SPKD Perindustrian</td>
-              <td>User SKPD</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">44</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>8.</td>
-              <td>benfahiran@gmail.com</td>
-              <td>SPKD Sosial</td>
-              <td>User SKPD</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">48</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>9.</td>
-              <td>sutomo@gmail.com</td>
-              <td>SPKD Kebudayaan</td>
-              <td>User SKPD</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">33</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>10.</td>
-              <td>ronaldo@gmail.com</td>
-              <td>SPKD Teknologi</td>
-              <td>Administrator</td>
-              <td><span class="pull-center badge">Tidak Aktif</span></td>
-              <td><span class="pull-center badge bg-maroon">12</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Aktifkan SKPD">
-                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
+            @else
+              @foreach($getakun as $key)
+                <tr>
+                  <td>#</td>
+                  <td>{{ $key->email }}</td>
+                  <td>
+                    @if($key->level==0)
+                      {{ 'Administrator' }}
+                    @elseif($key->level==2)
+                      {{ 'User SKPD' }}
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->id_skpd=="")
+                      {{ '-' }}
+                    @else
+                      {{ $key->masterskpd->nama_skpd }}
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->flag_user==0)
+                      <span class="pull-center badge">Tidak Aktif</span>
+                    @elseif($key->flag_user==1)
+                      <span class="pull-center badge bg-green">Aktif</span>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->login_counter!=0)
+                      <span class="pull-center badge bg-maroon">{{ $key->login_counter }}</span>
+                    @else
+                      <span class="pull-center badge">{{ $key->login_counter }}</span>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->flag_user==1)
+                      <span data-toggle="tooltip" title="Non Aktifkan Akun">
+                        <a href="" data-value="{{ $key->id }}" class="btn btn-default btn-xs btn-flat nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                      </span>
+                    @else
+                      <span data-toggle="tooltip" title="Aktifkan Akun">
+                        <a href="" data-value="{{ $key->id }}" class="btn btn-primary btn-xs btn-flat aktif" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                      </span>
+                    @endif
+                    <span data-toggle="tooltip" title="Edit Data">
+                      <a href="" class="btn btn-warning btn-flat btn-xs" data-toggle="modal" data-target="#myModalEdit" data-value="#"><i class="fa fa-edit"></i></a>
+                    </span>
+                    <span data-toggle="tooltip" title="Hapus Data">
+                      <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModalHapus" data-value="#"><i class="fa fa-remove"></i></a>
+                    </span>
+                  </td>
+                </tr>
+              @endforeach
+            @endif
           </table>
         </div>
         <div class="box-footer">
@@ -341,9 +243,13 @@
 
   <script type="text/javascript">
     $(function(){
-      $('a.hapus').click(function(){
+      $('a.nonaktif').click(function(){
         var a = $(this).data('value');
-        // $('#set').attr('href', "{{ url('/') }}/masterbahasaasing/delete/"+a);
+        $('#setnonaktif').attr('href', "{{ url('/') }}/managementakun/nonaktif/"+a);
+      });
+      $('a.aktif').click(function(){
+        var a = $(this).data('value');
+        $('#setaktif').attr('href', "{{ url('/') }}/managementakun/aktif/"+a);
       });
 
       $('#skpdoption').hide();

@@ -16,4 +16,9 @@ class MasterSKPD extends Model
     {
       return $this->hasMany('App\TopikAduan', 'id');
     }
+
+    public function user()
+    {
+      return $this->hasMany('App\User', 'id');
+    }
 }

@@ -23,7 +23,7 @@ class RegisterController extends Controller
       $user->password = Hash::make($request->password);
       //0:admin, 1:warga, 2:skpd
       $user->level = 1;
-      //0:tidak aktif, 1:aktif, 2:blocked
+      //0:belum aktifasi, 1:sudah aktif
       $user->activated = 0;
       $user->activation_code = $activation_code;
       $user->save();

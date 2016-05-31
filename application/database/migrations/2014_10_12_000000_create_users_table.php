@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             //0:superadmin, 1:warga, 2:skpd
             $table->integer('level')->default(1);
-            //0:tidak aktif, 1:aktif, 2:blocked
+            //0:belum aktifasi, 1:sudah aktif
             $table->integer('activated')->default(1);
             $table->string('activation_code')->nullable();
             $table->integer('creator')->nullable();
