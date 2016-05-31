@@ -16,7 +16,7 @@ class MasterSKPDController extends Controller
      */
     public function index()
     {
-      $getskpd = MasterSKPD::all();
+      $getskpd = MasterSKPD::paginate(10);
 
       return view('pages.dataskpd')->with('getskpd', $getskpd);
     }

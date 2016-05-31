@@ -202,47 +202,60 @@
               <th>Status</th>
               <th>Aksi</th>
             </tr>
-            @foreach($getskpd as $key)
+            <?php
+              $no;
+              if($getskpd->currentPage()==1)
+              {
+                $no = 1;
+              }
+              else {
+                $no = (($getskpd->currentPage() - 1) * $getskpd->perPage())+1;
+              }
+            ?>
+            @if($getskpd[0]==null)
               <tr>
-                <td>#</td>
-                <td>{{ $key->kode_skpd }}</td>
-                <td>{{ $key->nama_skpd }}</td>
-                <td>
-                  @if($key->flag_skpd==1)
-                    <span class="pull-center badge bg-green">Aktif</span>
-                  @else
-                    <span class="pull-center badge">Tidak Aktif</span>
-                  @endif
-                </td>
-                <td>
-                  @if($key->flag_skpd==1)
-                    <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                      <a href="" data-value="{{ $key->id }}" class="btn btn-default btn-xs btn-flat nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                    </span>
-                  @else
-                    <span data-toggle="tooltip" title="Aktifkan SKPD">
-                      <a href="" data-value="{{ $key->id }}" class="btn btn-primary btn-xs btn-flat aktif" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
-                    </span>
-                  @endif
-                  <span data-toggle="tooltip" title="Edit Data">
-                    <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-xs btn-flat edit" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
-                  </span>
-                  <span data-toggle="tooltip" title="Hapus Data">
-                    <a href="" data-value="{{ $key->id }}" class="btn btn-danger btn-xs btn-flat hapus" data-toggle="modal" data-target="#myModal"><i class="fa fa-remove"></i></a>
-                  </span>
-                </td>
+                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
               </tr>
-            @endforeach
+            @else
+              @foreach($getskpd as $key)
+                <tr>
+                  <td>{{ $no }}</td>
+                  <td>{{ $key->kode_skpd }}</td>
+                  <td>{{ $key->nama_skpd }}</td>
+                  <td>
+                    @if($key->flag_skpd==1)
+                      <span class="pull-center badge bg-green">Aktif</span>
+                    @else
+                      <span class="pull-center badge">Tidak Aktif</span>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->flag_skpd==1)
+                      <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                        <a href="" data-value="{{ $key->id }}" class="btn btn-default btn-xs btn-flat nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                      </span>
+                    @else
+                      <span data-toggle="tooltip" title="Aktifkan SKPD">
+                        <a href="" data-value="{{ $key->id }}" class="btn btn-primary btn-xs btn-flat aktif" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                      </span>
+                    @endif
+                    <span data-toggle="tooltip" title="Edit Data">
+                      <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-xs btn-flat edit" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
+                    </span>
+                    <span data-toggle="tooltip" title="Hapus Data">
+                      <a href="" data-value="{{ $key->id }}" class="btn btn-danger btn-xs btn-flat hapus" data-toggle="modal" data-target="#myModal"><i class="fa fa-remove"></i></a>
+                    </span>
+                  </td>
+                </tr>
+                <?php $no++; ?>
+              @endforeach
+            @endif
           </table>
         </div>
         <div class="box-footer">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>
+          <div class="pagination pagination-sm no-margin pull-right">
+            {{ $getskpd->links() }}
+          </div>
         </div>
       </div>
     </div>
