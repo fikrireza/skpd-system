@@ -108,7 +108,10 @@ class MasterSKPDController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $set = MasterSKPD::find($id);
+      $set->delete();
+
+      return redirect()->route('dataskpd.index')->with('message', "Berhasil menghapus data SKPD.");
     }
 
 }

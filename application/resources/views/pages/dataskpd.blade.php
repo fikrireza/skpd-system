@@ -43,7 +43,7 @@
         </div>
         <div class="modal-footer">
           <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
-          <button type="submit" class="btn btn-danger  btn-flat" id="set">Ya, saya yakin</button>
+          <a class="btn btn-danger  btn-flat" id="sethapus">Ya, saya yakin</a>
         </div>
       </div>
     </div>
@@ -182,7 +182,7 @@
                   @endif
                   <a href="#" class="btn btn-warning btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
                   <span data-toggle="tooltip" title="Hapus Data">
-                    <a href="" class="btn btn-danger btn-xs btn-flat hapus" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                    <a href="" class="btn btn-danger btn-xs btn-flat hapus" data-toggle="modal" data-target="#myModal" data-value="{{ $key->id }}"><i class="fa fa-remove"></i></a>
                   </span>
                 </td>
               </tr>
@@ -221,7 +221,7 @@
     $(function(){
       $('a.hapus').click(function(){
         var a = $(this).data('value');
-        $('#set').attr('href', "{{ url('/') }}/masterbahasaasing/delete/"+a);
+        $('#sethapus').attr('href', "{{ url('/') }}/dataskpd/delete/"+a);
       });
 
       $('a.nonaktif').click(function(){

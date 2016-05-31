@@ -82,6 +82,7 @@ Route::get('/register/verify/{code}', 'RegisterController@verify');
 Route::resource('dataskpd', 'MasterSKPDController');
 Route::get('dataskpd/nonaktif/{id}', 'MasterSKPDController@nonaktif');
 Route::get('dataskpd/aktif/{id}', 'MasterSKPDController@aktif');
+Route::get('dataskpd/delete/{id}', 'MasterSKPDController@destroy');
 
 
 
