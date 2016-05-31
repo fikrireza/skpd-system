@@ -31,7 +31,7 @@
 <!-- END DURATION TIME ALERT -->
 
 <!-- START MODAL TO ALERT DELETE-->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="myModalHapus" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -42,29 +42,31 @@
           <p>Apakah anda yakin untuk menghapus data ini?</p>
         </div>
         <div class="modal-footer">
-          <button type="reset" class="btn btn-primary pull-left btn-flat" data-dismiss="modal">Tidak</button>
-          <button type="submit" class="btn btn-danger  btn-flat" id="set">Ya, saya yakin</button>
+          <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
+          <a class="btn btn-danger  btn-flat" id="sethapus">Ya, saya yakin</a>
         </div>
       </div>
     </div>
   </div>
 <!-- END MODAL TO ALERT DELETE-->
 
-  <!-- START MESSAGE -->
-  <div class="col-md-12">
-    @if(Session::has('message'))
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
-        <p>{{ Session::get('message') }}</p>
-      </div>
-    @endif
-  </div>
-  <!-- END MESSAGE -->
 
   <div class="row">
+    <!-- START MESSAGE -->
+    <div class="col-md-12">
+      @if(Session::has('message'))
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+          <p>{{ Session::get('message') }}</p>
+        </div>
+      @endif
+    </div>
+    <!-- END MESSAGE -->
+
     <!-- START FORM-->
     <form class="form-horizontal" method="post" action="#">
+      {{ csrf_field() }}
         <div class="col-md-4">
           <div class="box box-warning">
             <div class="box-header with-border">
@@ -81,8 +83,11 @@
               </div>
               <div class="col-md-14 {{ $errors->has('skpd') ? 'has-error' : '' }}">
                 <label class="control-label">SKPD</label>
-                <select class="form-control" name="skpd">
-                  <option value="">-- Pilih Satu --</option>
+                <select class="form-control" name="idskpd">
+                  <option value="">-- Pilih --</option>
+                  @foreach($getskpd as $key)
+                    <option value="{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
+                  @endforeach
                 </select>
               </div>
             </div>
@@ -109,153 +114,48 @@
         <div class="box-body no-padding">
           <table class="table table-hover">
             <tr class="bg-yellow">
-              <th style="width:10px;">No</th>
+              <th style="width:10px;">#</th>
               <th>Kode Topik Pengaduan</th>
               <th>Nama Topik Pengaduan</th>
               <th>Nama SKPD</th>
-              {{-- <th>Wajib Proses</th> --}}
               <th>Aksi</th>
             </tr>
-            <tr>
-              <td>1.</td>
-              <td>TPP001</td>
-              <td>TOPIK Kesehatan</td>
-              <td>SKPD Kesehatan</td>
-              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td>TPP002</td>
-              <td>TOPIK Pendidikan</td>
-              <td>SPKD Pendidikan</td>
-              {{-- <td><span class="pull-center badge">Tidak</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>TPP003</td>
-              <td>TOPIK Perhubungan</td>
-              <td>SPKD Perhubungan</td>
-              {{-- <td><span class="pull-center badge">Tidak</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td>TPP004</td>
-              <td>TOPIK Keuangan</td>
-              <td>SPKD Keuangan</td>
-              {{-- <td><span class="pull-center badge">Tidak</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>5.</td>
-              <td>TPP005</td>
-              <td>TOPIK Perdagangan</td>
-              <td>SPKD Perdagangan</td>
-              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>6.</td>
-              <td>TPP006</td>
-              <td>TOPIK Pertanian</td>
-              <td>SPKD Pertanian</td>
-              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>7.</td>
-              <td>TPP007</td>
-              <td>TOPIK Perindustrian</td>
-              <td>SPKD Perindustrian</td>
-              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>8.</td>
-              <td>TPP008</td>
-              <td>TOPIK Sosial</td>
-              <td>SPKD Sosial</td>
-              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>9.</td>
-              <td>TPP009</td>
-              <td>TOPIK Kebudayaan</td>
-              <td>SPKD Kebudayaan</td>
-              {{-- <td><span class="pull-center badge bg-green">Ya</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>10.</td>
-              <td>TPP0010</td>
-              <td>TOPIK Teknologi</td>
-              <td>SPKD Teknologi</td>
-              {{-- <td><span class="pull-center badge">Tidak</span></td> --}}
-              <td>
-                <a href="#" class="btn btn-warning btn-flat btn-xs" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
+            @if($gettopik->isEmpty())
+              <tr>
+                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data topik pengaduan tidak tersedia.</i></td>
+              </tr>
+            @else
+              <?php
+                $no;
+                if($gettopik->currentPage()==1)
+                  $no = 1;
+                else
+                  $no = (($gettopik->currentPage() - 1) * $gettopik->perPage())+1;
+              ?>
+              @foreach($gettopik as $key)
+                <tr>
+                  <td>{{ $no }}.</td>
+                  <td>{{ $key->kode_topik }}</td>
+                  <td>{{ $key->nama_topik }}</td>
+                  <td>{{ $key->masterskpd->nama_skpd }}</td>
+                  <td>
+                    <span data-toggle="tooltip" title="Edit Data">
+                      <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-flat btn-xs" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
+                    </span>
+                    <span data-toggle="tooltip" title="Hapus Data">
+                      <a href="" data-value="{{ $key->id }}" class="btn btn-danger btn-flat btn-xs hapus" data-toggle="modal" data-target="#myModalHapus" data-value="#"><i class="fa fa-remove"></i></a>
+                    </span>
+                  </td>
+                </tr>
+                <?php $no++; ?>
+              @endforeach
+            @endif
           </table>
         </div>
         <div class="box-footer">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>
+          <div class="pull-right">
+            {{ $gettopik->links() }}
+          </div>
         </div>
       </div>
     </div>
@@ -292,7 +192,7 @@
     $(function(){
       $('a.hapus').click(function(){
         var a = $(this).data('value');
-        // $('#set').attr('href', "{{ url('/') }}/masterbahasaasing/delete/"+a);
+        $('#sethapus').attr('href', "{{ url('/') }}/topikpengaduan/delete/"+a);
       });
     });
   </script>

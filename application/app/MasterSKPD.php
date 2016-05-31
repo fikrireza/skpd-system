@@ -11,4 +11,9 @@ class MasterSKPD extends Model
     protected $fillable = [
         'kode_skpd', 'nama_skpd', 'flag_skpd'
     ];
+
+    public function topikpengaduan()
+    {
+      return $this->hasMany('App\TopikAduan', 'id');
+    }
 }

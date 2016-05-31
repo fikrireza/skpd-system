@@ -75,7 +75,7 @@
         <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a href="{{url('topikpengaduan')}}"><i class="fa fa-circle-o"></i> Tambah Topik pengaduan</a></li>
+        <li><a href="{{ route('topikpengaduan.index') }}"><i class="fa fa-circle-o"></i> Tambah Topik pengaduan</a></li>
       </ul>
     </li>
 

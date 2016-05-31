@@ -205,14 +205,11 @@
             <?php
               $no;
               if($getskpd->currentPage()==1)
-              {
                 $no = 1;
-              }
-              else {
+              else
                 $no = (($getskpd->currentPage() - 1) * $getskpd->perPage())+1;
-              }
             ?>
-            @if($getskpd[0]==null)
+            @if($getskpd->isEmpty())
               <tr>
                 <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
               </tr>

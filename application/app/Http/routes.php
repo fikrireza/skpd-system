@@ -86,7 +86,9 @@ Route::get('dataskpd/delete/{id}', 'MasterSKPDController@destroy');
 Route::post('dataskpd/update', 'MasterSKPDController@update');
 Route::get('dataskpd/bind/{id}', 'MasterSKPDController@bind');
 
-
+Route::get('topikpengaduan', ['as'=>'topikpengaduan.index', 'uses'=>'TopikAduanController@index']);
+Route::post('topikpengaduan', ['as'=>'topikpengaduan.store', 'uses'=>'TopikAduanController@store']);
+Route::get('topikpengaduan/delete/{id}', 'TopikAduanController@delete');
 
 
 Route::get('tanggap', function(){
@@ -136,10 +138,6 @@ Route::get('historipengaduan', function(){
 
 Route::get('listhistoripengaduanall', function(){
   return view('pages.listhistoripengaduanall');
-});
-
-Route::get('topikpengaduan', function(){
-  return view('pages.topikpengaduan');
 });
 
 Route::get('/managementakun', function () {
