@@ -5,12 +5,12 @@
   </head>
   <body>
     <p>
-      Hai, {{ $data[0]['nama'] }}.
+      Yth, Bapak/Ibu.
     </p>
 
     <p>
-      Terima kasih telah melakukan registrasi pada Sistem Informasi Pengaduan Terpadu Kabupaten Tangerang.
-      <br>Silahkan klik link berikut untuk aktifasi akun kamu :<br><br>
+      Email anda telah didaftarkan sebagai <b>{{ $data[0]['akses'] }}</b> pada website SIMPEDU.
+      <br>Silahkan klik link berikut untuk aktifasi :<br><br>
 
       <a href="{{ URL::to('register/verify/' . $data[0]['activation_code']) }}">
         {{ URL::to('register/verify/' . $data[0]['activation_code']) }}

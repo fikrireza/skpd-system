@@ -73,7 +73,15 @@
                 <h3 class="box-title">Formulir Tambah Akun SKPD</h3>
             </div>
             <div class="box-body">
-              <div class="col-md-14 {{ $errors->has('status') ? 'has-error' : '' }}">
+              <div class="col-md-14 {{ $errors->has('level') ? 'has-error' : '' }}">
+                <label class="control-label">Level</label>
+                <select class="form-control" name="level" id="leveluser">
+                  <option value="">-- Pilih Satu --</option>
+                  <option value="0">Administrator</option>
+                  <option value="2">User SKPD</option>
+                </select>
+              </div>
+              <div id="skpdoption" class="col-md-14 {{ $errors->has('status') ? 'has-error' : '' }}">
                 <label class="control-label">SKPD</label>
                 <select class="form-control" name="id_skpd">
                   <option value="">-- Pilih --</option>
@@ -85,14 +93,6 @@
               <div class="col-md-14 {{ $errors->has('username') ? 'has-error' : '' }}">
                 <label class="control-label">Email</label>
                 <input type="email" name="email" class="form-control" placeholder="Email">
-              </div>
-              <div class="col-md-14 {{ $errors->has('level') ? 'has-error' : '' }}">
-                <label class="control-label">Level</label>
-                <select class="form-control" name="level">
-                  <option value="">-- Pilih Satu --</option>
-                  <option value="0">Administrator</option>
-                  <option value="2">User SKPD</option>
-                </select>
               </div>
             </div>
             <div class="box-footer">
@@ -344,6 +344,16 @@
       $('a.hapus').click(function(){
         var a = $(this).data('value');
         // $('#set').attr('href', "{{ url('/') }}/masterbahasaasing/delete/"+a);
+      });
+
+      $('#skpdoption').hide();
+      $('#leveluser').change(function(){
+        if($(this).val() == '2') {
+          $('#skpdoption').show();
+        }
+        else if($(this).val() == '0') {
+          $('#skpdoption').hide();
+        }
       });
     });
   </script>
