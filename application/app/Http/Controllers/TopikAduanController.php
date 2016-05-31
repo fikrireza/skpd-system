@@ -36,4 +36,21 @@ class TopikAduanController extends Controller
 
       return redirect()->route('topikpengaduan.index')->with('message', "Berhasil menghapus topik pengaduan.");
     }
+
+    public function bind($id)
+    {
+      $get = TopikAduan::find($id);
+      return $get;
+    }
+
+    public function update(Request $request)
+    {
+      $set = TopikAduan::find($request->id_topik);
+      $set->kode_topik = $request->kode_topik;
+      $set->nama_topik = $request->nama_topik;
+      $set->id_skpd = $request->id_skpd;
+      $set->save();
+
+      return redirect()->route('topikpengaduan.index')->with('message', "Berhasil mengubah topik pengaduan.");
+    }
 }

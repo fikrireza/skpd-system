@@ -50,6 +50,51 @@
   </div>
 <!-- END MODAL TO ALERT DELETE-->
 
+<!-- START MODAL TO ALERT DELETE-->
+  <div class="modal fade" id="myModalEdit" role="dialog">
+    <div class="modal-dialog" style="width:500px;">
+      <form class="form-horizontal" action="{{ url('topikpengaduan/update') }}" method="post">
+        {!! csrf_field() !!}
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit Data Topik Pengaduan</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Kode Topik Aduan</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" name="kode_topik" id="kode_topik">
+                <input type="hidden" class="form-control" name="id_topik" id="id_topik">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">Nama Topik Aduan</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" name="nama_topik" id="nama_topik">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label">SKPD</label>
+              <div class="col-sm-7">
+                <select class="form-control" name="id_skpd">
+                  @foreach($getskpd as $key)
+                    <option value="{{ $key->id }}" id="skpd{{$key->id}}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-flat">Simpan Perubahan</button>
+          </div>
+        </div>
+    </form>
+    </div>
+  </div>
+<!-- END MODAL TO ALERT DELETE-->
+
 
   <div class="row">
     <!-- START MESSAGE -->
@@ -140,7 +185,7 @@
                   <td>{{ $key->masterskpd->nama_skpd }}</td>
                   <td>
                     <span data-toggle="tooltip" title="Edit Data">
-                      <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-flat btn-xs" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
+                      <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-flat btn-xs edit" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
                     </span>
                     <span data-toggle="tooltip" title="Hapus Data">
                       <a href="" data-value="{{ $key->id }}" class="btn btn-danger btn-flat btn-xs hapus" data-toggle="modal" data-target="#myModalHapus" data-value="#"><i class="fa fa-remove"></i></a>
@@ -194,6 +239,27 @@
         var a = $(this).data('value');
         $('#sethapus').attr('href', "{{ url('/') }}/topikpengaduan/delete/"+a);
       });
+
+      $('a.edit').click(function(){
+        var a = $(this).data('value');
+        $.ajax({
+          url: "{{ url('/') }}/topikpengaduan/bind/"+a,
+          dataType: 'json',
+          success: function(data){
+            //get
+            var id = data.id;
+            var kode_topik = data.kode_topik;
+            var nama_topik = data.nama_topik;
+            var id_skpd = data.id_skpd;
+
+            // set
+            $('#id_topik').attr('value', id);
+            $('#kode_topik').attr('value', kode_topik);
+            $('#nama_topik').attr('value', nama_topik);
+            $('option#skpd'+id_skpd).attr('selected', true);
+          }
+        });
+      })
     });
   </script>
 @stop

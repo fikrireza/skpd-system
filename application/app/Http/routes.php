@@ -89,6 +89,8 @@ Route::get('dataskpd/bind/{id}', 'MasterSKPDController@bind');
 Route::get('topikpengaduan', ['as'=>'topikpengaduan.index', 'uses'=>'TopikAduanController@index']);
 Route::post('topikpengaduan', ['as'=>'topikpengaduan.store', 'uses'=>'TopikAduanController@store']);
 Route::get('topikpengaduan/delete/{id}', 'TopikAduanController@delete');
+Route::get('topikpengaduan/bind/{id}', 'TopikAduanController@bind');
+Route::post('topikpengaduan/update', 'TopikAduanController@update');
 
 
 Route::get('tanggap', function(){
