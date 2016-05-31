@@ -31,6 +31,50 @@
 <!-- END DURATION TIME ALERT -->
 
 <!-- START MODAL TO ALERT DELETE-->
+  <div class="modal fade" id="myModalEdit" role="dialog">
+    <div class="modal-dialog" style="width:500px;">
+      <form class="form-horizontal" action="{{ url('dataskpd/update') }}" method="post">
+        {!! csrf_field() !!}
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit Data SKPD</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Kode SKPD</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="kodeskpd" id="kodeskpd">
+                <input type="hidden" class="form-control" name="idskpd" id="idskpd">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Nama SKPD</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="namaskpd" id="namaskpd">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Status</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="flagskpd">
+                  <option value="1" id="flagskpdaktif">Aktif</option>
+                  <option value="0" id="flagskpdnonaktif">Tidak Aktif</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-flat">Simpan Perubahan</button>
+          </div>
+        </div>
+    </form>
+    </div>
+  </div>
+<!-- END MODAL TO ALERT DELETE-->
+
+<!-- START MODAL TO ALERT DELETE-->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -180,9 +224,11 @@
                       <a href="" data-value="{{ $key->id }}" class="btn btn-primary btn-xs btn-flat aktif" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
                     </span>
                   @endif
-                  <a href="#" class="btn btn-warning btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                  <span data-toggle="tooltip" title="Edit Data">
+                    <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-xs btn-flat edit" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
+                  </span>
                   <span data-toggle="tooltip" title="Hapus Data">
-                    <a href="" class="btn btn-danger btn-xs btn-flat hapus" data-toggle="modal" data-target="#myModal" data-value="{{ $key->id }}"><i class="fa fa-remove"></i></a>
+                    <a href="" data-value="{{ $key->id }}" class="btn btn-danger btn-xs btn-flat hapus" data-toggle="modal" data-target="#myModal"><i class="fa fa-remove"></i></a>
                   </span>
                 </td>
               </tr>
@@ -232,6 +278,32 @@
       $('a.aktif').click(function(){
         var a = $(this).data('value');
         $('#setaktif').attr('href', "{{ url('/') }}/dataskpd/aktif/"+a);
+      });
+
+      $('a.edit').click(function(){
+        var a = $(this).data('value');
+        $.ajax({
+          url: "{{ url('/') }}/dataskpd/bind/"+a,
+          dataType: 'json',
+          success: function(data){
+            //get
+            var id = data.id;
+            var kode_skpd = data.kode_skpd;
+            var nama_skpd = data.nama_skpd;
+            var flag_skpd = data.flag_skpd;
+
+            // set
+            $('#idskpd').attr('value', id);
+            $('#kodeskpd').attr('value', kode_skpd);
+            $('#namaskpd').attr('value', nama_skpd);
+            if(flag_skpd==1) {
+              $('#flagskpdaktif').attr('selected', true);
+            }
+            else {
+              $('#flagskpdnonaktif').attr('selected', true);
+            }
+          }
+        });
       });
     });
   </script>

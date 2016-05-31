@@ -83,6 +83,8 @@ Route::resource('dataskpd', 'MasterSKPDController');
 Route::get('dataskpd/nonaktif/{id}', 'MasterSKPDController@nonaktif');
 Route::get('dataskpd/aktif/{id}', 'MasterSKPDController@aktif');
 Route::get('dataskpd/delete/{id}', 'MasterSKPDController@destroy');
+Route::post('dataskpd/update', 'MasterSKPDController@update');
+Route::get('dataskpd/bind/{id}', 'MasterSKPDController@bind');
 
 
 

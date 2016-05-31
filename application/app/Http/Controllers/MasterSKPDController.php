@@ -95,9 +95,15 @@ class MasterSKPDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $set = MasterSKPD::find($request->idskpd);
+        $set->kode_skpd = $request->kodeskpd;
+        $set->nama_skpd = $request->namaskpd;
+        $set->flag_skpd = $request->flagskpd;
+        $set->save();
+
+        return redirect()->route('dataskpd.index')->with('message', "Berhasil mengubah data SKPD.");
     }
 
     /**
@@ -112,6 +118,12 @@ class MasterSKPDController extends Controller
       $set->delete();
 
       return redirect()->route('dataskpd.index')->with('message', "Berhasil menghapus data SKPD.");
+    }
+
+    public function bind($id)
+    {
+      $get = MasterSKPD::find($id);
+      return $get;
     }
 
 }
