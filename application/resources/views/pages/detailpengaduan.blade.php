@@ -101,51 +101,49 @@
             <b>Data Pendukung</b><br>
             <i class="text-muted">gambar.jpg</i>
             <div class="pull-right">
-              @if(Session::has('akses'))
-                @if(Session::get('akses')!="administrator")
-                  <button class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#myModalVerifikasi" >Verifikasi Pengaduan</button>
-                  <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
-                @endif
-              @endif
+              {{-- button dibawah cuma buat user skpd cuuuy, akses admin ga bisa --}}
+              <button class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#myModalVerifikasi" >Verifikasi Pengaduan</button>
+              <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
+
+              {{-- button download, user skpd sama admin bisa pake --}}
               <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
             </div>
           </div><!-- /.attachment-block -->
 
-
-        @if(Session::has('akses'))
-          @if(Session::get('akses')!="administrator")
-            <div class="box-footer">
-              <form action="#" method="post">
-                <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
-                <!-- .img-push is used to add margin to elements next to floating images -->
-                <div class="img-push">
-                  <textarea name="name" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
-                  <div class="footer pull-right" style="padding-top:5px;">
-                    <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
-                  </div>
-                </div>
-              </form>
-            </div><!-- /.box-footer -->
-          @else
-            <div class='box-footer box-comments' style="border:1px solid #00a65a;">
-              <div style="padding-bottom:5px;">
-                <b>Tanggapan</b>
-              </div>
-              <div class='box-comment'>
-                <!-- User image -->
-                <img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>
-                <div class='comment-text'>
-                  <span class="username">
-                    Administrator SKPD Pelayanan Publik
-                    <span class='text-muted pull-right'>25 April 2016</span>
-                  </span><!-- /.username -->
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                </div><!-- /.comment-text -->
-              </div><!-- /.box-comment -->
+          {{-- kalo udah di tanggapi, maka muncul box dibawah nih. --}}
+          <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+            <div style="padding-bottom:5px;">
+              <b>Tanggapan</b>
             </div>
-          @endif
-        @endif
+            <div class='box-comment'>
+              <!-- User image -->
+              <img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>
+              <div class='comment-text'>
+                <span class="username">
+                  Administrator SKPD Pelayanan Publik
+                  <span class='text-muted pull-right'>25 April 2016</span>
+                </span><!-- /.username -->
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+              </div><!-- /.comment-text -->
+            </div><!-- /.box-comment -->
+          </div>
+
+          {{-- kalo belum ditanggapi, untuk user skpd bisa langsung nanggapi pake box dibawah cuy. admin gak bisa nanggapin ya. --}}
+          <div class="box-footer">
+            <form action="#" method="post">
+              <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
+              <!-- .img-push is used to add margin to elements next to floating images -->
+              <div class="img-push">
+                <textarea name="name" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
+                <div class="footer pull-right" style="padding-top:5px;">
+                  <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+                </div>
+              </div>
+            </form>
+          </div><!-- /.box-footer -->
+
+
         </div><!-- /.box-body -->
       </div><!-- /.box -->
     </div><!--/.col -->
