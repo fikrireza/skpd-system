@@ -80,7 +80,8 @@ Route::get('/register/verify/{code}', 'RegisterController@verify');
 
 // administrator akses
 Route::resource('dataskpd', 'MasterSKPDController');
-
+Route::get('dataskpd/nonaktif/{id}', 'MasterSKPDController@nonaktif');
+Route::get('dataskpd/aktif/{id}', 'MasterSKPDController@aktif');
 
 
 

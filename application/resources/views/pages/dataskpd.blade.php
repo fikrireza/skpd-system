@@ -59,30 +59,51 @@
           <h4 class="modal-title">Aktif Data SKPD</h4>
         </div>
         <div class="modal-body">
-          <p>Apakah anda yakin untuk mengaktif data ini?</p>
+          <p>Apakah anda yakin untuk mengaktifkan data SKPD ini?</p>
         </div>
         <div class="modal-footer">
           <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
-          <button type="submit" class="btn btn-danger  btn-flat" id="set">Ya, saya yakin</button>
+          <a class="btn btn-danger btn-flat" id="setaktif">Ya, saya yakin</a>
         </div>
       </div>
     </div>
   </div>
 <!-- END MODAL TO ALERT DELETE-->
 
-  <!-- START MESSAGE -->
-  <div class="col-md-12">
-    @if(Session::has('message'))
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
-        <p>{{ Session::get('message') }}</p>
+<!-- START MODAL TO ALERT NONAKTIF-->
+  <div class="modal fade" id="myModalNonAktif" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Aktif Data SKPD</h4>
+        </div>
+        <div class="modal-body">
+          <p>Apakah anda yakin untuk me-nonaktifkan data SKPD ini?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
+          <a class="btn btn-danger btn-flat" id="setnonaktif">Ya, saya yakin</a>
+        </div>
       </div>
-    @endif
+    </div>
   </div>
-  <!-- END MESSAGE -->
+<!-- END MODAL TO ALERT NONAKTIF-->
+
 
   <div class="row">
+    <!-- START MESSAGE -->
+    <div class="col-md-12">
+      @if(Session::has('message'))
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+          <p>{{ Session::get('message') }}</p>
+        </div>
+      @endif
+    </div>
+    <!-- END MESSAGE -->
+
     <!-- START FORM-->
     <form class="form-horizontal" method="post" action="{{ route('dataskpd.store') }}">
       {!! csrf_field(); !!}
@@ -137,36 +158,35 @@
               <th>Status</th>
               <th>Aksi</th>
             </tr>
-            <tr>
-              <td>1.</td>
-              <td>SKPD001</td>
-              <td>SPKD Kesehatan</td>
-              <td><span class="pull-center badge bg-green">Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Non Aktifkan SKPD">
-                  <a href="" class="btn btn-default btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-ban"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>SKPD003</td>
-              <td>SPKD Perhubungan</td>
-              <td><span class="pull-center badge">Tidak Aktif</span></td>
-              <td>
-                <span data-toggle="tooltip" title="Aktifkan SKPD">
-                  <a href="" class="btn btn-primary btn-xs btn-flat" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
-                </span>
-                <a href="#" class="btn btn-warning  btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
-                <span data-toggle="tooltip" title="Hapus Data">
-                  <a href="" class="btn btn-danger btn-xs btn-flat" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
-                </span>
-              </td>
-            </tr>
+            @foreach($getskpd as $key)
+              <tr>
+                <td>#</td>
+                <td>{{ $key->kode_skpd }}</td>
+                <td>{{ $key->nama_skpd }}</td>
+                <td>
+                  @if($key->flag_skpd==1)
+                    <span class="pull-center badge bg-green">Aktif</span>
+                  @else
+                    <span class="pull-center badge">Tidak Aktif</span>
+                  @endif
+                </td>
+                <td>
+                  @if($key->flag_skpd==1)
+                    <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                      <a href="" data-value="{{ $key->id }}" class="btn btn-default btn-xs btn-flat nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="#"><i class="fa fa-ban"></i></a>
+                    </span>
+                  @else
+                    <span data-toggle="tooltip" title="Aktifkan SKPD">
+                      <a href="" data-value="{{ $key->id }}" class="btn btn-primary btn-xs btn-flat aktif" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
+                    </span>
+                  @endif
+                  <a href="#" class="btn btn-warning btn-xs btn-flat" data-toggle='tooltip' title='Edit Data'><i class="fa fa-edit"></i></a>
+                  <span data-toggle="tooltip" title="Hapus Data">
+                    <a href="" class="btn btn-danger btn-xs btn-flat hapus" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-remove"></i></a>
+                  </span>
+                </td>
+              </tr>
+            @endforeach
           </table>
         </div>
         <div class="box-footer">
@@ -201,7 +221,17 @@
     $(function(){
       $('a.hapus').click(function(){
         var a = $(this).data('value');
-        // $('#set').attr('href', "{{ url('/') }}/masterbahasaasing/delete/"+a);
+        $('#set').attr('href', "{{ url('/') }}/masterbahasaasing/delete/"+a);
+      });
+
+      $('a.nonaktif').click(function(){
+        var a = $(this).data('value');
+        $('#setnonaktif').attr('href', "{{ url('/') }}/dataskpd/nonaktif/"+a);
+      });
+
+      $('a.aktif').click(function(){
+        var a = $(this).data('value');
+        $('#setaktif').attr('href', "{{ url('/') }}/dataskpd/aktif/"+a);
       });
     });
   </script>

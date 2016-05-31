@@ -16,7 +16,27 @@ class MasterSKPDController extends Controller
      */
     public function index()
     {
-        return view('pages.dataskpd');
+      $getskpd = MasterSKPD::all();
+
+      return view('pages.dataskpd')->with('getskpd', $getskpd);
+    }
+
+    public function nonaktif($id)
+    {
+      $set = MasterSKPD::find($id);
+      $set->flag_skpd = 0;
+      $set->save();
+
+      return redirect()->route('dataskpd.index')->with('message', "Berhasil mengubah status SKPD.");
+    }
+
+    public function aktif($id)
+    {
+      $set = MasterSKPD::find($id);
+      $set->flag_skpd = 1;
+      $set->save();
+
+      return redirect()->route('dataskpd.index')->with('message', "Berhasil mengubah status SKPD.");
     }
 
     /**
@@ -37,13 +57,13 @@ class MasterSKPDController extends Controller
      */
     public function store(Request $request)
     {
-        $set = new MasterSKPD;
-        $set->kode_skpd = $request->kodeskpd;
-        $set->nama_skpd = $request->namaskpd;
-        $set->flag_skpd = $request->flagskpd;
-        $set->save();
+      $set = new MasterSKPD;
+      $set->kode_skpd = $request->kodeskpd;
+      $set->nama_skpd = $request->namaskpd;
+      $set->flag_skpd = $request->flagskpd;
+      $set->save();
 
-        return redirect()->route('dataskpd.index')->with('message', "Berhasil menambahkan data SKPD baru.");
+      return redirect()->route('dataskpd.index')->with('message', "Berhasil menambahkan data SKPD baru.");
     }
 
     /**
@@ -90,4 +110,5 @@ class MasterSKPDController extends Controller
     {
         //
     }
+
 }
