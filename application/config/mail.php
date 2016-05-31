@@ -15,7 +15,7 @@ return [
   // "pretend" => false
 
   // -- USING SMTP2GO --
-  'driver' => 'smtp',
+  'driver' => 'log',
   'host' => 'mail.smtp2go.com',
   'port' => 2525,
   'from' => array('address' => 'sender@example.com', 'name' => 'SIMPEDU'),
