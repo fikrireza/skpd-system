@@ -50,6 +50,24 @@
     </div>
   </div>
 
+  <div class="modal fade" id="myModalHapus" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Hapus Akun SKPD</h4>
+        </div>
+        <div class="modal-body">
+          <p>Apakah anda yakin untuk menghapus akun ini?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
+          <a class="btn btn-danger btn-flat" id="sethapus">Ya, saya yakin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="myModalAktif" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -65,6 +83,54 @@
           <a class="btn btn-danger btn-flat" id="setaktif">Ya, saya yakin</a>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModalEdit" role="dialog">
+    <div class="modal-dialog" style="width:500px;">
+      <form class="form-horizontal" action="{{ url('managementakun/update') }}" method="post">
+        {!! csrf_field() !!}
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit Akun SKPD</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Level</label>
+              <div class="col-sm-8">
+                <input type="hidden" class="form-control" name="id_user" id="edit_id_user">
+                <select class="form-control" name="level" id="edit_level">
+                  <option value="">-- Pilih --</option>
+                  <option value="0" id="leveladmin">Administrator</option>
+                  <option value="2" id="levelskpd">User SKPD</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" id="skpdedit">
+              <label class="col-sm-3 control-label">SKPD</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="id_skpd" id="edit_id_skpd">
+                  <option value="" id="editskpd0">-- Pilih --</option>
+                  @foreach($getskpd as $key)
+                    <option value="{{ $key->id }}" id="editskpd{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Email SKPD</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" name="email_skpd" id="edit_email_skpd">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-flat">Simpan Perubahan</button>
+          </div>
+        </div>
+    </form>
     </div>
   </div>
 <!-- END MODAL TO ALERT DELETE-->
@@ -141,15 +207,22 @@
               <th>Level</th>
               <th>Nama SKPD</th>
               <th>Aktifasi</th>
-              <th>Jumlah Login</th>
+              <th>Status Akun</th>
               <th>Aksi</th>
             </tr>
             @if($getakun->isEmpty())
 
             @else
+              <?php
+                $no;
+                if($getakun->currentPage()==1)
+                  $no = 1;
+                else
+                  $no = (($getakun->currentPage() - 1) * $getakun->perPage())+1;
+              ?>
               @foreach($getakun as $key)
                 <tr>
-                  <td>#</td>
+                  <td>{{ $no }}.</td>
                   <td>{{ $key->email }}</td>
                   <td>
                     @if($key->level==0)
@@ -173,33 +246,39 @@
                     @endif
                   </td>
                   <td>
-                    @if($key->login_counter!=0)
-                      <span class="pull-center badge bg-maroon">{{ $key->login_counter }}</span>
+                    @if($key->flag_user!=0)
+                      <span class="pull-center badge bg-blue">Aktif</span>
                     @else
-                      <span class="pull-center badge">{{ $key->login_counter }}</span>
+                      <span class="pull-center badge">Tidak Aktif</span>
                     @endif
                   </td>
                   <td>
-                    <span data-toggle="tooltip" title="Edit Data">
-                      <a href="" class="btn btn-warning btn-flat btn-xs" data-toggle="modal" data-target="#myModalEdit" data-value="#"><i class="fa fa-edit"></i></a>
+                    @if($key->flag_user!=0)
+                      <span data-toggle="tooltip" title="Non Aktifkan Akun">
+                        <a href="" class="btn btn-default btn-flat btn-xs nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="{{ $key->id }}"><i class="fa fa-ban"></i></a>
+                      </span>
+                    @else
+                      <span data-toggle="tooltip" title="Aktifkan Akun">
+                        <a href="" class="btn btn-primary btn-flat btn-xs aktif" data-toggle="modal" data-target="#myModalAktif" data-value="{{ $key->id }}"><i class="fa fa-check"></i></a>
+                      </span>
+                    @endif
+                    <span data-toggle="tooltip" title="Edit Akun">
+                      <a href="" class="btn btn-warning btn-flat btn-xs edit" data-toggle="modal" data-target="#myModalEdit" data-value="{{ $key->id }}"><i class="fa fa-edit"></i></a>
                     </span>
-                    <span data-toggle="tooltip" title="Hapus Data">
-                      <a href="" class="btn btn-danger btn-flat btn-xs nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="{{ $key->id }}"><i class="fa fa-remove"></i></a>
+                    <span data-toggle="tooltip" title="Delete Akun">
+                      <a href="" class="btn btn-danger btn-flat btn-xs hapus" data-toggle="modal" data-target="#myModalHapus" data-value="{{ $key->id }}"><i class="fa fa-remove"></i></a>
                     </span>
                   </td>
                 </tr>
+                <?php $no++; ?>
               @endforeach
             @endif
           </table>
         </div>
         <div class="box-footer">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>
+          <div class="pagination pagination-sm no-margin pull-right">
+            {{ $getakun->links() }}
+          </div>
         </div>
       </div>
     </div>
@@ -238,9 +317,44 @@
         var a = $(this).data('value');
         $('#setnonaktif').attr('href', "{{ url('/') }}/managementakun/nonaktif/"+a);
       });
+
       $('a.aktif').click(function(){
         var a = $(this).data('value');
         $('#setaktif').attr('href', "{{ url('/') }}/managementakun/aktif/"+a);
+      });
+
+      $('a.hapus').click(function(){
+        var a = $(this).data('value');
+        $('#sethapus').attr('href', "{{ url('/') }}/managementakun/delete/"+a);
+      });
+
+      $('a.edit').click(function(){
+        var a = $(this).data('value');
+        $.ajax({
+          url: "{{ url('/') }}/managementakun/bind/"+a,
+          dataType: 'json',
+          success: function(data){
+            //get
+            var id = data.id;
+            var level = data.level;
+            var id_skpd = data.id_skpd;
+            var email = data.email;
+
+            // set
+            $('#edit_id_user').attr('value', id);
+            $('#edit_email_skpd').attr('value', email);
+            if(level==0) {
+              $('#skpdedit').hide();
+              $('#leveladmin').attr('selected', true);
+              $('#editskpd0').attr('selected', true);
+            }
+            else if(level==2){
+              $('#skpdedit').show();
+              $('#levelskpd').attr('selected', true);
+              $('#editskpd'+id_skpd).attr('selected', true);
+            }
+          }
+        });
       });
 
       $('#skpdoption').hide();
@@ -248,8 +362,18 @@
         if($(this).val() == '2') {
           $('#skpdoption').show();
         }
-        else if($(this).val() == '0') {
+        else {
           $('#skpdoption').hide();
+        }
+      });
+
+      $('#skpdedit').hide();
+      $('#edit_level').change(function(){
+        if($(this).val() == '2') {
+          $('#skpdedit').show();
+        }
+        else {
+          $('#skpdedit').hide();
         }
       });
     });

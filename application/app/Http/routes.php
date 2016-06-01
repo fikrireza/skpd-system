@@ -96,6 +96,9 @@ Route::get('managementakun', ['as'=>'managementakun.index', 'uses'=>'ManagementA
 Route::post('managementakun/create', 'ManagementAkunController@create');
 Route::get('managementakun/nonaktif/{id}', 'ManagementAkunController@nonaktif');
 Route::get('managementakun/aktif/{id}', 'ManagementAkunController@aktif');
+Route::get('managementakun/delete/{id}', 'ManagementAkunController@delete');
+Route::get('managementakun/bind/{id}', 'ManagementAkunController@bind');
+Route::post('managementakun/update', 'ManagementAkunController@update');
 
 
 Route::get('tanggap', function(){
