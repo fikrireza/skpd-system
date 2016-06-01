@@ -102,15 +102,17 @@
             <i class="text-muted">gambar.jpg</i>
             <div class="pull-right">
               {{-- button dibawah cuma buat user skpd cuuuy, akses admin ga bisa --}}
-              <button class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#myModalVerifikasi" >Verifikasi Pengaduan</button>
-              <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
+              @if(Auth::user()->level=="2")
+                <button class="btn btn-warning btn-sm btn-flat" data-toggle="modal" data-target="#myModalVerifikasi" >Verifikasi Pengaduan</button>
+                <button class="btn btn-danger btn-sm btn-flat" data-toggle="modal" data-target="#myModal" >Mutasi Pengaduan Ini</button>
+              @endif
 
               {{-- button download, user skpd sama admin bisa pake --}}
               <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
             </div>
           </div><!-- /.attachment-block -->
 
-          {{-- kalo udah di tanggapi, maka muncul box dibawah nih. --}}
+          {{-- kalo udah di tanggapi, maka muncul box dibawah nih. dan box menanggapi bakal ilang --}}
           <div class='box-footer box-comments' style="border:1px solid #00a65a;">
             <div style="padding-bottom:5px;">
               <b>Tanggapan</b>
@@ -130,18 +132,20 @@
           </div>
 
           {{-- kalo belum ditanggapi, untuk user skpd bisa langsung nanggapi pake box dibawah cuy. admin gak bisa nanggapin ya. --}}
-          <div class="box-footer">
-            <form action="#" method="post">
-              <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
-              <!-- .img-push is used to add margin to elements next to floating images -->
-              <div class="img-push">
-                <textarea name="name" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
-                <div class="footer pull-right" style="padding-top:5px;">
-                  <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+          @if(Auth::user()->level=="2")
+            <div class="box-footer">
+              <form action="#" method="post">
+                <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
+                <!-- .img-push is used to add margin to elements next to floating images -->
+                <div class="img-push">
+                  <textarea name="name" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
+                  <div class="footer pull-right" style="padding-top:5px;">
+                    <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div><!-- /.box-footer -->
+              </form>
+            </div><!-- /.box-footer -->
+          @endif
 
 
         </div><!-- /.box-body -->
