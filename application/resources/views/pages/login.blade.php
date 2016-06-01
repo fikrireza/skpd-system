@@ -34,15 +34,19 @@
 
 
       <div class="login-box-body">
-        <p class="login-box-msg">Silahkan lakukan proses login</p>
-        <form action="{{ url('login') }}" method="post">
+        <p class="login-box-msg">Mohon set password anda.</p>
+        <form action="{{ route('setpassword') }}" method="post">
           {!! csrf_field() !!}
           <div class="form-group has-feedback">
-            <input name="email" type="text" class="form-control" placeholder="Email">
+            <input name="email" type="text" class="form-control" placeholder="Email" value="{{ $email }}" readonly="true">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
             <input name="password" type="password" class="form-control" placeholder="Password">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input name="kpassword" type="password" class="form-control" placeholder="Konfirmasi Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -50,13 +54,10 @@
 
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-success btn-block btn-flat">Log In</button>
+              <button type="submit" class="btn btn-success btn-block btn-flat">Set Password Saya</button>
             </div><!-- /.col -->
           </div>
         </form>
-
-
-        <a href="#">Lupa password? Klik disini</a><br>
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

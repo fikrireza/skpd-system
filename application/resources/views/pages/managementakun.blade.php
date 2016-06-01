@@ -211,7 +211,9 @@
               <th>Aksi</th>
             </tr>
             @if($getakun->isEmpty())
-
+              <tr>
+                <td colspan="7" class="text-muted" style="text-align:center;">Akun SKPD belum tersedia.</td>
+              </tr>
             @else
               <?php
                 $no;

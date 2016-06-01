@@ -10,6 +10,7 @@ use App\User;
 use Hash;
 use Mail;
 use DB;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -44,10 +45,34 @@ class RegisterController extends Controller
     public function verify($code)
     {
       $user = User::where('activation_code', $code)->first();
+      if($user->level=="1") //warga
+      {
+        $user->activation_code = null;
+        $user->activated = 1;
+        $user->save();
+
+        return redirect()->route('homepages')->with('message', "Akun anda telah aktif. Silahkan lakukan login.");
+      }
+      else // selain warga: administrator / user skpd
+      {
+        return view('pages.login')->with('email', $user->email);
+      }
+    }
+
+    public function setpassword(Request $request)
+    {
+      $user = User::where('email', $request->email)->first();
+      $user->password = Hash::make($request->password);
       $user->activation_code = null;
       $user->activated = 1;
       $user->save();
 
-      return redirect()->route('homepages')->with('message', "Akun anda telah aktif. Silahkan lakukan login.");
+      if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'activated'=>1]))
+      {
+        return redirect()->route('dashboard')->with('firsttimelogin', "Anda telah berhasil melakukan aktifasi akun. Selanjutnya, anda bisa menggunakan akun ini untuk login ke dalam sistem dan dapat menggunakan fitur yang telah disediakan.");
+      }
+      else {
+        return redirect()->route('homepages')->with('message', "Silahkan lakukan login.");
+      }
     }
 }

@@ -25,6 +25,16 @@
 @section('content')
 
   <div class="row">
+    <div class="col-md-12">
+      @if(Session::has('firsttimelogin'))
+        <div class="alert alert-success panjang">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Selamat Datang!</h4>
+          <p>{{ Session::get('firsttimelogin') }}</p>
+        </div>
+      @endif
+    </div>
+
     <div class="col-lg-4 col-md-4 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-teal">

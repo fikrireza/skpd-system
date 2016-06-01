@@ -16,7 +16,7 @@ class CustomAuthController extends Controller
     {
       session()->flush();
       Auth::logout();
-      return redirect('/login');
+      return redirect()->route('homepages');
     }
 
     public function loginprocess(Request $request)

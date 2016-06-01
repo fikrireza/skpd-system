@@ -48,18 +48,16 @@ Route::get('detail/semua-pengaduan-lainnya', function(){
   return view('front.detailpengaduanlainnya');
 });
 
-Route::get('/login', function () {
-  return view('pages/login');
-});
-
 Route::get('/loginskpd', function () {
   return view('pages/loginskpd');
 });
 
 
-Route::get('dashboard', function(){
+
+
+Route::get('dashboard', ['as'=>'dashboard', function(){
   return view('pages/dashboard');
-});
+}]);
 
 Route::get('homepages', ['as' => 'homepages', function(){
   return view('index');
@@ -99,7 +97,7 @@ Route::get('managementakun/aktif/{id}', 'ManagementAkunController@aktif');
 Route::get('managementakun/delete/{id}', 'ManagementAkunController@delete');
 Route::get('managementakun/bind/{id}', 'ManagementAkunController@bind');
 Route::post('managementakun/update', 'ManagementAkunController@update');
-
+Route::post('managementakun/setpassword', ['as'=>'setpassword', 'uses'=>'RegisterController@setpassword']);
 
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');

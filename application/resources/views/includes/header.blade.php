@@ -46,27 +46,33 @@
       <!-- User Account: style can be found in dropdown.less -->
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-          @if(Session::has('akses'))
-            <span class="hidden-xs">{{ Session::get('namalogin') }}</span>
-          @endif
+          <img src="{{ url('/') }}/images/userdefault.png" class="user-image" alt="User Image">
+          <span class="hidden-xs">
+            @if(Auth::user()->nama!="")
+              {{ Auth::user()->nama }}
+            @else
+              {{ Auth::user()->email }}
+            @endif
+          </span>
         </a>
         <ul class="dropdown-menu">
           <!-- User image -->
           <li class="user-header">
-            <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+            <img src="{{ url('/') }}/images/userdefault.png" class="img-circle" alt="User Image">
             <p>
-              @if(Session::has('akses'))
-                {{ Session::get('namalogin') }} -
-                @if(Session::get('akses')=="kesehatan")
-                  SKPD Kesehatan
-                @elseif(Session::get('akses')=="pendidikan")
-                  SKPD Pendidikan
-                @elseif(Session::get('akses')=="administrator")
-                  Administrator
-                @endif
+              @if(Auth::user()->nama!="")
+                {{ Auth::user()->nama }}
+              @else
+                {{ Auth::user()->email }}
               @endif
-              <small>Member since Nov. 2012</small>
+              <small>
+                Terdaftar tahun
+                <?php
+                  $tanggal = Auth::user()->created_at;
+                  $potong = substr($tanggal, 0, 4);
+                  echo $potong;
+                 ?>
+              </small>
             </p>
           </li>
 

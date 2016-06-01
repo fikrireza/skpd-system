@@ -5,16 +5,20 @@
       <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
     </div>
     <div class="pull-left info">
-      @if(Session::has('akses'))
-        <p>{{ Session::get('namalogin') }}</p>
-        @if(Session::get('akses')=="kesehatan")
-          <a href="#"><i class="fa fa-circle text-success"></i> SKPD Kesehatan</a>
-        @elseif(Session::get('akses')=="pendidikan")
-          <a href="#"><i class="fa fa-circle text-success"></i> SKPD Pendidikan</a>
-        @elseif(Session::get('akses')=="administrator")
-          <a href="#"><i class="fa fa-circle text-success"></i> Administrator</a>
+      <p>
+        @if(Auth::user()->nama!="")
+          {{ Auth::user()->nama }}
+        @else
+          {{ Auth::user()->email }}
         @endif
-      @endif
+      </p>
+      <a href="#"><i class="fa fa-circle text-success"></i>
+        @if(Auth::user()->level=="0")
+          {{ "Administrator" }}
+        @else
+          {{ "User SKPD" }}
+        @endif
+      </a>
     </div>
   </div>
   <!-- search form -->
