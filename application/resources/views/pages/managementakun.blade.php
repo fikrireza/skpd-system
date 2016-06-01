@@ -160,7 +160,7 @@
               <div class="col-md-14 {{ $errors->has('level') ? 'has-error' : '' }}">
                 <label class="control-label">Level</label>
                 <select class="form-control" name="level" id="leveluser">
-                  <option value="">-- Pilih Satu --</option>
+                  <option value="">-- Pilih --</option>
                   <option value="0">Administrator</option>
                   <option value="2">User SKPD</option>
                 </select>

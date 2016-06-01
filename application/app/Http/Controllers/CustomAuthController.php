@@ -30,10 +30,20 @@ class CustomAuthController extends Controller
         }
         else if($user->level==2)
         {
+          $set = User::find(Auth::user()->id);
+          $getcounter = $set->login_counter;
+          $set->login_counter = $getcounter+1;
+          $set->save();
+
           return redirect('dashboard');
         }
         else if($user->level==0)
         {
+          $set = User::find(Auth::user()->id);
+          $getcounter = $set->login_counter;
+          $set->login_counter = $getcounter+1;
+          $set->save();
+          
           return redirect('dashboard');
         }
       }

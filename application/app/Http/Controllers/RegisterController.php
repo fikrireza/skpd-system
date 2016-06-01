@@ -69,6 +69,11 @@ class RegisterController extends Controller
 
       if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'activated'=>1]))
       {
+        $set = User::find(Auth::user()->id);
+        $getcounter = $set->login_counter;
+        $set->login_counter = $getcounter+1;
+        $set->save();
+
         return redirect()->route('dashboard')->with('firsttimelogin', "Anda telah berhasil melakukan aktifasi akun. Selanjutnya, anda bisa menggunakan akun ini untuk login ke dalam sistem dan dapat menggunakan fitur yang telah disediakan.");
       }
       else {

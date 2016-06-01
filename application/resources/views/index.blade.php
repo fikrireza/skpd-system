@@ -49,16 +49,13 @@
                     </ol>
                     <div class="carousel-inner">
                       <div class="item">
-                        <img src="{{asset('images/slider2.png')}}" alt="First slide">
-                        {{-- <div class="carousel-caption">
-                          Judul : Cara Pengaduan
-                        </div> --}}
+                        <img src="{{asset('images/slider2.png')}}" width="900px" height="506px;" alt="First slide">
                       </div>
                       <div class="item active left">
-                        <img src="{{asset('images/slider3.png')}}" alt="Second slide">
+                        <img src="{{asset('images/slider3.png')}}" width="900px" height="506px;" alt="Second slide">
                       </div>
                       <div class="item next left">
-                        <img src="{{asset('images/tatacarapengaduan.png')}}" alt="Third slide">
+                        <img src="{{asset('images/tatacarapengaduan.png')}} "width="900px" height="500px;" alt="Third slide">
                       </div>
                     </div>
                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
