@@ -16,9 +16,7 @@ Route::get('/', function() {
   return view('index');
 });
 
-Route::get('beranda', function () {
-  return view('front.beranda');
-});
+Route::get('beranda', 'WargaController@index');
 
 Route::get('profil', function(){
   return view('front.profil');
@@ -66,7 +64,7 @@ Route::get('homepages', ['as' => 'homepages', function(){
 
 //authentication
 Route::post('login', 'CustomAuthController@loginprocess');
-Route::get('logout', 'CustomAuthController@logoutprocess');
+Route::get('logout', 'CustomAuthController@getlogout');
 
 Route::get('register', function(){
   return view('pages/register');
