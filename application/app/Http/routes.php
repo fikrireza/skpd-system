@@ -99,6 +99,9 @@ Route::get('managementakun/bind/{id}', 'ManagementAkunController@bind');
 Route::post('managementakun/update', 'ManagementAkunController@update');
 Route::post('managementakun/setpassword', ['as'=>'setpassword', 'uses'=>'RegisterController@setpassword']);
 
+Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
+
+
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
 });
@@ -119,9 +122,6 @@ Route::get('wargaprofile', function(){
   return view('pages.wargaprofile');
 });
 
-Route::get('userskpdprofile', function(){
-  return view('pages.userskpdprofile');
-});
 
 Route::get('datawarga', function(){
   return view('pages.datawarga');

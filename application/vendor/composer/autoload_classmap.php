@@ -9,6 +9,7 @@ return array(
     'AddColumnIdSkpdToTableUsers' => $baseDir . '/database/migrations/2016_05_31_103225_add_column_id_skpd_to_table_users.php',
     'AddFlagUserToUserTable' => $baseDir . '/database/migrations/2016_05_31_132728_add_flag_user_to_user_table.php',
     'AddLoginCounterToUserTable' => $baseDir . '/database/migrations/2016_05_31_133159_add_login_counter_to_user_table.php',
+    'AddProfileColumnsToUserTable' => $baseDir . '/database/migrations/2016_06_01_080013_add_profile_columns_to_user_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateTableMasterSkpd' => $baseDir . '/database/migrations/2016_05_31_031507_create_table_master_skpd.php',
     'CreateTableTopikPengaduan' => $baseDir . '/database/migrations/2016_05_31_071733_create_table_topik_pengaduan.php',
