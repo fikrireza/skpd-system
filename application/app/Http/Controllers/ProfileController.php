@@ -14,7 +14,20 @@ class ProfileController extends Controller
   {
     $id = Auth::user()->id;
     $getprofile = User::find($id);
+    // dd($getprofile);
+    return view('pages.userskpdprofile')->with('getprofile', $getprofile);
+  }
 
-    // return view('pages.userskpdprofile')->;
+  public function store(Request $request)
+  {
+    $set = User::find($request->id);
+    $set->nama = $request->nama;
+    $set->noktp = $request->noktp;
+    $set->notelp = $request->notelp;
+    $set->jeniskelamin = $request->jk;
+    $set->alamat = $request->alamat;
+    $set->save();
+
+    return redirect()->route('my.profile')->with('message', 'Berhasil mengubah profile.');
   }
 }

@@ -17,9 +17,28 @@
 @stop
 
 @section('content')
+  <!-- START DURATION TIME ALERT -->
+  <script>
+    window.setTimeout(function() {
+      $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove();
+      });
+    }, 2000);
+  </script>
+  <!-- END DURATION TIME ALERT -->
+
   <section class="content">
 
     <div class="row">
+      <div class="col-md-12">
+        @if(Session::has('message'))
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+            <p>{{ Session::get('message') }}</p>
+          </div>
+        @endif
+      </div>
       <div class="col-md-3">
 
         <!-- Profile Image -->
@@ -181,29 +200,31 @@
                   {{ 'active' }}
                 @endif
               tab-pane" id="settings">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="{{ route('profile.store') }}" method="post">
+                  {{ csrf_field() }}
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Nama</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" placeholder="Name">
+                      <input name="nama" type="text" class="form-control" placeholder="Name" value="{{ $getprofile->nama }}">
+                      <input name="id" type="hidden" class="form-control" placeholder="Name" value="{{ $getprofile->id }}">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">No. KTP</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" placeholder="No. KTP">
+                      <input name="noktp" type="text" class="form-control" placeholder="No. KTP" value="{{ $getprofile->noktp }}">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">No. Telepon</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" placeholder="No. Telp">
+                      <input name="notelp" type="text" class="form-control" placeholder="No. Telp" value="{{ $getprofile->notelp }}">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" placeholder="Email">
+                      <input readonly name="email" type="email" class="form-control" placeholder="Email" value="{{ $getprofile->email }}">
                     </div>
                   </div>
                   <div class="form-group">
@@ -211,13 +232,21 @@
                     <div class="col-sm-9" style="margin-left:30px; padding-left:0px; margin-top:5px; height:30px;">
                       <div class="form-group">
                         <label>
-                          <input type="radio" name="jk" class="minimal form-control">
+                          <input value="L" type="radio" name="jk" class="minimal form-control"
+                            @if($getprofile->jeniskelamin=="L")
+                              checked="checked"
+                            @endif
+                          >
                         </label>
                         &nbsp;
                         <label>Pria</label>
                         &nbsp;&nbsp;
                         <label>
-                          <input type="radio" name="jk" class="minimal form-control">
+                          <input value="P" type="radio" name="jk" class="minimal form-control"
+                            @if($getprofile->jeniskelamin=="P")
+                              checked="checked"
+                            @endif
+                          >
                         </label>
                         &nbsp;
                         <label>Wanita</label>
@@ -227,14 +256,14 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Alamat</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control" placeholder="Alamat" rows="5"></textarea>
+                      <textarea name="alamat" class="form-control" placeholder="Alamat" rows="5">{{$getprofile->alamat}}</textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div>
                         <label>
-                          <input type="checkbox" class="minimal">
+                          <input type="checkbox" class="minimal" name="jaminan">
                           &nbsp;
                           Saya menjamin data yang saya masukkan adalah benar.</a>
                         </label>
