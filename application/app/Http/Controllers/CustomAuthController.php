@@ -12,7 +12,7 @@ use Hash;
 
 class CustomAuthController extends Controller
 {
-    public function logoutprocess()
+    public function getlogout()
     {
       session()->flush();
       Auth::logout();
@@ -43,7 +43,7 @@ class CustomAuthController extends Controller
           $getcounter = $set->login_counter;
           $set->login_counter = $getcounter+1;
           $set->save();
-          
+
           return redirect('dashboard');
         }
       }
