@@ -26,6 +26,9 @@ class CustomAuthController extends Controller
         $user = Auth::user();
         if($user->level==1)
         {
+          if($user->jeniskelamin == null || $user->noktp == null || $user->alamat == null){
+            return redirect('profil')->with('messagefilled', "Harap Isi Profile Anda");
+          }
           return redirect('beranda');
         }
         else if($user->level==2)

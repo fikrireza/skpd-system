@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 use Illuminate\Http\RedirectResponse;
 
 class isWarga
@@ -17,7 +18,8 @@ class isWarga
    */
   public function handle($request, Closure $next)
   {
-    if(session('level') === 1)
+    // Seharusnya gak pake Auth, Nanti ganti cuii
+    if(Auth::user()->level == 1)
     {
       return $next($request);
     }

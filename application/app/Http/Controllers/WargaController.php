@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon;
-
+use Auth;
+use App\User;
 
 class WargaController extends Controller
 {
@@ -26,7 +27,9 @@ class WargaController extends Controller
    */
   public function index()
   {
-    return 'Tadaaaa';
+    $id = Auth::user()->id;
+    $profiles = User::find($id);
+    return view('front.beranda')->with('profiles', $profiles);
   }
 
   /**
