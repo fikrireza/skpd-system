@@ -91,18 +91,28 @@
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             @if(Auth::user()->level=="2")
-              <li id="tabHistoriTanggapan" class="active"><a href="#activity" data-toggle="tab">Histori Tanggapan</a></li>
+              <li id="tabHistoriTanggapan"
+                @if(!(Session::has('errors')) || Session::has('erroroldpass'))
+                  class="active"
+                @endif
+              ><a href="#activity" data-toggle="tab">Histori Tanggapan</a></li>
             @endif
 
             <li id="tabUbahProfile"
-              @if(Auth::user()->level=="0")
+              @if(Auth::user()->level=="0" && !(Session::has('errors') || Session::has('erroroldpass'))))
                 class="active"
               @endif
              ><a href="#settings" data-toggle="tab">Ubah Profil</a></li>
+
+            <li
+              @if(Session::has('errors') || Session::has('erroroldpass'))
+                class="active"
+              @endif
+            ><a href="#password" data-toggle="tab">Ubah Password</a></li>
           </ul>
           <div class="tab-content">
               <div class="
-                @if(Auth::user()->level=="2")
+                @if(Auth::user()->level=="2"  && !(Session::has('errors') || Session::has('erroroldpass')))
                   active
                 @endif
                tab-pane" id="activity">
@@ -196,7 +206,7 @@
               </div><!-- /.tab-pane -->
 
               <div class="
-                @if(Auth::user()->level=="0")
+                @if(Auth::user()->level=="0" && !(Session::has('errors') || Session::has('erroroldpass')))
                   {{ 'active' }}
                 @endif
               tab-pane" id="settings">
@@ -278,7 +288,74 @@
                 </form>
               </div><!-- /.tab-pane -->
 
+                <div class="
+                  @if(Session::has('errors') || Session::has('erroroldpass'))
+                    {{ 'active' }}
+                  @endif
+                tab-pane" id="password">
+                <form class="form-horizontal" action="{{ route('ganti.password') }}" method="post">
+                  {{ csrf_field() }}
+                  <div class="form-group {{ $errors->has('oldpass') ? 'has-error' : '' }} {{ Session::has('erroroldpass') ? 'has-error' : ''  }}">
+                    <label class="col-sm-2 control-label">Password Lama</label>
+                    <div class="col-sm-10">
+                      <input name="oldpass" type="password" class="form-control" placeholder="Password Lama"   @if(!$errors->has('oldpass'))
+                        value="{{ old('oldpass') }}"
+                      @endif
+                      >
+                      <input name="id" type="hidden" class="form-control" value="{{ $getprofile->id }}">
+                      @if($errors->has('oldpass'))
+                        <span class="help-block">
+                          <strong>{{ $errors->first('oldpass') }}
+                          </strong>
+                        </span>
+                      @endif
 
+                      @if(Session::has('erroroldpass'))
+                        <span class="help-block">
+                          <strong>{{ Session::get('erroroldpass') }}
+                          </strong>
+                        </span>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="form-group {{ $errors->has('newpass') ? 'has-error' : '' }} ">
+                    <label class="col-sm-2 control-label">Password Baru</label>
+                    <div class="col-sm-10">
+                      <input name="newpass" type="password" class="form-control" placeholder="Password Baru" @if(!$errors->has('newpass'))
+                        value="{{ old('newpass') }}"
+                      @endif
+                      >
+                      @if($errors->has('newpass'))
+                        <span class="help-block">
+                          <strong>{{ $errors->first('newpass') }}
+                          </strong>
+                        </span>
+                      @endif
+                    </div>
+                </div>
+                  <div class="form-group {{ $errors->has('newpass_confirmation') ? 'has-error' : '' }}">
+                    <label class="col-sm-2 control-label">Konfirmasi Password Baru</label>
+                    <div class="col-sm-10">
+                      <input name="newpass_confirmation" type="password" class="form-control" placeholder="Konfirmasi Password Baru"
+                      @if(!$errors->has('newpass_confirmation'))
+                        value="{{ old('newpass_confirmation') }}"
+                      @endif
+                      >
+                      @if($errors->has('newpass_confirmation'))
+                        <span class="help-block">
+                          <strong>{{ $errors->first('newpass_confirmation') }}
+                          </strong>
+                        </span>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-primary">Ganti Password Saya</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
           </div><!-- /.tab-content -->
         </div><!-- /.nav-tabs-custom -->
       </div><!-- /.col -->

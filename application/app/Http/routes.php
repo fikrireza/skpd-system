@@ -99,6 +99,7 @@ Route::post('managementakun/setpassword', ['as'=>'setpassword', 'uses'=>'Registe
 
 Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
 Route::post('my-profile', ['as'=>'profile.store', 'uses'=>'ProfileController@store']);
+Route::post('change-password', ['as'=>'ganti.password', 'uses'=>'ProfileController@changePassword']);
 
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
