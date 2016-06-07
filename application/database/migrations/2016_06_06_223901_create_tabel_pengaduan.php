@@ -31,12 +31,12 @@ class CreateTabelPengaduan extends Migration
         $table->timestamps();
       });
 
-      Schema::table('pengaduan', function(Blueprint $table)
-      {
-        $table->foreign('warga_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
-        $table->foreign('skpd_id')->references('id')->on('master_skpd')->onDelete('restrict')->onUpdate('restrict');
-        $table->foreign('topik_id')->references('id')->on('topik_pengaduan')->onDelete('restrict')->onUpdate('restrict'); //Topik atau Kategori
-      });
+      // Schema::table('pengaduan', function(Blueprint $table)
+      // {
+      //   $table->foreign('warga_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
+      //   $table->foreign('skpd_id')->references('id')->on('master_skpd')->onDelete('restrict')->onUpdate('restrict');
+      //   $table->foreign('topik_id')->references('id')->on('topik_pengaduan')->onDelete('restrict')->onUpdate('restrict'); //Topik atau Kategori
+      // });
     }
 
     /**
@@ -46,13 +46,13 @@ class CreateTabelPengaduan extends Migration
      */
     public function down()
     {
-      Schema::table('pengaduan', function(Blueprint $table)
-      {
-        $table->dropForeign('pengaduan_warga_id_foreign');
-        $table->dropForeign('pengaduan_topik_id_foreign');
-        $table->dropForeign('pengaduan_skpd_id_foreign');
-      });
-
-      Schema::drop('pengaduan');
+      // Schema::table('pengaduan', function(Blueprint $table)
+      // {
+      //   $table->dropForeign('pengaduan_warga_id_foreign');
+      //   $table->dropForeign('pengaduan_topik_id_foreign');
+      //   $table->dropForeign('pengaduan_skpd_id_foreign');
+      // });
+      //
+      // Schema::drop('pengaduan');
     }
 }
