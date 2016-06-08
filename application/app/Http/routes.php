@@ -80,6 +80,8 @@ Route::get('dataskpd/aktif/{id}', 'MasterSKPDController@aktif');
 Route::get('dataskpd/delete/{id}', 'MasterSKPDController@destroy');
 Route::post('dataskpd/update', 'MasterSKPDController@update');
 Route::get('dataskpd/bind/{id}', 'MasterSKPDController@bind');
+Route::get('listdataskpdbytopik', 'MasterSKPDController@getDataSKPD');
+Route::get('topikbyskpd/{id}', 'MasterSKPDController@detailSKPD');
 
 Route::get('topikpengaduan', ['as'=>'topikpengaduan.index', 'uses'=>'TopikAduanController@index']);
 Route::post('topikpengaduan', ['as'=>'topikpengaduan.store', 'uses'=>'TopikAduanController@store']);
@@ -99,6 +101,9 @@ Route::post('managementakun/setpassword', ['as'=>'setpassword', 'uses'=>'Registe
 Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
 Route::post('my-profile', ['as'=>'profile.store', 'uses'=>'ProfileController@store']);
 Route::post('change-password', ['as'=>'ganti.password', 'uses'=>'ProfileController@changePassword']);
+
+
+
 
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
@@ -129,17 +134,11 @@ Route::get('datawarga', function(){
 Route::resource('datawarga', 'DataWargaController');
 
 
-Route::get('listdataskpdbytopik', function(){
-  return view('pages.listdataskpdbytopik');
-});
-
 Route::get('listdatapengaduanbyskpd', function(){
   return view('pages.listdatapengaduanbyskpd');
 });
 
-Route::get('topikbyskpd', function(){
-  return view('pages.topikbyskpd');
-});
+
 
 Route::get('historipengaduan', function(){
   return view('pages.historipengaduan');

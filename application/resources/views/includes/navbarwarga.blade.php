@@ -65,7 +65,7 @@
                     <a href="{{ url('profil') }}" class="btn btn-default btn-flat">Profil</a>
                   </div>
                   <div class="pull-right">
-                    <a href="{{url('/')}}" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Sign out</a>
                   </div>
                 </li>
               </ul>

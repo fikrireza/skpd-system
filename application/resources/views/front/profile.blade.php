@@ -40,7 +40,7 @@
                         <h5 class="widget-user-desc" align="center">Bergabung {{ \Carbon\Carbon::parse($profiles->created_at)->format('d-M-y')}}</h5>
                       </div>
                       <div class="box-footer">
-                        <input type="file" name="url_photo" id="url_photo"></input>
+                        <input type="file" name="url_photo" id="url_photo" accept=".jpg, .bmp, .png"></input>
                       </div><!-- /.box-footer -->
                     </div>
                     <div class="col-md-9">

@@ -93,45 +93,47 @@
        <div class="box-body">
          <dl class="dl-horizontal">
            <dt>Kode SKPD : </dt>
-            <dd>SKPD001</dd>
+            <dd>{{ $getskpd[0]->kode_skpd }}</dd>
            <dt>Nama SKPD : </dt>
-            <dd>SKPD Kesehatan</dd>
+            <dd>{{ $getskpd[0]->nama_skpd }}</dd>
            <dt>Status : </dt>
-            <dd><span class="pull-center badge  bg-green">Aktif</span></dd>
+           @if($getskpd[0]->flag_skpd=="1")
+             <dd><span class="pull-center badge  bg-green">Aktif</span></dd>
+           @else
+             <dd><span class="pull-center badge  bg-grey">Tidak Aktif</span></dd>
+           @endif
          </dl>
-         <div class="box-body no-padding">
+        <div class="box-body no-padding">
          <table class="table table-hover">
            <tr class="bg-yellow">
-             <th style="width:10px;">No</th>
+             <th>No</th>
              <th>Kode Topik Pengaduan</th>
              <th>Nama Topik Pengaduan</th>
+             <th>Jumlah Pengaduan</th>
            </tr>
-           <tr>
-             <td>1.</td>
-             <td>TPP001</td>
-             <td>TOPIK Kesehatan Masyarakat</td>
-           </tr>
-           <tr>
-             <td>2.</td>
-             <td>TPP002</td>
-             <td>TOPIK Kesehatan Pemerintah</td>
-           </tr>
-           <tr>
-             <td>3.</td>
-             <td>TPP003</td>
-             <td>TOPIK Kesehatan Warga</td>
-           </tr>
+             <?php
+               $no;
+               if($gettopik->currentPage()==1)
+                 $no = 1;
+               else
+                 $no = (($gettopik->currentPage() - 1) * $gettopik->perPage())+1;
+             ?>
+             @foreach($gettopik as $key)
+               <tr>
+                 <td>{{ $no }}.</td>
+                 <td>{{ $key->kode_topik }}</td>
+                 <td>{{ $key->nama_topik }}</td>
+                 <td>
+                   <span class="pull-center badge  bg-maroon">{{ $key->jumlahpengaduan }}</span>
+                 </td>
+               </tr>
+               <?php $no++; ?>
+             @endforeach
          </table>
-       </div>
-       <div class="box-footer">
-         <ul class="pagination pagination-sm no-margin pull-right">
-           <li><a href="#">&laquo;</a></li>
-           <li><a href="#">1</a></li>
-           <li><a href="#">2</a></li>
-           <li><a href="#">3</a></li>
-           <li><a href="#">&raquo;</a></li>
-         </ul>
-       </div>
+         <div class="pull-right">
+           {{ $gettopik->links() }}
+         </div>
+        </div>
        </div>
        <!-- /.box-header -->
        <!-- /.box-body -->
