@@ -36,17 +36,27 @@
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
-                <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                @if($profiles->url_photo == null)
+                  <img class="user-image" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                @else
+                  <img class="user-image" src="{{ asset('/images/'.$profiles->url_photo) }}" alt="{{$profiles->nama}}">
+                @endif
+                {{-- <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image"> --}}
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Dwi Handika Putro</span>
+                <span class="hidden-xs">{{ $profiles->nama}}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                  <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                  @if($profiles->url_photo == null)
+                    <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                  @else
+                    <img class="img-circle" src="{{ asset('/images/'.$profiles->url_photo) }}" alt="{{$profiles->nama}}">
+                  @endif
+                  {{-- <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image"> --}}
                   <p>
-                    Dwi Handika Putro
-                    <small>Bergabung Sejak Nov. 2015</small>
+                    {{ $profiles->nama}}
+                    <small>Bergabung {{ \Carbon\Carbon::parse($profiles->created_at)->format('d-M-y')}}</small>
                   </p>
                 </li>
                 <!-- Menu Footer-->

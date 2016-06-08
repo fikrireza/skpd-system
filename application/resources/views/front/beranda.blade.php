@@ -14,63 +14,28 @@
       <div class="content-wrapper custombackground">
         <div class="container">
           <!-- Main content -->
+          <script>
+            window.setTimeout(function() {
+              $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+                  $(this).remove();
+              });
+            }, 2000);
+          </script>
+
           <section class="content">
             <div class="row">
-              <div class="col-md-9">
-                <div class="box box-primary">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Ajukan Keluhan Anda</h3>
-                </div><!-- /.box-header -->
-                <!-- form start -->
-                <form role="form">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label>Kategori Pelaporan</label>
-                      <select class="form-control">
-                        <option>-- Pilih Kategori --</option>
-                        <option>Kesehatan</option>
-                        <option>Perhubungan</option>
-                        <option>Kependudukan</option>
-                        <option>Pekerjaan Umum</option>
-                        <option>Ketenagakerjaan</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Tuliskan Judul Laporan Anda</label>
-                      <input type="text" name="name" class="form-control" placeholder="Judul Pengaduan">
-                    </div>
-                    <div class="form-group">
-                      <label>Tuliskan Laporan Anda</label>
-                      <textarea class="form-control" rows="5" placeholder="Apa Laporan Anda...?"></textarea>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label for="exampleInputFile">Dokumen Pendukung</label>
-                          <input type="file" id="exampleInputFile">
-                          <p class="help-block">Dokumen yang akan dilampirkan</p>
-                        </div>
-                      </div><!-- /.col-lg-6 -->
-                      <div class="col-lg-6">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Anonim <sub><font color="red">Identitas Anda Tidak Akan Ditampilkan</font></sub>
-                          </label>
-                        </div>
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Laporan Rahasia <sub><font color="red">Laporan Anda Akan Kami Rahasiakan Terhadap Publik </font></sub>
-                          </label>
-                        </div>
-                      </div><!-- /.col-lg-6 -->
-                    </div>
-                  </div><!-- /.box-body -->
-
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="col-md-12">
+                @if(Session::has('ubahprofile'))
+                  <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+                    <p>{{ Session::get('ubahprofile') }}</p>
                   </div>
-                </form>
+                @endif
               </div>
+              <div class="col-md-9">
+                @include('front.form')
+
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#kesehatan" data-toggle="tab" aria-expanded="true">Kesehatan</a></li>
@@ -274,8 +239,12 @@
               <!-- About Me Box -->
               <div class="box box-primary">
                 <div class="box-body box-profile" style="height:225px;">
-                  <img class="profile-user-img img-responsive img-circle" src="{{asset('/dist/img/user2-160x160.jpg')}}" alt="User profile picture">
-                  <h3 class="profile-username text-center">Dwi Handika Putro</h3>
+                  @if($profiles->url_photo == null)
+                    <img class="profile-user-img img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                  @else
+                    <img class="profile-user-img img-responsive img-circle" src="{{ asset('/images', $profiles->url_photo) }}" alt="{{$profiles->nama}}">
+                  @endif
+                  <h3 class="profile-username text-center">{{ $profiles->nama}}</h3>
                   <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
                       <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">10</span>
@@ -288,28 +257,28 @@
                 <div class="box-body" style="margin-top:10px;">
                   <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
                   <p class="text-muted">
-                    32760621129010001
+                    {{ $profiles->noktp}}
                   </p>
 
                   <hr style="margin-top:2px;margin-bottom:8px;">
 
                   <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
-                  <p class="text-muted">081289087875</p>
+                  <p class="text-muted">{{ $profiles->notelp}}</p>
 
                   <hr style="margin-top:2px;margin-bottom:8px;">
 
                   <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
-                  <p class="text-muted">alexamder@gmail.com</p>
+                  <p class="text-muted">{{ $profiles->email}}</p>
 
                   <hr style="margin-top:2px;margin-bottom:8px;">
 
                   <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-                  <p class="text-muted">Pria</p>
+                  <p class="text-muted">{{ $profiles->jeniskelamin}}</p>
 
                   <hr style="margin-top:2px;margin-bottom:8px;">
 
                   <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                  <p class="text-muted">{{ $profiles->alamat}}</p>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
               <div class="box box-primary">

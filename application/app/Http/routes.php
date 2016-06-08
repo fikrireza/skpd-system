@@ -16,11 +16,10 @@ Route::get('/', function() {
   return view('index');
 });
 
-Route::get('beranda', 'WargaController@index');
+Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
+Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
 
-Route::get('profil', function(){
-  return view('front.profil');
-});
+Route::resource('profil', 'ProfileWargaController');
 
 Route::get('laporan', function(){
   return view('front.laporan');
