@@ -125,6 +125,7 @@ Route::get('wargaprofile', function(){
 Route::get('datawarga', function(){
   return view('pages.datawarga');
 });
+Route::resource('datawarga', 'DataWargaController');
 
 
 Route::get('listdataskpdbytopik', function(){
