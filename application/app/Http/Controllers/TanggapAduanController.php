@@ -45,7 +45,6 @@ class TanggapAduanController extends Controller
 
     public function edit($id)
     {
-
         $getdatapengaduan = LihatPengaduanModel::paginate(10);
         $data['getdatapengaduan'] = $getdatapengaduan;
         $binddatapengaduan = LihatPengaduanModel::find($id);
