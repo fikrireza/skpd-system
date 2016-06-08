@@ -107,6 +107,7 @@ Route::get('listdataskpdbytopik', 'MasterSKPDController@getDataSKPD');
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
 });
+Route::resource('tanggap', 'TanggapAduanController');
 
 Route::get('detailpengaduan', function(){
   return view('pages.detailpengaduan');

@@ -84,86 +84,35 @@
               <th>Tanggal</th>
               <th>Aksi</th>
             </tr>
-            <tr>
-              <td>1.</td>
-              <td>Joni Sangsoko</td>
-              <td>BPJS Kesehatan</td>
-              <td>21 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td>Charlie Sumanto</td>
-              <td>Pelayanan Kesehatan</td>
-              <td>22 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>Amanda Satyarini</td>
-              <td>Pelayanan Obat</td>
-              <td>21 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td>Dana Suseno</td>
-              <td>Pelayanan Administrasi</td>
-              <td>20 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>5.</td>
-              <td>Joni Sangsoko</td>
-              <td>BPJS Kesehatan</td>
-              <td>21 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>6.</td>
-              <td>Charlie Sumanto</td>
-              <td>Pelayanan Kesehatan</td>
-              <td>22 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>7.</td>
-              <td>Amanda Satyarini</td>
-              <td>Pelayanan Obat</td>
-              <td>21 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>8.</td>
-              <td>Dana Suseno</td>
-              <td>Pelayanan Administrasi</td>
-              <td>20 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>9.</td>
-              <td>Amanda Satyarini</td>
-              <td>BPJS Kesehatan</td>
-              <td>21 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
-            <tr>
-              <td>10.</td>
-              <td>Dana Suseno</td>
-              <td>Pelayanan Kesehatan</td>
-              <td>20 April 2016</td>
-              <td><a class="btn btn-xs btn-success">Lihat</a></td>
-            </tr>
+            <?php
+              $no;
+              if($getdatapengaduan->currentPage()==1)
+                $no = 1;
+              else
+                $no = (($getdatapengaduan->currentPage() - 1) * $getdatapengaduan->perPage())+1;
+            ?>
+            @if($getdatapengaduan->isEmpty())
+              <tr>
+                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
+              </tr>
+            @else
+              @foreach($getdatapengaduan as $key)
+                <tr>
+                  <td>{{ $no }}</td>
+                  <td>{{ $key->user->nama }}</td>
+                  <td>{{ $key->topik->nama_topik }}</td>
+                  <td>{{ $key->created_at }}</td>
+                  <td><a class="btn btn-xs btn-success">Lihat</a></td>
+                </tr>
+                <?php $no++; ?>
+              @endforeach
+            @endif
           </table>
         </div>
         <div class="box-footer">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>
+          <div class="pagination pagination-sm no-margin pull-right">
+            {{ $getdatapengaduan->links() }}
+          </div>
         </div>
       </div>
     </div>
