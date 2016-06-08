@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon;
 use Auth;
+use DB;
 use App\User;
 
 class WargaController extends Controller
@@ -27,9 +28,13 @@ class WargaController extends Controller
    */
   public function index()
   {
+    // Retrieve User From Auth
     $id = Auth::user()->id;
     $profiles = User::find($id);
-    return view('front.beranda')->with('profiles', $profiles);
+
+    $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+
+    return view('front.beranda', compact('profiles', 'topiks'));//)->with('profiles', 'topik', $profiles, $topik);
   }
 
   /**
