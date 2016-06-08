@@ -103,6 +103,7 @@ Route::post('change-password', ['as'=>'ganti.password', 'uses'=>'ProfileControll
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
 });
+Route::resource('tanggap', 'TanggapAduanController');
 
 Route::get('detailpengaduan', function(){
   return view('pages.detailpengaduan');

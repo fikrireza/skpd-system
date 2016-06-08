@@ -50,7 +50,7 @@
                   <td><span class="badge bg-maroon">{{ $key->login_counter }}</span></td>
                   <td>
                   @if($key->flag_user==0)
-                    <span class="label bg-danger"><i class="fa fa-check"></i> &nbsp;Tidak Aktif</span>
+                    <span class="label bg-red"><i class="fa fa-remove"></i> &nbsp;Tidak Aktif</span>
                   @elseif($key->flag_user==1)
                     <span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span>
                   @endif</td>
