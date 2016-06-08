@@ -14,9 +14,8 @@ class TanggapAduanController extends Controller
     {
 
       $getdatapengaduan = LihatPengaduanModel::paginate(10);
-      // dd($getdatapengaduan);
-      // return view('pages.tanggapipengaduan', compact('getdatapengaduan', 'gettopik'));
-      return view('pages/tanggapipengaduan')->with('getdatapengaduan', $getdatapengaduan);
+      $data['getdatapengaduan'] = $getdatapengaduan;
+      return view('pages/tanggapipengaduan')->with('data', $data);
     }
 
     public function store(Request $request)
@@ -42,6 +41,16 @@ class TanggapAduanController extends Controller
     {
       $get = TopikAduan::find($id);
       return $get;
+    }
+
+    public function edit($id)
+    {
+        $getdatapengaduan = LihatPengaduanModel::paginate(10);
+        $data['getdatapengaduan'] = $getdatapengaduan;
+        $binddatapengaduan = LihatPengaduanModel::find($id);
+        $data['binddatapengaduan'] = $binddatapengaduan;
+        // dd($data);
+        return view('pages/tanggapipengaduan')->with('data', $data);
     }
 
     public function update(Request $request)
