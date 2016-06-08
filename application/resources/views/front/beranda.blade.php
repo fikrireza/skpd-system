@@ -33,6 +33,16 @@
                   </div>
               </div>
               @endif
+              @if(Session::has('pengaduan'))
+              <div class="col-md-12">
+                  <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+                    <p>{{ Session::get('pengaduan') }}</p>
+                  </div>
+              </div>
+              @endif
+
               <div class="col-md-9">
                 @include('front.form')
 

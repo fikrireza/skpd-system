@@ -21,6 +21,8 @@ Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']
 
 Route::resource('profil', 'ProfileWargaController');
 
+Route::post('pengaduan', ['as'=>'pengaduan', 'uses'=>'WargaController@postPengaduan']);
+
 Route::get('laporan', function(){
   return view('front.laporan');
 });

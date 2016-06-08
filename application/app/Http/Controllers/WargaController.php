@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PengaduanRequest;
 use Carbon;
 use Auth;
 use DB;
 use App\User;
+use App\Models\Pengaduan;
+use App\Models\DokumenPengaduan;
 
 class WargaController extends Controller
 {
@@ -53,54 +55,61 @@ class WargaController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
-  {
-      //
-  }
+  // public function store(Request $request)
+  // {
+  //     //
+  // }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
+  public function postPengaduan(PengaduanRequest $request)
   {
-      //
-  }
+    if($request->input('anonim') == null){
+      $anonim = 0;
+    }else{
+      $anonim = 1;
+    }
+    if($request->input('rahasia') == null){
+      $rahasia = 0;
+    }else{
+      $rahasia = 1;
+    }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit($id)
-  {
-      //
-  }
+    if($request->hasFile('dokumen'))
+    {
+      DB::transaction(function() use($request, $anonim, $rahasia)
+      {
+        $pengaduan = Pengaduan::create([
+                    'topik_id'  => $request->input('topik'),
+                    'judul_pengaduan'   => $request->input('judul'),
+                    'isi_pengaduan'  => $request->input('isi'),
+                    'warga_id'    => $request->input('warga_id'),
+                    'flag_rahasia'   => $rahasia,
+                    'flag_anonim'       => $anonim,
+        ]);
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request)
-  {
-      //
-  }
+        foreach ($request->file('dokumen') as $file)
+        {
+          $photo_name = time().'-'.$file->getClientOriginalName();
+          $file->move(base_path().'\..\documents', $photo_name);
+          $dokPengaduan = DokumenPengaduan::create([
+                      'url_dokumen'   => $photo_name,
+                      'pengaduan_id'  => $pengaduan->id,
+          ]);
+        }
+      });
+    }
+    else
+    {
+      $pengaduan = Pengaduan::create([
+                  'topik_id'  => $request->input('topik'),
+                  'judul_pengaduan'   => $request->input('judul'),
+                  'isi_pengaduan'  => $request->input('isi'),
+                  'warga_id'    => $request->input('warga_id'),
+                  'flag_rahasia'   => $rahasia,
+                  'flag_anonim'       => $anonim,
+      ]);
+    }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-    //
-  }
+    return redirect()->route('beranda')->with('pengaduan', 'Pengaduan Anda Berhasil Terkirim, dan Akan Segera Kami Proses');
 
+  }
 }
