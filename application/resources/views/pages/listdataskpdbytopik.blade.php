@@ -29,123 +29,32 @@
                 <th>No</th>
                 <th>Kode SKPD</th>
                 <th>Nama SKPD</th>
-                <th>Jumlah Pengaduan</th>
-                <th>Jumlah Aduan Terproses</th>
+                <th>Jumlah Topik Aduan</th>
                 <th>Status SKPD</th>
                 <th>Aksi</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1.</td>
-                <td>SKPD001</td>
-                <td>SPKD Kesehatan</td>
-                <td><span class="pull-center badge bg-maroon">30</span></td>
-                <td><span class="pull-center badge bg-red">20 %</span></td>
-                <td><span class="pull-center badge bg-green">Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>2.</td>
-                <td>SKPD002</td>
-                <td>SPKD Pendidikan</td>
-                <td><span class="pull-center badge bg-maroon">6</span></td>
-                <td><span class="pull-center badge bg-red">5 %</span></td>
-                <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>SKPD003</td>
-                <td>SPKD Perhubungan</td>
-                <td><span class="pull-center badge bg-maroon">34</span></td>
-                <td><span class="pull-center badge bg-yellow">45 %</span></td>
-                <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>SKPD004</td>
-                <td>SPKD Keuangan</td>
-                <td><span class="pull-center badge bg-maroon">42</span></td>
-                <td><span class="pull-center badge bg-blue">67 %</span></td>
-                <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>5.</td>
-                <td>SKPD005</td>
-                <td>SPKD Perdagangan</td>
-                <td><span class="pull-center badge bg-maroon">21</span></td>
-                <td><span class="pull-center badge bg-yellow">34 %</span></td>
-                <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>6.</td>
-                <td>SKPD006</td>
-                <td>SPKD Pertanian</td>
-                <td><span class="pull-center badge bg-maroon">89</span></td>
-                <td><span class="pull-center badge bg-yellow">34 %</span></td>
-                <td><span class="pull-center badge bg-green">Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>7.</td>
-                <td>SKPD007</td>
-                <td>SPKD Perindustrian</td>
-                <td><span class="pull-center badge bg-maroon">45</span></td>
-                <td><span class="pull-center badge bg-yellow">23 %</span></td>
-                <td><span class="pull-center badge bg-green">Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>8.</td>
-                <td>SKPD008</td>
-                <td>SPKD Sosial</td>
-                <td><span class="pull-center badge bg-maroon">4</span></td>
-                <td><span class="pull-center badge bg-green">98 %</span></td>
-                <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>9.</td>
-                <td>SKPD009</td>
-                <td>SPKD Kebudayaan</td>
-                <td><span class="pull-center badge bg-maroon">48</span></td>
-                <td><span class="pull-center badge bg-red">18 %</span></td>
-                <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
-              <tr>
-                <td>10.</td>
-                <td>SKPD0010</td>
-                <td>SPKD Teknologi</td>
-                <td><span class="pull-center badge bg-maroon">53</span></td>
-                <td><span class="pull-center badge bg-blue">50 %</span</td>
-                <td><span class="pull-center badge">Tidak Aktif</span></td>
-                <td>
-                  <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
-                </td>
-              </tr>
+              <?php $no = 1; ?>
+              @foreach($getskpd as $key)
+                <tr>
+                  <td>{{ $no }}.</td>
+                  <td>{{ $key->kode_skpd }}</td>
+                  <td>{{ $key->nama_skpd }}</td>
+                  <td><span class="pull-center badge bg-maroon">{{ $key->jumlahpengaduan }}</span></td>
+                  <td>
+                    @if($key->flag_skpd=="1")
+                      <span class="pull-center badge bg-green">Aktif</span>
+                    @else
+                      <span class="pull-center badge bg-grey">Tidak Aktif</span>
+                    @endif
+                  </td>
+                  <td>
+                    <a href="{{url('topikbyskpd')}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
+                  </td>
+                </tr>
+                <?php $no++; ?>
+              @endforeach
             </tbody>
           </table>
         </div><!-- /.box-body -->

@@ -100,6 +100,10 @@ Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']
 Route::post('my-profile', ['as'=>'profile.store', 'uses'=>'ProfileController@store']);
 Route::post('change-password', ['as'=>'ganti.password', 'uses'=>'ProfileController@changePassword']);
 
+Route::get('listdataskpdbytopik', 'MasterSKPDController@getDataSKPD');
+
+
+
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
 });
@@ -126,10 +130,6 @@ Route::get('datawarga', function(){
   return view('pages.datawarga');
 });
 
-
-Route::get('listdataskpdbytopik', function(){
-  return view('pages.listdataskpdbytopik');
-});
 
 Route::get('listdatapengaduanbyskpd', function(){
   return view('pages.listdatapengaduanbyskpd');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\MasterSKPD;
+use DB;
 
 class MasterSKPDController extends Controller
 {
@@ -124,6 +125,18 @@ class MasterSKPDController extends Controller
     {
       $get = MasterSKPD::find($id);
       return $get;
+    }
+
+    public function getDataSKPD()
+    {
+      $get = DB::table('master_skpd')
+                  ->leftJoin('topik_pengaduan', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                  ->leftJoin('pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                  ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd', DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd')
+                  ->groupBy('master_skpd.id')
+                  ->get();
+
+      return view('pages.listdataskpdbytopik')->with('getskpd', $get);
     }
 
 }
