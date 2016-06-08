@@ -149,7 +149,20 @@ class MasterSKPDController extends Controller
                     ->where('topik_pengaduan.id_skpd', $id)
                     ->groupBy('topik_pengaduan.id')
                     ->paginate(5);
-      return view('pages/topikbyskpd', compact('getskpd', 'gettopik'));
+      $getbelumtanggap = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                      ->select(DB::raw('count(pengaduan.judul_pengaduan) as belumtanggap'))
+                      ->where([['pengaduan.flag_tanggap', '=', '0'], ['master_skpd.id', '=', $id]])
+                      ->first();
+      $getsudahtanggap = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                      ->select(DB::raw('count(pengaduan.judul_pengaduan) as sudahtanggap'))
+                      ->where([['pengaduan.flag_tanggap', '=', '1'], ['master_skpd.id', '=', $id]])
+                      ->first();
+                      // dd($getsudahtanggap);
+      return view('pages/topikbyskpd', compact('getskpd', 'gettopik', 'getbelumtanggap', 'getsudahtanggap'));
     }
 
 }

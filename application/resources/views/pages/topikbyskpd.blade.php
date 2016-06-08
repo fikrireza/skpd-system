@@ -111,24 +111,31 @@
              <th>Nama Topik Pengaduan</th>
              <th>Jumlah Pengaduan</th>
            </tr>
-             <?php
-               $no;
-               if($gettopik->currentPage()==1)
-                 $no = 1;
-               else
-                 $no = (($gettopik->currentPage() - 1) * $gettopik->perPage())+1;
-             ?>
-             @foreach($gettopik as $key)
+
+             @if($gettopik->isEmpty())
                <tr>
-                 <td>{{ $no }}.</td>
-                 <td>{{ $key->kode_topik }}</td>
-                 <td>{{ $key->nama_topik }}</td>
-                 <td>
-                   <span class="pull-center badge  bg-maroon">{{ $key->jumlahpengaduan }}</span>
-                 </td>
+                 <td colspan="4" class="text-muted" style="text-align:center;"><i>Data topik aduan tidak tersedia.</i></td>
                </tr>
-               <?php $no++; ?>
-             @endforeach
+             @else
+               <?php
+                 $no;
+                 if($gettopik->currentPage()==1)
+                   $no = 1;
+                 else
+                   $no = (($gettopik->currentPage() - 1) * $gettopik->perPage())+1;
+               ?>
+               @foreach($gettopik as $key)
+                 <tr>
+                   <td>{{ $no }}.</td>
+                   <td>{{ $key->kode_topik }}</td>
+                   <td>{{ $key->nama_topik }}</td>
+                   <td>
+                     <span class="pull-center badge  bg-maroon">{{ $key->jumlahpengaduan }}</span>
+                   </td>
+                 </tr>
+                 <?php $no++; ?>
+               @endforeach
+             @endif
          </table>
          <div class="pull-right">
            {{ $gettopik->links() }}
@@ -143,23 +150,27 @@
    <div class="col-md-4">
      <div class="small-box bg-red">
        <div class="inner">
-         <h3>10</h3>
+         <h3>{{ $getbelumtanggap->belumtanggap }}</h3>
          <p>Belum Ditanggapi</p>
        </div>
        <div class="icon">
          <i class="fa fa-meh-o"></i>
        </div>
-       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+       <a class="small-box-footer">
+         <i>Terdapat {{ $getbelumtanggap->belumtanggap }} pengaduan belum di tanggapi.</i>
+       </a>
      </div>
      <div class="small-box bg-aqua">
        <div class="inner">
-         <h3>20</h3>
+         <h3>{{ $getsudahtanggap->sudahtanggap }}</h3>
          <p>Sudah Ditanggapi</p>
        </div>
        <div class="icon">
          <i class="fa fa-smile-o"></i>
        </div>
-       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+       <a class="small-box-footer">
+         <i>Terdapat {{ $getsudahtanggap->sudahtanggap }} pengaduan sudah di tanggapi.</i>
+       </a>
      </div>
    </div>
  </div>
