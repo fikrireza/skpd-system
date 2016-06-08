@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\MasterSKPD;
 use DB;
+use App\TopikAduan;
 
 class MasterSKPDController extends Controller
 {
@@ -132,11 +133,23 @@ class MasterSKPDController extends Controller
       $get = DB::table('master_skpd')
                   ->leftJoin('topik_pengaduan', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
                   ->leftJoin('pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
-                  ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd', DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd')
+                  ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd', DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id')
                   ->groupBy('master_skpd.id')
                   ->get();
 
       return view('pages.listdataskpdbytopik')->with('getskpd', $get);
+    }
+
+    public function detailSKPD($id)
+    {
+      $getskpd = MasterSKPD::where('id', $id)->get();
+      $gettopik = DB::table('topik_pengaduan')
+                    ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+                    ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+                    ->where('topik_pengaduan.id_skpd', $id)
+                    ->groupBy('topik_pengaduan.id')
+                    ->paginate(5);
+      return view('pages/topikbyskpd', compact('getskpd', 'gettopik'));
     }
 
 }
