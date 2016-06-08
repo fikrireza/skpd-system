@@ -17,15 +17,33 @@
 
 @section('content')
   <div class="row">
-
+  {!! csrf_field() !!}
     <div class="col-md-5">
       <!-- Horizontal Form -->
       <div class="box box-widget">
         <div class='box-header with-border'>
           <div class='user-block'>
             <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
-            <span class='username'><a href="#">Bambang Pamungkis</a></span>
-            <span class='description'>24 Mei 2016 | BPJS Kesehatan</span>
+            <span class='username'><a href="#">
+              @if(isset($data['binddatapengaduan']))
+                {{$data['binddatapengaduan']->user->nama}}
+              @else
+                Nama Dummy
+              @endif
+            </a></span>
+            <span class='description'>
+              @if(isset($data['binddatapengaduan']))
+                {{$data['binddatapengaduan']->created_at}}
+              @else
+                Tanggal Dummy
+              @endif
+              |
+              @if(isset($data['binddatapengaduan']))
+                {{$data['binddatapengaduan']->topik->nama_topik}}
+              @else
+                Topik Dummy
+              @endif
+           </span>
           </div><!-- /.user-block -->
           <div class='box-tools'>
             <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
@@ -34,19 +52,28 @@
         </div><!-- /.box-header -->
         <div class='box-body'>
           <!-- post text -->
-          <p>Yth. SKPD terkait,</p>
-          <p>Mohon bantuannya untuk menghubungi bagian pelayanan BPJS pada rumah sakit contoh. Kartu kami dikatakan tidak dapat digunakan pada rumah sakit tersebut.</p>
-          <p>Mohon ditindaklanjuti, terima kasih.</p>
-
-
-          <!-- Attachment -->
+          <p>
+            @if(isset($data['binddatapengaduan']))
+              {{$data['binddatapengaduan']->judul_pengaduan}}
+            @else
+              Judul Dummy
+            @endif
+          </p>
+          <p style="text-align:justify">
+            @if(isset($data['binddatapengaduan']))
+              {{$data['binddatapengaduan']->isi_pengaduan}}
+            @else
+              Isi Dummy
+            @endif
+          </p>
+          {{-- <!-- Attachment -->
           <div class="attachment-block clearfix">
             <b>Data Pendukung</b><br>
             <i class="text-muted">gambar.jpg</i>
             <div class="pull-right">
               <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
             </div>
-          </div><!-- /.attachment-block -->
+          </div><!-- /.attachment-block --> --}}
 
         </div><!-- /.box-body -->
         <div class="box-footer">
@@ -86,23 +113,28 @@
             </tr>
             <?php
               $no;
-              if($getdatapengaduan->currentPage()==1)
+              if($data['getdatapengaduan']->currentPage()==1)
                 $no = 1;
               else
-                $no = (($getdatapengaduan->currentPage() - 1) * $getdatapengaduan->perPage())+1;
+                $no = (($data['getdatapengaduan']->currentPage() - 1) * $data['getdatapengaduan']->perPage())+1;
             ?>
-            @if($getdatapengaduan->isEmpty())
+            @if($data['getdatapengaduan']->isEmpty())
               <tr>
                 <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
               </tr>
             @else
-              @foreach($getdatapengaduan as $key)
+              @foreach($data['getdatapengaduan'] as $key)
                 <tr>
                   <td>{{ $no }}</td>
                   <td>{{ $key->user->nama }}</td>
                   <td>{{ $key->topik->nama_topik }}</td>
                   <td>{{ $key->created_at }}</td>
-                  <td><a class="btn btn-xs btn-success">Lihat</a></td>
+                  <td>
+                    @if($key->flag_tanggap==0)
+                      <a class="btn btn-xs btn-warning" href="{{ route('tanggap.edit', $key->id) }}">Tanggapi</a></td>
+                    @elseif($key->flag_tanggap==1)
+                      <a class="btn btn-xs btn-success">Lihat</a></td>
+                    @endif
                 </tr>
                 <?php $no++; ?>
               @endforeach
@@ -111,7 +143,7 @@
         </div>
         <div class="box-footer">
           <div class="pagination pagination-sm no-margin pull-right">
-            {{ $getdatapengaduan->links() }}
+            {{ $data['getdatapengaduan']->links() }}
           </div>
         </div>
       </div>
