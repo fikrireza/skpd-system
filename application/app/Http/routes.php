@@ -112,6 +112,7 @@ Route::get('detailpengaduan', function(){
 Route::get('lihatpengaduan', function(){
   return view('pages.lihatpengaduan');
 });
+Route::resource('lihatpengaduan', 'LihatPengaduanController');
 
 Route::get('pengaduanbytopik', function(){
   return view('pages.pengaduanbytopik');
