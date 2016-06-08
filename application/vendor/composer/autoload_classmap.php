@@ -6,7 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddColumnFlagTanggapToTablePengaduan' => $baseDir . '/database/migrations/2016_06_08_021058_add_column_flag_tanggap_to_table_pengaduan.php',
     'AddColumnIdSkpdToTableUsers' => $baseDir . '/database/migrations/2016_05_31_103225_add_column_id_skpd_to_table_users.php',
+    'AddColumnIdUserskpdToMutasi' => $baseDir . '/database/migrations/2016_06_08_022003_add_column_id_userskpd_to_mutasi.php',
     'AddFlagUserToUserTable' => $baseDir . '/database/migrations/2016_05_31_132728_add_flag_user_to_user_table.php',
     'AddLoginCounterToUserTable' => $baseDir . '/database/migrations/2016_05_31_133159_add_login_counter_to_user_table.php',
     'AddProfileColumnsToUserTable' => $baseDir . '/database/migrations/2016_06_01_080013_add_profile_columns_to_user_table.php',
@@ -16,6 +18,7 @@ return array(
     'CreateTableMasterSkpd' => $baseDir . '/database/migrations/2016_05_31_031507_create_table_master_skpd.php',
     'CreateTableMutasi' => $baseDir . '/database/migrations/2016_06_07_020014_create_table_mutasi.php',
     'CreateTableSlider' => $baseDir . '/database/migrations/2016_06_07_020348_create_table_slider.php',
+    'CreateTableTanggapan' => $baseDir . '/database/migrations/2016_06_08_021404_create_table_tanggapan.php',
     'CreateTableTopikPengaduan' => $baseDir . '/database/migrations/2016_05_31_071733_create_table_topik_pengaduan.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
