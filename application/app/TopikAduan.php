@@ -16,4 +16,9 @@ class TopikAduan extends Model
     {
       return $this->belongsTo('App\MasterSKPD', 'id_skpd');
     }
+
+    public function pengaduan()
+    {
+      return $this->hasMany('App\Models\LihatPengaduanModel');
+    }
 }

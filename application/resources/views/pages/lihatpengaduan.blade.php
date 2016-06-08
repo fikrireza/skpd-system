@@ -32,6 +32,7 @@
                 <th>Pelapor</th>
                 <th>Topik Aduan</th>
                 <th>Tanggal</th>
+                <th>Jam</th>
                 <th>Status Verifikasi</th>
                 <th>Status Aduan</th>
                 <th>Aksi</th>
@@ -42,12 +43,25 @@
               @foreach($getdatapengaduan as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
-                  <td><a href="{{url('wargaprofile')}}">{{ $key->warga_id }}</a></td>
-                  <td>{{ $key->topik_id }}</td>
-                  <td>{{ $key->created_at }}</td>
+                  <td><a href="{{url('wargaprofile')}}">{{ $key->user->nama }}</a></td>
+                  <td>{{ $key->topik->nama_topik }}</td>
+                  <td>
+                    <?php
+                      $date = $key->created_at;
+                      $justdate = substr($date, 0, 10);
+                      $explode = explode("-", $justdate);
+                      echo $explode[2]."-".$explode[1]."-".$explode[0];
+                    ?>
+                  </td>
+                  <td>
+                    <?php
+                      $justtime = substr($date, 12);
+                      echo $justtime;
+                    ?>
+                  </td>
                   <td>
                     @if($key->flag_verifikasi==0)
-                      <span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span>
+                      <span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span>
                     @elseif($key->flag_verifikasi==1)
                       <span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span>
                     @endif
@@ -58,7 +72,6 @@
                     @elseif($key->flag_tayang==1)
                       <span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span>
                     @endif
-
                   </td>
                   <td>
                     <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>

@@ -8,7 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddColumnFlagTanggapToTablePengaduan' => $baseDir . '/database/migrations/2016_06_08_021058_add_column_flag_tanggap_to_table_pengaduan.php',
     'AddColumnIdSkpdToTableUsers' => $baseDir . '/database/migrations/2016_05_31_103225_add_column_id_skpd_to_table_users.php',
-    'AddColumnIdUserskpdToMutasi' => $baseDir . '/database/migrations/2016_06_08_022003_add_column_id_userskpd_to_mutasi.php',
+    'AddColumnIdUserskpdToMutasi' => $baseDir . '/database/migrations/2016_06_08_021831_add_column_id_userskpd_to_mutasi.php',
     'AddFlagUserToUserTable' => $baseDir . '/database/migrations/2016_05_31_132728_add_flag_user_to_user_table.php',
     'AddLoginCounterToUserTable' => $baseDir . '/database/migrations/2016_05_31_133159_add_login_counter_to_user_table.php',
     'AddProfileColumnsToUserTable' => $baseDir . '/database/migrations/2016_06_01_080013_add_profile_columns_to_user_table.php',
@@ -489,6 +489,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'RemoveColumnUserskpdIdFromPengaduan' => $baseDir . '/database/migrations/2016_06_08_025657_remove_column_userskpd_id_from_pengaduan.php',
     'RemoveSkpdIdFromPengaduan' => $baseDir . '/database/migrations/2016_06_07_015246_remove_skpd_id_from_pengaduan.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
