@@ -21,11 +21,9 @@ Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']
 
 Route::resource('profil', 'ProfileWargaController');
 
-Route::post('pengaduan', ['as'=>'pengaduan', 'uses'=>'WargaController@postPengaduan']);
+Route::post('sendpengaduan', ['as'=>'sendpengaduan', 'uses'=>'WargaController@postPengaduan']);
 
-Route::get('laporan', function(){
-  return view('front.laporan');
-});
+Route::get('pengaduan', ['as' => 'pengaduan', 'uses' => 'WargaController@pengaduansaya']);
 
 Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
   return view('front.detaillaporan');

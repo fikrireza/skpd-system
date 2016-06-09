@@ -3,7 +3,7 @@
     <h3 class="box-title">Ajukan Keluhan Anda</h3>
   </div><!-- /.box-header -->
   <!-- form start -->
-  <form class="form" action="{{ route('pengaduan')}}" method="POST" enctype="multipart/form-data">
+  <form class="form" action="{{ route('sendpengaduan')}}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <input type="hidden" name="warga_id" class="form-control" placeholder="Judul Pengaduan" value="{{$profiles->id}}">
     <div class="box-body">

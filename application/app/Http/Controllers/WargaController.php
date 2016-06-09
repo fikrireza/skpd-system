@@ -109,7 +109,19 @@ class WargaController extends Controller
       ]);
     }
 
-    return redirect()->route('beranda')->with('pengaduan', 'Pengaduan Anda Berhasil Terkirim, dan Akan Segera Kami Proses');
+    return redirect()->route('pengaduan')->with('pengaduan', 'Pengaduan Anda Berhasil Terkirim, dan Akan Segera Kami Proses');
 
+  }
+
+  public function pengaduansaya()
+  {
+    $id = Auth::user()->id;
+    $profiles = User::find($id);
+
+    $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+
+    $pengaduans = Pengaduan::where('warga_id', '=', $id)->orderBy('created_at', 'desc')->get();
+    //dd($pengaduan);
+    return view('front.pengaduansaya', compact('profiles', 'topiks', 'pengaduans'));//)->with('profiles', 'topik', $profiles, $topik);
   }
 }

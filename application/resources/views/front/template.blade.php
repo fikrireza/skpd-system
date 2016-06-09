@@ -10,18 +10,33 @@
     <div class="wrapper">
 
       @include('includes.navbarwarga')
-      <section class="content">
-        <div class="row">
-          @yield('content')
-        </div>
-      <section>
+      <!-- Full Width Column -->
+      <div class="content-wrapper custombackground">
+        <div class="container">
+          <!-- Main content -->
+          <!-- Main content -->
+          <script>
+            window.setTimeout(function() {
+              $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+                  $(this).remove();
+              });
+            }, 2000);
+          </script>
+          
+          <section class="content">
+            <div class="row">
+              @yield('content')
+            </div>
+          </section>
 
-    <footer class="main-footer">
-      <div class="container">
-        @include('includes.footer')
-      </div><!-- /.container -->
-    </footer>
-  </div><!-- ./wrapper -->
+        </div>
+      </div>
+      <footer class="main-footer">
+        <div class="container">
+          @include('includes.footer')
+        </div><!-- /.container -->
+      </footer>
+    </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
     <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
