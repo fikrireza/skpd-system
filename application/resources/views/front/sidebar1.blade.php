@@ -10,10 +10,10 @@
       <h3 class="profile-username text-center">{{ $profiles->nama}}</h3>
       <ul class="list-group list-group-unbordered">
         <li class="list-group-item">
-          <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">10</span>
+          <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">{{ $pengaduanWid }}</span>
         </li>
         <li class="list-group-item">
-          <b>Telah Ditanggapi</b> <span class="pull-right badge bg-green">2</span>
+          <b>Telah Ditanggapi</b> <span class="pull-right badge bg-green">{{ $tanggapWid }}</span>
         </li>
       </ul>
     </div><!-- /.box-body -->

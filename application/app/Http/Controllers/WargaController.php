@@ -34,9 +34,12 @@ class WargaController extends Controller
     $id = Auth::user()->id;
     $profiles = User::find($id);
 
+    $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
+    $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
+
     $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
 
-    return view('front.beranda', compact('profiles', 'topiks'));//)->with('profiles', 'topik', $profiles, $topik);
+    return view('front.beranda', compact('profiles', 'topiks', 'pengaduanWid', 'tanggapWid'));//)->with('profiles', 'topik', $profiles, $topik);
   }
 
   /**
@@ -120,8 +123,11 @@ class WargaController extends Controller
 
     $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
 
+    $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
+    $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
+
     $pengaduans = Pengaduan::where('warga_id', '=', $id)->orderBy('created_at', 'desc')->get();
     //dd($pengaduan);
-    return view('front.pengaduansaya', compact('profiles', 'topiks', 'pengaduans'));//)->with('profiles', 'topik', $profiles, $topik);
+    return view('front.pengaduansaya', compact('profiles', 'topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid'));//)->with('profiles', 'topik', $profiles, $topik);
   }
 }
