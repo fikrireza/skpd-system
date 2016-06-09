@@ -169,7 +169,7 @@
       <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Laporan Anda</span>
-        <span class="info-box-number">10</span>
+        <span class="info-box-number">{{ $pengaduanWid }}</span>
       </div><!-- /.info-box-content -->
     </div><!-- /.info-box -->
   </div>
@@ -178,7 +178,7 @@
       <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Telah Ditanggapi</span>
-        <span class="info-box-number">2</span>
+        <span class="info-box-number">{{ $tanggapWid }}</span>
       </div><!-- /.info-box-content -->
     </div><!-- /.info-box -->
   </div>

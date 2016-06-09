@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\ProfileWargaRequest;
+use App\Models\Pengaduan;
 use App\User;
 use DB;
 use Carbon;
@@ -29,7 +30,11 @@ class ProfileWargaController extends Controller
   {
     $id = Auth::user()->id;
     $profiles = User::find($id);
-    return view('front.profile')->with('profiles', $profiles);
+
+    $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
+    $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
+    
+    return view('front.profile', compact('profiles', 'pengaduanWid', 'tanggapWid' ));
   }
 
   public function store(ProfileWargaRequest $request)
