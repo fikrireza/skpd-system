@@ -16,9 +16,9 @@
           <div class="box-body">
             <div class="widget-user-image">
               @if($profiles->url_photo == null)
-                <img class="img-square" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                <img class="img-square" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar" width="215" height="215">
               @else
-                <img class="img-square" src="{{ asset('/images/'.$profiles->url_photo) }}" alt="{{$profiles->nama}}">
+                <img class="img-square" src="{{ asset('/images/'.$profiles->url_photo) }}" alt="{{$profiles->nama}}" width="215" height="215">
               @endif
             </div><!-- /.widget-user-image -->
             <h5 class="widget-user-desc" align="center">Bergabung {{ \Carbon\Carbon::parse($profiles->created_at)->format('d-M-y')}}</h5>
