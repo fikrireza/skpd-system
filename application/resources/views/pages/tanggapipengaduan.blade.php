@@ -17,7 +17,15 @@
 
 @section('content')
   <div class="row">
-  {!! csrf_field() !!}
+    <div class="col-md-12">
+      @if(Session::has('message'))
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+          <p>{{ Session::get('message') }}</p>
+        </div>
+      @endif
+    </div>
     <div class="col-md-5">
       <!-- Horizontal Form -->
       <div class="box box-widget">
@@ -28,20 +36,20 @@
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->user->nama}}
               @else
-                Nama Dummy
+                Nama Pengaduan
               @endif
             </a></span>
             <span class='description'>
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->created_at}}
               @else
-                Tanggal Dummy
+                Tanggal Pengaduan
               @endif
               |
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->topik->nama_topik}}
               @else
-                Topik Dummy
+                Topik Pengaduan
               @endif
            </span>
           </div><!-- /.user-block -->
@@ -56,14 +64,14 @@
             @if(isset($data['binddatapengaduan']))
               {{$data['binddatapengaduan']->judul_pengaduan}}
             @else
-              Judul Dummy
+              Judul Pengaduan
             @endif
           </p>
           <p style="text-align:justify">
             @if(isset($data['binddatapengaduan']))
               {{$data['binddatapengaduan']->isi_pengaduan}}
             @else
-              Isi Dummy
+              Isi Pengaduan
             @endif
           </p>
           {{-- <!-- Attachment -->
@@ -77,13 +85,32 @@
 
         </div><!-- /.box-body -->
         <div class="box-footer">
-          <form action="#" method="post">
+          @if(isset($data['binddatapengaduan']))
+            {!! Form::model($data['binddatapengaduan'], ['route' => ['tanggap.update', $data['binddatapengaduan']->id], 'method' => "patch", 'class'=>'form-horizontal' , 'onsubmit'=>"return cekFile()" , 'name'=>"cekFrom"]) !!}
+          @else
+            <form class="form-horizontal" method="post" action="#">
+          @endif
+            {!! csrf_field() !!}
             <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
             <!-- .img-push is used to add margin to elements next to floating images -->
             <div class="img-push">
-              <textarea name="name" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
-              <div class="footer pull-right" style="padding-top:5px;">
-                <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+              <input
+                @if(isset($data['binddatapengaduan']))
+                  value="{{$data['binddatapengaduan']->id}}"
+                @endif
+                type="hidden" name="id" class="form-control" readonly="true"
+                @if(!$errors->has('id'))
+                 value="{{ old('id') }}"
+                @endif
+              >
+              <br>
+                <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
+            <div class="footer pull-right" style="padding-top:5px;">
+                @if(isset($data['binddatapengaduan']))
+                  <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+                @elseif(isset($data['binddatatanggapan']))
+                  <button class="btn btn-primary btn-sm btn-flat" disabled="true">Kirim Tanggapan</button>
+                @endif
               </div>
             </div>
           </form>
@@ -122,7 +149,7 @@
               <tr>
                 <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
               </tr>
-            @else
+            @elseif(isset($data['getdatapengaduan']))
               @foreach($data['getdatapengaduan'] as $key)
                 <tr>
                   <td>{{ $no }}</td>
@@ -131,9 +158,9 @@
                   <td>{{ $key->created_at }}</td>
                   <td>
                     @if($key->flag_tanggap==0)
-                      <a class="btn btn-xs btn-warning" href="{{ route('tanggap.edit', $key->id) }}">Tanggapi</a></td>
+                      <a class="btn btn-xs btn-warning" href="{{ route('tanggap.edit', $key->id) }}">Belum Ditanggapi</a></td>
                     @elseif($key->flag_tanggap==1)
-                      <a class="btn btn-xs btn-success">Lihat</a></td>
+                      <a class="btn btn-xs btn-success" href="{{ route('tanggap.show', $key->id) }}">Sudah Ditanggapi</a></td>
                     @endif
                 </tr>
                 <?php $no++; ?>
@@ -170,4 +197,21 @@
       });
     });
   </script>
+  <script>
+  function cekFile() {
+     var cek = document.forms['cekFrom']['tanggapan'].value;
+       if(cek==null || cek=="")
+       {
+         alert("Form harus di isi !!!");
+         return false;
+       }
+  }
+ </script>
+ <script>
+   window.setTimeout(function() {
+     $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+         $(this).remove();
+     });
+   }, 2000);
+ </script>
 @stop
