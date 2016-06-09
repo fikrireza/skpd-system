@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 use App\Http\Requests;
 use App\Models\LihatPengaduanModel;
 use App\Models\TanggapanModel;
 use App\TopikAduan;
+use DB;
 
 class TanggapAduanController extends Controller
 {
@@ -57,19 +59,17 @@ class TanggapAduanController extends Controller
 
       return redirect()->route('tanggap.index')->with('message', "Berhasil Memberikan Tanggapan");
     }
+
     public function show($id)
   	{
       $getdatapengaduan = LihatPengaduanModel::paginate(10);
-
       $data['getdatapengaduan'] = $getdatapengaduan;
       $binddatapengaduan = LihatPengaduanModel::find($id);
       $data['binddatapengaduan'] = $binddatapengaduan;
 
-      $gettanggapan = TanggapanModel::where('id_pengaduan',$id)->get();
-      dd($gettanggapan);
-      $binddatatanggapan = $gettanggapan->id_pengaduan;
-      dd($binddatatanggapan);
-      $data['binddatatanggapan'] = TanggapanModel::find($gettanggapan->id_pengaduan);
+      // $tanggapan = TanggapanModel::where('id_pengaduan', $id)->get();
+      $tanggapan = DB::table('tanggapan')->where('id_pengaduan', $id)->get();
+      $data['binddatatanggapan'] = $tanggapan[0];
 
       return view('pages/tanggapipengaduan')->with('data', $data);
   	}

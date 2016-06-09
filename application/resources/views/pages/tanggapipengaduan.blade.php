@@ -104,12 +104,19 @@
                 @endif
               >
               <br>
-                <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
+                @if(isset($data['binddatatanggapan']))
+                  <textarea name="tanggapan" readonly="true" class="form-control" rows="5" cols="40" style="border:1px solid #00a65a;margin-top:5px;">{{$data['binddatatanggapan']->tanggapan}}</textarea>
+                @else
+                  <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
+                @endif
+
+              {{-- @else
+                <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini..">  {{$data['binddatatanggapan']->tanggapan}}</textarea> --}}
             <div class="footer pull-right" style="padding-top:5px;">
-                @if(isset($data['binddatapengaduan']))
-                  <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
-                @elseif(isset($data['binddatatanggapan']))
-                  <button class="btn btn-primary btn-sm btn-flat" disabled="true">Kirim Tanggapan</button>
+                @if(isset($data['binddatatanggapan']))
+                    <button class="btn btn-primary btn-sm btn-flat" disabled="true">Kirim Tanggapan</button>
+                @else
+                    <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
                 @endif
               </div>
             </div>
