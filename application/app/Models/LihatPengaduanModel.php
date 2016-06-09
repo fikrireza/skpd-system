@@ -36,4 +36,10 @@ class LihatPengaduanModel extends Model  {
 	{
 		return $this->belongsTo('App\TopikAduan', 'topik_id');
 	}
+
+	public function tanggapan()
+	{
+		return $this->belongsTo('App\Models\Tanggapan', 'id');
+	}
+
 }
