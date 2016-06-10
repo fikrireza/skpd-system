@@ -20,7 +20,6 @@ class TanggapanModel extends Model  {
 	 *
 	 * @return Illuminate\Database\Eloquent\Relations\belongToMany
 	 */
-
 	 public function user()
 	 	{
 	 		  return $this->belongsTo('App\User', 'id_userskpd');
