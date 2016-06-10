@@ -20,6 +20,7 @@
                     <p>
                       {{ $detail->isi_pengaduan}}
                     </p>
+                    @if($tanggapan === null)
                     <div class='box-footer box-comments' style="border:1px solid #00a65a;">
                       <div style="padding-bottom:5px;">
                         <b>Tanggapan</b>
@@ -38,6 +39,7 @@
                       </div><!-- /.box-comment -->
                       @endforeach
                     </div><!-- /.box-footer -->
+                    @endif
                     </br>
                     <ul class="list-inline">
                       @if($detail->flag_verifikasi == 1)
