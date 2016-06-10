@@ -11,7 +11,7 @@
       </div>
   </div>
   @endif
-  
+
   <div class="col-md-9">
     @include('front.form')
 
@@ -42,7 +42,8 @@
               <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
             @endif
 
-            <li class="pull-right"><a href="{{ url('detail/laporan/pengaduan-pemadaman-listrik') }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+            {{-- <li class="pull-right"><a href="{{ url('pengaduan/detail', $pengaduan->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li> --}}
+            <li class="pull-right">{{ HTML::link('pengaduan/detail/'.$pengaduan->slug, 'Selengkapnya') }}</li>
           </ul>
         </div><!-- /.post -->
         @endforeach

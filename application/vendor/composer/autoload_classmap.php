@@ -9,6 +9,7 @@ return array(
     'AddColumnFlagTanggapToTablePengaduan' => $baseDir . '/database/migrations/2016_06_08_021058_add_column_flag_tanggap_to_table_pengaduan.php',
     'AddColumnIdSkpdToTableUsers' => $baseDir . '/database/migrations/2016_05_31_103225_add_column_id_skpd_to_table_users.php',
     'AddColumnIdUserskpdToMutasi' => $baseDir . '/database/migrations/2016_06_08_021831_add_column_id_userskpd_to_mutasi.php',
+    'AddColumnSlugToPengaduan' => $baseDir . '/database/migrations/2016_06_09_224036_add_column_slug_to_pengaduan.php',
     'AddColumnTglLahirDanUrlPhotoToUsers' => $baseDir . '/database/migrations/2016_06_08_045220_add_column_tgl_lahir_dan_url_photo_to_users.php',
     'AddFlagUserToUserTable' => $baseDir . '/database/migrations/2016_05_31_132728_add_flag_user_to_user_table.php',
     'AddLoginCounterToUserTable' => $baseDir . '/database/migrations/2016_05_31_133159_add_login_counter_to_user_table.php',

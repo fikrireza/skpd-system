@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>SIMPEDU | Pengaduan Pemadaman Listrik</title>
-    @include('includes.head')
-    <link rel="stylesheet" href="{{asset('dist/css/customcss.css')}}" media="screen" title="no title" charset="utf-8">
-  </head>
+@extends('front.template')
 
-  <body class="hold-transition skin-black-light layout-top-nav">
-    <div class="wrapper">
-
-      @include('includes.navbarwarga')
-      <!-- Full Width Column -->
-      <div class="content-wrapper custombackground">
-        <div class="container">
-          <!-- Main content -->
-          <section class="content">
-            <div class="row">
+@section('content')
               <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
@@ -117,128 +102,11 @@
 
               </div>
 
-              <!-- Kanan -->
-              <div class="col-md-3">
-                <div class="box box-primary">
-                  <div class="box-body box-profile" style="height:225px;">
-                    <img class="profile-user-img img-responsive img-circle" src="{{asset('/dist/img/user2-160x160.jpg')}}" alt="User profile picture">
-                    <h3 class="profile-username text-center">Dwi Handika Putro</h3>
-                    <ul class="list-group list-group-unbordered">
-                      <li class="list-group-item">
-                        <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">10</span>
-                      </li>
-                      <li class="list-group-item">
-                        <b>Telah Ditanggapi</b> <span class="pull-right badge bg-green">2</span>
-                      </li>
-                    </ul>
-                  </div><!-- /.box-body -->
-                  <div class="box-body" style="margin-top:10px">
-                    <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
-                    <p class="text-muted">
-                      32760621129010001
-                    </p>
+              @include('front.sidebar1')
 
-                    <hr style="margin-top:2px;margin-bottom:8px;">
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
-                    <p class="text-muted">081289087875</p>
+@stop
 
-                    <hr style="margin-top:2px;margin-bottom:8px;">
-
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
-                    <p class="text-muted">alexamder@gmail.com</p>
-
-                    <hr style="margin-top:2px;margin-bottom:8px;">
-
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-                    <p class="text-muted">Pria</p>
-
-                    <hr style="margin-top:2px;margin-bottom:8px;">
-
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                  </div><!-- /.box-body -->
-                </div><!-- /.box -->
-
-                <div class="box box-primary">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Pengaduan Terbaru</h3>
-                  </div><!-- /.box-header -->
-                  <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-                    <p>
-                      <div class="">
-                        <a href="" class="text-muted">
-                          Biaya sekolah terlalu mahal
-                        </a>
-                      </div>
-                      <div class="">
-                        <a href="" class="text-muted">
-                          Buku paket tidak tersedia di sekolah
-                        </a>
-                      </div>
-                      <div class="">
-                        <a href="" class="text-muted">
-                          Guru sering datang terlambat
-                        </a>
-                      </div>
-                    </p>
-
-                    <hr>
-
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Jalan</strong>
-                    <p>
-                      <div class="">
-                        <a href="" class="text-muted">
-                          Jalan talagasari banyak lubang
-                        </a>
-                      </div>
-                      <div class="">
-                        <a href="" class="text-muted">
-                          Mohon rambu jalan diperjelas
-                        </a>
-                      </div>
-                      <div class="">
-                        <a href="" class="text-muted">
-                          Marka jalan tidak terlihat di tol balaraja
-                        </a>
-                      </div>
-                    </p>
-
-                  </div><!-- /.box-body -->
-                </div><!-- /.box -->
-              </div>
-            </div><!-- /.row -->
-
-          </section><!-- /.content -->
-        </div>
-      </div>
-    </div>
-    <footer class="main-footer">
-      <div class="container">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 1.0.0
-        </div>
-        <strong>Copyright © 20162017 <a href="http://9tins.com">9Tins Project</a>.</strong> All rights reserved.
-      </div><!-- /.container -->
-    </footer>
-  </div>
-
-
-  <!-- jQuery 2.1.4 -->
-  <script src="{{asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
-  <!-- Bootstrap 3.3.5 -->
-  <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-  <!-- FastClick -->
-  <script src="{{asset('plugins/fastclick/fastclick.min.js')}}"></script>
-  <!-- DataTables -->
-  <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
-  <script src="{{asset('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
-  <!-- bootstrap time picker -->
-  <script src="{{asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
-  <!-- AdminLTE App -->
-  <script src="{{asset('dist/js/app.min.js')}}"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="{{asset('dist/js/demo.js')}}"></script>
+@section('script')
   {{-- icheck --}}
   <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
 
@@ -250,3 +118,4 @@
       });
     });
   </script>
+@stop

@@ -22,7 +22,7 @@
               });
             }, 2000);
           </script>
-          
+
           <section class="content">
             <div class="row">
               @yield('content')
@@ -50,5 +50,6 @@
     <script src="{{ asset('/dist/js/app.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('/dist/js/demo.js') }}"></script>
+    @yield('script')
   </body>
 </html>

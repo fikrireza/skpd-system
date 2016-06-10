@@ -52,17 +52,6 @@ class WargaController extends Controller
 
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
-  // public function store(Request $request)
-  // {
-  //     //
-  // }
-
   public function postPengaduan(PengaduanRequest $request)
   {
     if($request->input('anonim') == null){
@@ -76,16 +65,21 @@ class WargaController extends Controller
       $rahasia = 1;
     }
 
+    //function for seo random in segment
+    $slugtitle = str_slug($request->input('judul'), '-');
+    // $slug = str_random(5).'/'.$slugtitle;
+
     if($request->hasFile('dokumen'))
     {
       DB::transaction(function() use($request, $anonim, $rahasia)
       {
         $pengaduan = Pengaduan::create([
-                    'topik_id'  => $request->input('topik'),
+                    'topik_id'          => $request->input('topik'),
                     'judul_pengaduan'   => $request->input('judul'),
-                    'isi_pengaduan'  => $request->input('isi'),
-                    'warga_id'    => $request->input('warga_id'),
-                    'flag_rahasia'   => $rahasia,
+                    'isi_pengaduan'     => $request->input('isi'),
+                    'slug'              => $slugtitle,
+                    'warga_id'          => $request->input('warga_id'),
+                    'flag_rahasia'      => $rahasia,
                     'flag_anonim'       => $anonim,
         ]);
 
@@ -103,11 +97,12 @@ class WargaController extends Controller
     else
     {
       $pengaduan = Pengaduan::create([
-                  'topik_id'  => $request->input('topik'),
+                  'topik_id'          => $request->input('topik'),
                   'judul_pengaduan'   => $request->input('judul'),
-                  'isi_pengaduan'  => $request->input('isi'),
-                  'warga_id'    => $request->input('warga_id'),
-                  'flag_rahasia'   => $rahasia,
+                  'isi_pengaduan'      => $request->input('isi'),
+                  'slug'              => $slugtitle,
+                  'warga_id'          => $request->input('warga_id'),
+                  'flag_rahasia'      => $rahasia,
                   'flag_anonim'       => $anonim,
       ]);
     }
@@ -127,7 +122,20 @@ class WargaController extends Controller
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
     $pengaduans = Pengaduan::where('warga_id', '=', $id)->orderBy('created_at', 'desc')->get();
-    //dd($pengaduan);
+
     return view('front.pengaduansaya', compact('profiles', 'topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid'));//)->with('profiles', 'topik', $profiles, $topik);
+  }
+
+  public function detailPengaduan($slug)
+  {
+    $id = Auth::user()->id;
+    $profiles = User::find($id);
+
+    $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
+    $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
+
+    $detail = Pengaduan::where('slug', $slug)->first();
+    // dd($detail);
+    return view('front.detaillaporan', compact('profiles', 'pengaduanWid', 'tanggapWid'));
   }
 }

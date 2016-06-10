@@ -25,9 +25,11 @@ Route::post('sendpengaduan', ['as'=>'sendpengaduan', 'uses'=>'WargaController@po
 
 Route::get('pengaduan', ['as' => 'pengaduan', 'uses' => 'WargaController@pengaduansaya']);
 
-Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
-  return view('front.detaillaporan');
-});
+Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z-]+');;
+
+// Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
+//   return view('front.detaillaporan');
+// });
 
 Route::get('detail/pengaduan-warga', function(){
   return view('front.detailpengaduan');
