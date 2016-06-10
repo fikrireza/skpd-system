@@ -27,7 +27,7 @@ class CustomAuthController extends Controller
         if($user->level==1)
         {
           if($user->jeniskelamin == null || $user->noktp == null || $user->alamat == null){
-            return redirect('profil')->with('messagefilled', "Harap Isi Profile Anda");
+            return redirect('profil')->with('messagefilled', "Harap Lengkapi Profil Anda Dengan Sebenarnya");
           }
           return redirect('beranda');
         }

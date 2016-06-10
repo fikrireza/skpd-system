@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
           {{-- <li><a href="{{ url('beranda') }}">Beranda <span class="sr-only">(current)</span></a></li> --}}
-          <li><a href="{{ url('laporan') }}">Pengaduan Saya <span class="sr-only"></span></a></li>
+          <li><a href="{{ url('pengaduan') }}">Pengaduan Saya <span class="sr-only"></span></a></li>
           <li><a href="{{url('semualaporan')}}">Daftar Pengaduan</a></li>
         </ul>
         <form class="navbar-form navbar-left" role="search">
@@ -65,7 +65,7 @@
                     <a href="{{ url('profil') }}" class="btn btn-default btn-flat">Profil</a>
                   </div>
                   <div class="pull-right">
-                    <a href="{{url('/')}}" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Sign out</a>
                   </div>
                 </li>
               </ul>

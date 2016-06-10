@@ -3,55 +3,76 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 use App\Http\Requests;
 use App\Models\LihatPengaduanModel;
+use App\Models\TanggapanModel;
 use App\TopikAduan;
+use DB;
 
 class TanggapAduanController extends Controller
 {
     public function index()
     {
-
       $getdatapengaduan = LihatPengaduanModel::paginate(10);
-      // dd($getdatapengaduan);
-      // return view('pages.tanggapipengaduan', compact('getdatapengaduan', 'gettopik'));
-      return view('pages/tanggapipengaduan')->with('getdatapengaduan', $getdatapengaduan);
+      $data['getdatapengaduan'] = $getdatapengaduan;
+      return view('pages/tanggapipengaduan')->with('data', $data);
     }
 
     public function store(Request $request)
     {
-      $set = new TopikAduan;
-      $set->kode_topik = $request->kodepengaduan;
-      $set->nama_topik = $request->namapengaduan;
-      $set->id_skpd = $request->idskpd;
-      $set->save();
 
-      return redirect()->route('topikpengaduan.index')->with('message', "Berhasil menambahkan topik pengaduan baru.");
     }
 
     public function delete($id)
     {
-      $set = TopikAduan::find($id);
-      $set->delete();
 
-      return redirect()->route('topikpengaduan.index')->with('message', "Berhasil menghapus topik pengaduan.");
     }
 
     public function bind($id)
     {
-      $get = TopikAduan::find($id);
-      return $get;
+
+    }
+
+    public function edit($id)
+    {
+        $getdatapengaduan = LihatPengaduanModel::paginate(10);
+        $data['getdatapengaduan'] = $getdatapengaduan;
+        $binddatapengaduan = LihatPengaduanModel::find($id);
+        $data['binddatapengaduan'] = $binddatapengaduan;
+        return view('pages/tanggapipengaduan')->with('data', $data);
     }
 
     public function update(Request $request)
     {
-      $set = TopikAduan::find($request->id_topik);
-      $set->kode_topik = $request->kode_topik;
-      $set->nama_topik = $request->nama_topik;
-      $set->id_skpd = $request->id_skpd;
+
+      $set = LihatPengaduanModel::find($request->id);
+      $set->flag_tanggap = 1;
       $set->save();
 
-      return redirect()->route('topikpengaduan.index')->with('message', "Berhasil mengubah topik pengaduan.");
+      $tanggap = new TanggapanModel;
+      $tanggap->id_pengaduan = $set->id;
+      $tanggap->id_userskpd  = $set->warga_id;
+      $tanggap->tanggapan    = $request->tanggapan;
+      $tanggap->save();
+
+      return redirect()->route('tanggap.index')->with('message', "Berhasil Memberikan Tanggapan");
     }
+
+    public function show($id)
+  	{
+      $getdatapengaduan = LihatPengaduanModel::paginate(10);
+      $data['getdatapengaduan'] = $getdatapengaduan;
+      $binddatapengaduan = LihatPengaduanModel::find($id);
+      $data['binddatapengaduan'] = $binddatapengaduan;
+
+      // $tanggapan = TanggapanModel::where('id_pengaduan', $id)->get();
+      $tanggapan = DB::table('tanggapan')->where('id_pengaduan', $id)->get();
+      $data['binddatatanggapan'] = $tanggapan[0];
+
+      return view('pages/tanggapipengaduan')->with('data', $data);
+  	}
+
+
 }

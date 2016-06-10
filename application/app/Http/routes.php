@@ -21,13 +21,15 @@ Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']
 
 Route::resource('profil', 'ProfileWargaController');
 
-Route::get('laporan', function(){
-  return view('front.laporan');
-});
+Route::post('sendpengaduan', ['as'=>'sendpengaduan', 'uses'=>'WargaController@postPengaduan']);
 
-Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
-  return view('front.detaillaporan');
-});
+Route::get('pengaduan', ['as' => 'pengaduan', 'uses' => 'WargaController@pengaduansaya']);
+
+Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z-]+');;
+
+// Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
+//   return view('front.detaillaporan');
+// });
 
 Route::get('detail/pengaduan-warga', function(){
   return view('front.detailpengaduan');

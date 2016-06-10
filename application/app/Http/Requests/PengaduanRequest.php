@@ -2,8 +2,17 @@
 
 namespace App\Http\Requests;
 
-class PengaduanRequest extends Requests
+class PengaduanRequest extends Request
 {
+  /**
+	 * Determine if the user is authorized to make this request.
+	 *
+	 * @return bool
+	 */
+	public function authorize()
+	{
+		return true;
+	}
   /**
    * Get the validation rules that apply to the request
    *
@@ -13,16 +22,19 @@ class PengaduanRequest extends Requests
   public function rules()
   {
     return [
-      'judul_pengaduan'  => 'required|max:150|min:3',
-      'isi_pengaduan' => 'required',
-      'topik_id' => 'required'
-    ]
+      'topik' => 'required',
+      'judul'  => 'required|max:150|min:3',
+      'isi' => 'required',
+      'dokumen.*' => 'mimes:jpg,bmp,docx,xlsc,png,pdf'
+    ];
   }
 
   public function message()
   {
-    'judul_pengaduan.required' => 'Wajib di Isi',
-    'isi_pengaduan.required' => 'Wajib di Isi',
-    'topik_id.required' => 'Wajib di Isi',
+    return[
+      'topik.required' => 'Wajib di Isi',
+      'judul.required' => 'Wajib di Isi',
+      'isi.required' => 'Wajib di Isi',
+    ];
   }
 }

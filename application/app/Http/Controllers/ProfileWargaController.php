@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\ProfileWargaRequest;
+use App\Models\Pengaduan;
 use App\User;
 use DB;
 use Carbon;
@@ -29,24 +30,41 @@ class ProfileWargaController extends Controller
   {
     $id = Auth::user()->id;
     $profiles = User::find($id);
-    return view('front.profile')->with('profiles', $profiles);
+
+    $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
+    $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
+    
+    return view('front.profile', compact('profiles', 'pengaduanWid', 'tanggapWid' ));
   }
 
   public function store(ProfileWargaRequest $request)
   {
-    //dd(base_path().'\..\images');
-    $photo_name = $request->file('url_photo')->getClientOriginalName();
-    $request->file('url_photo')->move(base_path().'\..\images', $photo_name);
+    $file = $request->file('url_photo');
 
-    $profil = User::find($request->id);
-    $profil->nama = $request->nama;
-    $profil->noktp = $request->noktp;
-    $profil->tgl_lahir = $request->tgl_lahir;
-    $profil->notelp = $request->notelp;
-    $profil->jeniskelamin = $request->jeniskelamin;
-    $profil->alamat = $request->alamat;
-    $profil->url_photo = $photo_name;
-    $profil->save();
+    if ($file == null) {
+      $profil = User::find($request->id);
+      $profil->nama = $request->nama;
+      $profil->noktp = $request->noktp;
+      $profil->tgl_lahir = $request->tgl_lahir;
+      $profil->notelp = $request->notelp;
+      $profil->jeniskelamin = $request->jeniskelamin;
+      $profil->alamat = $request->alamat;
+      $profil->save();
+    } else {
+      $photo_name = time().'-'.$file->getClientOriginalName();
+      $file->move(base_path().'\..\images', $photo_name);
+
+      $profil = User::find($request->id);
+      $profil->nama = $request->nama;
+      $profil->noktp = $request->noktp;
+      $profil->tgl_lahir = $request->tgl_lahir;
+      $profil->notelp = $request->notelp;
+      $profil->jeniskelamin = $request->jeniskelamin;
+      $profil->alamat = $request->alamat;
+      $profil->url_photo = $photo_name;
+      $profil->save();
+    }
+
     return redirect()->route('beranda')->with('ubahprofile', 'Berhasil mengubah profile.');
   }
 }
