@@ -111,24 +111,31 @@
              <th>Nama Topik Pengaduan</th>
              <th>Jumlah Pengaduan</th>
            </tr>
-             <?php
-               $no;
-               if($gettopik->currentPage()==1)
-                 $no = 1;
-               else
-                 $no = (($gettopik->currentPage() - 1) * $gettopik->perPage())+1;
-             ?>
-             @foreach($gettopik as $key)
+
+             @if($gettopik->isEmpty())
                <tr>
-                 <td>{{ $no }}.</td>
-                 <td>{{ $key->kode_topik }}</td>
-                 <td>{{ $key->nama_topik }}</td>
-                 <td>
-                   <span class="pull-center badge  bg-maroon">{{ $key->jumlahpengaduan }}</span>
-                 </td>
+                 <td colspan="4" class="text-muted" style="text-align:center;"><i>Data topik aduan tidak tersedia.</i></td>
                </tr>
-               <?php $no++; ?>
-             @endforeach
+             @else
+               <?php
+                 $no;
+                 if($gettopik->currentPage()==1)
+                   $no = 1;
+                 else
+                   $no = (($gettopik->currentPage() - 1) * $gettopik->perPage())+1;
+               ?>
+               @foreach($gettopik as $key)
+                 <tr>
+                   <td>{{ $no }}.</td>
+                   <td>{{ $key->kode_topik }}</td>
+                   <td>{{ $key->nama_topik }}</td>
+                   <td>
+                     <span class="pull-center badge  bg-maroon">{{ $key->jumlahpengaduan }}</span>
+                   </td>
+                 </tr>
+                 <?php $no++; ?>
+               @endforeach
+             @endif
          </table>
          <div class="pull-right">
            {{ $gettopik->links() }}
@@ -143,23 +150,27 @@
    <div class="col-md-4">
      <div class="small-box bg-red">
        <div class="inner">
-         <h3>10</h3>
+         <h3>{{ $getbelumtanggap->belumtanggap }}</h3>
          <p>Belum Ditanggapi</p>
        </div>
        <div class="icon">
          <i class="fa fa-meh-o"></i>
        </div>
-       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+       <a class="small-box-footer">
+         <i>Terdapat {{ $getbelumtanggap->belumtanggap }} pengaduan belum di tanggapi.</i>
+       </a>
      </div>
      <div class="small-box bg-aqua">
        <div class="inner">
-         <h3>20</h3>
+         <h3>{{ $getsudahtanggap->sudahtanggap }}</h3>
          <p>Sudah Ditanggapi</p>
        </div>
        <div class="icon">
          <i class="fa fa-smile-o"></i>
        </div>
-       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+       <a class="small-box-footer">
+         <i>Terdapat {{ $getsudahtanggap->sudahtanggap }} pengaduan sudah di tanggapi.</i>
+       </a>
      </div>
    </div>
  </div>
@@ -169,7 +180,7 @@
      <!-- Horizontal Form -->
      <div class="box box-warning">
        <div class="box-header">
-         <h3 class="box-title">Seluruh Data Pengaduan Terkait SKPD</h3>
+         <h3 class="box-title">Seluruh Data Pengaduan SKPD Terkait</h3>
        </div><!-- /.box-header -->
        <div class="box-body">
          <table id="tabeluser" class="table table-hover">
@@ -186,62 +197,49 @@
              </tr>
            </thead>
            <tbody>
-             <tr>
-                <td>1.</td>
-                <td>Bambang Pamungkis</td>
-                <td>BPJS Kesehatan</td>
-                <td>24 April 2016</td>
-                <td>27 April 2016</td>
-                <td><span class="pull-center badge bg-purple">3 Hari</span></td>
-                <td><span class="pull-center badge bg-aqua">Sudah Ditanggapi</span></td>
-                <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
-                  </span>
-               </td>
-              </tr>
-              <tr>
-                <td>2.</td>
-                <td>Amanda Satyarini</td>
-                <td>Pelayanan Obat</td>
-                <td>24 Januari 2016</td>
-                <td> - </td>
-                <td><span class="pull-center badge bg-purple"> - </span></td>
-                <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
-                <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>Bambang Pamungkis</td>
-                <td>BPJS Kesehatan</td>
-                <td>24 April 2016</td>
-                <td>27 April 2016</td>
-                <td><span class="pull-center badge bg-purple">3 Hari</span></td>
-                <td><span class="pull-center badge bg-aqua">Sudah Ditanggapi</span></td>
-                <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
-                  </span>
-               </td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>Amanda Satyarini</td>
-                <td>Pelayanan Obat</td>
-                <td>24 Januari 2016</td>
-                <td> - </td>
-                <td><span class="pull-center badge bg-purple"> - </span></td>
-                <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
-                <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
-                  </span>
-                </td>
-              </tr>
+              <?php $no = 1; ?>
+               @foreach($getpengaduan as $key)
+                 <tr>
+                   <td>{{$no}}.</td>
+                   <td>{{ $key->nama }}</td>
+                   <td>{{ $key->nama_topik }}</td>
+                   <td>{{ $key->tanggaladuan }}</td>
+                   <td>
+                    @if($key->flag_tanggap=="0")
+                      --
+                    @else
+                      {{ $key->tanggaltanggap }}
+                    @endif
+                   </td>
+                   <td>
+                     @if($key->flag_tanggap=="0")
+                       --
+                     @else
+                      <?php
+                        $date1=date_create($key->tanggaltanggap);
+                        $date2=date_create($key->tanggaladuan);
+                        $diff=date_diff($date2,$date1);
+                        $sym = substr($diff->format("%R%a"), 0, 1);
+                        $days = substr($diff->format("%R%a"), 1);
+                      ?>
+                      <span class="pull-center badge bg-purple">{{$days}} Hari</span>
+                     @endif
+                   </td>
+                   <td>
+                     @if($key->flag_tanggap=="0")
+                       <span class="pull-center badge bg-red">Belum Ditanggapi</span>
+                     @else
+                       <span class="pull-center badge bg-aqua">Sudah Ditanggapi</span>
+                     @endif
+                   </td>
+                   <td>
+                     <span data-toggle="tooltip" title="View Data">
+                       <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
+                     </span>
+                   </td>
+                 </tr>
+                 <?php $no++; ?>
+               @endforeach
            </tbody>
          </table>
        </div><!-- /.box-body -->

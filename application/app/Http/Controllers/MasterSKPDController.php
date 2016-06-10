@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\MasterSKPD;
 use DB;
 use App\TopikAduan;
+use App\Models\Pengaduan;
 
 class MasterSKPDController extends Controller
 {
@@ -149,7 +150,29 @@ class MasterSKPDController extends Controller
                     ->where('topik_pengaduan.id_skpd', $id)
                     ->groupBy('topik_pengaduan.id')
                     ->paginate(5);
-      return view('pages/topikbyskpd', compact('getskpd', 'gettopik'));
+      $getbelumtanggap = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                      ->select(DB::raw('count(pengaduan.judul_pengaduan) as belumtanggap'))
+                      ->where([['pengaduan.flag_tanggap', '=', '0'], ['master_skpd.id', '=', $id]])
+                      ->first();
+      $getsudahtanggap = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                      ->select(DB::raw('count(pengaduan.judul_pengaduan) as sudahtanggap'))
+                      ->where([['pengaduan.flag_tanggap', '=', '1'], ['master_skpd.id', '=', $id]])
+                      ->first();
+      $getpengaduan = DB::table('pengaduan')
+                      ->leftJoin('tanggapan', 'tanggapan.id_pengaduan', '=', 'pengaduan.id')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*', 'tanggapan.created_at as tanggaltanggap', 'pengaduan.created_at as tanggaladuan')
+                      ->where('master_skpd.id', $id)
+                      ->get();
+                      // dd($getpengaduan);
+      // $getpengaduan = Pengaduan::all();
+      return view('pages/topikbyskpd', compact('getskpd', 'gettopik', 'getbelumtanggap', 'getsudahtanggap', 'getpengaduan'));
     }
 
 }
