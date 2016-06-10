@@ -68,11 +68,12 @@ class WargaController extends Controller
 
     //function for seo random in segment
     $slugtitle = str_slug($request->input('judul'), '-');
+    //dd($slugtitle);
     // $slug = str_random(5).'/'.$slugtitle;
 
     if($request->hasFile('dokumen'))
     {
-      DB::transaction(function() use($request, $anonim, $rahasia)
+      DB::transaction(function() use($request, $anonim, $rahasia, $slugtitle)
       {
         $pengaduan = Pengaduan::create([
                     'topik_id'          => $request->input('topik'),
@@ -135,7 +136,7 @@ class WargaController extends Controller
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    $detail = Pengaduan::where('slug', $slug)->first();
+    $detail = Pengaduan::where('slug', $slug)->where('warga_id', '=', $id)->first();
 
     $tanggapan = TanggapanModel::where('id_pengaduan', $detail->id)->get();
 

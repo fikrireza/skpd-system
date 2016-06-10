@@ -1,5 +1,9 @@
 @extends('front.template')
 
+@section('title')
+  <title>SIMPEDU</title>
+@stop
+
 @section('content')
 
   @if(Session::has('ubahprofile'))
@@ -11,7 +15,7 @@
       </div>
   </div>
   @endif
-  
+
   <div class="col-md-9">
     @include('front.form')
 
