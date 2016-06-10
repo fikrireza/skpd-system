@@ -9,15 +9,19 @@ use App\Http\Requests;
 use App\Models\LihatPengaduanModel;
 use App\Models\TanggapanModel;
 use App\TopikAduan;
+use App\User;
 use DB;
+use Auth;
+
 
 class TanggapAduanController extends Controller
 {
     public function index()
     {
-      $getdatapengaduan = LihatPengaduanModel::paginate(10);
-      $data['getdatapengaduan'] = $getdatapengaduan;
-      return view('pages/tanggapipengaduan')->with('data', $data);
+      $getdatapengaduan = LihatPengaduanModel::where('flag_tanggap', '0')->paginate(10);
+      $getdatasudahditanggapi = LihatPengaduanModel::where('flag_tanggap', '1')->paginate(10);
+      // $data['getdatapengaduan'] = $getdatapengaduan;
+      return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getdatasudahditanggapi'));
     }
 
     public function store(Request $request)
@@ -37,8 +41,10 @@ class TanggapAduanController extends Controller
 
     public function edit($id)
     {
-        $getdatapengaduan = LihatPengaduanModel::paginate(10);
+        $getdatapengaduan = LihatPengaduanModel::where('flag_tanggap', '0')->paginate(10);
         $data['getdatapengaduan'] = $getdatapengaduan;
+        $getdatasudahditanggapi = LihatPengaduanModel::where('flag_tanggap', '1')->paginate(10);
+        $data['getdatasudahditanggapi'] = $getdatasudahditanggapi;
         $binddatapengaduan = LihatPengaduanModel::find($id);
         $data['binddatapengaduan'] = $binddatapengaduan;
         return view('pages/tanggapipengaduan')->with('data', $data);
@@ -49,11 +55,15 @@ class TanggapAduanController extends Controller
 
       $set = LihatPengaduanModel::find($request->id);
       $set->flag_tanggap = 1;
+      $set->flag_verifikasi = 1;
       $set->save();
+
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
 
       $tanggap = new TanggapanModel;
       $tanggap->id_pengaduan = $set->id;
-      $tanggap->id_userskpd  = $set->warga_id;
+      $tanggap->id_userskpd  = $userid->id;
       $tanggap->tanggapan    = $request->tanggapan;
       $tanggap->save();
 
@@ -62,8 +72,10 @@ class TanggapAduanController extends Controller
 
     public function show($id)
   	{
-      $getdatapengaduan = LihatPengaduanModel::paginate(10);
+      $getdatapengaduan = LihatPengaduanModel::where('flag_tanggap', '0')->paginate(10);
       $data['getdatapengaduan'] = $getdatapengaduan;
+      $getdatasudahditanggapi = LihatPengaduanModel::where('flag_tanggap', '1')->paginate(10);
+      $data['getdatasudahditanggapi'] = $getdatasudahditanggapi;
       $binddatapengaduan = LihatPengaduanModel::find($id);
       $data['binddatapengaduan'] = $binddatapengaduan;
 
