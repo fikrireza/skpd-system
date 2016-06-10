@@ -55,7 +55,7 @@
                     <span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span>
                   @endif</td>
                   <td>
-                    <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a>
+                    <a href="{{url('wargaprofile', $key->id)}}" class="btn btn-xs btn-success">Lihat Profil</a>
                   </td>
                 </tr>
                 <?php $pageget++; ?>

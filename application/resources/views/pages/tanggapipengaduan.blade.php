@@ -74,14 +74,14 @@
               Isi Pengaduan
             @endif
           </p>
-          {{-- <!-- Attachment -->
+          <!-- Attachment -->
           <div class="attachment-block clearfix">
             <b>Data Pendukung</b><br>
             <i class="text-muted">gambar.jpg</i>
             <div class="pull-right">
               <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
             </div>
-          </div><!-- /.attachment-block --> --}}
+          </div><!-- /.attachment-block -->
 
         </div><!-- /.box-body -->
         <div class="box-footer">
@@ -91,7 +91,7 @@
             <form class="form-horizontal" method="post" action="#">
           @endif
             {!! csrf_field() !!}
-            <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="alt text">
+            <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/logokabtangerang.png')}}" alt="alt text">
             <!-- .img-push is used to add margin to elements next to floating images -->
             <div class="img-push">
               <input
