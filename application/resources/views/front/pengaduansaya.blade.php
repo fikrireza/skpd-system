@@ -1,5 +1,9 @@
 @extends('front.template')
 
+@section('title')
+  <title>SIMPEDU | Pengaduan Saya</title>
+@stop
+
 @section('content')
 
   @if(Session::has('pengaduan'))
@@ -41,9 +45,7 @@
             @elseif($pengaduan->flag_tanggap == 0)
               <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
             @endif
-
-            {{-- <li class="pull-right"><a href="{{ url('pengaduan/detail', $pengaduan->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li> --}}
-            <li class="pull-right">{{ HTML::link('pengaduan/detail/'.$pengaduan->slug, 'Selengkapnya') }}</li>
+            <li class="pull-right"><a href="{{ url('pengaduan/detail', $pengaduan->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
           </ul>
         </div><!-- /.post -->
         @endforeach

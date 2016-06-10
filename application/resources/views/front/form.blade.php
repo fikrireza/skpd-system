@@ -1,3 +1,7 @@
+@section('headScript')
+<link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
+@stop
+
 <div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title">Ajukan Keluhan Anda</h3>
@@ -9,7 +13,7 @@
     <div class="box-body">
       <div class="form-group{{ $errors->has('topik') ? 'has-error' : '' }}">
         <label>Kategori Pelaporan</label>
-        {!! Form::select('topik', $topiks, null, ['class' => 'form-control','placeholder' => '-- Pilih Kategori --']) !!}
+        {!! Form::select('topik', $topiks, null, ['class' => 'form-control select2', 'placeholder' => '-- Pilih Kategori --']) !!}
         @if($errors->has('topik'))
           <span class="help-block">
             <strong>{{$errors->first('topik')}}</strong>
@@ -62,3 +66,12 @@
     </div>
   </form>
 </div>
+
+@section('script')
+  <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".select2").select2();
+    });
+  </script>
+@stop

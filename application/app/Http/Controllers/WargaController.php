@@ -9,6 +9,7 @@ use DB;
 use App\User;
 use App\Models\Pengaduan;
 use App\Models\DokumenPengaduan;
+use App\Models\TanggapanModel;
 
 class WargaController extends Controller
 {
@@ -123,7 +124,7 @@ class WargaController extends Controller
 
     $pengaduans = Pengaduan::where('warga_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
-    return view('front.pengaduansaya', compact('profiles', 'topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid'));//)->with('profiles', 'topik', $profiles, $topik);
+    return view('front.pengaduansaya', compact('profiles', 'topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid'));
   }
 
   public function detailPengaduan($slug)
@@ -135,7 +136,11 @@ class WargaController extends Controller
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
     $detail = Pengaduan::where('slug', $slug)->first();
-    // dd($detail);
-    return view('front.detaillaporan', compact('profiles', 'pengaduanWid', 'tanggapWid'));
+
+    $tanggapan = TanggapanModel::where('id_pengaduan', $detail->id)->get();
+
+    $listPengaduan = Pengaduan::where('warga_id', $id)->orderBy('created_at', 'dsc')->get();
+
+    return view('front.detaillaporan', compact('profiles', 'pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan'));
   }
 }
