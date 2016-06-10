@@ -1,5 +1,9 @@
 @extends('front.template')
 
+@section('title')
+  <title>SIMPEDU | Profil</title>
+@stop
+
 @section('content')
 
   @if(Session::has('messagefilled'))
@@ -139,10 +143,10 @@
                   <div class="col-sm-9">
                     <div class="radio">
                       <label>
-                        <input type="radio" name="jeniskelamin" id="optionsRadios1" value="Pria" checked="">Pria
+                        <input type="radio" name="jeniskelamin" id="optionsRadios1" value="L" checked="">Pria
                       </label>
                       <label>
-                        <input type="radio" name="jeniskelamin" id="optionsRadios2" value="Wanita">Wanita
+                        <input type="radio" name="jeniskelamin" id="optionsRadios2" value="P">Wanita
                       </label>
                     </div>
                     @if($errors->has('jeniskelamin'))

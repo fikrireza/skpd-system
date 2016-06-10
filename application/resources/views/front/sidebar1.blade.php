@@ -36,7 +36,11 @@
       <hr style="margin-top:2px;margin-bottom:8px;">
 
       <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-      <p class="text-muted">{{ $profiles->jeniskelamin}}</p>
+      <p class="text-muted">@if($profiles->jeniskelamin === 'P')
+                                Perempuan
+                            @elseif($profiles->jeniskelamin === 'L')
+                                Laki-Laki
+                            @endif</p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 

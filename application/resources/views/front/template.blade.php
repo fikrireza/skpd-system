@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SIMPEDU | Beranda</title>
+    @yield('title')
     @include('includes.head')
+    @yield('headScript')
     <link rel="stylesheet" href="{{asset('dist/css/customcss.css')}}" media="screen" title="no title" charset="utf-8">
   </head>
 
