@@ -197,9 +197,10 @@
              </tr>
            </thead>
            <tbody>
+              <?php $no = 1; ?>
                @foreach($getpengaduan as $key)
                  <tr>
-                   <td>1.</td>
+                   <td>{{$no}}.</td>
                    <td>{{ $key->nama }}</td>
                    <td>{{ $key->nama_topik }}</td>
                    <td>{{ $key->tanggaladuan }}</td>
@@ -214,7 +215,14 @@
                      @if($key->flag_tanggap=="0")
                        --
                      @else
-                       <span class="pull-center badge bg-purple">3 Hari</span>
+                      <?php
+                        $date1=date_create($key->tanggaltanggap);
+                        $date2=date_create($key->tanggaladuan);
+                        $diff=date_diff($date2,$date1);
+                        $sym = substr($diff->format("%R%a"), 0, 1);
+                        $days = substr($diff->format("%R%a"), 1);
+                      ?>
+                      <span class="pull-center badge bg-purple">{{$days}} Hari</span>
                      @endif
                    </td>
                    <td>
@@ -230,6 +238,7 @@
                      </span>
                    </td>
                  </tr>
+                 <?php $no++; ?>
                @endforeach
            </tbody>
          </table>
