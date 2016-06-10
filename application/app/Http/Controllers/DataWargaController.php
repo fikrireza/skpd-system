@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Models\DataWargaModel;
+use App\Models\LihatPengaduanModel;
 
 class DataWargaController extends Controller
 {
@@ -13,7 +14,7 @@ class DataWargaController extends Controller
     {
 
       $getdatawarga = DataWargaModel::where('level', '1')->get();
-      // dd($getdatawarga);
+      // $getdatapengaduan = LihatPengaduanModel::where('warga_id', '1')->count('warga_id');
       // return view('pages.lihatpengaduan', compact('getdatapengaduan', 'gettopik'));
 
       return view('pages.datawarga')->with('getdatawarga', $getdatawarga);
