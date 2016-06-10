@@ -1,6 +1,15 @@
 @extends('front.template')
 
 @section('content')
+
+  @if(Session::has('messagefilled'))
+    <div class="alert alert-info alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <h4><i class="icon fa fa-info"></i> Informasi</h4>
+      {{ Session::get('messagefilled') }}
+    </div>
+  @endif
+
   <div class="col-md-9">
     <div class="box box-info">
 
