@@ -180,7 +180,7 @@
      <!-- Horizontal Form -->
      <div class="box box-warning">
        <div class="box-header">
-         <h3 class="box-title">Seluruh Data Pengaduan Terkait SKPD</h3>
+         <h3 class="box-title">Seluruh Data Pengaduan SKPD Terkait</h3>
        </div><!-- /.box-header -->
        <div class="box-body">
          <table id="tabeluser" class="table table-hover">
@@ -197,62 +197,40 @@
              </tr>
            </thead>
            <tbody>
-             <tr>
-                <td>1.</td>
-                <td>Bambang Pamungkis</td>
-                <td>BPJS Kesehatan</td>
-                <td>24 April 2016</td>
-                <td>27 April 2016</td>
-                <td><span class="pull-center badge bg-purple">3 Hari</span></td>
-                <td><span class="pull-center badge bg-aqua">Sudah Ditanggapi</span></td>
-                <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
-                  </span>
-               </td>
-              </tr>
-              <tr>
-                <td>2.</td>
-                <td>Amanda Satyarini</td>
-                <td>Pelayanan Obat</td>
-                <td>24 Januari 2016</td>
-                <td> - </td>
-                <td><span class="pull-center badge bg-purple"> - </span></td>
-                <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
-                <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>Bambang Pamungkis</td>
-                <td>BPJS Kesehatan</td>
-                <td>24 April 2016</td>
-                <td>27 April 2016</td>
-                <td><span class="pull-center badge bg-purple">3 Hari</span></td>
-                <td><span class="pull-center badge bg-aqua">Sudah Ditanggapi</span></td>
-                <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
-                  </span>
-               </td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>Amanda Satyarini</td>
-                <td>Pelayanan Obat</td>
-                <td>24 Januari 2016</td>
-                <td> - </td>
-                <td><span class="pull-center badge bg-purple"> - </span></td>
-                <td><span class="pull-center badge bg-red">Belum Ditanggapi</span></td>
-                <td>
-                  <span data-toggle="tooltip" title="View Data">
-                    <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
-                  </span>
-                </td>
-              </tr>
+               @foreach($getpengaduan as $key)
+                 <tr>
+                   <td>1.</td>
+                   <td>{{ $key->nama }}</td>
+                   <td>{{ $key->nama_topik }}</td>
+                   <td>{{ $key->tanggaladuan }}</td>
+                   <td>
+                    @if($key->flag_tanggap=="0")
+                      --
+                    @else
+                      {{ $key->tanggaltanggap }}
+                    @endif
+                   </td>
+                   <td>
+                     @if($key->flag_tanggap=="0")
+                       --
+                     @else
+                       <span class="pull-center badge bg-purple">3 Hari</span>
+                     @endif
+                   </td>
+                   <td>
+                     @if($key->flag_tanggap=="0")
+                       <span class="pull-center badge bg-red">Belum Ditanggapi</span>
+                     @else
+                       <span class="pull-center badge bg-aqua">Sudah Ditanggapi</span>
+                     @endif
+                   </td>
+                   <td>
+                     <span data-toggle="tooltip" title="View Data">
+                       <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
+                     </span>
+                   </td>
+                 </tr>
+               @endforeach
            </tbody>
          </table>
        </div><!-- /.box-body -->
