@@ -36,14 +36,13 @@
               <div class='user-block'>
                 <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
                 <span class='username'><a href="#">Bambang Pamungkis</a></span>
-                <span class='description'>24 Mei 2016 | Pemadaman Listrik</span>
+                <span class='description'><span id="tanggal_pengaduan"></span> | <span id="judul_pengaduan"></span></span>
               </div><!-- /.user-block -->
             </div><!-- /.box-header -->
             <div class='box-body'>
               <!-- post text -->
-              <p>Yth. SKPD terkait,</p>
-              <p>Mohon bantuannya untuk menghubungi pihak PLN Untuk segera menyalakan kembali aliran listriknya di Wilayah Jalan songsi raya RT.011/05 Tambora, Tanah sereal Jakarta Barat dikarenakan telah sering mati lampu seperti hari ini, dari tadi siang mati lampu dan sampai sekarang belum menyala, sudah lebih dari 6 jam.</p>
-              <p>Mohon ditindaklanjuti, terima kasih.</p>
+              <div id="isi_pengaduan" style="margin-bottom:10px;"></div>
+
               <!-- Attachment -->
               <div class="attachment-block clearfix">
                 <b>Data Pendukung</b><br>
@@ -51,24 +50,10 @@
                 <div class="pull-right">
                   <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
                 </div>
-              </div><!-- /.attachment-block -->
-              <div class='box-footer box-comments' style="border:1px solid #00a65a;">
-                <div style="padding-bottom:5px;">
-                  <b>Tanggapan</b>
-                </div>
-                <div class='box-comment'>
-                  <!-- User image -->
-                  <img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>
-                  <div class='comment-text'>
-                    <span class="username">
-                      Administrator SKPD Pelayanan Publik
-                      <span class='text-muted pull-right'>25 April 2016</span>
-                    </span><!-- /.username -->
-                    It is a long established fact that a reader will be distracted
-                    by the readable content of a page when looking at its layout.
-                  </div><!-- /.comment-text -->
-                </div><!-- /.box-comment -->
-              </div><!-- /.box-footer -->
+              </div>
+
+              <div id="tanggapan"></div>
+
             </div><!-- /.box-body -->
 
           </div><!-- /.box -->
@@ -234,7 +219,7 @@
                    </td>
                    <td>
                      <span data-toggle="tooltip" title="View Data">
-                       <a href="" class="btn btn-primary btn-flat btn-xs" data-toggle="modal" data-target="#myModal" data-value="#"><i class="fa fa-eye"></i></a>
+                       <a href="" data-value="{{ $key->pengaduanid }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
                      </span>
                    </td>
                  </tr>
@@ -264,10 +249,43 @@
 
   <script type="text/javascript">
     $(function(){
-      $('a.hapus').click(function(){
+      $('a.viewdetail').click(function(){
         var a = $(this).data('value');
-        // $('#set').attr('href', "{{ url('/') }}/masterbahasaasing/delete/"+a);
-      });
+        $.ajax({
+          url: "{{ url('/') }}/pengaduandetail/bind/"+a,
+          dataType: 'json',
+          success: function(data){
+            //get
+            var id = data[0].id;
+            var judul_pengaduan = data[0].judul_pengaduan;
+            var tanggal_pengaduan = data[0].created_at;
+            var isi_pengaduan = data[0].isi_pengaduan;
+            var tanggap = data[0].tanggapan;
+
+            // set
+            $('span#judul_pengaduan').append(judul_pengaduan);
+            $('span#tanggal_pengaduan').append(tanggal_pengaduan);
+            $('div#isi_pengaduan').append(isi_pengaduan);
+            $('div#tanggapan').append(
+              "<div class='box-footer box-comments' style='border:1px solid #00a65a;'>"+
+                "<div style='padding-bottom:5px;'>"+
+                  "<b>Tanggapan</b>"+
+                "</div>"+
+                "<div class='box-comment'>"+
+                  "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
+                  "<div class='comment-text'>"+
+                    "<span class='username'>"+
+                      "Administrator SKPD Pelayanan Publik"+
+                      "<span class='text-muted pull-right'>25 April 2016</span>"+
+                    "</span>"+
+                    tanggap +
+                  "</div>"+
+                "</div>"+
+              "</div>"
+            );
+          }
+        });
+      })
     });
   </script>
   <script>

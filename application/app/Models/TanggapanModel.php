@@ -21,4 +21,9 @@ class TanggapanModel extends Model  {
 	 * @return Illuminate\Database\Eloquent\Relations\belongToMany
 	 */
 
+	public function pengaduan()
+	{
+	 return $this->belongsTo('App\Models\Pengaduan', 'id_pengaduan');
+	}
+
 	}

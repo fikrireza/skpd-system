@@ -84,6 +84,7 @@ Route::post('dataskpd/update', 'MasterSKPDController@update');
 Route::get('dataskpd/bind/{id}', 'MasterSKPDController@bind');
 Route::get('listdataskpdbytopik', 'MasterSKPDController@getDataSKPD');
 Route::get('topikbyskpd/{id}', 'MasterSKPDController@detailSKPD');
+Route::get('pengaduandetail/bind/{id}', 'MasterSKPDController@bindfordetail');
 
 Route::get('topikpengaduan', ['as'=>'topikpengaduan.index', 'uses'=>'TopikAduanController@index']);
 Route::post('topikpengaduan', ['as'=>'topikpengaduan.store', 'uses'=>'TopikAduanController@store']);
@@ -116,9 +117,6 @@ Route::get('detailpengaduan', function(){
   return view('pages.detailpengaduan');
 });
 
-Route::get('lihatpengaduan', function(){
-  return view('pages.lihatpengaduan');
-});
 Route::resource('lihatpengaduan', 'LihatPengaduanController');
 
 Route::get('pengaduanbytopik', function(){

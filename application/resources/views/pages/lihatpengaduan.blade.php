@@ -67,9 +67,9 @@
                     @endif
                   </td>
                   <td>
-                    @if($key->flag_tayang==0)
+                    @if($key->flag_tanggap==0)
                       <span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span>
-                    @elseif($key->flag_tayang==1)
+                    @elseif($key->flag_tanggap==1)
                       <span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span>
                     @endif
                   </td>

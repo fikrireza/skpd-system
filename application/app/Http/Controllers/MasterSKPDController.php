@@ -167,12 +167,19 @@ class MasterSKPDController extends Controller
                       ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                       ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                      ->select('*', 'tanggapan.created_at as tanggaltanggap', 'pengaduan.created_at as tanggaladuan')
+                      ->select('*', 'tanggapan.created_at as tanggaltanggap', 'pengaduan.created_at as tanggaladuan', 'pengaduan.id as pengaduanid')
                       ->where('master_skpd.id', $id)
                       ->get();
-                      // dd($getpengaduan);
-      // $getpengaduan = Pengaduan::all();
       return view('pages/topikbyskpd', compact('getskpd', 'gettopik', 'getbelumtanggap', 'getsudahtanggap', 'getpengaduan'));
+    }
+
+    public function bindfordetail($id)
+    {
+      $get = DB::table('pengaduan')
+              ->leftJoin('tanggapan', 'tanggapan.id_pengaduan' , '=', 'pengaduan.id')
+              ->where('pengaduan.id', $id)
+              ->get();
+      return $get;
     }
 
 }

@@ -21,4 +21,9 @@ class Pengaduan extends Model
     {
       return $this->hasMany('App\User', 'id');
     }
+
+    public function tanggapan()
+    {
+      return $this->hasOne('App\Models\TanggapanModel', 'id');
+    }
 }
