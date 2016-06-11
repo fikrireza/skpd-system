@@ -82,7 +82,9 @@
       <div class="col-md-9">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan SKPD Kesehatan</a></li>
+            @foreach($data['getdataskpd'] as $getskpd)
+              <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan SKPD {{$getskpd->nama_skpd}}</a></li>
+            @endforeach
             {{-- <li><a href="#settings" data-toggle="tab">Ubah Profil</a></li> --}}
           </ul>
           <div class="tab-content">
@@ -99,7 +101,7 @@
                       {{$getpengaduan->judul_pengaduan}}
                     </span>
                     <span class='description' style="margin-left:0px;">
-                      Kategori Pelayanan Obat - {{$getpengaduan->created_at}}
+                      {{$getpengaduan->topik->nama_topik}} || {{$getpengaduan->created_at}}
                     </span>
                     <span class='description' style="margin-left:0px; padding-top:3px;">
                       @if($getpengaduan->flag_tanggap==1)
@@ -123,7 +125,7 @@
                           <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
                           <div class='comment-text'>
                             <span class="username">
-                                Administrator {{$gettanggapan->user->nama}}
+                                {{$gettanggapan->user->nama}}
                               <span class='text-muted pull-right'>{{$gettanggapan->created_at}}</span>
                             </span><!-- /.username -->
                             {{$gettanggapan->tanggapan}}
