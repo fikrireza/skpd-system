@@ -141,12 +141,6 @@ Route::get('listdatapengaduanbyskpd', function(){
   return view('pages.listdatapengaduanbyskpd');
 });
 
-
-
-Route::get('historipengaduan', function(){
-  return view('pages.historipengaduan');
-});
-
-Route::get('listhistoripengaduanall', function(){
-  return view('pages.listhistoripengaduanall');
-});
+Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
+Route::get('admin/historipengaduan/datatables', ['as'=>'datatables.histori', 'uses'=>'HistoriPengaduanController@getDataForDataTable']);
+Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
