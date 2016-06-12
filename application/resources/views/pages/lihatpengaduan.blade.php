@@ -43,7 +43,7 @@
               @foreach($getdatapengaduan as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
-                  <td><a href="{{url('wargaprofile')}}">{{ $key->user->nama }}</a></td>
+                  <td><a href="{{url('wargaprofile/show', $key->user->id)}}">{{ $key->user->nama }}</a></td>
                   <td>{{ $key->topik->nama_topik }}</td>
                   <td>
                     <?php

@@ -1,17 +1,29 @@
 @extends('layouts.master')
 
 @section('title')
-  <title>Tanggapi Pengaduan</title>
+  @if(isset($data['binddatatanggapan']))
+      <title>Lihat Pengaduan</title>
+  @else
+      <title>Tanggapi Pengaduan</title>
+  @endif
 @stop
 
 @section('breadcrumb')
   <h1>
-    Tanggapi Pengaduan
+    @if(isset($data['binddatatanggapan']))
+        Lihat Pengaduan
+    @else
+        Tanggapi Pengaduan
+    @endif
     <small>Jawab Laporan Warga</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
-    <li class="active">Tanggapi Pengaduan</li>
+    @if(isset($data['binddatatanggapan']))
+        <li class="active">Lihat Pengaduan</li>
+    @else
+        <li class="active">Tanggapi Pengaduan</li>
+    @endif
   </ol>
 @stop
 
@@ -126,61 +138,129 @@
     </div><!--/.col -->
 
     <div class="col-md-7">
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <div class="box-title">
-            Pengaduan Belum Ditanggapi
+      <!-- Custom Tabs -->
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          @if(isset($data['binddatatanggapan']))
+            <li><a href="#tab_1" data-toggle="tab">Data Belum Ditanggapi</a></li>
+            <li class="active"><a href="#tab_2" data-toggle="tab">Data Sudah Ditanggapi</a></li>
+          @else
+            <li class="active"><a href="#tab_1" data-toggle="tab">Data Belum Ditanggapi</a></li>
+            <li><a href="#tab_2" data-toggle="tab">Data Sudah Ditanggapi</a></li>
+          @endif
+        </ul>
+        <div class="tab-content">
+          @if(isset($data['binddatatanggapan']))
+            <div class="tab-pane" id="tab_1">
+          @else
+            <div class="tab-pane active" id="tab_1">
+          @endif
+              <div class="box-body no-padding">
+
+                <table class="table">
+                  <tr class="bg-green">
+                    <th style="width:10px;">#</th>
+                    <th>Pelapor</th>
+                    <th>Kategori</th>
+                    <th>Tanggal</th>
+                    <th>Aksi</th>
+                  </tr>
+                  <?php
+                    $no;
+                    if($data['getdatapengaduan']->currentPage()==1)
+                      $no = 1;
+                    else
+                      $no = (($data['getdatapengaduan']->currentPage() - 1) * $data['getdatapengaduan']->perPage())+1;
+                    ?>
+                  @if($data['getdatapengaduan']->isEmpty())
+                    <tr>
+                      <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
+                    </tr>
+                  @elseif(isset($data['getdatapengaduan']))
+                    @foreach($data['getdatapengaduan'] as $key)
+                      <tr>
+                        <td>{{ $no }}</td>
+                        <td>{{ $key->user->nama }}</td>
+                        <td>{{ $key->topik->nama_topik }}</td>
+                        <td>{{ $key->created_at }}</td>
+                        <td>
+                          @if($key->flag_tanggap==0)
+                            <a class="btn btn-xs btn-warning" href="{{ route('tanggap.edit', $key->id) }}">Belum Ditanggapi</a></td>
+                          @elseif($key->flag_tanggap==1)
+                            <a class="btn btn-xs btn-success" href="{{ route('tanggap.show', $key->id) }}">Sudah Ditanggapi</a></td>
+                          @endif
+                      </tr>
+                      <?php $no++; ?>
+                    @endforeach
+                  @endif
+                </table>
+              </div>
+              <div class="box-footer">
+                <div class="pagination pagination-sm no-margin pull-right">
+                  {{ $data['getdatapengaduan']->links() }}
+                </div>
+              </div>
           </div>
-          <div class='box-tools'>
-            <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
-            <button class='btn btn-box-tool' data-widget='remove'><i class='fa fa-times'></i></button>
-          </div><!-- /.box-tools -->
-        </div>
-        <div class="box-body no-padding">
-          <table class="table">
-            <tr class="bg-green">
-              <th style="width:10px;">#</th>
-              <th>Pelapor</th>
-              <th>Kategori</th>
-              <th>Tanggal</th>
-              <th>Aksi</th>
-            </tr>
-            <?php
-              $no;
-              if($data['getdatapengaduan']->currentPage()==1)
-                $no = 1;
-              else
-                $no = (($data['getdatapengaduan']->currentPage() - 1) * $data['getdatapengaduan']->perPage())+1;
-            ?>
-            @if($data['getdatapengaduan']->isEmpty())
-              <tr>
-                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
-              </tr>
-            @elseif(isset($data['getdatapengaduan']))
-              @foreach($data['getdatapengaduan'] as $key)
-                <tr>
-                  <td>{{ $no }}</td>
-                  <td>{{ $key->user->nama }}</td>
-                  <td>{{ $key->topik->nama_topik }}</td>
-                  <td>{{ $key->created_at }}</td>
-                  <td>
-                    @if($key->flag_tanggap==0)
-                      <a class="btn btn-xs btn-warning" href="{{ route('tanggap.edit', $key->id) }}">Belum Ditanggapi</a></td>
-                    @elseif($key->flag_tanggap==1)
-                      <a class="btn btn-xs btn-success" href="{{ route('tanggap.show', $key->id) }}">Sudah Ditanggapi</a></td>
-                    @endif
+          <!-- /.tab-pane -->
+          @if(isset($data['binddatatanggapan']))
+            <div class="tab-pane active" id="tab_2">
+          @else
+            <div class="tab-pane" id="tab_2">
+          @endif
+            <div class="box-body no-padding">
+              <table class="table">
+                <tr class="bg-green">
+                  <th style="width:10px;">#</th>
+                  <th>Pelapor</th>
+                  <th>Kategori</th>
+                  <th>Tanggal</th>
+                  <th>Aksi</th>
                 </tr>
-                <?php $no++; ?>
-              @endforeach
-            @endif
-          </table>
-        </div>
-        <div class="box-footer">
-          <div class="pagination pagination-sm no-margin pull-right">
-            {{ $data['getdatapengaduan']->links() }}
+                <?php
+                  $no;
+                  if($data['getdatasudahditanggapi']->currentPage()==1)
+                    $no = 1;
+                  else
+                    $no = (($data['getdatasudahditanggapi']->currentPage() - 1) * $data['getdatasudahditanggapi']->perPage())+1;
+                ?>
+                @if($data['getdatasudahditanggapi']->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($data['getdatasudahditanggapi']))
+                  @foreach($data['getdatasudahditanggapi'] as $key)
+                    <tr>
+                      <td>{{ $no }}</td>
+                      <td>{{ $key->user->nama }}</td>
+                      <td>{{ $key->topik->nama_topik }}</td>
+                      <td>{{ $key->created_at }}</td>
+                      <td>
+                        @if($key->flag_tanggap==0)
+                          <a class="btn btn-xs btn-warning" href="{{ route('tanggap.edit', $key->id) }}">Belum Ditanggapi</a></td>
+                        @elseif($key->flag_tanggap==1)
+                          <a class="btn btn-xs btn-success" href="{{ route('tanggap.show', $key->id) }}">Sudah Ditanggapi</a></td>
+                        @endif
+                    </tr>
+                    <?php $no++; ?>
+                  @endforeach
+                @endif
+              </table>
+            </div>
+            <div class="box-footer">
+              <div class="pagination pagination-sm no-margin pull-right">
+                {{ $data['getdatasudahditanggapi']->links() }}
+              </div>
+            </div>
           </div>
+          <!-- /.tab-pane -->
         </div>
+        <!-- /.tab-content -->
       </div>
+      <!-- nav-tabs-custom -->
+    </div>
+
+    <div class="col-md-7">
+
     </div>
   </div>   <!-- /.row -->
 

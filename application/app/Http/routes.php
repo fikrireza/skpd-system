@@ -125,10 +125,10 @@ Route::get('pengaduanbytopik', function(){
   return view('pages.pengaduanbytopik');
 });
 
-Route::get('wargaprofile', function(){
-  return view('pages.wargaprofile');
-});
-
+// Route::get('wargaprofile', function(){
+//   return view('pages.wargaprofile');
+// });
+Route::get('wargaprofile/show/{id}', 'WargaProfileController@show');
 
 Route::get('datawarga', function(){
   return view('pages.datawarga');
