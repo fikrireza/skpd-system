@@ -60,7 +60,7 @@
                 </div>
               </div>
 
-              @if(count($detail) > 1)
+              @if($detail->count() > 1)
                 <div class="box box-primary">
                   <div class="box-header with-border">
                     <h3 class="box-title">Pengaduan Anda Lainnya</h3>
@@ -68,7 +68,7 @@
                   <div class="box-body">
                     <!-- Post -->
                     @foreach($listPengaduan as $pengaduan)
-                      @if(!$pengaduan->slug == $detail)
+                      @if($pengaduan->slug != $detail->slug)
                         <div class="post">
                           <div class="user-block">
                             <span class="username" style="margin-left:0px;">
