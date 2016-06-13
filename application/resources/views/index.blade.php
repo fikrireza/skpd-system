@@ -159,19 +159,20 @@
                   <div class="widget-user-header bg-blue">
                     <div class="widget-user-image">
                       {{-- <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar"> --}}
-                      @if($profiles->url_photo == null)
+                      {{-- {{ auth()->user()->username }} --}}
+                      @if(auth()->user()->url_photo == null)
                         <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
                       @else
-                        <img class="img-circle" src="{{ asset('/images/'.$profiles->url_photo) }}" alt="{{$profiles->nama}}">
+                        <img class="img-circle" src="{{ asset('/images/'.auth()->user()->url_photo) }}" alt="{{ auth()->user()->nama}}">
                       @endif
                     </div><!-- /.widget-user-image -->
-                    <h3 class="widget-user-username">{{ $profiles->nama}}</h3>
-                    <h5 class="widget-user-desc">Bergabung {{ \Carbon\Carbon::parse($profiles->created_at)->format('d-M-y')}}</h5>
+                    <h3 class="widget-user-username">{{ auth()->user()->nama}}</h3>
+                    <h5 class="widget-user-desc">Bergabung {{ \Carbon\Carbon::parse(auth()->user()->created_at)->format('d-M-y')}}</h5>
                   </div>
                   <div class="box-footer no-padding">
                     <ul class="nav nav-stacked">
-                      <li><a href="{{url('pengaduan')}}">Pengaduan Anda<span class="pull-right badge bg-green">{{ $pengaduanWid }}</span></a></li>
-                      <li><a href="{{url('pengaduan')}}">Telah Ditanggapi<span class="pull-right badge bg-green">{{ $tanggapWid }}</span></a></li>
+                      {{-- <li><a href="{{url('pengaduan')}}">Pengaduan Anda<span class="pull-right badge bg-green">{{ $pengaduanWid }}</span></a></li>
+                      <li><a href="{{url('pengaduan')}}">Telah Ditanggapi<span class="pull-right badge bg-green">{{ $tanggapWid }}</span></a></li> --}}
                       <li><a href="{{ url('beranda')}}"><b>Beranda</b></a></li>
                       <li><a href="{{ url('pengaduan') }}"><b>Pengaduan Saya</b></a></li>
                       <li><a href="{{url('semualaporan')}}"><b>Daftar Pengaduan</b></a></li>

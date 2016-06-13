@@ -12,7 +12,10 @@
 */
 
 // Front
-Route::get('/', 'WelcomePageController@index');
+// Route::get('/', 'WelcomePageController@index');
+Route::get('/', function(){
+  return view('index');
+});
 
 Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
 Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
