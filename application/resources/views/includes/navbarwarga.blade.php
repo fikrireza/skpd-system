@@ -22,9 +22,10 @@
           <li><a href="{{ url('pengaduan') }}">Pengaduan Saya <span class="sr-only"></span></a></li>
           <li><a href="{{url('semualaporan')}}">Daftar Pengaduan</a></li>
         </ul>
-        <form class="navbar-form navbar-left" role="search">
+        <form class="navbar-form navbar-left" role="search" method="GET" action="{{ url('cari')}}">
+          {!! csrf_field() !!}
           <div class="form-group">
-            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+            <input type="text" class="form-control" id="navbar-search-input" placeholder="Cari Pengaduan" name="qr">
           </div>
         </form>
       </div><!-- /.navbar-collapse -->

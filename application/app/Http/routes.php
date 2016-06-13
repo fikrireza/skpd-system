@@ -31,6 +31,8 @@ Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where(
 //   return view('front.detaillaporan');
 // });
 
+Route::get('cari', 'SearchController@getSearchWarga');
+
 Route::get('detail/pengaduan-warga', function(){
   return view('front.detailpengaduan');
 });
