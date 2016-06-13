@@ -23,12 +23,36 @@ class DashboardController extends Controller
      */
     public function index()
     {
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
+      
       $getlihatpengaduan = LihatPengaduanModel::select('*')->orderby('created_at','desc')->limit(3)->get();
-      $getcountpengaduan = LihatPengaduanModel::count('warga_id');
+      $getcountpengaduanall = LihatPengaduanModel::count('warga_id');
+      $getcountpengaduan = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*', 'pengaduan.id')
+                      ->where('master_skpd.id', $userid->id_skpd)
+                      // ->where('flag_tanggap', '1')
+                      // ->where('flag_verifikasi', '1')
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->count('nama');
 
-      $getcountpengaduantelahditanggapi = LihatPengaduanModel::where('flag_tanggap', '1')->count('flag_tanggap');
+      $getcountpengaduantelahditanggapiall = LihatPengaduanModel::where('flag_tanggap', '1')->count('flag_tanggap');
+      $getcountpengaduantelahditanggapi = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*', 'pengaduan.id')
+                      ->where('master_skpd.id', $userid->id_skpd)
+                      ->where('flag_tanggap', '1')
+                      ->where('flag_verifikasi', '1')
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->count('nama');
 
-      $getuser = User::select('*')->where('level', '1')->limit(8)->get();
+      // dd($getcountpengaduantelahditanggapi);
+      $getuser = User::select('*')->where('level', '1')->orderby('created_at','desc')->limit(8)->get();
       $getcountuser = User::where('level', '1')->count('activated');
       // dd($getlihatpengaduan);
 
@@ -36,7 +60,8 @@ class DashboardController extends Controller
                   ->whereRaw('Date(created_at) = CURDATE()')
                   ->where('level', '1')->count('activated');
       // dd($recordusers);
-      return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduantelahditanggapi','getcountuser','getlihatpengaduan', 'getuser','recordusers'));
+      return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall','getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
+      'getcountuser','getlihatpengaduan', 'getuser','recordusers'));
     }
 
     /**

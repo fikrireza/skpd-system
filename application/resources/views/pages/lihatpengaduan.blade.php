@@ -40,11 +40,12 @@
             </thead>
             <tbody>
               <?php $pageget = 1; ?>
-              @foreach($getdatapengaduan as $key)
+              @if(Auth::user()->level=="0")
+                  @foreach($data['getdatapengaduanall'] as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
-                  <td><a href="{{url('wargaprofile/show', $key->user->id)}}">{{ $key->user->nama }}</a></td>
-                  <td>{{ $key->topik->nama_topik }}</td>
+                  <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
+                  <td>{{ $key->nama_topik }}</td>
                   <td>
                     <?php
                       $date = $key->created_at;
@@ -74,11 +75,52 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
+                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-xs btn-success">Lihat</a>
                   </td>
                 </tr>
                 <?php $pageget++; ?>
               @endforeach
+              @elseif(Auth::user()->level=="2")
+              @foreach($data['getdatapengaduan'] as $key)
+                <tr>
+                  <td>{{ $pageget }}</td>
+                  <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
+                  <td>{{ $key->nama_topik }}</td>
+                  <td>
+                    <?php
+                      $date = $key->created_at;
+                      $justdate = substr($date, 0, 10);
+                      $explode = explode("-", $justdate);
+                      echo $explode[2]."-".$explode[1]."-".$explode[0];
+                    ?>
+                  </td>
+                  <td>
+                    <?php
+                      $justtime = substr($date, 12);
+                      echo $justtime;
+                    ?>
+                  </td>
+                  <td>
+                    @if($key->flag_verifikasi==0)
+                      <span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span>
+                    @elseif($key->flag_verifikasi==1)
+                      <span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->flag_tanggap==0)
+                      <span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span>
+                    @elseif($key->flag_tanggap==1)
+                      <span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span>
+                    @endif
+                  </td>
+                  <td>
+                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-xs btn-success">Lihat</a>
+                  </td>
+                </tr>
+                <?php $pageget++; ?>
+              @endforeach
+              @endif
             </tbody>
           </table>
         </div><!-- /.box-body -->

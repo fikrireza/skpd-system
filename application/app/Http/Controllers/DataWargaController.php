@@ -7,17 +7,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\DataWargaModel;
 use App\Models\LihatPengaduanModel;
+use DB;
 
 class DataWargaController extends Controller
 {
     public function index()
     {
-
-      $getdatawarga = DataWargaModel::where('level', '1')->get();
-      // $getdatapengaduan = LihatPengaduanModel::where('warga_id', '1')->count('warga_id');
-      // return view('pages.lihatpengaduan', compact('getdatapengaduan', 'gettopik'));
-
-      return view('pages.datawarga')->with('getdatawarga', $getdatawarga);
+      $getdatawarga = DB::table('users')
+                      ->join('pengaduan', 'users.id', '=', 'pengaduan.warga_id')
+                      ->where('level', '1')
+                      ->where('flag_verifikasi', '0')
+                      ->select('*', 'users.id')
+                      ->get();
+      return view('pages.datawarga')->with('data', compact('getdatawarga'));
     }
 
     public function store(Request $request)

@@ -82,9 +82,16 @@
       <div class="col-md-9">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            @foreach($data['getdataskpd'] as $getskpd)
-              <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan SKPD {{$getskpd->nama_skpd}}</a></li>
-            @endforeach
+            @if(Auth::user()->level=="0")
+              @foreach($data['tanggapanall'] as $getskpd)
+                <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan SKPD {{$getskpd->nama_skpd}}</a></li>
+              @endforeach
+            @elseif(Auth::user()->level=="2")
+              @foreach($data['getdataskpd'] as $getskpd)
+                <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan SKPD {{$getskpd->nama_skpd}}</a></li>
+              @endforeach
+            @endif
+
             {{-- <li><a href="#settings" data-toggle="tab">Ubah Profil</a></li> --}}
           </ul>
           <div class="tab-content">
@@ -115,24 +122,45 @@
                     {{$getpengaduan->isi_pengaduan}}
                   </p>
                   @if($getpengaduan->flag_tanggap==1)
-                    @foreach($data['tanggapan'] as $gettanggapan)
-                      <div class='box-footer box-comments' style="border:1px solid #00a65a;">
-                        <div style="padding-bottom:5px;">
-                          <b>Tanggapan</b>
-                        </div>
-                        <div class='box-comment'>
-                          <!-- User image -->
-                          <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
-                          <div class='comment-text'>
-                            <span class="username">
-                                {{$gettanggapan->user->nama}}
-                              <span class='text-muted pull-right'>{{$gettanggapan->created_at}}</span>
-                            </span><!-- /.username -->
-                            {{$gettanggapan->tanggapan}}
-                          </div><!-- /.comment-text -->
-                        </div><!-- /.box-comment -->
-                      </div><!-- /.box-footer -->
-                    @endforeach
+                    @if(Auth::user()->level=="0")
+                      @foreach($data['tanggapanall'] as $gettanggapan)
+                        <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+                          <div style="padding-bottom:5px;">
+                            <b>Tanggapan</b>
+                          </div>
+                          <div class='box-comment'>
+                            <!-- User image -->
+                            <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
+                            <div class='comment-text'>
+                              <span class="username">
+                                  {{$gettanggapan->nama}}
+                                <span class='text-muted pull-right'>{{$gettanggapan->created_at}}</span>
+                              </span><!-- /.username -->
+                              {{$gettanggapan->tanggapan}}
+                            </div><!-- /.comment-text -->
+                          </div><!-- /.box-comment -->
+                        </div><!-- /.box-footer -->
+                      @endforeach
+                    @elseif(Auth::user()->level=="2")
+                      @foreach($data['tanggapan'] as $gettanggapan)
+                        <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+                          <div style="padding-bottom:5px;">
+                            <b>Tanggapan</b>
+                          </div>
+                          <div class='box-comment'>
+                            <!-- User image -->
+                            <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
+                            <div class='comment-text'>
+                              <span class="username">
+                                  {{$gettanggapan->user->nama}}
+                                <span class='text-muted pull-right'>{{$gettanggapan->created_at}}</span>
+                              </span><!-- /.username -->
+                              {{$gettanggapan->tanggapan}}
+                            </div><!-- /.comment-text -->
+                          </div><!-- /.box-comment -->
+                        </div><!-- /.box-footer -->
+                      @endforeach
+                    @endif
                   @endif
                 </div><!-- /.post -->
                 @endforeach

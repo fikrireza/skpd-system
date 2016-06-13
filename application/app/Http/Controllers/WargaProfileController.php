@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Models\DataWargaModel;
 use App\Models\LihatPengaduanModel;
 use App\Models\TanggapanModel;
-use App\Models\TopikAduan;
+use App\TopikAduan;
 use App\MasterSKPD;
 use App\User;
 use DB;
@@ -58,14 +58,19 @@ class WargaProfileController extends Controller
 
         $getdatawarga = DataWargaModel::where('id', $id)->get();
         $getdatajumlahpengaduan = LihatPengaduanModel::where('warga_id', $id)->count('warga_id');
-        $getdatapengaduan = LihatPengaduanModel::where('warga_id', $id)->paginate(5);
+        $getdatapengaduan = LihatPengaduanModel::where('warga_id', $id)->orderby('created_at', 'desc')->paginate(5);
         $idlogin = Auth::user()->id;
         $userid = User::find($idlogin);
 
         $getdataskpd = MasterSKPD::where('id', $userid->id_skpd)->get();
         $tanggapan = TanggapanModel::where('id_userskpd', $userid->id)->get();
-
-        return view('pages.wargaprofile')->with('data', compact('getdatawarga', 'getdatajumlahpengaduan', 'getdatapengaduan', 'tanggapan', 'getdataskpd'));
+        $tanggapanall = DB::table('tanggapan')
+                        ->join('pengaduan', 'tanggapan.id_pengaduan', '=', 'pengaduan.id')
+                        ->join('users', 'tanggapan.id_userskpd', '=', 'users.id')
+                        ->join('master_skpd', 'users.id_skpd', '=', 'master_skpd.id')
+                        ->get();
+        // dd($tanggapanall);
+        return view('pages.wargaprofile')->with('data', compact('getdatawarga', 'getdatajumlahpengaduan', 'getdatapengaduan', 'tanggapan', 'tanggapanall','getdataskpd'));
     }
 
     /**
@@ -107,14 +112,5 @@ class WargaProfileController extends Controller
 
     }
 
-    public function getDataSKPD()
-    {
-
-    }
-
-    public function detailSKPD($id)
-    {
-
-    }
 
 }
