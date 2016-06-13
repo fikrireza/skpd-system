@@ -31,8 +31,6 @@ Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where(
 //   return view('front.detaillaporan');
 // });
 
-Route::get('cari', 'SearchController@getSearchWarga');
-
 Route::get('detail/pengaduan-warga', function(){
   return view('front.detailpengaduan');
 });
@@ -115,14 +113,18 @@ Route::get('tanggap', function(){
 });
 Route::resource('tanggap', 'TanggapAduanController');
 
-Route::get('detailpengaduan', function(){
-  return view('pages.detailpengaduan');
-});
+// Route::get('detailpengaduan', function(){
+//   return view('pages.detailpengaduan');
+// });
+Route::get('detailpengaduan/show/{id}', 'DetailPengaduanController@show');
+Route::get('detailpengaduan/verifikasi/{id}', ['as'=>'detailpengaduan.verifikasi', 'uses'=>'DetailPengaduanController@verifikasi']);
+Route::resource('detailpengaduan', 'DetailPengaduanController');
 
 Route::get('lihatpengaduan', function(){
   return view('pages.lihatpengaduan');
 });
 Route::resource('lihatpengaduan', 'LihatPengaduanController');
+
 
 Route::get('pengaduanbytopik', function(){
   return view('pages.pengaduanbytopik');
@@ -143,6 +145,12 @@ Route::get('listdatapengaduanbyskpd', function(){
   return view('pages.listdatapengaduanbyskpd');
 });
 
-Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
-Route::get('admin/historipengaduan/datatables', ['as'=>'datatables.histori', 'uses'=>'HistoriPengaduanController@getDataForDataTable']);
-Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
+
+
+Route::get('historipengaduan', function(){
+  return view('pages.historipengaduan');
+});
+
+Route::get('listhistoripengaduanall', function(){
+  return view('pages.listhistoripengaduanall');
+});
