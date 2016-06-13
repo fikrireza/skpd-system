@@ -26,7 +26,9 @@ Route::post('sendpengaduan', ['as'=>'sendpengaduan', 'uses'=>'WargaController@po
 
 Route::get('pengaduan', ['as' => 'pengaduan', 'uses' => 'WargaController@pengaduansaya']);
 
-Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z-]+');;
+Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z-]+');
+
+Route::get('cari', 'SearchController@getSearchWarga');
 
 // Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
 //   return view('front.detaillaporan');
@@ -148,10 +150,6 @@ Route::get('listdatapengaduanbyskpd', function(){
 
 
 
-Route::get('historipengaduan', function(){
-  return view('pages.historipengaduan');
-});
-
-Route::get('listhistoripengaduanall', function(){
-  return view('pages.listhistoripengaduanall');
-});
+Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
+Route::get('admin/historipengaduan/datatables', ['as'=>'datatables.histori', 'uses'=>'HistoriPengaduanController@getDataForDataTable']);
+Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
