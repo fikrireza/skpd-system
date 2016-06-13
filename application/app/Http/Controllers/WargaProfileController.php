@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Models\DataWargaModel;
 use App\Models\LihatPengaduanModel;
 use App\Models\TanggapanModel;
-use App\Models\TopikAduan;
+use App\TopikAduan;
 use App\MasterSKPD;
 use App\User;
 use DB;
@@ -58,7 +58,7 @@ class WargaProfileController extends Controller
 
         $getdatawarga = DataWargaModel::where('id', $id)->get();
         $getdatajumlahpengaduan = LihatPengaduanModel::where('warga_id', $id)->count('warga_id');
-        $getdatapengaduan = LihatPengaduanModel::where('warga_id', $id)->paginate(5);
+        $getdatapengaduan = LihatPengaduanModel::where('warga_id', $id)->orderby('created_at', 'desc')->paginate(5);
         $idlogin = Auth::user()->id;
         $userid = User::find($idlogin);
 
@@ -107,14 +107,5 @@ class WargaProfileController extends Controller
 
     }
 
-    public function getDataSKPD()
-    {
-
-    }
-
-    public function detailSKPD($id)
-    {
-
-    }
 
 }

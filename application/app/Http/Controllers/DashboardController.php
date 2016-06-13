@@ -28,7 +28,7 @@ class DashboardController extends Controller
 
       $getcountpengaduantelahditanggapi = LihatPengaduanModel::where('flag_tanggap', '1')->count('flag_tanggap');
 
-      $getuser = User::select('*')->where('level', '1')->limit(8)->get();
+      $getuser = User::select('*')->where('level', '1')->orderby('created_at','desc')->limit(8)->get();
       $getcountuser = User::where('level', '1')->count('activated');
       // dd($getlihatpengaduan);
 

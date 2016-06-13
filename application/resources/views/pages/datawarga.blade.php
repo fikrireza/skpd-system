@@ -40,13 +40,15 @@
             </thead>
             <tbody>
               <?php $pageget = 1; ?>
-              @foreach($getdatawarga as $key)
+              @foreach($data['getdatawarga'] as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
                   <td>{{ $key->nama }}</td>
                   <td>{{ $key->created_at }}</td>
                   <td>{{ $key->updated_at }}</td>
-                  <td><span class="badge bg-blue">{{ $key->login_counter }}</span></td>
+                  <td><span class="badge bg-blue">
+                    {{ $key->login_counter }}
+                  </span></td>
                   <td><span class="badge bg-maroon">{{ $key->login_counter }}</span></td>
                   <td>
                   @if($key->flag_user==0)

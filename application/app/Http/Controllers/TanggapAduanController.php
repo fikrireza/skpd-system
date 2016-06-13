@@ -35,6 +35,7 @@ class TanggapAduanController extends Controller
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_tanggap', '0')
                       ->where('flag_verifikasi', '0')
+                      ->orderby('pengaduan.created_at', 'desc')
                       ->paginate(10);
       $getmutasi = DB::table('mutasi')
                       ->join('pengaduan', 'mutasi.id_pengaduan', '=', 'pengaduan.id')
@@ -44,6 +45,7 @@ class TanggapAduanController extends Controller
                       ->select('*', 'mutasi.id')
                       ->where('flag_mutasi', '1')
                       ->where('mutasi.id_userskpd', $userid->id_skpd)
+                      ->orderby('mutasi.created_at', 'desc')
                       ->paginate(10);
 
       return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
@@ -94,6 +96,7 @@ class TanggapAduanController extends Controller
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_tanggap', '0')
                       ->where('flag_verifikasi', '0')
+                      ->orderby('pengaduan.created_at', 'desc')
                       ->paginate(10);
         $data['getdatapengaduan'] = $getdatapengaduan;
         $getmutasi = DB::table('mutasi')
@@ -104,6 +107,7 @@ class TanggapAduanController extends Controller
                         ->select('*', 'mutasi.id')
                         ->where('flag_mutasi', '1')
                         ->where('mutasi.id_userskpd', $userid->id_skpd)
+                        ->orderby('mutasi.created_at', 'desc')
                         ->paginate(10);
         $data['getmutasi'] = $getmutasi;
         $binddatapengaduan = LihatPengaduanModel::find($id);
@@ -145,6 +149,7 @@ class TanggapAduanController extends Controller
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_tanggap', '0')
                       ->where('flag_verifikasi', '0')
+                      ->orderby('pengaduan.created_at', 'desc')
                       ->paginate(10);
         $data['getdatapengaduan'] = $getdatapengaduan;
         $getmutasi = DB::table('mutasi')
@@ -155,6 +160,7 @@ class TanggapAduanController extends Controller
                         ->select('*', 'mutasi.id')
                         ->where('flag_mutasi', '1')
                         ->where('mutasi.id_userskpd', $userid->id_skpd)
+                        ->orderby('mutasi.created_at', 'desc')
                         ->paginate(10);
       $data['getmutasi'] = $getmutasi;
 

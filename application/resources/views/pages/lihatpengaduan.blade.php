@@ -40,11 +40,11 @@
             </thead>
             <tbody>
               <?php $pageget = 1; ?>
-              @foreach($getdatapengaduan as $key)
+              @foreach($data['getdatapengaduan'] as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
-                  <td><a href="{{url('wargaprofile/show', $key->user->id)}}">{{ $key->user->nama }}</a></td>
-                  <td>{{ $key->topik->nama_topik }}</td>
+                  <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
+                  <td>{{ $key->nama_topik }}</td>
                   <td>
                     <?php
                       $date = $key->created_at;
@@ -74,7 +74,7 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
+                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-xs btn-success">Lihat</a>
                   </td>
                 </tr>
                 <?php $pageget++; ?>

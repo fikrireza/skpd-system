@@ -7,18 +7,28 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\LihatPengaduanModel;
 use App\TopikAduan;
+use App\User;
+use Auth;
+use DB;
 
 class LihatPengaduanController extends Controller
 {
     public function index()
     {
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
 
-      $getdatapengaduan = LihatPengaduanModel::select('*')->get();
-      $gettopik = TopikAduan::select('*')->get();
-      // dd($getdatapengaduan);
-      return view('pages.lihatpengaduan', compact('getdatapengaduan', 'gettopik'));
-
-      // return view('pages/lihatpengaduan')->with('data', $data);
+      $getdatapengaduan = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*', 'pengaduan.id', 'users.id as iduser')
+                      ->where('master_skpd.id', $userid->id_skpd)
+                      ->where('flag_mutasi', '0')
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->paginate(10);
+                      // dd($getdatapengaduan);
+      return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
     }
 
     public function store(Request $request)
