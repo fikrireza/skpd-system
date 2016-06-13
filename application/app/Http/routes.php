@@ -57,6 +57,7 @@ Route::get('/loginskpd', function () {
 Route::get('dashboard', ['as'=>'dashboard', function(){
   return view('pages/dashboard');
 }]);
+Route::resource('dashboard', 'DashboardController');
 
 Route::get('homepages', ['as' => 'homepages', function(){
   return view('index');
@@ -141,6 +142,11 @@ Route::get('listdatapengaduanbyskpd', function(){
 });
 
 
-Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
-Route::get('admin/historipengaduan/datatables', ['as'=>'datatables.histori', 'uses'=>'HistoriPengaduanController@getDataForDataTable']);
-Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
+
+Route::get('historipengaduan', function(){
+  return view('pages.historipengaduan');
+});
+
+Route::get('listhistoripengaduanall', function(){
+  return view('pages.listhistoripengaduanall');
+});
