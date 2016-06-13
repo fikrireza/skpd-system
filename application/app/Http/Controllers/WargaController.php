@@ -44,15 +44,10 @@ class WargaController extends Controller
   }
 
   /**
-   * Show the form for creating a new resource.
+   * Retrieve form FORM Pengaduan
    *
-   * @return \Illuminate\Http\Response
+   * @return App\Http\Requests\PengaduanRequest
    */
-  public function create()
-  {
-
-  }
-
   public function postPengaduan(PengaduanRequest $request)
   {
     if($request->input('anonim') == null){
@@ -67,9 +62,8 @@ class WargaController extends Controller
     }
 
     //function for seo random in segment
-    $slugtitle = str_slug($request->input('judul'), '-');
-    //dd($slugtitle);
-    // $slug = str_random(5).'/'.$slugtitle;
+    $campur = $request->input('judul').' '.str_random(3);
+    $slugtitle = str_slug($campur);
 
     if($request->hasFile('dokumen'))
     {
@@ -143,5 +137,10 @@ class WargaController extends Controller
     $listPengaduan = Pengaduan::where('warga_id', $id)->orderBy('created_at', 'dsc')->get();
 
     return view('front.detaillaporan', compact('profiles', 'pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan'));
+  }
+
+  public function search(Request $request)
+  {
+
   }
 }
