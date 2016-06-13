@@ -70,6 +70,7 @@
             </div><!-- /.col -->
 
             <div class="col-md-3">
+              @if(session('level') == 5)
               <div class="nav-tabs-custom" style='max-height:467px'>
                 <ul class="nav nav-tabs">
                   <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
@@ -152,6 +153,34 @@
                     </div>
                   </div><!-- /.box -->
               </div>
+              @elseif(session('level') == 1)
+                <div class="box box-widget widget-user-2">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                  <div class="widget-user-header bg-blue">
+                    <div class="widget-user-image">
+                      {{-- <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar"> --}}
+                      @if($profiles->url_photo == null)
+                        <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                      @else
+                        <img class="img-circle" src="{{ asset('/images/'.$profiles->url_photo) }}" alt="{{$profiles->nama}}">
+                      @endif
+                    </div><!-- /.widget-user-image -->
+                    <h3 class="widget-user-username">{{ $profiles->nama}}</h3>
+                    <h5 class="widget-user-desc">Bergabung {{ \Carbon\Carbon::parse($profiles->created_at)->format('d-M-y')}}</h5>
+                  </div>
+                  <div class="box-footer no-padding">
+                    <ul class="nav nav-stacked">
+                      <li><a href="{{url('pengaduan')}}">Pengaduan Anda<span class="pull-right badge bg-green">{{ $pengaduanWid }}</span></a></li>
+                      <li><a href="{{url('pengaduan')}}">Telah Ditanggapi<span class="pull-right badge bg-green">{{ $tanggapWid }}</span></a></li>
+                      <li><a href="{{ url('beranda')}}"><b>Beranda</b></a></li>
+                      <li><a href="{{ url('pengaduan') }}"><b>Pengaduan Saya</b></a></li>
+                      <li><a href="{{url('semualaporan')}}"><b>Daftar Pengaduan</b></a></li>
+                      <li><a href="{{ url('profil') }}"><b>Profil</b></a></li>
+                      <li><a href="{{url('logout')}}"><b>Logout</b></a></li>
+                    </ul>
+                  </div>
+                </div>
+              @endif
             </div>
           </div>
 
