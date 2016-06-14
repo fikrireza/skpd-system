@@ -38,17 +38,7 @@ class WelcomePageController extends Controller
 
     $Persen = ($PengaduanProses/$CountPengaduan)*100;
 
-    //dd($CountPengaduan);
-    if(Auth::user()->level == 1){
-
-      $id = Auth::user()->id;
-
-      $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
-      $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
-
-      return view('index', compact('pengaduanWid', 'tanggapWid', 'CountPengaduan','UsersWarga', 'Persen'));
-    }
-
-    return view('index', compact('CountPengaduan','UsersWarga', 'Persen'));
+    return view('index', compact('pengaduanWid', 'tanggapWid', 'CountPengaduan','UsersWarga', 'Persen'));
+    
   }
 }
