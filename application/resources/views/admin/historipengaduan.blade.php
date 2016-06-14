@@ -29,7 +29,8 @@
          <div class="box-body chart-responsive">
            <div class="chart" id="pengaduan-warga-bulan" style="height: 365px;"></div>
            <ul class="nav nav-pills tahun">
-            <li class="active"><a href="#" year='2016'>2016</a></li>
+            <li class="active"><a href="#" year='semua'>Semua</a></li>
+            <li class="#"><a href="#" year='2016'>2016</a></li>
             <li><a href="#" year='2017'>2017</a></li>
           </ul>
          </div>
@@ -183,13 +184,13 @@
     var chart = Morris.Bar({
       element: 'pengaduan-warga-bulan',
       data: [0,0,0],
-      xkey: 'bulan',
+      xkey: 'filters',
       ykeys: ['jumlah_pengaduan', 'jumlah_tanggap', 'jumlah_blm_tanggap'],
       labels: ['Pengaduan', 'Sudah Dianggapi', 'Belum Ditanggapi'],
       barColors: ["#605ca8", "#00c0ef", "#dd4b39"],
     });
 
-    requestData(2016, chart);
+    requestData('semua', chart);
     $('ul.tahun a').click(function(e){
       e.preventDefault();
 
