@@ -12,7 +12,7 @@
 */
 
 // Welcome Page //
-Route::get('/', 'WelcomePageController@index');
+Route::get('/', ['as' => 'welcomepage', 'uses' => 'WelcomePageController@index']);
 
 // Front Akses Warga ------------------------------------------------------------------------------------------
 Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
