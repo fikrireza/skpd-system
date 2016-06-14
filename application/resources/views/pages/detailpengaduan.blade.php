@@ -131,13 +131,24 @@
                 <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
                 <div class='comment-text'>
                   <span class="username">
-                    @foreach($tanggapan as $gettanggapan)
-                      {{$gettanggapan->user->nama}}
-                    <span class='text-muted pull-right'>{{$binddatatanggapan[0]->$binddatatanggapan
-                    }}</span>
-                  </span><!-- /.username -->
-                  {{$binddatatanggapan[0]->tanggapan}}
-                  @endforeach
+                    @if(Auth::user()->level=="0")
+                      @foreach($tanggapanall as $gettanggapanall)
+                        {{$gettanggapanall->nama}}
+                        <span class='text-muted pull-right'>{{$gettanggapanall->created_at
+                        }}</span>
+                        </span><!-- /.username -->
+                        {{$gettanggapanall->tanggapan}}
+                      @endforeach
+                    @elseif(Auth::user()->level=="2")
+                      @foreach($tanggapan as $gettanggapan)
+                        {{$gettanggapan->user->nama}}
+                        <span class='text-muted pull-right'>{{$binddatatanggapan[0]->created_at
+                        }}</span>
+                        </span><!-- /.username -->
+                        {{$binddatatanggapan[0]->tanggapan}}
+                      @endforeach
+                    @endif
+
                 </div><!-- /.comment-text -->
               </div><!-- /.box-comment -->
             </div>

@@ -24,12 +24,18 @@ class LihatPengaduanController extends Controller
                     ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                     ->select('*', 'pengaduan.id', 'users.id as iduser')
                     ->where('master_skpd.id', $userid->id_skpd)
-                    ->where('flag_tanggap', '0')
-                    ->where('flag_verifikasi', '0')
+                    // ->where('flag_tanggap', '0')
+                    // ->where('flag_verifikasi', '0')
                     ->orderby('pengaduan.created_at', 'desc')
-                    ->paginate(10);
-                      // dd($getdatapengaduan);
-      return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
+                    ->get();
+
+      $getdatapengaduanall = DB::table('pengaduan')
+                    ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                    ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                    ->select('*', 'pengaduan.id', 'users.id as iduser')
+                    ->orderby('pengaduan.created_at', 'desc')
+                    ->get();
+      return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan', 'getdatapengaduanall'));
     }
 
     public function store(Request $request)

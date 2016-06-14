@@ -65,8 +65,13 @@ class DetailPengaduanController extends Controller
 
       $getdataskpd = MasterSKPD::where('id', $userid->id_skpd)->get();
       $tanggapan = TanggapanModel::where('id_userskpd', $userid->id)->get();
-      // dd($binddatatanggapan[0]);
-      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan'));
+      $tanggapanall = DB::table('tanggapan')
+                      ->join('pengaduan', 'tanggapan.id_pengaduan', '=', 'pengaduan.id')
+                      ->join('users', 'tanggapan.id_userskpd', '=', 'users.id')
+                      ->join('master_skpd', 'users.id_skpd', '=', 'master_skpd.id')
+                      ->get();
+      // dd($tanggapanall[0]->nama);
+      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan', 'tanggapanall'));
     }
 
     /**

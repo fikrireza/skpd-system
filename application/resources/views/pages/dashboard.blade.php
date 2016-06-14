@@ -39,7 +39,13 @@
       <!-- small box -->
       <div class="small-box bg-teal">
         <div class="inner">
-          <h3>{{$getcountpengaduan}}</h3>
+          <h3>
+            @if(Auth::user()->level=="0")
+              {{$getcountpengaduanall}}
+            @elseif(Auth::user()->level=="2")
+              {{$getcountpengaduan}}
+            @endif
+            </h3>
           <p>Jumlah Pengaduan</p>
         </div>
         <div class="icon">
@@ -60,7 +66,13 @@
       <!-- small box -->
       <div class="small-box bg-purple">
         <div class="inner">
-          <h3>{{$getcountpengaduantelahditanggapi}}<sup style="font-size: 20px"></sup></h3>
+          <h3>
+          @if(Auth::user()->level=="0")
+            {{$getcountpengaduantelahditanggapiall}}
+          @elseif(Auth::user()->level=="2")
+            {{$getcountpengaduantelahditanggapi}}
+          @endif
+            <sup style="font-size: 20px"></sup></h3>
           <p>Pengaduan Telah Ditanggapi</p>
         </div>
         <div class="icon">

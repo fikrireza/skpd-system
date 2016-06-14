@@ -19,13 +19,6 @@ class DataWargaController extends Controller
                       ->where('flag_verifikasi', '0')
                       ->select('*', 'users.id')
                       ->get();
-      //
-      // $getdatajumlahpengaduan = DB::table('pengaduan')
-      //                           ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-      //                           ->select('*', 'users.id')
-      //                           // ->where('warga_id', 'users.id')
-      //                           ->get();
-      // dd($getdatajumlahpengaduan);
       return view('pages.datawarga')->with('data', compact('getdatawarga'));
     }
 
