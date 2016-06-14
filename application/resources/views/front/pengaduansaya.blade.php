@@ -24,7 +24,7 @@
         <h3 class="box-title">Pengaduan Anda</h3>
       </div>
       <div class="box-body">
-        @if($pengaduans->isEmpty())
+        @if($pengaduans == '')
           <div class="">Anda Belum Punya Histori</div>
         @else
           @foreach($pengaduans as $pengaduan)
@@ -34,7 +34,7 @@
                 {{ $pengaduan->judul_pengaduan }}
               </span>
               <span class="description" style="margin-left:0px;">
-                Kategori Pelayanan - {{ \Carbon\Carbon::parse($pengaduan->created_at)->format('d-M-y H:i')}}
+                {{ $pengaduan->nama_skpd}} - {{ \Carbon\Carbon::parse($pengaduan->created_at)->format('d-M-y H:i')}}
               </span>
             </div><!-- /.user-block -->
             <p>

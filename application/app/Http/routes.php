@@ -11,12 +11,10 @@
 |
 */
 
-// Front
-// Route::get('/', 'WelcomePageController@index');
-Route::get('/', function(){
-  return view('index');
-});
+// Welcome Page //
+Route::get('/', 'WelcomePageController@index');
 
+// Front Akses Warga ------------------------------------------------------------------------------------------
 Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
 Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
 
@@ -28,11 +26,11 @@ Route::get('pengaduan', ['as' => 'pengaduan', 'uses' => 'WargaController@pengadu
 
 Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z-]+');
 
-Route::get('cari', 'SearchController@getSearchWarga');
+Route::post('pencarian', 'SearchController@getSearchWarga');
 
-// Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
-//   return view('front.detaillaporan');
-// });
+Route::get('semuapengaduan', ['as' => 'semuapengaduan', 'uses' => 'WargaController@semuapengaduan']);
+
+// End Route For Akses Warga
 
 Route::get('detail/pengaduan-warga', function(){
   return view('front.detailpengaduan');
@@ -42,10 +40,6 @@ Route::get('viewall/topik-aduan', function(){
   return view('front.lihatsemuabytopik');
 });
 
-Route::get('semualaporan', function(){
-  return view('front.semualaporan');
-});
-
 Route::get('detail/semua-pengaduan-lainnya', function(){
   return view('front.detailpengaduanlainnya');
 });
@@ -53,8 +47,6 @@ Route::get('detail/semua-pengaduan-lainnya', function(){
 Route::get('/loginskpd', function () {
   return view('pages/loginskpd');
 });
-
-
 
 
 Route::get('dashboard', ['as'=>'dashboard', function(){

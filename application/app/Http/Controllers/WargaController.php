@@ -33,14 +33,13 @@ class WargaController extends Controller
   {
     // Retrieve User From Auth
     $id = Auth::user()->id;
-    $profiles = User::find($id);
 
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
     $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
 
-    return view('front.beranda', compact('profiles', 'topiks', 'pengaduanWid', 'tanggapWid'));//)->with('profiles', 'topik', $profiles, $topik);
+    return view('front.beranda', compact('topiks', 'pengaduanWid', 'tanggapWid'));
   }
 
   /**
@@ -117,11 +116,21 @@ class WargaController extends Controller
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    $pengaduans = Pengaduan::where('warga_id', '=', $id)->orderBy('created_at', 'desc')->get();
+    $pengaduans =DB::table('pengaduan')
+                  ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                  ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                  ->select('*')
+                  ->where('pengaduan.warga_id', $id)
+                  ->orderby('pengaduan.created_at', 'desc')
+                  ->get();
 
-    return view('front.pengaduansaya', compact('profiles', 'topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid'));
+    return view('front.pengaduansaya', compact('topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid'));
   }
 
+  /**
+   * Retrieve slug from judul_pengaduan
+   *
+   */
   public function detailPengaduan($slug)
   {
     $id = Auth::user()->id;
@@ -139,8 +148,11 @@ class WargaController extends Controller
     return view('front.detaillaporan', compact('profiles', 'pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan'));
   }
 
-  public function search(Request $request)
+  /**
+   * Function for Menu Semua Laporan
+   */
+  public function semuapengaduan()
   {
-
+    return view('front.semualaporan');
   }
 }

@@ -111,8 +111,6 @@
                     </div>
                     <div class="tab-pane" id="daftar">
                       <div class="register-box-body">
-                        {{-- <p class="login-box-msg"><img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
-                        &nbsp;&nbsp;<b>SIMPEDU</b></p> --}}
                         <p class="login-box-msg"><b>Daftar Pengguna Baru</b></p>
                         <form action="{{ url('register') }}" method="post">
                           {!! csrf_field() !!}
@@ -140,7 +138,7 @@
                             <div class="social-auth-links text-center">
                               <div class="checkbox icheck">
                                 <label>
-                                  <input type="checkbox"> Saya Setuju <a href="#">Ketentuan</a>
+                                  <input type="checkbox" required=""> Saya Setuju <a href="#">Ketentuan</a>
                                 </label>
                               </div>
                             </div><!-- /.col -->
@@ -155,17 +153,14 @@
               </div>
               @elseif(session('level') == 1)
                 <div class="box box-widget widget-user-2">
-                <!-- Add the bg color to the header using any of the bg-* classes -->
                   <div class="widget-user-header bg-blue">
                     <div class="widget-user-image">
-                      {{-- <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar"> --}}
-                      {{-- {{ auth()->user()->username }} --}}
                       @if(auth()->user()->url_photo == null)
                         <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
                       @else
                         <img class="img-circle" src="{{ asset('/images/'.auth()->user()->url_photo) }}" alt="{{ auth()->user()->nama}}">
                       @endif
-                    </div><!-- /.widget-user-image -->
+                    </div>
                     <h3 class="widget-user-username">{{ auth()->user()->nama}}</h3>
                     <h5 class="widget-user-desc">Bergabung {{ \Carbon\Carbon::parse(auth()->user()->created_at)->format('d-M-y')}}</h5>
                   </div>
@@ -190,7 +185,7 @@
               <!-- small box -->
               <div class="small-box bg-teal">
                 <div class="inner">
-                  <h3>150</h3>
+                  <h3>{{ $CountPengaduan }}</h3>
                   <p>Jumlah Pengaduan</p>
                 </div>
                 <div class="icon">
@@ -203,7 +198,7 @@
               <!-- small box -->
               <div class="small-box bg-purple">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3>{{ $Persen }}<sup style="font-size: 20px">%</sup></h3>
                   <p>Pengaduan Terproses</p>
                 </div>
                 <div class="icon">
@@ -216,7 +211,7 @@
               <!-- small box -->
               <div class="small-box bg-maroon">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3>{{ $UsersWarga }}</h3>
                   <p>Pengguna Terdaftar</p>
                 </div>
                 <div class="icon">
