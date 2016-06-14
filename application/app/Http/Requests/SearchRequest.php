@@ -22,7 +22,7 @@ class SearchRequest extends Request
   public function rules()
   {
     return [
-      'qr' => 'required',
+      'qr' => 'required|string',
     ];
   }
 

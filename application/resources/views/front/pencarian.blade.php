@@ -9,7 +9,10 @@
 
                 <div class="box box-primary">
                   <div class="box-header with-border">
-                    <h3 class="box-title">Hasil Pencarian</h3>
+                    <h3 class="box-title">Hasil Pencarian :
+                    @foreach($kalimat as $kata)
+                      {{ strtoupper($kata) }}
+                    @endforeach</h3>
                   </div>
                   <div class="box-body">
                     <!-- Post -->
@@ -19,13 +22,16 @@
                         <span class="username" style="margin-left:0px;">
                           Maaf Kata Kunci Yang Anda Cari Tidak Ada
                         </span>
-                      </div><!-- /.user-block -->
+                      </div>
                     </div>
                   @else
                     @foreach($searches as $search)
                         <div class="post">
                           <div class="user-block">
                             <span class="username" style="margin-left:0px;">
+                              {{-- @foreach($kalimat as $kata)
+                                {!! str_replace(strtolower($kata),'<font color="red"><b>'.strtoupper($kata).'</b></font>',strtolower($search->judul_pengaduan))!!}
+                              @endforeach</h3> --}}
                               {{ $search->judul_pengaduan}}
                             </span>
                             <span class="description" style="margin-left:0px;">
@@ -43,7 +49,7 @@
                             @elseif($search->flag_tanggap == 0)
                               <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
                             @endif
-                            @if($search->warga_id == $profiles->id)
+                            @if($search->warga_id == auth()->user()->id)
                             <li class="pull-right"><a href="{{ url('pengaduan/detail', $search->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
                             @endif
                           </ul>

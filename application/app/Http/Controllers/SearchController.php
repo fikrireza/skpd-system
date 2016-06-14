@@ -33,7 +33,6 @@ class SearchController extends Controller
   public function getSearchWarga(SearchRequest $request)
   {
     $id = Auth::user()->id;
-    $profiles = User::find($id);
 
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
@@ -54,7 +53,7 @@ class SearchController extends Controller
     $bantu = implode(' OR ',$searchTermBits);
     $searches = DB::select("select * FROM pengaduan WHERE ".$bantu." order by created_at DESC");
 
-    return view('front.pencarian', compact('profiles','pengaduanWid', 'tanggapWid','searches'));
+    return view('front.pencarian', compact('pengaduanWid', 'tanggapWid','searches', 'kalimat'));
 
   }
 }
