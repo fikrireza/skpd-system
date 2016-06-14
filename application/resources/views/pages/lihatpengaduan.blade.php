@@ -20,14 +20,14 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Horizontal Form -->
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header">
           <h3 class="box-title">Seluruh Data Pengaduan Untuk SKPD Kesehatan</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelpengaduan" class="table table-hover">
             <thead>
-              <tr class="bg-green">
+              <tr class="bg-yellow">
                 <th>#</th>
                 <th>Pelapor</th>
                 <th>Topik Aduan</th>
@@ -75,7 +75,7 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-xs btn-success">Lihat</a>
+                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php $pageget++; ?>
@@ -115,7 +115,7 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-xs btn-success">Lihat</a>
+                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php $pageget++; ?>

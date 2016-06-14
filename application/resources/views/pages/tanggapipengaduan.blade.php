@@ -187,7 +187,7 @@
           @endif
               <div class="box-body no-padding">
                 <table class="table">
-                  <tr class="bg-green">
+                  <tr class="bg-yellow">
                     <th style="width:10px;">#</th>
                     <th>Pelapor</th>
                     <th>Kategori</th>
@@ -214,7 +214,7 @@
                         <td>{{ $key->created_at }}</td>
                         <td>
                           @if($key->flag_tanggap==0)
-                            <a class="btn btn-xs btn-warning" href="{{ route('tanggap.edit', $key->id) }}"><i class="fa fa-exclamation-triangle"></i> &nbsp;Lihat Pengaduan</a></td>
+                            <a class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data Pengaduan' href="{{ route('tanggap.edit', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
                           @endif
                       </tr>
                       <?php $no++; ?>
@@ -236,7 +236,7 @@
           @endif
             <div class="box-body no-padding">
               <table class="table">
-                <tr class="bg-green">
+                <tr class="bg-yellow">
                   <th style="width:10px;">#</th>
                   <th>Pelapor</th>
                   <th>Kategori</th>
@@ -265,7 +265,7 @@
                       <td>{{ $key->nama_skpd }}</td>
                       <td>
                         @if($key->flag_tanggap==0)
-                          <a class="btn btn-xs btn-warning" href="{{ route('tanggap.show', $key->id) }}"><i class="fa fa-exclamation-triangle"></i> &nbsp;Lihat Mutasi</a></td>
+                          <a class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data Mutasi' href="{{ route('tanggap.show', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
                         @endif
                     </tr>
                     <?php $no++; ?>

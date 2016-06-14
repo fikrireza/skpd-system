@@ -126,48 +126,94 @@
         </div>
         <div class="box-body chat" id="chat-box">
           <!-- chat item -->
-          @foreach($getlihatpengaduan as $key)
-            <div class="item">
-              <img src="dist/img/user4-128x128.jpg" alt="user image" class="offline">
-              <p class="message">
-                <a href="{{url('wargaprofile/show', $key->User->id)}}" class="name">
-                  <small class="text-muted pull-right">
-                    <i class="fa fa-calendar"></i>
-                    <?php
-                      $date = $key->created_at;
-                      $justdate = substr($date, 0, 10);
-                      $explode = explode("-", $justdate);
-                      echo $explode[2]."-".$explode[1]."-".$explode[0];
-                    ?>
-                      &nbsp;&nbsp;
-                    <i class="fa fa-clock-o"></i>
-                    <?php
-                      $justtime = substr($date, 12);
-                      echo $justtime;
-                    ?>
-                  </small>
-                  {{$key->User->nama}}
-                </a>
-                  {{$key->isi_pengaduan}}
-              </p>
-              <div class="attachment">
-                <b>Data Pendukung</b>
-                <p class="text-muted">
-                  gambar.jpg
+          @if(Auth::user()->level=="0")
+            @foreach($getlihatpengaduanall as $key)
+              <div class="item">
+                <img src="dist/img/user4-128x128.jpg" alt="user image" class="offline">
+                <p class="message">
+                  <a href="{{url('wargaprofile/show', $key->User->id)}}" class="name">
+                    <small class="text-muted pull-right">
+                      <i class="fa fa-calendar"></i>
+                      <?php
+                        $date = $key->created_at;
+                        $justdate = substr($date, 0, 10);
+                        $explode = explode("-", $justdate);
+                        echo $explode[2]."-".$explode[1]."-".$explode[0];
+                      ?>
+                        &nbsp;&nbsp;
+                      <i class="fa fa-clock-o"></i>
+                      <?php
+                        $justtime = substr($date, 12);
+                        echo $justtime;
+                      ?>
+                    </small>
+                    {{$key->User->nama}}
+                  </a>
+                    {{$key->isi_pengaduan}}
                 </p>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                  @if(Session::has('akses'))
-                    @if(Session::get('akses')=="administrator")
-                      <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
-                    @else
-                      <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                <div class="attachment">
+                  <b>Data Pendukung</b>
+                  <p class="text-muted">
+                    gambar.jpg
+                  </p>
+                  <div class="pull-right">
+                    <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                    @if(Session::has('akses'))
+                      @if(Session::get('akses')=="administrator")
+                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                      @else
+                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                      @endif
                     @endif
-                  @endif
-                </div>
-              </div><!-- /.attachment -->
-            </div><!-- /.item -->
-          @endforeach
+                  </div>
+                </div><!-- /.attachment -->
+              </div><!-- /.item -->
+            @endforeach
+          @elseif(Auth::user()->level=="2")
+            @foreach($getlihatpengaduan as $key)
+              <div class="item">
+                <img src="dist/img/user4-128x128.jpg" alt="user image" class="offline">
+                <p class="message">
+                  <a href="{{url('wargaprofile/show', $key->iduser)}}" class="name">
+                    <small class="text-muted pull-right">
+                      <i class="fa fa-calendar"></i>
+                      <?php
+                        $date = $key->created_at;
+                        $justdate = substr($date, 0, 10);
+                        $explode = explode("-", $justdate);
+                        echo $explode[2]."-".$explode[1]."-".$explode[0];
+                      ?>
+                        &nbsp;&nbsp;
+                      <i class="fa fa-clock-o"></i>
+                      <?php
+                        $justtime = substr($date, 12);
+                        echo $justtime;
+                      ?>
+                    </small>
+                    {{$key->nama}}
+                  </a>
+                    {{$key->isi_pengaduan}}
+                </p>
+                <div class="attachment">
+                  <b>Data Pendukung</b>
+                  <p class="text-muted">
+                    gambar.jpg
+                  </p>
+                  <div class="pull-right">
+                    <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                    @if(Session::has('akses'))
+                      @if(Session::get('akses')=="administrator")
+                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                      @else
+                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                      @endif
+                    @endif
+                  </div>
+                </div><!-- /.attachment -->
+              </div><!-- /.item -->
+            @endforeach
+          @endif
+
         </div><!-- /.chat -->
         <div class="box-footer">
           <a href="{{url('lihatpengaduan')}}" class="btn btn-primary pull-right"><i class="fa fa-eye"></i> &nbsp;&nbsp;Lihat Seluruh Pengaduan</a>
