@@ -48,7 +48,7 @@ class TanggapAduanController extends Controller
                       ->where('mutasi.id_userskpd', $userid->id_skpd)
                       ->orderby('mutasi.created_at', 'desc')
                       ->paginate(10);
-
+                      // dd($getmutasi);
       return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
     }
 
@@ -114,7 +114,6 @@ class TanggapAduanController extends Controller
         $data['getmutasi'] = $getmutasi;
         $binddatapengaduan = LihatPengaduanModel::find($id);
         $data['binddatapengaduan'] = $binddatapengaduan;
-
         return view('pages/tanggapipengaduan')->with('data', $data);
     }
 

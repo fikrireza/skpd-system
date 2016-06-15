@@ -9,10 +9,12 @@ use App\Http\Requests;
 use App\Models\DataWargaModel;
 use App\Models\LihatPengaduanModel;
 use App\Models\TanggapanModel;
+use App\Models\MutasiModel;
 use App\TopikAduan;
 use App\MasterSKPD;
 use App\User;
 use App\Http\Requests\TanggapanRequest;
+use App\Http\Requests\MutasiRequest;
 use DB;
 use Auth;
 
@@ -33,9 +35,9 @@ class DetailPengaduanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-
+      dd("asdasdasdasd");
     }
 
     /**
@@ -44,9 +46,9 @@ class DetailPengaduanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TanggapanRequest $request)
+    public function store()
     {
-      dd($request);
+
     }
 
     /**
@@ -63,7 +65,7 @@ class DetailPengaduanController extends Controller
 
       $binddatapengaduan = LihatPengaduanModel::find($id);
       $binddatatanggapan = TanggapanModel::where('id_pengaduan', $id)->get();
-      // dd($binddatatanggapan);
+      // dd($binddatapengaduan);
       $getdataskpd = MasterSKPD::where('id', $userid->id_skpd)->get();
       $tanggapan = TanggapanModel::where('id_userskpd', $userid->id)->get();
       $tanggapanall = DB::table('tanggapan')
@@ -74,16 +76,16 @@ class DetailPengaduanController extends Controller
                       ->select('*', 'tanggapan.created_at as created_tanggpan')
                       ->get();
 
-      $getuserskpd = DB::table('master_skpd')->select('*')->get();
-      // dd($getuserskpd);
-      // $dataarray = array();
-      // foreach ($getuserskpd as $key) {
-      //   $dataarray[] = $key->id;
-      // }
+      $getuser = DB::table('users')
+                    ->where('id_skpd', $userid->id_skpd)
+                    ->select('id_skpd')->get();
+      $data = array();
+      foreach ($getuser as $key) {
+        $data[] = $key->id_skpd;
+      }
 
-      // $getskpd = MasterSKPD::whereNotIn('id', $dataarray)->get();
+      $getuserskpd = MasterSKPD::whereNotIn('id', $data)->get();
 
-      // dd($getskpd);
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan', 'tanggapanall', 'getuserskpd'));
     }
 
@@ -165,5 +167,36 @@ class DetailPengaduanController extends Controller
 
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan'));
       // return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
+    }
+
+    public function mutasi(Request $request)
+    {
+      // dd($request);
+      $pengaduan = LihatPengaduanModel::find($request->id);
+      $pengaduan->flag_mutasi = 1;
+      $pengaduan->save();
+
+      $mutasi = new MutasiModel;
+      $mutasi->id_pengaduan = $request->id;
+      $mutasi->id_topik  = $request->topik_id;
+      $mutasi->id_userskpd  = $request->id_skpd;
+      $mutasi->pesan_mutasi    = $request->pesan_mutasi;
+      $mutasi->save();
+
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
+
+      $getdatapengaduan = DB::table('pengaduan')
+                    ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                    ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                    ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                    ->select('*', 'pengaduan.id', 'users.id as iduser')
+                    ->where('master_skpd.id', $userid->id_skpd)
+                    ->where('flag_mutasi', '0')
+                    // ->where('flag_tanggap', '0')
+                    // ->where('flag_verifikasi', '0')
+                    ->orderby('pengaduan.created_at', 'desc')
+                    ->get();
+      return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
     }
 }

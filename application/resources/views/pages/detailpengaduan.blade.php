@@ -33,14 +33,22 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Mutasi Pengaduan Warga</h4>
         </div>
-        <form class="form" action="#" method="post">
+        {{-- {!! Form::model($binddatapengaduan, ['route' => ['detailpengaduan.mutasi', $binddatapengaduan->id], 'method' => "patch", 'class'=>'form-horizontal']) !!} --}}
+          <form class="form-horizontal" action="{{ url('detailpengaduan/mutasi') }}" method="post" >
+            {!! csrf_field() !!}
           <div>
-            <div class="modal-body">
+            <div class="modal-body" style="margin-left:1%; margin-right:1%">
+                  <div class="form-group">
+                    <input value="{{$binddatapengaduan->id}}"
+                      type="hidden" name="id" class="form-control" readonly="true">
+                    <input value="{{$binddatapengaduan->topik_id}}"
+                      type="hidden" name="topik_id" class="form-control" readonly="true">
+                  </div>
                   <div class="form-group">
                     <label>
-                      Pilih topik yang relevan dengan aduan warga:
+                      Pilih SKPD :
                     </label>
-                    <select class="form-control" name="skpd">
+                    <select class="form-control select2" name="id_skpd" style="width: 100%;">
                       <option selected="selected"></option>
                       @foreach($getuserskpd as $key)
                         <option value="{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
@@ -51,12 +59,10 @@
                     <label>
                       Pesan Mutasi:
                     </label>
-                    <textarea name="pesan" class="form-control" rows="5" cols="40" placeholder="Tulis pesan anda di sini.."
-                      @if($errors->has('pesan'))
-                       style="border:1px solid #DD4B39;margin-top:5px;"
-                      @endif
-                      ></textarea>
+                    <textarea name="pesan_mutasi" class="form-control" rows="5" cols="40" placeholder="Tulis pesan anda di sini.."
+                    ></textarea>
                   </div>
+
             </div>
             <div class="modal-footer">
               <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>

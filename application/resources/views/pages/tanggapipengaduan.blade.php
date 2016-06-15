@@ -48,7 +48,7 @@
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->user->nama}}
               @elseif(isset($data['binddatamutasi']))
-                  {{$data['binddatapengaduanmutasi']->user->nama}}
+                  {{$data['getmutasi'][0]->nama}}
               @else
                 Nama Pengaduan
               @endif
@@ -57,7 +57,7 @@
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->created_at}}
               @elseif(isset($data['binddatamutasi']))
-                  {{$data['binddatapengaduanmutasi']->created_at}}
+                  {{$data['getmutasi'][0]->created_at}}
               @else
                 Tanggal Pengaduan
               @endif
@@ -65,7 +65,7 @@
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->topik->nama_topik}}
               @elseif(isset($data['binddatamutasi']))
-                  {{$data['binddatapengaduanmutasi']->topik->nama_topik}}
+                  {{$data['getmutasi'][0]->nama_topik}}
               @else
                 Topik Pengaduan
               @endif
@@ -82,7 +82,7 @@
             @if(isset($data['binddatapengaduan']))
               {{$data['binddatapengaduan']->judul_pengaduan}}
             @elseif(isset($data['binddatamutasi']))
-                {{$data['binddatapengaduanmutasi']->judul_pengaduan}}
+                {{$data['getmutasi'][0]->judul_pengaduan}}
             @else
               Judul Pengaduan
             @endif
@@ -91,7 +91,7 @@
             @if(isset($data['binddatapengaduan']))
               {{$data['binddatapengaduan']->isi_pengaduan}}
             @elseif(isset($data['binddatamutasi']))
-                {{$data['binddatapengaduanmutasi']->isi_pengaduan}}
+                {{$data['getmutasi'][0]->isi_pengaduan}}
             @else
               Isi Pengaduan
             @endif
