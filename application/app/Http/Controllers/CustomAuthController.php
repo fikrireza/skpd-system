@@ -52,7 +52,7 @@ class CustomAuthController extends Controller
       }
       else
       {
-        return redirect()->route('homepages')->with('messageloginfailed', "Periksa kembali email dan password anda.");
+        return redirect()->route('welcomepage')->with('messageloginfailed', "Periksa kembali email dan password anda.");
       }
       // if(!$user)
       // {

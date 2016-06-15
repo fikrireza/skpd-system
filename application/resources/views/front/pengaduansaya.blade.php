@@ -40,6 +40,25 @@
             <p>
               {{ $pengaduan->isi_pengaduan}}
             </p>
+            <div class="timeline-body">
+            @foreach($dokumentall as $dok)
+              @if($pengaduan->id === $dok->pengaduan_id)
+                <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm">
+                  @if (strpos($dok->url_dokumen, '.pdf'))
+                    <img width="3%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
+                  @elseif(strpos($dok->url_dokumen, '.png'))
+                    <img width="3%" src="{{ asset('dist\img\png.png') }}" alt="..." class="margin">
+                  @elseif(strpos($dok->url_dokumen, '.jpg'))
+                    <img width="3%" src="{{ asset('dist\img\jpg.png') }}" alt="..." class="margin">
+                  @elseif(strpos($dok->url_dokumen, '.docx'))
+                    <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                  @elseif(strpos($dok->url_dokumen, '.xlsx'))
+                    <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                  @endif
+                </a>
+              @endif
+            @endforeach
+            </div>
             <ul class="list-inline">
               @if($pengaduan->flag_verifikasi == 1)
                 <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>

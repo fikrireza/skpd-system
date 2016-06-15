@@ -116,15 +116,21 @@ class WargaController extends Controller
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    $pengaduans =DB::table('pengaduan')
-                  ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
-                  ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
-                  ->select('*')
-                  ->where('pengaduan.warga_id', $id)
-                  ->orderby('pengaduan.created_at', 'desc')
-                  ->get();
-
-    return view('front.pengaduansaya', compact('topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid'));
+    $pengaduans = DB::table('pengaduan')
+                    ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                    ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                    ->select('*', 'pengaduan.id')
+                    ->where('pengaduan.warga_id', $id)
+                    ->orderby('pengaduan.created_at', 'desc')
+                    ->get();
+    // dd($pengaduans);
+    $dokumentall = DB::table('pengaduan')
+                    ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                    ->select('*')
+                    ->where('pengaduan.warga_id', $id)
+                    ->get();
+    //dd($dokument);
+    return view('front.pengaduansaya', compact('topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid', 'dokumentall'));
   }
 
   /**
@@ -141,11 +147,17 @@ class WargaController extends Controller
 
     $detail = Pengaduan::where('slug', $slug)->where('warga_id', '=', $id)->first();
 
+    $dokumentall = DB::table('pengaduan')
+                    ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                    ->select('*')
+                    ->where('pengaduan.warga_id', $id)
+                    ->get();
+
     $tanggapan = TanggapanModel::where('id_pengaduan', $detail->id)->get();
 
     $listPengaduan = Pengaduan::where('warga_id', $id)->orderBy('created_at', 'dsc')->get();
 
-    return view('front.detaillaporan', compact('profiles', 'pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan'));
+    return view('front.detaillaporan', compact('profiles', 'pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan', 'dokumentall'));
   }
 
   /**
