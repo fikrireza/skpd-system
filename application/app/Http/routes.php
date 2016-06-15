@@ -12,7 +12,7 @@
 */
 
 // Welcome Page //
-Route::get('/', ['as' => 'welcomepage', 'uses' => 'WelcomePageController@index']);
+Route::get('/', 'WelcomePageController@index');
 
 // Front Akses Warga ------------------------------------------------------------------------------------------
 Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
@@ -113,6 +113,7 @@ Route::resource('tanggap', 'TanggapAduanController');
 // });
 Route::get('detailpengaduan/show/{id}', 'DetailPengaduanController@show');
 Route::get('detailpengaduan/verifikasi/{id}', ['as'=>'detailpengaduan.verifikasi', 'uses'=>'DetailPengaduanController@verifikasi']);
+Route::post('detailpengaduan/mutasi', 'DetailPengaduanController@mutasi');
 Route::resource('detailpengaduan', 'DetailPengaduanController');
 
 Route::get('lihatpengaduan', function(){
