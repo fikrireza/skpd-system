@@ -58,20 +58,33 @@ class DetailPengaduanController extends Controller
     public function show($id)
     {
       // dd($id);
-      $binddatapengaduan = LihatPengaduanModel::find($id);
-      $binddatatanggapan = TanggapanModel::where('id_pengaduan', $id)->get();
       $idlogin = Auth::user()->id;
       $userid = User::find($idlogin);
 
+      $binddatapengaduan = LihatPengaduanModel::find($id);
+      $binddatatanggapan = TanggapanModel::where('id_pengaduan', $id)->get();
+      // dd($binddatatanggapan);
       $getdataskpd = MasterSKPD::where('id', $userid->id_skpd)->get();
       $tanggapan = TanggapanModel::where('id_userskpd', $userid->id)->get();
       $tanggapanall = DB::table('tanggapan')
                       ->join('pengaduan', 'tanggapan.id_pengaduan', '=', 'pengaduan.id')
                       ->join('users', 'tanggapan.id_userskpd', '=', 'users.id')
                       ->join('master_skpd', 'users.id_skpd', '=', 'master_skpd.id')
+                      ->where('id_pengaduan', $id)
+                      ->select('*', 'tanggapan.created_at as created_tanggpan')
                       ->get();
-      // dd($tanggapanall[0]->nama);
-      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan', 'tanggapanall'));
+
+      $getuserskpd = DB::table('master_skpd')->select('*')->get();
+      // dd($getuserskpd);
+      // $dataarray = array();
+      // foreach ($getuserskpd as $key) {
+      //   $dataarray[] = $key->id;
+      // }
+
+      // $getskpd = MasterSKPD::whereNotIn('id', $dataarray)->get();
+
+      // dd($getskpd);
+      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan', 'tanggapanall', 'getuserskpd'));
     }
 
     /**
@@ -117,7 +130,7 @@ class DetailPengaduanController extends Controller
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_mutasi', '0')
                       ->orderby('pengaduan.created_at', 'desc')
-                      ->paginate(10);
+                      ->get();
       return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
     }
 

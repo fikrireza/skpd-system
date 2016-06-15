@@ -14,10 +14,10 @@ class DataWargaController extends Controller
     public function index()
     {
       $getdatawarga = DB::table('users')
-                      ->join('pengaduan', 'users.id', '=', 'pengaduan.warga_id')
+                      // ->join('pengaduan', 'users.id', '=', 'pengaduan.warga_id')
                       ->where('level', '1')
-                      ->where('flag_verifikasi', '0')
-                      ->select('*', 'users.id')
+                      // ->where('flag_verifikasi', '0')
+                      ->select('*')
                       ->get();
       return view('pages.datawarga')->with('data', compact('getdatawarga'));
     }

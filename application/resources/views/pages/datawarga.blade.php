@@ -20,14 +20,14 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Horizontal Form -->
-      <div class="box box-success">
+      <div class="box box-warning">
         <div class="box-header">
           <h3 class="box-title">Seluruh Identitas Pelapor</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelpengaduan" class="table table-hover">
             <thead>
-              <tr class="bg-green">
+              <tr class="bg-yellow">
                 <th>#</th>
                 <th>Nama Pelapor</th>
                 <th>Tanggal Terdaftar</th>
@@ -57,7 +57,7 @@
                     <span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span>
                   @endif</td>
                   <td>
-                    <a href="{{url('wargaprofile/show' , $key->id)}}" class="btn btn-xs btn-success">Lihat Profil</a>
+                    <a href="{{url('wargaprofile/show' , $key->id)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Profil'><i class="fa fa-eye"></i></a>
                     {{-- <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a> --}}
                   </td>
                 </tr>

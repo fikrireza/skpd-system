@@ -55,22 +55,73 @@ class WargaProfileController extends Controller
      */
     public function show($id)
     {
-
-        $getdatawarga = DataWargaModel::where('id', $id)->get();
-        $getdatajumlahpengaduan = LihatPengaduanModel::where('warga_id', $id)->count('warga_id');
-        $getdatapengaduan = LihatPengaduanModel::where('warga_id', $id)->orderby('created_at', 'desc')->paginate(5);
         $idlogin = Auth::user()->id;
         $userid = User::find($idlogin);
 
+        $getdatapengaduanbelumtanggap = DB::table('pengaduan')
+                            ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                            ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                            ->join('users', 'master_skpd.id', '=', 'users.id_skpd')
+                            ->where('master_skpd.id', $userid->id_skpd)
+                            ->where('flag_mutasi', '0')
+                            ->where('flag_tanggap', '0')
+                            ->where('pengaduan.warga_id', $id)
+                            ->orderby('pengaduan.created_at', 'desc')
+                            ->paginate(5);
+
+      $getdatapengaduansudahtanggap = DB::table('pengaduan')
+                          ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                          ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                          ->join('users', 'master_skpd.id', '=', 'users.id_skpd')
+                          ->join('tanggapan', 'pengaduan.id', '=', 'tanggapan.id_pengaduan')
+                          ->where('master_skpd.id', $userid->id_skpd)
+                          ->where('flag_mutasi', '0')
+                          ->where('flag_tanggap', '1')
+                          ->where('pengaduan.warga_id', $id)
+                          ->orderby('pengaduan.created_at', 'desc')
+                          ->select('*', 'tanggapan.created_at as created_tanggapan')
+                          ->paginate(5);
+
+        $getdatajumlahpengaduanall = LihatPengaduanModel::where('warga_id', $id)->count('warga_id');
+        $getdatajumlahpengaduan = DB::table('pengaduan')
+                            ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                            ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                            ->join('users', 'master_skpd.id', '=', 'users.id_skpd')
+                            ->where('master_skpd.id', $userid->id_skpd)
+                            ->where('flag_mutasi', '0')
+                            ->where('pengaduan.warga_id', $id)
+                            ->count('warga_id');
+
+        $getdatawarga = DataWargaModel::where('id', $id)->get();
         $getdataskpd = MasterSKPD::where('id', $userid->id_skpd)->get();
-        $tanggapan = TanggapanModel::where('id_userskpd', $userid->id)->get();
-        $tanggapanall = DB::table('tanggapan')
-                        ->join('pengaduan', 'tanggapan.id_pengaduan', '=', 'pengaduan.id')
-                        ->join('users', 'tanggapan.id_userskpd', '=', 'users.id')
-                        ->join('master_skpd', 'users.id_skpd', '=', 'master_skpd.id')
-                        ->get();
-        // dd($tanggapanall);
-        return view('pages.wargaprofile')->with('data', compact('getdatawarga', 'getdatajumlahpengaduan', 'getdatapengaduan', 'tanggapan', 'tanggapanall','getdataskpd'));
+
+        $getdatapengaduanbelumtanggapall = DB::table('pengaduan')
+                            ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                            ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                            ->join('users', 'master_skpd.id', '=', 'users.id_skpd')
+                            // ->where('master_skpd.id', $userid->id_skpd)
+                            ->where('flag_mutasi', '0')
+                            ->where('flag_tanggap', '0')
+                            ->where('pengaduan.warga_id', $id)
+                            ->orderby('pengaduan.created_at', 'desc')
+                            ->paginate(5);
+        $getdatapengaduansudahtanggapall = DB::table('pengaduan')
+                            ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                            ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                            ->join('users', 'master_skpd.id', '=', 'users.id_skpd')
+                            ->join('tanggapan', 'pengaduan.id', '=', 'tanggapan.id_pengaduan')
+                            // ->where('master_skpd.id', $userid->id_skpd)
+                            ->where('flag_mutasi', '0')
+                            ->where('flag_tanggap', '1')
+                            ->where('pengaduan.warga_id', $id)
+                            ->orderby('pengaduan.created_at', 'desc')
+                            ->select('*', 'tanggapan.created_at as created_tanggapan')
+                            ->paginate(5);
+
+        return view('pages.wargaprofile')->with('data', compact('getdatapengaduanbelumtanggap', 'getdatapengaduansudahtanggap',
+        'getdatajumlahpengaduan', 'getdatajumlahpengaduanall',
+        'getdatawarga','getdataskpd',
+        'getdatapengaduanbelumtanggapall', 'getdatapengaduansudahtanggapall'));
     }
 
     /**

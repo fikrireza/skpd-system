@@ -35,6 +35,7 @@ class TanggapAduanController extends Controller
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_tanggap', '0')
                       ->where('flag_verifikasi', '0')
+                      ->where('flag_mutasi', '0')
                       ->orderby('pengaduan.created_at', 'desc')
                       ->paginate(10);
       $getmutasi = DB::table('mutasi')
@@ -96,6 +97,7 @@ class TanggapAduanController extends Controller
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_tanggap', '0')
                       ->where('flag_verifikasi', '0')
+                      ->where('flag_mutasi', '0')
                       ->orderby('pengaduan.created_at', 'desc')
                       ->paginate(10);
         $data['getdatapengaduan'] = $getdatapengaduan;
@@ -149,6 +151,7 @@ class TanggapAduanController extends Controller
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_tanggap', '0')
                       ->where('flag_verifikasi', '0')
+                      ->where('flag_mutasi', '0')
                       ->orderby('pengaduan.created_at', 'desc')
                       ->paginate(10);
         $data['getdatapengaduan'] = $getdatapengaduan;

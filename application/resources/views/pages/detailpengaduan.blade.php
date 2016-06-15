@@ -2,6 +2,7 @@
 
 @section('title')
   <title>Detail Pengaduan</title>
+  <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
 @stop
 
 @section('breadcrumb')
@@ -39,10 +40,22 @@
                     <label>
                       Pilih topik yang relevan dengan aduan warga:
                     </label>
-                    <select class="form-control" name="">
-                      <option>Kesehatan</option>
-                      <option>Lalu Lintas</option>
+                    <select class="form-control" name="skpd">
+                      <option selected="selected"></option>
+                      @foreach($getuserskpd as $key)
+                        <option value="{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
+                      @endforeach
                     </select>
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      Pesan Mutasi:
+                    </label>
+                    <textarea name="pesan" class="form-control" rows="5" cols="40" placeholder="Tulis pesan anda di sini.."
+                      @if($errors->has('pesan'))
+                       style="border:1px solid #DD4B39;margin-top:5px;"
+                      @endif
+                      ></textarea>
                   </div>
             </div>
             <div class="modal-footer">
@@ -131,24 +144,13 @@
                 <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
                 <div class='comment-text'>
                   <span class="username">
-                    @if(Auth::user()->level=="0")
                       @foreach($tanggapanall as $gettanggapanall)
                         {{$gettanggapanall->nama}}
-                        <span class='text-muted pull-right'>{{$gettanggapanall->created_at
+                        <span class='text-muted pull-right'>{{$gettanggapanall->created_tanggpan
                         }}</span>
                         </span><!-- /.username -->
                         {{$gettanggapanall->tanggapan}}
                       @endforeach
-                    @elseif(Auth::user()->level=="2")
-                      @foreach($tanggapan as $gettanggapan)
-                        {{$gettanggapan->user->nama}}
-                        <span class='text-muted pull-right'>{{$binddatatanggapan[0]->created_at
-                        }}</span>
-                        </span><!-- /.username -->
-                        {{$binddatatanggapan[0]->tanggapan}}
-                      @endforeach
-                    @endif
-
                 </div><!-- /.comment-text -->
               </div><!-- /.box-comment -->
             </div>
@@ -209,5 +211,10 @@
   <script src="{{asset('dist/js/app.min.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
-
+  <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".select2").select2();
+    });
+  </script>
 @stop
