@@ -73,10 +73,10 @@ class WargaProfileController extends Controller
       $getdatapengaduansudahtanggap = DB::table('pengaduan')
                           ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                           ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
-                          ->join('users', 'master_skpd.id', '=', 'users.id_skpd')
                           ->join('tanggapan', 'pengaduan.id', '=', 'tanggapan.id_pengaduan')
+                          ->join('users', 'tanggapan.id_userskpd', '=', 'users.id')
                           ->where('master_skpd.id', $userid->id_skpd)
-                          ->where('users.id', $userid->id)
+                          // ->where('users.id', $userid->id)
                           ->where('flag_mutasi', '0')
                           ->where('flag_tanggap', '1')
                           ->where('pengaduan.warga_id', $id)
@@ -85,7 +85,6 @@ class WargaProfileController extends Controller
                           ->paginate(5);
 
         $getdatajumlahpengaduanall = LihatPengaduanModel::where('warga_id', $id)
-                          // ->where('users.id', $userid->id)
                           ->where('flag_mutasi', '0')->count('warga_id');
 
         $getdatajumlahpengaduan = DB::table('pengaduan')
@@ -115,13 +114,14 @@ class WargaProfileController extends Controller
                             ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                             ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                             ->join('tanggapan', 'pengaduan.id', '=', 'tanggapan.id_pengaduan')
+                            ->join('users', 'tanggapan.id_userskpd', '=', 'users.id')
                             ->where('flag_mutasi', '0')
                             ->where('flag_tanggap', '1')
                             ->where('pengaduan.warga_id', $id)
                             ->orderby('pengaduan.created_at', 'desc')
                             ->select('*', 'tanggapan.created_at as created_tanggapan')
                             ->paginate(5);
-        // dd($getdatapengaduansudahtanggapall);
+                            // dd($getdatapengaduansudahtanggapall);
         return view('pages.wargaprofile')->with('data', compact('getdatapengaduanbelumtanggap', 'getdatapengaduansudahtanggap',
         'getdatajumlahpengaduan', 'getdatajumlahpengaduanall',
         'getdatawarga','getdataskpd',

@@ -168,7 +168,7 @@
                           <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
                           <div class='comment-text'>
                             <span class="username">
-                                {{$getdatapengaduanall->id_userskpd}}
+                                {{$getdatapengaduanall->nama}}
                               <span class='text-muted pull-right'>{{$getdatapengaduanall->created_tanggapan}}</span>
                             </span><!-- /.username -->
                             {{$getdatapengaduanall->tanggapan}}
@@ -252,7 +252,7 @@
                           <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
                           <div class='comment-text'>
                             <span class="username">
-                                {{$getdatapengaduan->id_userskpd}}
+                                {{$getdatapengaduan->nama}}
                               <span class='text-muted pull-right'>{{$getdatapengaduan->created_tanggapan}}</span>
                             </span><!-- /.username -->
                             {{$getdatapengaduan->tanggapan}}
