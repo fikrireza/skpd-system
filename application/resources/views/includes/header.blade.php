@@ -30,12 +30,14 @@
             <ul class="menu">
               <li>
                 <a href="#">
-                  <i class="fa fa-users text-aqua"></i> 3 warga mendaftar hari ini
+                  <i class="fa fa-users text-aqua"></i>  warga mendaftar hari ini
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i class="fa fa-users text-red"></i> 5 pengaduan belum diproses
+                  <i class="fa fa-users text-red"></i>
+                
+                  pengaduan belum diproses
                 </a>
               </li>
             </ul>

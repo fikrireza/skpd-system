@@ -86,8 +86,8 @@
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             @if(Auth::user()->level=="0")
-                <li class="active"><a href="#activity1" data-toggle="tab">Data Pengaduan Belum Ditanggapi SKPD</a></li>
-                <li class=""><a href="#activity2" data-toggle="tab">Data Pengaduan Sudah Ditanggapi SKPD </a></li>
+                <li class="active"><a href="#activity1" data-toggle="tab">Data Pengaduan Belum Ditanggapi</a></li>
+                <li class=""><a href="#activity2" data-toggle="tab">Data Pengaduan Sudah Ditanggapi</a></li>
             @elseif(Auth::user()->level=="2")
               @foreach($data['getdataskpd'] as $getskpd)
                 <li class="active"><a href="#activity1" data-toggle="tab">Data Pengaduan Belum Ditanggapi SKPD {{$getskpd->nama_skpd}}</a></li>
@@ -113,6 +113,7 @@
                       </span>
                       <span class='description' style="margin-left:0px;">
                         {{$getdatapengaduanall->nama_topik}} || {{$getdatapengaduanall->created_at}}
+                          <span class='text-muted pull-right'>SKPD : {{$getdatapengaduanall->nama_skpd}}</span>
                       </span>
                       <span class='description' style="margin-left:0px; padding-top:3px;">
                         <span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum ditanggapi</span>
@@ -144,6 +145,7 @@
                       </span>
                       <span class='description' style="margin-left:0px;">
                         {{$getdatapengaduanall->nama_topik}} || {{$getdatapengaduanall->created_at}}
+                          <span class='text-muted pull-right'>SKPD : {{$getdatapengaduanall->nama_skpd}}</span>
                       </span>
                       <span class='description' style="margin-left:0px; padding-top:3px;">
                         @if($getdatapengaduanall->flag_tanggap==1)
@@ -166,7 +168,7 @@
                           <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
                           <div class='comment-text'>
                             <span class="username">
-                                {{$getdatapengaduanall->nama}}
+                                {{$getdatapengaduanall->id_userskpd}}
                               <span class='text-muted pull-right'>{{$getdatapengaduanall->created_tanggapan}}</span>
                             </span><!-- /.username -->
                             {{$getdatapengaduanall->tanggapan}}
@@ -250,7 +252,7 @@
                           <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
                           <div class='comment-text'>
                             <span class="username">
-                                {{$getdatapengaduan->nama}}
+                                {{$getdatapengaduan->id_userskpd}}
                               <span class='text-muted pull-right'>{{$getdatapengaduan->created_tanggapan}}</span>
                             </span><!-- /.username -->
                             {{$getdatapengaduan->tanggapan}}

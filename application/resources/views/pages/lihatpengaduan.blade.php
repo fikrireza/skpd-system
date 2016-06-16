@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Horizontal Form -->
-      <div class="box box-warning">
+      <div class="box box-primary">
         <div class="box-header">
           <h3 class="box-title">Seluruh Data Pengaduan Untuk SKPD Kesehatan</h3>
         </div><!-- /.box-header -->
@@ -115,7 +115,7 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
+                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data Pengaduan'><i class="fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php $pageget++; ?>

@@ -62,6 +62,18 @@ class DashboardController extends Controller
                       ->orderby('pengaduan.created_at', 'desc')
                       ->count('nama');
 
+      $getcountpengaduanbelumditanggapiall = LihatPengaduanModel::where('flag_tanggap', '0')->count('flag_tanggap');
+      $getcountpengaduanbelumditanggapi = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*', 'pengaduan.id')
+                      ->where('master_skpd.id', $userid->id_skpd)
+                      ->where('flag_tanggap', '0')
+                      ->where('flag_verifikasi', '0')
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->count('nama');
+
       $getuser = User::select('*')->where('level', '1')->orderby('created_at','desc')->limit(8)->get();
       $getcountuser = User::where('level', '1')->count('activated');
 
@@ -69,7 +81,9 @@ class DashboardController extends Controller
                   ->whereRaw('Date(created_at) = CURDATE()')
                   ->where('level', '1')->count('activated');
       // dd($recordusers);
-      return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall','getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
+      return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
+      'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
+      'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
       'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers'));
     }
 

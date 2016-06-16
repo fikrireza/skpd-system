@@ -54,6 +54,11 @@ Route::get('dashboard', ['as'=>'dashboard', function(){
 }]);
 Route::resource('dashboard', 'DashboardController');
 
+Route::get('header', ['as'=>'dashboard', function(){
+  return view('includes/header');
+}]);
+Route::resource('header', 'DashboardController');
+
 Route::get('homepages', ['as' => 'homepages', function(){
   return view('index');
 }]);
