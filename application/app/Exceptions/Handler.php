@@ -45,6 +45,29 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+      if ($e instanceof ModelNotFoundException)
+      {
+          $e = new NotFoundHttpException($e->getMessage(), $e);
+      }
+
+      return parent::render($request, $e);
+    }
+
+    /**
+     * Convert the given exception into a Response instance.
+     *
+     * @param \Exception $e
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function convertExceptionToResponse(Exception $e)
+    {
+        $debug = config('app.debug', false);
+
+        if ($debug) {
+            return (new SymfonyDisplayer($debug))->createResponse($e);
+        }
+
+        return response()->view('errors.404');
     }
 }
