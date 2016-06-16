@@ -262,54 +262,27 @@
                 </span>
               </a>
             </li>
-            <li>
-              <a href="{{url('pengaduanbytopik')}}">
-                Pelayanan E-KTP &amp; KK
-                <span class="pull-right text-red">
-                  <b>12%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Lalu Lintas
-                <span class="pull-right text-green">
-                  <b>87%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Perizinan
-                <span class="pull-right text-yellow">
-                  <b>55%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Pendidikan
-                <span class="pull-right text-red">
-                  <b>12%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="{{url('pengaduanbytopik')}}">
-                Kesehatan
-                <span class="pull-right text-green">
-                  <b>98%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Lainnya
-                <span class="pull-right text-yellow">
-                  <b>57%</b>
-                </span>
-              </a>
-            </li>
+            @if($getmasterskpd->isEmpty())
+              <tr>
+                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
+              </tr>
+            @elseif(isset($getmasterskpd))
+            @foreach($getmasterskpd as $keyskpd)
+              <li>
+                <a href="{{url('pengaduanbytopik')}}">
+                  {{$keyskpd->nama_skpd}}
+                  <span class="pull-right text-red">
+                    <b>12%</b>
+                  </span>
+                </a>
+              </li>
+            @endforeach
+          @endif
+          <div class="box-footer">
+            <div class="pagination pagination-sm no-margin pull-right">
+              {{ $getmasterskpd->links() }}
+            </div>
+          </div>
           </ul>
         </div><!-- /.footer -->
       </div><!-- /.box -->

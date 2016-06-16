@@ -81,10 +81,12 @@ class DashboardController extends Controller
                   ->whereRaw('Date(created_at) = CURDATE()')
                   ->where('level', '1')->count('activated');
       // dd($recordusers);
+      $getmasterskpd = MasterSKPD::select('*')->paginate(10);
+      // dd($getmasterskpd);
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
-      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers'));
+      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd'));
     }
 
     /**
