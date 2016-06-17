@@ -28,9 +28,11 @@ class HistoriPengaduanController extends Controller
 
   public function index()
   {
-    $pengaduan = Pengaduan::count();
-    $ditanggapi = Pengaduan::where('flag_tanggap', 1)->count();
-    $blmtanggapi = Pengaduan::where('flag_tanggap', 0)->count();
+    $tahun = date('Y');
+    // dd($tahun);
+    $pengaduan = Pengaduan::whereYear('created_at', '=', date('Y'))->count();
+    $ditanggapi = Pengaduan::where('flag_tanggap', 1)->whereYear('created_at', '=', date('Y'))->count();
+    $blmtanggapi = Pengaduan::where('flag_tanggap', 0)->whereYear('created_at', '=', date('Y'))->count();
 
     return view('admin.historipengaduan', compact('pengaduan', 'ditanggapi', 'blmtanggapi'));
   }

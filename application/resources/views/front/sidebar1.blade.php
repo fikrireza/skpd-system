@@ -20,13 +20,23 @@
     <div class="box-body" style="margin-top:10px;">
       <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
       <p class="text-muted">
-        {{ auth()->user()->noktp}}
+        @if(auth()->user()->noktp == '')
+          -
+        @else
+          {{ auth()->user()->noktp}}
+        @endif
       </p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
       <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
-      <p class="text-muted">{{ auth()->user()->notelp}}</p>
+      <p class="text-muted">
+        @if(auth()->user()->notelp == '')
+          -
+        @else
+          {{ auth()->user()->notelp}}
+        @endif
+      </p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
@@ -40,14 +50,23 @@
                                 Perempuan
                             @elseif(auth()->user()->jeniskelamin === 'L')
                                 Laki-Laki
+                            @elseif(auth()->user()->jeniskelamin == '')
+                              -
                             @endif</p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
       <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
-      <p class="text-muted">{{ auth()->user()->alamat}}</p>
+      <p class="text-muted">
+        @if(auth()->user()->alamat == '')
+          -
+        @else
+          {{ auth()->user()->alamat}}
+        @endif
+      </p>
     </div><!-- /.box-body -->
   </div><!-- /.box -->
+
   <div class="box box-primary">
     <div class="box-header with-border">
       <h3 class="box-title">Pengaduan Terbaru</h3>

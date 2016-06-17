@@ -9,6 +9,7 @@ use DB;
 use App\User;
 use App\Models\Pengaduan;
 use App\Models\DokumenPengaduan;
+use App\TopikAduan;
 use App\Models\TanggapanModel;
 
 class WargaController extends Controller
@@ -37,7 +38,13 @@ class WargaController extends Controller
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+    // $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+
+    $topiks  = DB::table('master_skpd')
+                    ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                    ->select('topik_pengaduan.id','topik_pengaduan.nama_topik as nama_topik', 'master_skpd.nama_skpd as nama_skpd')
+                    ->where('master_skpd.flag_skpd', 1)
+                    ->get();
 
     return view('front.beranda', compact('topiks', 'pengaduanWid', 'tanggapWid'));
   }
@@ -111,7 +118,13 @@ class WargaController extends Controller
     $id = Auth::user()->id;
     $profiles = User::find($id);
 
-    $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+    // $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+
+    $topiks  = DB::table('master_skpd')
+                    ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                    ->select('topik_pengaduan.id','topik_pengaduan.nama_topik as nama_topik', 'master_skpd.nama_skpd as nama_skpd')
+                    ->where('master_skpd.flag_skpd', 1)
+                    ->get();
 
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();

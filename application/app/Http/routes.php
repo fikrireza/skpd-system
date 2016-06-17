@@ -12,19 +12,20 @@
 */
 
 // Welcome Page //
-Route::get('/', 'WelcomePageController@index');
+Route::get('/', ['as' => 'welcomepage', 'uses' => 'WelcomePageController@index']);
 
 // Front Akses Warga ------------------------------------------------------------------------------------------
 Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
 Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
 
-Route::resource('profil', 'ProfileWargaController');
+Route::get('profil', ['as' => 'profilwarga', 'uses' => 'ProfileWargaController@index']);
+Route::post('ubahpassword', ['as' => 'ubahpassword', 'uses' => 'ProfileWargaController@changePassword']);
 
 Route::post('sendpengaduan', ['as'=>'sendpengaduan', 'uses'=>'WargaController@postPengaduan']);
 
 Route::get('pengaduan', ['as' => 'pengaduan', 'uses' => 'WargaController@pengaduansaya']);
 
-Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z-]+');
+Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z0-9-]+');
 
 Route::post('pencarian', 'SearchController@getSearchWarga');
 

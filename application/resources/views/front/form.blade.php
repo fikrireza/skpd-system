@@ -13,7 +13,13 @@
     <div class="box-body">
       <div class="form-group{{ $errors->has('topik') ? 'has-error' : '' }}">
         <label>Kategori Pengaduan</label>
-        {!! Form::select('topik', $topiks, null, ['class' => 'form-control select2', 'placeholder' => '-- Pilih Kategori --']) !!}
+        {{-- {!! Form::select('topik', $topiks, null, ['class' => 'form-control select2', 'placeholder' => '-- Pilih Kategori --']) !!} --}}
+        <select class="form-control select2" name="topik">
+          <option value="">-- Pilih Kategori --</option>
+          @foreach($topiks as $isi)
+          <option value="{{ $isi->id}}">{{ $isi->nama_skpd}} - {{ $isi->nama_topik}}</option>
+          @endforeach
+        </select>
         @if($errors->has('topik'))
           <span class="help-block">
             <strong>{{$errors->first('topik')}}</strong>
