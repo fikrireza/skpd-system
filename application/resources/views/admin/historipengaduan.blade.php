@@ -70,75 +70,7 @@
       </div>
     </div>
   </div><!-- /.row (main row) -->
-  <div class="row">
-    <div class="col-md-12">
-      <!-- Horizontal Form -->
-      <div class="box box-warning">
-        <div class="box-header">
-          <h3 class="box-title">Seluruh Data SKPD</h3>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-          <table id="tabeluser" class="table table-hover" id="tabelskpd">
-            <thead>
-              <tr class="bg-yellow">
-                <th>No</th>
-                <th>SKPD</th>
-                <th>Tahun</th>
-                <th>Bulan</th>
-                <th>Jumlah Pengaduan</th>
-                <th>Sudah Ditanggapi</th>
-                <th>Belum Ditanggapi</th>
-                <th>Topik Pengaduan</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-              	<td>1.</td>
-              	<td>SKPD Kesehatan</td>
-              	<td>2010</td>
-              	<td>Mei</td>
-              	<td><span class="pull-center badge bg-purple">31</span></td>
-              	<td><span class="pull-center badge bg-aqua">21</span></td>
-              	<td><span class="pull-center badge bg-red">10</span></td>
-              	<td><span class="pull-center badge bg-navy">5</span></td>
-              </tr>
-              <tr>
-              	<td>2.</td>
-              	<td>SPKD Pendidikan</td>
-              	<td>2010</td>
-              	<td>Mei</td>
-              	<td><span class="pull-center badge bg-purple">51</span></td>
-              	<td><span class="pull-center badge bg-aqua">31</span></td>
-              	<td><span class="pull-center badge bg-red">20</span></td>
-              	<td><span class="pull-center badge bg-navy">15</span></td>
-              </tr><tr>
-              	<td>3.</td>
-              	<td>SKPD Perhubungan</td>
-              	<td>2010</td>
-              	<td>Mei</td>
-              	<td><span class="pull-center badge bg-purple">3</span></td>
-              	<td><span class="pull-center badge bg-aqua">3</span></td>
-              	<td><span class="pull-center badge bg-red">0</span></td>
-              	<td><span class="pull-center badge bg-navy">2</span></td>
-              </tr>
-              <tr>
-              	<td>4.</td>
-              	<td>SKPD Keuangan</td>
-              	<td>2010</td>
-              	<td>Mei</td>
-              	<td><span class="pull-center badge bg-purple">24</span></td>
-              	<td><span class="pull-center badge bg-aqua">19</span></td>
-              	<td><span class="pull-center badge bg-red">5</span></td>
-              	<td><span class="pull-center badge bg-navy">23</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div><!-- /.box-body -->
-      </div><!-- /.box -->
-    </div><!--/.col -->
-
-  </div>   <!-- /.row -->
-
+  
 
   <!-- Bootstrap 3.3.5 -->
   <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>

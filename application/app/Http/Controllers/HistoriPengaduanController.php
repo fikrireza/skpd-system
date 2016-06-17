@@ -93,9 +93,15 @@ class HistoriPengaduanController extends Controller
                         			 GROUP BY DATE_FORMAT(created_at, "%b")) as tbl_blm_tanggap
                         		ON tbl_blm_tanggap.month_blm_tanggap = temp.filters');
 
+    $kosong = array(["filters" => "2017", "jumlah_pengaduan" => "0", "jumlah_tanggap" => "0", "jumlah_blm_tanggap" => "0"]);
+    
     if($years == "semua"){
       $toChart = json_encode($tahun);
-    }else{
+    }
+    elseif($bulan == null){
+      $toChart = json_encode($kosong);
+    }
+    else{
       $toChart = json_encode($bulan);
     }
 
