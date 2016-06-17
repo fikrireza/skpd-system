@@ -46,7 +46,22 @@ class WargaController extends Controller
                     ->where('master_skpd.flag_skpd', 1)
                     ->get();
 
-    return view('front.beranda', compact('topiks', 'pengaduanWid', 'tanggapWid'));
+    $AllTopikQuery  = DB::table('master_skpd')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
+                      ->where('master_skpd.flag_skpd', 1)
+                      // ->where('pengaduan.flag_verifikasi', 1)
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->get();
+    $grouping = collect($AllTopikQuery);
+
+    $skpdonly  = DB::table('master_skpd')->select('nama_skpd')->where('flag_skpd',1)->get();
+
+    $AllTopiks = $grouping->groupBy('nama_skpd')->toArray();
+    // dd($AllTopiks);
+    return view('front.beranda', compact('topiks', 'skpdonly', 'AllTopiks', 'pengaduanWid', 'tanggapWid'));
   }
 
   /**
