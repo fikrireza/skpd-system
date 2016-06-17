@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Requests\ProfileWargaRequest;
+use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests;
 use App\Models\Pengaduan;
 use App\User;
 use DB;
@@ -33,7 +34,7 @@ class ProfileWargaController extends Controller
 
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
-    
+
     return view('front.profile', compact('profiles', 'pengaduanWid', 'tanggapWid' ));
   }
 
@@ -67,4 +68,21 @@ class ProfileWargaController extends Controller
 
     return redirect()->route('beranda')->with('ubahprofile', 'Berhasil mengubah profile.');
   }
+
+  public function changePassword(ChangePasswordRequest $request)
+  {
+    $user = User::find($request->id);
+
+    if(Hash::check($request->oldpass, $user->password))
+    {
+      $get->password = Hash::make($request->newpass);
+      $get->save();
+
+      return redirect()->route('profilwarga')->with('message', "Berhasil mengganti password.");
+    }
+    else {
+      return redirect()->route('profilwarga')->with('erroroldpass', 'Mohon masukkan password lama anda dengan benar.');
+    }
+  }
+
 }
