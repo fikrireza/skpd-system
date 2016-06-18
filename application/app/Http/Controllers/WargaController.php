@@ -38,8 +38,6 @@ class WargaController extends Controller
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    // $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
-
     $topiks  = DB::table('master_skpd')
                     ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                     ->select('topik_pengaduan.id','topik_pengaduan.nama_topik as nama_topik', 'master_skpd.nama_skpd as nama_skpd')
@@ -52,15 +50,22 @@ class WargaController extends Controller
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('master_skpd.nama_skpd as nama_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
                       ->where('master_skpd.flag_skpd', 1)
-                      // ->where('pengaduan.flag_verifikasi', 1)
+                      ->where('pengaduan.flag_rahasia', 0)
                       ->orderby('pengaduan.created_at', 'desc')
+                      ->take(60)
                       ->get();
     $grouping = collect($AllTopikQuery);
-
-    $skpdonly  = DB::table('master_skpd')->select('nama_skpd')->where('flag_skpd',1)->get();
-
     $AllTopiks = $grouping->groupBy('nama_skpd')->toArray();
-    // dd($AllTopiks);
+
+    $skpdonly  = DB::table('master_skpd')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->select('master_skpd.nama_skpd as nama_skpd')
+                      ->where('master_skpd.flag_skpd', 1)
+                      ->where('pengaduan.flag_rahasia', 0)
+                      ->groupBy('nama_skpd')
+                      ->get();
+
     return view('front.beranda', compact('topiks', 'skpdonly', 'AllTopiks', 'pengaduanWid', 'tanggapWid'));
   }
 

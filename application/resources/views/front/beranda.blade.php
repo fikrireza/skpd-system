@@ -21,33 +21,33 @@
 
   <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
-      @foreach($skpdonly as $skpd)
-        <li><a href="#{{$skpd->nama_skpd}}" data-toggle="tab" aria-expanded="false">{{ $skpd->nama_skpd }}</a></li>
-      @endforeach
+    @foreach($skpdonly as $skpd)
+      <li class=""><a href="#{{$skpd->nama_skpd}}" data-toggle="tab" aria-expanded="false">{{ $skpd->nama_skpd }}</a></li>
+    @endforeach
     </ul>
     <div class="tab-content">
       @foreach($skpdonly as $tabskpd)
-      <div class="tab-pane active" id="{{$tabskpd->nama_skpd}}">
+      <div class="tab-pane" id="{{$tabskpd->nama_skpd}}">
         @foreach($AllTopiks as $skpd)
           @foreach($skpd as $topik)
           @if($topik->nama_skpd === $tabskpd->nama_skpd)
           <div class="post">
             <div class="user-block">
-              @if($topik->url_photo == null)
+              @if($topik->url_photo == null || $topik->flag_anonim == 1)
                 <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
               @else
                 <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$topik->url_photo) }}" alt="{{$topik->nama}}">
               @endif
               <span class="username">
-                <span>{{ $topik->judul_pengaduan }}</span>
+                <span>@if($topik->flag_anonim == 1)
+                  Tanpa Nama
+                @elseif($topik->flag_anonim == 0)
+                  {{$topik->nama}}
+                @endif</span>
               </span>
               <span class="description">{{ $topik->nama_skpd}} - {{ \Carbon\Carbon::parse($topik->created_at)->format('d-M-y H:i')}}</span>
             </div><!-- /.user-block -->
-            @if($topik->flag_anonim == 1)
-              Tanpa Nama
-            @elseif($topik->flag_anonim == 0)
-              <p>{{$topik->nama}}</p>
-            @endif
+            <p><b>{{ $topik->judul_pengaduan }}</b></p>
             <p>{{ $topik->isi_pengaduan }}</p>
             <ul class="list-inline">
               @if($topik->flag_verifikasi == 1)
