@@ -131,10 +131,10 @@
               >
               <br>
               @if(isset($data['binddatamutasi']))
-                <h4><span class="label bg-green">Data Mutasi dari SKPD
+                {{-- <h4><span class="label bg-green">Data Mutasi dari SKPD
                     @foreach($data['getmutasi'] as $key)
                       {{$key->nama_skpd}}</span></h4>
-                    @endforeach
+                    @endforeach --}}
                 <textarea name="tanggapanmutasi" readonly="true" class="form-control" rows="5" cols="40" style="border:1px solid #00a65a;margin-top:5px;">{{$data['binddatamutasi']->pesan_mutasi}}</textarea>
               @endif
               <br>
@@ -290,7 +290,6 @@
 
     </div>
   </div>   <!-- /.row -->
-
 
   <!-- jQuery 2.1.4 -->
   <script src="{{asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>

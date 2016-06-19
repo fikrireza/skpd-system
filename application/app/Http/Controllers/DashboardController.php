@@ -81,7 +81,14 @@ class DashboardController extends Controller
                   ->whereRaw('Date(created_at) = CURDATE()')
                   ->where('level', '1')->count('activated');
       // dd($recordusers);
-      $getmasterskpd = MasterSKPD::select('*')->paginate(10);
+      // $getmasterskpd = MasterSKPD::select('*')->paginate(10);
+         $getmasterskpd = DB::table('master_skpd')
+                     ->leftJoin('topik_pengaduan', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                     ->leftJoin('pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                     ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd', DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id')
+                     ->groupBy('master_skpd.id')
+                     ->paginate(7);
+
       // dd($getmasterskpd);
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',

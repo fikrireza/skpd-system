@@ -41,17 +41,15 @@
                   <div class="form-group">
                     <input value="{{$binddatapengaduan->id}}"
                       type="hidden" name="id" class="form-control" readonly="true">
-                    <input value="{{$binddatapengaduan->topik_id}}"
-                      type="hidden" name="topik_id" class="form-control" readonly="true">
                   </div>
                   <div class="form-group">
                     <label>
-                      Pilih SKPD :
+                      Pilih Topik :
                     </label>
-                    <select class="form-control select2" name="id_skpd" style="width: 100%;">
+                    <select class="form-control select2" name="id_topik" style="width: 100%;">
                       <option selected="selected"></option>
-                      @foreach($getuserskpd as $key)
-                        <option value="{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
+                      @foreach($gettopik as $key)
+                        <option value="{{ $key->id }}">{{ $key->kode_topik }} - {{ $key->nama_topik }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -200,7 +198,6 @@
               </div><!-- /.box-footer -->
             @endif
           @endif
-
 
         </div><!-- /.box-body -->
       </div><!-- /.box -->

@@ -272,7 +272,7 @@
                 <a href="{{url('pengaduanbytopik')}}">
                   {{$keyskpd->nama_skpd}}
                   <span class="pull-right text-red">
-                    <b>12%</b>
+                    <b>{{$keyskpd->jumlahpengaduan}}</b>
                   </span>
                 </a>
               </li>
