@@ -166,13 +166,11 @@
                   </div>
                   <div class="box-footer no-padding">
                     <ul class="nav nav-stacked">
-                      {{-- <li><a href="{{url('pengaduan')}}">Pengaduan Anda<span class="pull-right badge bg-green">{{ $pengaduanWid }}</span></a></li>
-                      <li><a href="{{url('pengaduan')}}">Telah Ditanggapi<span class="pull-right badge bg-green">{{ $tanggapWid }}</span></a></li> --}}
-                      <li><a href="{{ url('beranda')}}"><b>Beranda</b></a></li>
-                      <li><a href="{{ url('pengaduan') }}"><b>Pengaduan Saya</b></a></li>
-                      <li><a href="{{url('semualaporan')}}"><b>Daftar Pengaduan</b></a></li>
+                      <li><a href="{{ url('beranda') }}"><b>Beranda</b></a></li>
+                      <li><a href="{{ url('pengaduansaya') }}"><b>Pengaduan Saya</b></a></li>
+                      <li><a href="{{ url('semuapengaduan') }}"><b>Daftar Pengaduan</b></a></li>
                       <li><a href="{{ url('profil') }}"><b>Profil</b></a></li>
-                      <li><a href="{{url('logout')}}"><b>Logout</b></a></li>
+                      <li><a href="{{ url('logout') }}"><b>Logout</b></a></li>
                     </ul>
                   </div>
                 </div>
