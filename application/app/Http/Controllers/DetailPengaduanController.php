@@ -84,9 +84,10 @@ class DetailPengaduanController extends Controller
         $data[] = $key->id_skpd;
       }
 
-      $getuserskpd = MasterSKPD::whereNotIn('id', $data)->get();
-
-      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan', 'tanggapanall', 'getuserskpd'));
+      $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
+      // dd($gettopik);
+      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
+      'tanggapan', 'tanggapanall', 'gettopik'));
     }
 
     /**
@@ -172,15 +173,19 @@ class DetailPengaduanController extends Controller
     public function mutasi(Request $request)
     {
       // dd($request);
+      $getskpd = TopikAduan::where('id', $request->id_topik)->get();
+      // dd($getskpd[0]->id_skpd);
+
       $pengaduan = LihatPengaduanModel::find($request->id);
       $pengaduan->flag_mutasi = 1;
+      $pengaduan->topik_id = $request->id_topik;
       $pengaduan->save();
 
       $mutasi = new MutasiModel;
       $mutasi->id_pengaduan = $request->id;
-      $mutasi->id_topik  = $request->topik_id;
-      $mutasi->id_userskpd  = $request->id_skpd;
-      $mutasi->pesan_mutasi    = $request->pesan_mutasi;
+      $mutasi->id_topik     = $request->id_topik;
+      $mutasi->id_userskpd  = $getskpd[0]->id_skpd;
+      $mutasi->pesan_mutasi = $request->pesan_mutasi;
       $mutasi->save();
 
       $idlogin = Auth::user()->id;
@@ -193,8 +198,6 @@ class DetailPengaduanController extends Controller
                     ->select('*', 'pengaduan.id', 'users.id as iduser')
                     ->where('master_skpd.id', $userid->id_skpd)
                     ->where('flag_mutasi', '0')
-                    // ->where('flag_tanggap', '0')
-                    // ->where('flag_verifikasi', '0')
                     ->orderby('pengaduan.created_at', 'desc')
                     ->get();
       return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
