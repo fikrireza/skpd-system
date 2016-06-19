@@ -28,7 +28,7 @@
             {{ $detail->nama }}
           @endif
           </span>
-        </div><!-- /.user-block -->
+        </div>
         <p>{{ $detail->isi_pengaduan }}</p>
 
         @if($tanggapan->isEmpty())
@@ -40,7 +40,6 @@
             </div>
             @foreach($tanggapan as $tanggap)
             <div class='box-comment'>
-              <!-- User image -->
               @if($tanggap->url_photo == null)
                 <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
               @else
@@ -48,14 +47,14 @@
               @endif
               <div class='comment-text'>
                 <span class="username">
-                  {{ $tanggap->nama }} - Administrator SKPD
+                  {{ $tanggap->nama }} - Administrator
                   <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($tanggap->created_at)->format('d-M-y H:i')}}</span>
-                </span><!-- /.username -->
+                </span>
                 {{ $tanggap->tanggapan }}
-              </div><!-- /.comment-text -->
-            </div><!-- /.box-comment -->
+              </div>
+            </div>
             @endforeach
-          </div><!-- /.box-footer -->
+          </div>
         @endif
         <br/>
         <ul class="list-inline">
@@ -74,31 +73,45 @@
   <div class="box-primary">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#kesehatan" data-toggle="tab" aria-expanded="true">Pengaduan Lain Tentang Kesehatan</a></li>
+        <li class="active"><a href="#kesehatan" data-toggle="tab" aria-expanded="true">Pengaduan Lain</a></li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane active" id="kesehatan">
+        <div class="tab-pane active">
+          @foreach($listPengaduan as $list)
+            @if($list->slug != $detail->slug)
           <div class="post">
             <div class="user-block">
-              <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
-              <span class="username">
-                <a href="#">Brenda Marsalia</a>
+              @if($list->url_photo == null || $list->flag_anonim == 1)
+                <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+              @else
+                <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$list->url_photo) }}" alt="{{$list->nama}}">
+              @endif
+              <span class='username'>{{ $list->judul_pengaduan}}</span>
+              <span class="description">{{ $list->nama_skpd}} - {{ \Carbon\Carbon::parse($list->created_at)->format('d-M-y H:i')}}</span>
+              <span class="description">Pelapor :
+              @if($list->flag_anonim == 1)
+                Tanpa Nama
+              @elseif($list->flag_anonim == 0)
+                {{$list->nama}}
+              @endif
               </span>
-              <span class="description"><span class="label bg-green">Telah Ditanggapi</span> - 7:30 PM today</span>
             </div>
             <p>
-              Lorem ipsum represents a long-held tradition for designers,
-              typographers and the like. Some people hate it and argue for
-              its demise, but others ignore the hate as they create awesome
-              tools to help create filler text for everyone from bacon lovers
-              to Charlie Sheen fans.
+              {{ $list->isi_pengaduan}}
             </p>
-            <p>
-              <a href="#">
-                [Selengkapnya]
-              </a>
-            </p>
+            <ul class="list-inline">
+              @if($list->flag_verifikasi == 1)
+                <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>
+              @elseif($list->flag_mutasi == 1)
+                <li><a href="#" class="link-black text-sm"><span class="label bg-yellow"><span class="glyphicon glyphicon-repeat"></span> &nbsp;Dialihkan</span></a></li>
+              @elseif($list->flag_tanggap == 0)
+                <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
+              @endif
+              <li class="pull-right"><a href="{{ url('semuapengaduan/detail', $list->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+            </ul>
           </div>
+        @endif
+        @endforeach
         </div>
       </div>
     </div>

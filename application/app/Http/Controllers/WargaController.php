@@ -263,7 +263,7 @@ class WargaController extends Controller
                           ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                           ->select('master_skpd.nama_skpd', 'topik_pengaduan.nama_topik', 'pengaduan.*', 'users.nama', 'users.url_photo')
                           ->where('slug', $slug)->first();
-
+      // dd($detail);
       $dokumentall = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->select('*')
@@ -278,11 +278,17 @@ class WargaController extends Controller
       $tanggapan = TanggapanModel::join('users', 'users.id', '=', 'tanggapan.id_userskpd')
                                 ->select('tanggapan.*', 'users.url_photo', 'users.nama')
                                 ->where('id_pengaduan', $detail->id)->get();
-      // dd($tanggapan);
 
-      // $listPengaduan = Pengaduan::where('warga_id', $id)->orderBy('created_at', 'dsc')->get();
-
-      return view('front.detailsemuapengaduan', compact('pengaduanWid', 'tanggapWid', 'detail', 'tanggapan'));
+      $listPengaduan = DB::table('pengaduan')
+                          ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                          ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                          ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                          ->select('*')
+                          ->where('master_skpd.nama_skpd', $detail->nama_skpd)
+                          ->where('pengaduan.flag_rahasia', 0)
+                          ->paginate(10);
+      // dd($listPengaduan);
+      return view('front.detailsemuapengaduan', compact('pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan'));
 
   }
 }
