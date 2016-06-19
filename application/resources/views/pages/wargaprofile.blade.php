@@ -127,7 +127,7 @@
                 @endif
                 <div class="box-footer">
                   <div class="pagination pagination-sm no-margin pull-right">
-                    {{ $data['getdatapengaduansudahtanggapall']->links() }}
+                    {{ $data['getdatapengaduanbelumtanggapall']->links() }}
                   </div>
                 </div>
               </div><!-- /.tab-pane -->
@@ -182,7 +182,7 @@
                 @endif
                 <div class="box-footer">
                   <div class="pagination pagination-sm no-margin pull-right">
-                    {{ $data['getdatapengaduansudahtanggap']->links() }}
+                    {{ $data['getdatapengaduansudahtanggapall']->links() }}
                   </div>
                 </div>
               </div><!-- /.tab-pane -->
