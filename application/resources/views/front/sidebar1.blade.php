@@ -1,3 +1,4 @@
+@if(session('level') == 1)
 <!-- About Me Box -->
 <div class="col-md-3">
   <div class="box box-primary">
@@ -115,3 +116,7 @@
     </div><!-- /.box-body -->
   </div><!-- /.box -->
 </div><!-- /.col -->
+
+@else
+  coba
+@endif
