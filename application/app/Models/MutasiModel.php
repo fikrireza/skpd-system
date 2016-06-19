@@ -20,5 +20,4 @@ class MutasiModel extends Model  {
 	 *
 	 * @return Illuminate\Database\Eloquent\Relations\belongToMany
 	 */
-
 	}
