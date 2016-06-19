@@ -45,7 +45,7 @@
                   {{$topik->nama}}
                 @endif</span>
               </span>
-              <span class="description">{{ $topik->nama_skpd}} - {{ \Carbon\Carbon::parse($topik->created_at)->format('d-M-y H:i')}}</span>
+              <span class="description">{{ $topik->nama_topik}} - {{ \Carbon\Carbon::parse($topik->created_at)->format('d-M-y H:i')}}</span>
             </div><!-- /.user-block -->
             <p><b>{{ $topik->judul_pengaduan }}</b></p>
             <p>{{ $topik->isi_pengaduan }}</p>
@@ -57,7 +57,11 @@
               @elseif($topik->flag_tanggap == 0)
                 <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
               @endif
+              @if($topik->warga_id == Auth::user()->id)
+              <li class="pull-right"><a href="{{ url('pengaduansaya/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+              @else
               <li class="pull-right"><a href="{{ url('pengaduan/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+              @endif
             </ul>
           </div>
           @endif

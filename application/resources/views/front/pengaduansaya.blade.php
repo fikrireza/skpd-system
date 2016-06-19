@@ -34,7 +34,7 @@
                 {{ $pengaduan->judul_pengaduan }}
               </span>
               <span class="description" style="margin-left:0px;">
-                {{ $pengaduan->nama_skpd}} - {{ \Carbon\Carbon::parse($pengaduan->created_at)->format('d-M-y H:i')}}
+                {{ $pengaduan->nama_topik}} - {{ \Carbon\Carbon::parse($pengaduan->created_at)->format('d-M-y H:i')}}
               </span>
             </div><!-- /.user-block -->
             <p>
@@ -67,7 +67,7 @@
               @elseif($pengaduan->flag_tanggap == 0)
                 <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
               @endif
-              <li class="pull-right"><a href="{{ url('pengaduan/detail', $pengaduan->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+              <li class="pull-right"><a href="{{ url('pengaduansaya/detail', $pengaduan->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
             </ul>
           </div><!-- /.post -->
           @endforeach
