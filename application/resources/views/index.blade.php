@@ -48,14 +48,14 @@
                       <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
                     </ol>
                     <div class="carousel-inner">
+                      <div class="item active">
+                        <img src="{{asset('images/slider2.png')}}">
+                      </div>
                       <div class="item">
-                        <img src="{{asset('images/slider2.png')}}" width="900px" height="506px;" alt="First slide">
+                        <img src="{{asset('images/slider3.png')}}">
                       </div>
-                      <div class="item active left">
-                        <img src="{{asset('images/slider3.png')}}" width="900px" height="506px;" alt="Second slide">
-                      </div>
-                      <div class="item next left">
-                        <img src="{{asset('images/tatacarapengaduan.png')}} "width="900px" height="500px;" alt="Third slide">
+                      <div class="item">
+                        <img src="{{asset('images/tatacarapengaduan.png')}}">
                       </div>
                     </div>
                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -65,7 +65,7 @@
                       <span class="fa fa-angle-right"></span>
                     </a>
                   </div>
-                </div><!-- /.box-body -->
+                </div>
               </div><!-- /.box -->
             </div><!-- /.col -->
 
@@ -254,453 +254,61 @@
           </div>
 
           <div class="row">
+            <?php $batasskpd = 1; ?>
+            @foreach($skpdonly as $tabskpd)
             <section class="col-lg-3 col-md-3 col-xs-12">
-              <!-- Populer Pertama -->
               <div class="box box-primary">
                 <div class="box-header with-border">
                 <div class="user-block">
                   <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
                   <span class="username">
-                      <h4>Kependudukan</h4>
+                      <h4>{{ $tabskpd->nama_skpd }}</h4>
                   </span>
                 </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="products-list product-list-in-box">
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user4-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span class="product-title">Amanda Satyarini</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="{{url('detail/pengaduan-warga')}}">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user5-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Bayu Widia</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="{{url('detail/pengaduan-warga')}}">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user1-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Dudy</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="{{url('detail/pengaduan-warga')}}">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                  </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="{{url('viewall/topik-aduan')}}" class="label uppercase bg-blue">Lihat Semua</a>
-                </div><!-- /.box-footer -->
-              </div>
-            </section>
-            <!-- Akhir Popular Pertama -->
-
-            <!-- Populer Kedua -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
-              <div class="box box-danger">
-                <div class="box-header with-border">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
-                    <span class="username">
-                        <h4>Kesehatan</h4>
-                    </span>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="products-list product-list-in-box">
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user6-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Anonymous</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user7-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Silviano</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user8-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Maryani</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                  </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
-                </div><!-- /.box-footer -->
-              </div>
-            </section>
-
-            <!-- Populer Ketiga -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
-              <div class="box box-warning">
-                <div class="box-header with-border">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
-                    <span class="username">
-                        <h4>Ketenagakerjaan</h4>
-                    </span>
-                  </div>
                 </div>
                 <div class="box-body">
                   <ul class="products-list product-list-in-box">
+                    <?php $batasisi = 1; ?>
+                    @foreach($AllTopiks as $skpd)
+                    @foreach($skpd as $topik)
+                    @if($topik->nama_skpd === $tabskpd->nama_skpd)
                     <li class="item">
                       <div class="product-img">
-                        <img src="dist/img/user1-128x128.jpg">
+                        @if($topik->url_photo == null || $topik->flag_anonim == 1)
+                          <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                        @else
+                          <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$topik->url_photo) }}" alt="{{$topik->nama}}">
+                        @endif
                       </div>
                       <div class="product-info">
-                        <span href="" class="product-title">Parjo</span>
+                        <span class="product-title">@if($topik->flag_anonim == 1)
+                          Tanpa Nama
+                        @elseif($topik->flag_anonim == 0)
+                          {{$topik->nama}}
+                        @endif</span>
                         <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
+                        {{str_limit($topik->isi_pengaduan, 60)}}
                         </span>
-                        <a href="#">
+                        <a href="{{url('detail/pengduan/'.$topik->slug)}}">
                           [Selengkapnya]
                         </a>
                       </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user3-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Prita</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user4-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Tarjo</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
+                    </li>
+                    <?php if($batasisi++ == 3) break;?>
+                    @endif
+                    @endforeach
+                    @endforeach
                   </ul>
-                </div><!-- /.box-body -->
+                </div>
                 <div class="box-footer text-center">
-                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
-                </div><!-- /.box-footer -->
+                  <a href="{{url('semua/'.$tabskpd->slug)}}" class="label uppercase bg-blue">Lihat Semua</a>
+                </div>
               </div>
             </section>
+            <?php if($batasskpd++ == 7) break;?>
+            @endforeach
 
-            <!-- Populer Keempat -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
-                    <span class="username">
-                        <h4>Pendidikan</h4>
-                    </span>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="products-list product-list-in-box">
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user5-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Silvi</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user6-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Budi Karno</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user7-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Anonymous</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                  </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
-                </div><!-- /.box-footer -->
-              </div>
-            </section>
-            <!-- Populer 4 Habis -->
-
-            <!-- Populer KeLima -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
-                    <span class="username">
-                        <h4>Jalan</h4>
-                    </span>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="products-list product-list-in-box">
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user3-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Clara Lupita</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user2-160x160.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Bambang Pamungkis</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user2-160x160.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Rosi Angky</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                  </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
-                </div><!-- /.box-footer -->
-              </div>
-            </section>
-            <!-- Populer 5 Habis -->
-
-            <!-- Populer KeEnam -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
-              <div class="box box-danger">
-                <div class="box-header with-border">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
-                    <span class="username">
-                        <h4>Perizinan</h4>
-                    </span>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="products-list product-list-in-box">
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user4-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Contoh</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user5-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Contoh</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user6-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Contoh</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                  </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
-                </div><!-- /.box-footer -->
-              </div>
-            </section>
-            <!-- Populer 6 Habis -->
-
-            <!-- Populer KeTujuh -->
-            <section class="col-lg-3 col-md-3 col-xs-12">
-              <div class="box box-warning">
-                <div class="box-header with-border">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
-                    <span class="username">
-                        <h4>Perdagangan</h4>
-                    </span>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="products-list product-list-in-box">
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user7-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Contoh</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user4-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Contoh</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                    <li class="item">
-                      <div class="product-img">
-                        <img src="dist/img/user8-128x128.jpg">
-                      </div>
-                      <div class="product-info">
-                        <span href="" class="product-title">Contoh</span>
-                        <span class="product-description-custom">
-                          Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca ...
-                        </span>
-                        <a href="#">
-                          [Selengkapnya]
-                        </a>
-                      </div>
-                    </li><!-- /.item -->
-                  </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="" class="label uppercase bg-blue">Lihat Semua</a>
-                </div><!-- /.box-footer -->
-              </div>
-            </section>
-            <!-- Populer 7 Habis -->
-
-            <!-- List Tidak Populer -->
+            @if($batasskpd >= 7)
             <section class="col-lg-3 col-md-3 col-xs-12">
               <div class="box box-success">
                 <div class="box-header with-border">
@@ -765,21 +373,17 @@
                 </div><!-- /.box-footer -->
               </div>
             </section>
-            <!-- List tidak poluler -->
-
-          </div><!-- /.row -->
-          </section><!-- /.content -->
-        </div><!-- /.container -->
-      </div><!-- /.content-wrapper -->
+            @endif
+          </div>
+          </section>
+        </div>
+      </div>
       <footer class="main-footer">
         <div class="container">
-          <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.0
-          </div>
-          <strong>Copyright © 2016 - 2017 <a href="http://9tins.com">Pemerintahan Kabupaten Tangerang</a>.</strong> All rights reserved.
-        </div><!-- /.container -->
+          @include('includes.footer')
+        </div>
       </footer>
-    </div><!-- ./wrapper -->
+    </div>
 
     <!-- jQuery 2.1.4 -->
     <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
