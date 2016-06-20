@@ -37,9 +37,6 @@
 
               <div class="col-md-9">
                 <div class="box box-solid">
-                <!-- <div class="box-header with-border">
-                   <h3 class="box-title">Carousel</h3>
-                </div> /.box-header -->
                 <div class="box-body">
                   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -66,8 +63,8 @@
                     </a>
                   </div>
                 </div>
-              </div><!-- /.box -->
-            </div><!-- /.col -->
+              </div>
+            </div>
 
             <div class="col-md-3">
               @if(session('level') == 5)
@@ -76,111 +73,110 @@
                   <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
                   <li><a href="#daftar" data-toggle="tab">Daftar</a></li>
                 </ul>
-                  <div class="tab-content">
-                    <div class="active tab-pane" id="login">
-                      <div class="login-box-body">
-                        <p class="login-box-msg"><img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
-                        &nbsp;&nbsp;<b>SIMPEDU</b></p>
-                        <p class="login-box-msg"><b>Login Pengguna</b></p>
-                        <form action="{{ url('login') }}" method="post">
-                          {!! csrf_field() !!}
-                          <div class="form-group has-feedback">
-                            <input name="email" type="text" class="form-control" placeholder="Email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <div class="tab-content">
+                  <div class="active tab-pane" id="login">
+                    <div class="login-box-body">
+                      <p class="login-box-msg"><img src="{{asset('images/logokabtangerang.png')}}" alt="SPD" />
+                      &nbsp;&nbsp;<b>SIMPEDU</b></p>
+                      <p class="login-box-msg"><b>Login Pengguna</b></p>
+                      <form action="{{ url('login') }}" method="post">
+                        {!! csrf_field() !!}
+                        <div class="form-group has-feedback">
+                          <input name="email" type="text" class="form-control" placeholder="Email">
+                          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <input name="password" type="password" class="form-control" placeholder="Password">
+                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="row">
+                          <div class="social-auth-links text-center">
+                            <div class="checkbox icheck">
+                              <label>
+                                <input type="checkbox"> Ingat Saya
+                              </label>
+                            </div>
                           </div>
-                          <div class="form-group has-feedback">
-                            <input name="password" type="password" class="form-control" placeholder="Password">
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                          <div class="social-auth-links text-center">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
                           </div>
-                          <div class="row">
-                            <div class="social-auth-links text-center">
-                              <div class="checkbox icheck">
-                                <label>
-                                  <input type="checkbox"> Ingat Saya
-                                </label>
-                              </div>
-                            </div><!-- /.col -->
-                            <div class="social-auth-links text-center">
-                              <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
-                            </div><!-- /.col -->
-                          </div>
-                        </form>
-                        <a href="#">Lupa Password? Klik disini.</a><br>
-
-                      </div><!-- /.login-box-body -->
+                        </div>
+                      </form>
+                      <a href="#">Lupa Password? Klik disini.</a><br>
                     </div>
-                    <div class="tab-pane" id="daftar">
-                      <div class="register-box-body">
-                        <p class="login-box-msg"><b>Daftar Pengguna Baru</b></p>
-                        <form action="{{ url('register') }}" method="post">
-                          {!! csrf_field() !!}
-                          <div class="form-group has-feedback">
-                            <input name="nama" type="text" class="form-control" placeholder="Nama">
-                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                          </div>
-                          <div class="form-group has-feedback">
-                            <input name="email" type="email" class="form-control" placeholder="Email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                          </div>
-                          <div class="form-group has-feedback">
-                            <input name="telp" type="text" class="form-control" placeholder="No. Telp">
-                            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
-                          </div>
-                          <div class="form-group has-feedback">
-                            <input name="password" type="password" class="form-control" placeholder="Password">
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                          </div>
-                          <div class="form-group has-feedback">
-                            <input name="kpassword" type="password" class="form-control" placeholder="Konfirmasi Password">
-                            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-                          </div>
-                          <div class="row">
-                            <div class="social-auth-links text-center">
-                              <div class="checkbox icheck">
-                                <label>
-                                  <input type="checkbox" required=""> Saya Setuju <a href="#">Ketentuan</a>
-                                </label>
-                              </div>
-                            </div><!-- /.col -->
-                            <div class="social-auth-links text-center">
-                              <button type="submit" class="btn btn-primary btn-block btn-flat">Daftar</button>
-                            </div><!-- /.col -->
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div><!-- /.box -->
-              </div>
-              @elseif(session('level') == 1)
-                <div class="box box-widget widget-user-2">
-                  <div class="widget-user-header bg-blue">
-                    <div class="widget-user-image">
-                      @if(auth()->user()->url_photo == null)
-                        <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
-                      @else
-                        <img class="img-circle" src="{{ asset('/images/'.auth()->user()->url_photo) }}" alt="{{ auth()->user()->nama}}">
-                      @endif
-                    </div>
-                    <h3 class="widget-user-username">{{ auth()->user()->nama}}</h3>
-                    <h5 class="widget-user-desc">Bergabung {{ \Carbon\Carbon::parse(auth()->user()->created_at)->format('d-M-y')}}</h5>
                   </div>
-                  <div class="box-footer no-padding">
-                    <ul class="nav nav-stacked">
-                      <li><a href="{{ url('beranda') }}"><b>Beranda</b></a></li>
-                      <li><a href="{{ url('pengaduansaya') }}"><b>Pengaduan Saya</b></a></li>
-                      <li><a href="{{ url('semuapengaduan') }}"><b>Daftar Pengaduan</b></a></li>
-                      <li><a href="{{ url('profil') }}"><b>Profil</b></a></li>
-                      <li><a href="{{ url('logout') }}"><b>Logout</b></a></li>
-                    </ul>
+
+                  <div class="tab-pane" id="daftar">
+                    <div class="register-box-body">
+                      <p class="login-box-msg"><b>Daftar Pengguna Baru</b></p>
+                      <form action="{{ url('register') }}" method="post">
+                        {!! csrf_field() !!}
+                        <div class="form-group has-feedback">
+                          <input name="nama" type="text" class="form-control" placeholder="Nama">
+                          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <input name="email" type="email" class="form-control" placeholder="Email">
+                          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <input name="telp" type="text" class="form-control" placeholder="No. Telp">
+                          <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <input name="password" type="password" class="form-control" placeholder="Password">
+                          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                          <input name="kpassword" type="password" class="form-control" placeholder="Konfirmasi Password">
+                          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                        </div>
+                        <div class="row">
+                          <div class="social-auth-links text-center">
+                            <div class="checkbox icheck">
+                              <label>
+                                <input type="checkbox" required=""> Saya Setuju <a href="#">Ketentuan</a>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="social-auth-links text-center">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Daftar</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
+              </div>
+              @elseif(session('level') == 1)
+              <div class="box box-widget widget-user-2">
+                <div class="widget-user-header bg-blue">
+                  <div class="widget-user-image">
+                    @if(auth()->user()->url_photo == null)
+                      <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                    @else
+                      <img class="img-circle" src="{{ asset('/images/'.auth()->user()->url_photo) }}" alt="{{ auth()->user()->nama}}">
+                    @endif
+                  </div>
+                  <h3 class="widget-user-username">{{ auth()->user()->nama}}</h3>
+                  <h5 class="widget-user-desc">Bergabung {{ \Carbon\Carbon::parse(auth()->user()->created_at)->format('d-M-y')}}</h5>
+                </div>
+                <div class="box-footer no-padding">
+                  <ul class="nav nav-stacked">
+                    <li><a href="{{ url('beranda') }}"><b>Beranda</b></a></li>
+                    <li><a href="{{ url('pengaduansaya') }}"><b>Pengaduan Saya</b></a></li>
+                    <li><a href="{{ url('semuapengaduan') }}"><b>Daftar Pengaduan</b></a></li>
+                    <li><a href="{{ url('profil') }}"><b>Profil</b></a></li>
+                    <li><a href="{{ url('logout') }}"><b>Logout</b></a></li>
+                  </ul>
+                </div>
+              </div>
               @endif
             </div>
           </div>
 
           <div class="row">
             <div class="col-lg-3 col-md-6 col-xs-12">
-              <!-- small box -->
               <div class="small-box bg-teal">
                 <div class="inner">
                   <h3>{{ $CountPengaduan }}</h3>
@@ -191,9 +187,8 @@
                 </div>
                 {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
-            </div><!-- ./col -->
+            </div>
             <div class="col-lg-3 col-md-6 col-xs-12">
-              <!-- small box -->
               <div class="small-box bg-purple">
                 <div class="inner">
                   <h3>{{ $Persen }}<sup style="font-size: 20px">%</sup></h3>
@@ -204,9 +199,8 @@
                 </div>
                 {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
-            </div><!-- ./col -->
+            </div>
             <div class="col-lg-3 col-md-6 col-xs-12">
-              <!-- small box -->
               <div class="small-box bg-maroon">
                 <div class="inner">
                   <h3>{{ $UsersWarga }}</h3>
@@ -217,10 +211,9 @@
                 </div>
                 {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
-            </div><!-- ./col -->
+            </div>
 
             <div class="col-lg-3 col-md-6 col-xs-12">
-              <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3>12378</h3>
@@ -231,7 +224,7 @@
                 </div>
                 {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
-            </div><!-- ./col -->
+            </div>
           </div>
 
           <div class="row">
@@ -240,7 +233,7 @@
                 <div class="box-header with-border">
                   <img src="{{asset('images/logokabtangerang.png')}}">
                   <h3 class="box-title">&nbsp;&nbsp;&nbsp;Tentang SIMPEDU</h3>
-                </div><!-- /.box-header -->
+                </div>
                 <div class="box-body clearfix">
                   <blockquote class="pull-left">
                     <p style="font-size:15px;">
@@ -248,8 +241,8 @@
                     </p>
                     <small>Pemerintah Kabupaten Tangerang</small>
                   </blockquote>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
+                </div>
+              </div>
             </div>
           </div>
 
@@ -318,7 +311,7 @@
                         <h4>Pengaduan Lainnya</h4>
                     </span>
                   </div>
-                </div><!-- /.box-header -->
+                </div>
                 <div class="box-body">
                     <ul class="nav nav-pills nav-stacked">
                       <li>
@@ -367,10 +360,10 @@
                         </a>
                       </li>
                     </ul>
-                </div><!-- /.box-body -->
+                </div>
                 <div class="box-footer text-center">
                   <a href="{{url('detail/semua-pengaduan-lainnya')}}" class="label uppercase bg-blue">Lihat Semua</a>
-                </div><!-- /.box-footer -->
+                </div>
               </div>
             </section>
             @endif
