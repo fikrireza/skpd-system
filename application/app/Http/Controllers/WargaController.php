@@ -262,7 +262,7 @@ class WargaController extends Controller
                           ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
                           ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                           ->select('master_skpd.nama_skpd', 'topik_pengaduan.nama_topik', 'pengaduan.*', 'users.nama', 'users.url_photo')
-                          ->where('slug', $slug)->first();
+                          ->where('pengaduan.slug', $slug)->first();
       // dd($detail);
       $dokumentall = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')

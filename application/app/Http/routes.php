@@ -17,8 +17,8 @@ Route::get('/', ['as' => 'welcomepage', 'uses' => 'WelcomePageController@index']
 Route::get('semua/{slug}', ['as' => 'perskpd', 'uses' => 'WelcomePageController@semuatopik'])->where('slug', '[A-Za-z0-9-]+');
 
 Route::get('detail/pengduan/{slug}', ['as' => 'detailpengaduan', 'uses' => 'WelcomePageController@detailpengaduan'])->where('slug', '[A-Za-z0-9-]+');
-
 // End Route for Umum & Walcome Page //
+
 
 // Front Akses Warga ------------------------------------------------------------------------------------------
 Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
@@ -157,3 +157,5 @@ Route::get('listdatapengaduanbyskpd', function(){
 Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
 Route::get('admin/historipengaduan/datatables', ['as'=>'datatables.histori', 'uses'=>'HistoriPengaduanController@getDataForDataTable']);
 Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
+Route::get('admin/slider', 'SliderController@index');
+Route::post('admin/slider', 'SliderController@upload');

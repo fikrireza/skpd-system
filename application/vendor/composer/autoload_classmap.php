@@ -18,6 +18,7 @@ return array(
     'AddTablesDokumenPengaduan' => $baseDir . '/database/migrations/2016_06_08_131445_add_tables_dokumen_pengaduan.php',
     'AddUserskpdIdForPengaduan' => $baseDir . '/database/migrations/2016_06_07_015640_add_userskpd_id_for_pengaduan.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateSliderTable' => $baseDir . '/database/migrations/2016_06_20_162105_create_slider_table.php',
     'CreateTabelPengaduan' => $baseDir . '/database/migrations/2016_06_06_223901_create_tabel_pengaduan.php',
     'CreateTableMasterSkpd' => $baseDir . '/database/migrations/2016_05_31_031507_create_table_master_skpd.php',
     'CreateTableMutasi' => $baseDir . '/database/migrations/2016_06_07_020014_create_table_mutasi.php',
