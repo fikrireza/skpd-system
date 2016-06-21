@@ -129,7 +129,6 @@
                  value="{{ old('id') }}"
                 @endif
               >
-              <br>
               @if(isset($data['binddatamutasi']))
                 {{-- <h4><span class="label bg-green">Data Mutasi dari SKPD
                     @foreach($data['getmutasi'] as $key)
@@ -137,12 +136,10 @@
                     @endforeach --}}
                 <textarea name="tanggapanmutasi" readonly="true" class="form-control" rows="5" cols="40" style="border:1px solid #00a65a;margin-top:5px;">{{$data['binddatamutasi']->pesan_mutasi}}</textarea>
               @endif
-              <br>
                 <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."
                 @if($errors->has('tanggapan'))
                  style="border:1px solid #DD4B39;margin-top:5px;"
-                @endif>
-                </textarea>
+                @endif></textarea>
               {{-- @else
                 <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini..">  {{$data['binddatatanggapan']->tanggapan}}</textarea> --}}
                 @if($errors->has('tanggapan'))
