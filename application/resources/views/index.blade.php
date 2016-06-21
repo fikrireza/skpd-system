@@ -38,35 +38,24 @@
               <div class="col-md-9">
                 <div class="box box-solid">
                 <div class="box-body">
-                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="item active">
-                        <img src="{{asset('images/slider2.png')}}">
-                      </div>
-                      <div class="item">
-                        <img src="{{asset('images/slider3.png')}}">
-                      </div>
-                      <div class="item">
-                        <img src="{{asset('images/tatacarapengaduan.png')}}">
-                      </div>
-                    </div>
-                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                      <span class="fa fa-angle-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                      <span class="fa fa-angle-right"></span>
-                    </a>
+                  <div id="myCarousel" class="carousel">
+                  <div class="carousel-inner">
+                    <?php $active = 1;?>
+                    @foreach($sliders as $slider)
+                      @if($active++ == 1)
+                        <div class="active item"><img src="{{asset('images/'.$slider->url_gambar)}}"></div>
+                      @endif
+                        <div class="item"><img src="{{asset('images/'.$slider->url_gambar)}}"></div>
+                    @endforeach
+                  </div>
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="fa fa-angle-left"></span>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="fa fa-angle-right"></span>
                   </div>
                 </div>
+                </div>
               </div>
-            </div>
 
-            <div class="col-md-3">
+              <div class="col-md-3">
               @if(session('level') == 5)
               <div class="nav-tabs-custom" style='max-height:467px'>
                 <ul class="nav nav-tabs">
@@ -390,5 +379,13 @@
     <script src="{{ asset('/dist/js/app.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('/dist/js/demo.js') }}"></script>
+
+    <script>
+    $('.carousel').carousel({
+      interval: 3500,
+      pause: 'hover',
+        wrap: true
+    });
+    </script>
   </body>
 </html>

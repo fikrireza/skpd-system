@@ -157,5 +157,6 @@ Route::get('listdatapengaduanbyskpd', function(){
 Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
 Route::get('admin/historipengaduan/datatables', ['as'=>'datatables.histori', 'uses'=>'HistoriPengaduanController@getDataForDataTable']);
 Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
-Route::get('admin/slider', 'SliderController@index');
-Route::post('admin/slider', 'SliderController@upload');
+Route::get('admin/slider', ['as' => 'slider', 'uses' => 'SlidersController@index']);
+Route::post('admin/slider', 'SlidersController@upload');
+Route::get('admin/slider/{id}', 'SlidersController@update');

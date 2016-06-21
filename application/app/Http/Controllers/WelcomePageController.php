@@ -11,7 +11,7 @@ use App\Models\Pengaduan;
 use App\Models\DokumenPengaduan;
 use App\TopikAduan;
 use App\MasterSKPD;
-
+use App\Models\Sliders;
 
 class WelcomePageController extends Controller
 {
@@ -64,7 +64,9 @@ class WelcomePageController extends Controller
                       ->groupBy('nama_skpd')
                       ->get();
 
-    return view('index', compact('pengaduanWid', 'tanggapWid', 'CountPengaduan','UsersWarga', 'Persen', 'skpdonly', 'AllTopiks'));
+    $sliders = Sliders::orderby('updated_at', 'desc')->get();
+
+    return view('index', compact('pengaduanWid', 'tanggapWid', 'CountPengaduan','UsersWarga', 'Persen', 'skpdonly', 'AllTopiks', 'sliders'));
   }
 
   public function semuatopik($slug)
