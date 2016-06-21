@@ -266,23 +266,29 @@
             $('span#judul_pengaduan').append(judul_pengaduan);
             $('span#tanggal_pengaduan').append(tanggal_pengaduan);
             $('div#isi_pengaduan').append(isi_pengaduan);
-            $('div#tanggapan').append(
-              "<div class='box-footer box-comments' style='border:1px solid #00a65a;'>"+
+            if(tanggap!=null)
+            {
+              $('div#tanggapan').html(
+                "<div class='box-footer box-comments' style='border:1px solid #00a65a;'>"+
                 "<div style='padding-bottom:5px;'>"+
-                  "<b>Tanggapan</b>"+
+                "<b>Tanggapan</b>"+
                 "</div>"+
                 "<div class='box-comment'>"+
-                  "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
-                  "<div class='comment-text'>"+
-                    "<span class='username'>"+
-                      "Administrator SKPD Pelayanan Publik"+
-                      "<span class='text-muted pull-right'>25 April 2016</span>"+
-                    "</span>"+
-                    tanggap +
-                  "</div>"+
+                "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
+                "<div class='comment-text'>"+
+                "<span class='username'>"+
+                "Administrator SKPD Pelayanan Publik"+
+                "<span class='text-muted pull-right'>25 April 2016</span>"+
+                "</span>"+
+                tanggap +
                 "</div>"+
-              "</div>"
-            );
+                "</div>"+
+                "</div>"
+              );
+            }
+            else {
+              $('div#tanggapan').html("");
+            }
           }
         });
       })

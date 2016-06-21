@@ -177,6 +177,8 @@ class MasterSKPDController extends Controller
     {
       $get = DB::table('pengaduan')
               ->leftJoin('tanggapan', 'tanggapan.id_pengaduan' , '=', 'pengaduan.id')
+              ->leftJoin('users', 'tanggapan.id_userskpd' , '=', 'users.id')
+              ->leftJoin('master_skpd', 'users.id_skpd' , '=', 'master_skpd.id')
               ->where('pengaduan.id', $id)
               ->get();
       return $get;
