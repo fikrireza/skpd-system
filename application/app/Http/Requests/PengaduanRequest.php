@@ -31,7 +31,7 @@ class PengaduanRequest extends Request
     ];
   }
 
-  public function message()
+  public function messages()
   {
     return[
       'topik.required' => 'Wajib di Isi',

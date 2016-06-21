@@ -86,29 +86,21 @@
         </ul>
       </li>
 
-      {{-- <li class="treeview">
-      <a href="#">
-      <i class="fa fa-bar-chart"></i>
-      <span>Cetak Report</span>
-      <i class="fa fa-angle-left pull-right"></i>
-    </a>
-    <ul class="treeview-menu">
-    <li><a href="#"><i class="fa fa-circle-o"></i> Report 1</a></li>
-    <li><a href="#"><i class="fa fa-circle-o"></i> Report 2</a></li>
-    <li><a href="#"><i class="fa fa-circle-o"></i> Report 3</a></li>
-  </ul>
-</li> --}}
-
-<li class="treeview">
-  <a href="#">
-    <i class="fa fa-group"></i>
-    <span>Management Akun</span>
-    <i class="fa fa-angle-left pull-right"></i>
-  </a>
-  <ul class="treeview-menu">
-    <li><a href="{{route('managementakun.index')}}"><i class="fa fa-circle-o"></i> Kelola Akun</a></li>
-  </ul>
-</li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-group"></i>
+          <span>Management Akun</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{route('managementakun.index')}}"><i class="fa fa-circle-o"></i> Kelola Akun</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="{{url('admin/slider')}}">
+          <i class="fa fa-image"></i> <span>Slider & Qoutes</span>
+        </a>
+      </li>
     @endif
   </ul>
 </section>
