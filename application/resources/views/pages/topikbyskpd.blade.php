@@ -26,7 +26,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Tanggapi Pengaduan</h4>
+        <h4 class="modal-title">Detail Pengaduan</h4>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -258,14 +258,16 @@
             //get
             var id = data[0].id;
             var judul_pengaduan = data[0].judul_pengaduan;
-            var tanggal_pengaduan = data[0].created_at;
+            var tanggal_pengaduan = data[0].tanggal_pengaduan;
             var isi_pengaduan = data[0].isi_pengaduan;
             var tanggap = data[0].tanggapan;
+            var nama_penanggap = data[0].nama;
+            var nama_skpd = data[0].nama_skpd;
 
             // set
-            $('span#judul_pengaduan').append(judul_pengaduan);
-            $('span#tanggal_pengaduan').append(tanggal_pengaduan);
-            $('div#isi_pengaduan').append(isi_pengaduan);
+            $('span#judul_pengaduan').html(judul_pengaduan);
+            $('span#tanggal_pengaduan').html(tanggal_pengaduan);
+            $('div#isi_pengaduan').html(isi_pengaduan);
             if(tanggap!=null)
             {
               $('div#tanggapan').html(
@@ -277,7 +279,7 @@
                 "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
                 "<div class='comment-text'>"+
                 "<span class='username'>"+
-                "Administrator SKPD Pelayanan Publik"+
+                nama_penanggap + " | Administrator SKPD " + nama_skpd +
                 "<span class='text-muted pull-right'>25 April 2016</span>"+
                 "</span>"+
                 tanggap +
