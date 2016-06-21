@@ -37,7 +37,7 @@ class DetailPengaduanController extends Controller
      */
     public function create(Request $request)
     {
-      
+
     }
 
     /**
@@ -166,7 +166,17 @@ class DetailPengaduanController extends Controller
       $getdataskpd = MasterSKPD::where('id', $userid->id_skpd)->get();
       $tanggapan = TanggapanModel::where('id_userskpd', $userid->id)->get();
 
-      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan'));
+      $getuser = DB::table('users')
+                    ->where('id_skpd', $userid->id_skpd)
+                    ->select('id_skpd')->get();
+      $data = array();
+      foreach ($getuser as $key) {
+        $data[] = $key->id_skpd;
+      }
+
+      $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
+
+      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan', 'gettopik'));
       // return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
     }
 
