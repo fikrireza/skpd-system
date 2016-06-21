@@ -120,77 +120,35 @@
                 <div class="post" style="color:#333;">
                   <table class="table">
                     <tr class="bg-green">
-                      <th>No. Pengaduan</th>
+                      <th>#</th>
                       <th>Judul Pengaduan</th>
                       <th>Nama Pelapor</th>
                       <th>Tanggal Pengaduan</th>
                       <th>Tanggal Tanggapan</th>
                       <th style="width: 40px">Aksi</th>
                     </tr>
-                    <tr>
-                      <td>123123123</td>
-                      <td>Pembenahan Identitas Penerima Kartu KIS</td>
-                      <td>Amanda Satyarini</td>
-                      <td>24 April 2016</td>
-                      <td>25 April 2016</td>
-                      <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                    </tr>
-                    <tr>
-                      <td>234234234</td>
-                      <td>Perbaikan Data Kartu KIS</td>
-                      <td>Galang Dharmiko</td>
-                      <td>24 April 2016</td>
-                      <td>25 April 2016</td>
-                      <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                    </tr>
-                    <tr>
-                      <td>345345345</td>
-                      <td>Pelayanan Medis Non Obat</td>
-                      <td>Pardamean Ronaldo</td>
-                      <td>24 April 2016</td>
-                      <td>25 April 2016</td>
-                      <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                    </tr>
-                    <tr>
-                      <td>456456456</td>
-                      <td>Informasi Mengenai Iuran BPJS</td>
-                      <td>Ademira</td>
-                      <td>24 April 2016</td>
-                      <td>25 April 2016</td>
-                      <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                    </tr>
-                    <tr>
-                      <td>123123123</td>
-                      <td>Pembenahan Identitas Penerima Kartu KIS</td>
-                      <td>Amanda Satyarini</td>
-                      <td>24 April 2016</td>
-                      <td>25 April 2016</td>
-                      <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                    </tr>
-                    <tr>
-                      <td>234234234</td>
-                      <td>Perbaikan Data Kartu KIS</td>
-                      <td>Galang Dharmiko</td>
-                      <td>24 April 2016</td>
-                      <td>25 April 2016</td>
-                      <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                    </tr>
-                    <tr>
-                      <td>345345345</td>
-                      <td>Pelayanan Medis Non Obat</td>
-                      <td>Pardamean Ronaldo</td>
-                      <td>24 April 2016</td>
-                      <td>25 April 2016</td>
-                      <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                    </tr>
-                    <tr>
-                      <td>456456456</td>
-                      <td>Informasi Mengenai Iuran BPJS</td>
-                      <td>Ademira</td>
-                      <td>24 April 2016</td>
-                      <td>25 April 2016</td>
-                      <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
-                    </tr>
+                    <?php $no=1; ?>
+                    @foreach($gethistoritanggapan as $k)
+                      <tr>
+                        <td>{{$no}}</td>
+                        <td>{{$k->judul_pengaduan}}</td>
+                        <td>{{$k->nama}}</td>
+                        <td>
+                          <?php
+                            $tglpengaduan = $k->tanggal_pengaduan;
+                            echo substr($tglpengaduan, 0, 10);
+                          ?>
+                        </td>
+                        <td>
+                          <?php
+                            $tgltanggapan = $k->tanggal_tanggapan;
+                            echo substr($tgltanggapan, 0, 10);
+                          ?>
+                        </td>
+                        <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
+                      </tr>
+                      <?php $no++; ?>
+                    @endforeach
                   </table>
                 </div><!-- /.post -->
 

@@ -207,7 +207,11 @@
                         $sym = substr($diff->format("%R%a"), 0, 1);
                         $days = substr($diff->format("%R%a"), 1);
                       ?>
-                      <span class="pull-center badge bg-purple">{{$days}} Hari</span>
+                      {{-- @if($days==0)
+                        <span class="pull-center badge bg-purple">Hari yang sama</span>
+                      @else --}}
+                        <span class="pull-center badge bg-purple">{{$days}} Hari</span>
+                      {{-- @endif --}}
                      @endif
                    </td>
                    <td>

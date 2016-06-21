@@ -64,7 +64,7 @@ class WargaProfileController extends Controller
                           ->leftJoin('tanggapan', 'pengaduan.id', '=', 'tanggapan.id_pengaduan')
                           ->leftJoin('users', 'tanggapan.id_userskpd', '=', 'users.id')
                           ->where('master_skpd.id', $userid->id_skpd)
-                          ->where('flag_mutasi', '0')
+                          // ->where('flag_mutasi', '0')
                           // ->where('flag_tanggap', '1')
                           ->where('pengaduan.warga_id', $id)
                           ->orderby('pengaduan.created_at', 'desc')

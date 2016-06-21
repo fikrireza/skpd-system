@@ -169,6 +169,7 @@ class MasterSKPDController extends Controller
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*', 'tanggapan.created_at as tanggaltanggap', 'pengaduan.created_at as tanggaladuan', 'pengaduan.id as pengaduanid')
                       ->where('master_skpd.id', $id)
+                      ->orderby('pengaduan.created_at', 'desc')
                       ->get();
       return view('pages/topikbyskpd', compact('getskpd', 'gettopik', 'getbelumtanggap', 'getsudahtanggap', 'getpengaduan'));
     }
