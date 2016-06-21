@@ -48,8 +48,8 @@
                         <div class="item"><img src="{{asset('images/'.$slider->url_gambar)}}"></div>
                     @endforeach
                   </div>
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="fa fa-angle-left"></span>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="fa fa-angle-right"></span>
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="fa fa-angle-left"></span></a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="fa fa-angle-right"></span></a>
                   </div>
                 </div>
                 </div>

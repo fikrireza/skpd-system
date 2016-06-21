@@ -22,7 +22,7 @@ class WargaController extends Controller
    */
   public function __construct()
   {
-    // $this->middleware('isWarga');
+    $this->middleware('isWarga');
   }
 
   /**
@@ -56,7 +56,7 @@ class WargaController extends Controller
                       ->get();
     $grouping = collect($AllTopikQuery);
     $AllTopiks = $grouping->groupBy('nama_skpd')->toArray();
-    // dd($AllTopiks);
+    
     $skpdonly  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -143,8 +143,6 @@ class WargaController extends Controller
     $id = Auth::user()->id;
     $profiles = User::find($id);
 
-    // $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
-
     $topiks  = DB::table('master_skpd')
                     ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                     ->select('topik_pengaduan.id','topik_pengaduan.nama_topik as nama_topik', 'master_skpd.nama_skpd as nama_skpd')
@@ -157,7 +155,7 @@ class WargaController extends Controller
     $pengaduans = DB::table('pengaduan')
                     ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                     ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
-                    ->select('*', 'pengaduan.id')
+                    ->select('*', 'pengaduan.id', 'pengaduan.slug as slug')
                     ->where('pengaduan.warga_id', $id)
                     ->orderby('pengaduan.created_at', 'desc')
                     ->get();
@@ -183,7 +181,7 @@ class WargaController extends Controller
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    $detail = Pengaduan::join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')->where('slug', $slug)->where('warga_id', '=', $id)->first();
+    $detail = Pengaduan::join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')->where('pengaduan.slug', $slug)->where('warga_id', '=', $id)->first();
 
     $dokumentall = DB::table('pengaduan')
                     ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')

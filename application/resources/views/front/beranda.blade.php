@@ -21,13 +21,23 @@
 
   <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
+    <?php $active = 1;?>
     @foreach($skpdonly as $skpd)
+      @if($active++ == 1)
+      <li class="active"><a href="#{{$skpd->nama_skpd}}" data-toggle="tab" aria-expanded="true">{{ $skpd->nama_skpd }}</a></li>
+      @else
       <li class=""><a href="#{{$skpd->nama_skpd}}" data-toggle="tab" aria-expanded="false">{{ $skpd->nama_skpd }}</a></li>
+      @endif
     @endforeach
     </ul>
     <div class="tab-content">
+      <?php $pane = 1;?>
       @foreach($skpdonly as $tabskpd)
-      <div class="tab-pane" id="{{$tabskpd->nama_skpd}}">
+        @if($pane++ == 1)
+          <div class="tab-pane active" id="{{$tabskpd->nama_skpd}}">
+        @else
+          <div class="tab-pane" id="{{$tabskpd->nama_skpd}}">
+        @endif
         @foreach($AllTopiks as $skpd)
           @foreach($skpd as $topik)
           @if($topik->nama_skpd === $tabskpd->nama_skpd)
