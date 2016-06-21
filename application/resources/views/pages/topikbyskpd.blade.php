@@ -279,7 +279,7 @@
                 "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
                 "<div class='comment-text'>"+
                 "<span class='username'>"+
-                nama_penanggap + " | Administrator SKPD " + nama_skpd +
+                nama_penanggap + " || Administrator SKPD " + nama_skpd +
                 "<span class='text-muted pull-right'>25 April 2016</span>"+
                 "</span>"+
                 tanggap +

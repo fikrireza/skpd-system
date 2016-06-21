@@ -167,7 +167,14 @@
                 {!! Form::model($binddatapengaduan, ['route' => ['detailpengaduan.update', $binddatapengaduan->id], 'method' => "patch", 'class'=>'form-horizontal']) !!}
                   {{-- {!! Form::model($binddatapengaduan, ['route' => ['detailpengaduan.store', $binddatapengaduan->id], 'method' => "patch", 'class'=>'form-horizontal']) !!} --}}
                   {!! csrf_field() !!}
-                  <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/logokabtangerang.png')}}" alt="alt text">
+                  <img class="img-circle img-sm" style="margin-bottom:10px;" src="{{asset('dist/img/logokabtangerang.png')}}" alt="alt text">
+                  <span style="margin-left:10px;"><b>
+                    @if(Auth::user()->nama!="")
+                      {{ Auth::user()->nama }}
+                    @else
+                      {{ Auth::user()->email }}
+                    @endif
+                  </b></span>
                   <!-- .img-push is used to add margin to elements next to floating images -->
                   <input
                     @if(isset($binddatapengaduan))
