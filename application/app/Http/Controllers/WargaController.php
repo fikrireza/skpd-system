@@ -22,7 +22,7 @@ class WargaController extends Controller
    */
   public function __construct()
   {
-    $this->middleware('isWarga');
+    // $this->middleware('isWarga');
   }
 
   /**
@@ -129,10 +129,9 @@ class WargaController extends Controller
       ]);
     }
 
-    return redirect()->route('pengaduan')->with('pengaduan', 'Pengaduan Anda Berhasil Terkirim, dan Akan Segera Kami Proses');
+    return redirect()->route('pengaduansaya')->with('pengaduan', 'Pengaduan Anda Berhasil Terkirim, dan Akan Segera Kami Proses');
 
   }
-
 
   /**
    * Lihat pengaduan bagi warga yg terdaftar
