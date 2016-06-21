@@ -1,5 +1,9 @@
 @extends('front.template')
 
+@section('title')
+  <title>SIMPEDU | Profil</title>
+@stop
+
 @section('content')
 
   @if(Session::has('messagefilled'))
@@ -139,10 +143,10 @@
                   <div class="col-sm-9">
                     <div class="radio">
                       <label>
-                        <input type="radio" name="jeniskelamin" id="optionsRadios1" value="Pria" checked="">Pria
+                        <input type="radio" name="jeniskelamin" id="optionsRadios1" value="L" @if($profiles->jeniskelamin == "L")checked="checked"@endif>Pria
                       </label>
                       <label>
-                        <input type="radio" name="jeniskelamin" id="optionsRadios2" value="Wanita">Wanita
+                        <input type="radio" name="jeniskelamin" id="optionsRadios2" value="P" @if($profiles->jeniskelamin == "P")checked="checked"@endif>Wanita
                       </label>
                     </div>
                     @if($errors->has('jeniskelamin'))
@@ -171,6 +175,72 @@
         </form>
       </div><!-- row -->
     </div><!-- box form -->
+
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">Ubah Password</h3>
+      </div><!-- /.box-header -->
+      <!-- form start -->
+      <form class="form-horizontal" action="{{ route('ubahpassword') }}" method="post">
+        {{ csrf_field() }}
+        <div class="box-body">
+          <div class="form-group {{ $errors->has('oldpass') ? 'has-error' : '' }}">
+            <label class="col-sm-3 control-label">Password Lama</label>
+            <div class="col-sm-9">
+              <input name="oldpass" type="password" class="form-control" placeholder="Password Lama" @if(!$errors->has('oldpass'))
+                value="{{ old('oldpass') }}"@endif>
+              <input name="id" type="hidden" class="form-control" value="{{ $profiles->id }}">
+              @if($errors->has('oldpass'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('oldpass') }}
+                  </strong>
+                </span>
+              @endif
+              @if(Session::has('erroroldpass'))
+                <span class="help-block">
+                  <strong>{{ Session::get('erroroldpass') }}
+                  </strong>
+                </span>
+              @endif
+            </div>
+          </div>
+          <div class="form-group {{ $errors->has('newpass') ? 'has-error' : '' }} ">
+            <label class="col-sm-3 control-label">Password Baru</label>
+            <div class="col-sm-9">
+              <input name="newpass" type="password" class="form-control" placeholder="Password Baru Minimal 8 Karakter" @if(!$errors->has('newpass'))
+                value="{{ old('newpass') }}"
+              @endif
+              >
+              @if($errors->has('newpass'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('newpass') }}
+                  </strong>
+                </span>
+              @endif
+            </div>
+          </div>
+          <div class="form-group {{ $errors->has('newpass_confirmation') ? 'has-error' : '' }}">
+            <label class="col-sm-3 control-label">Konfirmasi Password Baru</label>
+            <div class="col-sm-9">
+              <input name="newpass_confirmation" type="password" class="form-control" placeholder="Konfirmasi Password Baru"
+              @if(!$errors->has('newpass_confirmation'))
+                value="{{ old('newpass_confirmation') }}"
+              @endif
+              >
+              @if($errors->has('newpass_confirmation'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('newpass_confirmation') }}
+                  </strong>
+                </span>
+              @endif
+            </div>
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="btn btn-info pull-right">Ubah Password</button>
+          </div><!-- /.box-footer -->
+        </div>
+      </form>
+    </div>
   </div><!-- /.col -->
 
   <div class="col-md-3 col-sm-6 col-xs-12">

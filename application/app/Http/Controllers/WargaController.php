@@ -9,6 +9,8 @@ use DB;
 use App\User;
 use App\Models\Pengaduan;
 use App\Models\DokumenPengaduan;
+use App\TopikAduan;
+use App\Models\TanggapanModel;
 
 class WargaController extends Controller
 {
@@ -32,26 +34,46 @@ class WargaController extends Controller
   {
     // Retrieve User From Auth
     $id = Auth::user()->id;
-    $profiles = User::find($id);
 
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+    $topiks  = DB::table('master_skpd')
+                    ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                    ->select('topik_pengaduan.id','topik_pengaduan.nama_topik as nama_topik', 'master_skpd.nama_skpd as nama_skpd')
+                    ->where('master_skpd.flag_skpd', 1)
+                    ->get();
 
-    return view('front.beranda', compact('profiles', 'topiks', 'pengaduanWid', 'tanggapWid'));//)->with('profiles', 'topik', $profiles, $topik);
+    $AllTopikQuery  = DB::table('master_skpd')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
+                      ->where('master_skpd.flag_skpd', 1)
+                      ->where('pengaduan.flag_rahasia', 0)
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->take(60)
+                      ->get();
+    $grouping = collect($AllTopikQuery);
+    $AllTopiks = $grouping->groupBy('nama_skpd')->toArray();
+    // dd($AllTopiks);
+    $skpdonly  = DB::table('master_skpd')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->select('master_skpd.nama_skpd as nama_skpd')
+                      ->where('master_skpd.flag_skpd', 1)
+                      ->where('pengaduan.flag_rahasia', 0)
+                      ->groupBy('nama_skpd')
+                      ->get();
+
+    return view('front.beranda', compact('topiks', 'skpdonly', 'AllTopiks', 'pengaduanWid', 'tanggapWid'));
   }
 
   /**
-   * Show the form for creating a new resource.
+   * Retrieve form FORM Pengaduan
    *
-   * @return \Illuminate\Http\Response
+   * @return App\Http\Requests\PengaduanRequest
    */
-  public function create()
-  {
-
-  }
-
   public function postPengaduan(PengaduanRequest $request)
   {
     if($request->input('anonim') == null){
@@ -66,12 +88,12 @@ class WargaController extends Controller
     }
 
     //function for seo random in segment
-    $slugtitle = str_slug($request->input('judul'), '-');
-    // $slug = str_random(5).'/'.$slugtitle;
+    $campur = $request->input('judul').' '.str_random(3);
+    $slugtitle = str_slug($campur);
 
     if($request->hasFile('dokumen'))
     {
-      DB::transaction(function() use($request, $anonim, $rahasia)
+      DB::transaction(function() use($request, $anonim, $rahasia, $slugtitle)
       {
         $pengaduan = Pengaduan::create([
                     'topik_id'          => $request->input('topik'),
@@ -111,21 +133,49 @@ class WargaController extends Controller
 
   }
 
+
+  /**
+   * Lihat pengaduan bagi warga yg terdaftar
+   *
+   * List berdasarkan warga yg login
+   */
   public function pengaduansaya()
   {
     $id = Auth::user()->id;
     $profiles = User::find($id);
 
-    $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+    // $topiks = DB::table('topik_pengaduan')->orderBy('id_skpd', 'asc')->lists('nama_topik', 'id');
+
+    $topiks  = DB::table('master_skpd')
+                    ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                    ->select('topik_pengaduan.id','topik_pengaduan.nama_topik as nama_topik', 'master_skpd.nama_skpd as nama_skpd')
+                    ->where('master_skpd.flag_skpd', 1)
+                    ->get();
 
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    $pengaduans = Pengaduan::where('warga_id', '=', $id)->orderBy('created_at', 'desc')->get();
-
-    return view('front.pengaduansaya', compact('profiles', 'topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid'));//)->with('profiles', 'topik', $profiles, $topik);
+    $pengaduans = DB::table('pengaduan')
+                    ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                    ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                    ->select('*', 'pengaduan.id')
+                    ->where('pengaduan.warga_id', $id)
+                    ->orderby('pengaduan.created_at', 'desc')
+                    ->get();
+    // dd($pengaduans);
+    $dokumentall = DB::table('pengaduan')
+                    ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                    ->select('*')
+                    ->where('pengaduan.warga_id', $id)
+                    ->get();
+    //dd($dokument);
+    return view('front.pengaduansaya', compact('topiks', 'pengaduans', 'pengaduanWid', 'tanggapWid', 'dokumentall'));
   }
 
+  /**
+   * Retrieve slug from judul_pengaduan
+   *
+   */
   public function detailPengaduan($slug)
   {
     $id = Auth::user()->id;
@@ -134,8 +184,111 @@ class WargaController extends Controller
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    $detail = Pengaduan::where('slug', $slug)->first();
-    // dd($detail);
-    return view('front.detaillaporan', compact('profiles', 'pengaduanWid', 'tanggapWid'));
+    $detail = Pengaduan::join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')->where('slug', $slug)->where('warga_id', '=', $id)->first();
+
+    $dokumentall = DB::table('pengaduan')
+                    ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                    ->select('*')
+                    ->where('pengaduan.warga_id', $id)
+                    ->get();
+
+    // Jika url slug tidak ditemukan
+    if($detail == null){
+      abort(404);
+    }
+
+    $tanggapan = TanggapanModel::where('id_pengaduan', $detail->id)->get();
+
+    $listPengaduan = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                      ->select('*')
+                      ->where('pengaduan.warga_id', $id)
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->get();
+    // Pengaduan::where('warga_id', $id)->orderBy('created_at', 'dsc')->get();
+
+    return view('front.detailpengaduan', compact('profiles', 'pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan', 'dokumentall'));
+  }
+
+  /**
+   * Function for Menu Semua Laporan
+   */
+  public function semuapengaduan()
+  {
+    $id = Auth::user()->id;
+
+    $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
+    $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
+
+    $AllTopikQuery  = DB::table('master_skpd')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
+                      ->where('master_skpd.flag_skpd', 1)
+                      ->where('pengaduan.flag_rahasia', 0)
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->take(60)
+                      ->get();
+    $grouping = collect($AllTopikQuery);
+    $AllTopiks = $grouping->groupBy('nama_skpd')->toArray();
+
+    $skpdonly  = DB::table('master_skpd')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->select('master_skpd.nama_skpd as nama_skpd')
+                      ->where('master_skpd.flag_skpd', 1)
+                      ->where('pengaduan.flag_rahasia', 0)
+                      ->groupBy('nama_skpd')
+                      ->get();
+
+    return view('front.semuapengaduan', compact('skpdonly', 'AllTopiks', 'pengaduanWid', 'tanggapWid'));
+
+  }
+
+  /**
+   * Retrieve slug from judul_pengaduan
+   *
+   */
+  public function detailsemuapengaduan($slug)
+  {
+      $id = Auth::user()->id;
+      $profiles = User::find($id);
+
+      $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
+      $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
+
+      $detail = Pengaduan::join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                          ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                          ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                          ->select('master_skpd.nama_skpd', 'topik_pengaduan.nama_topik', 'pengaduan.*', 'users.nama', 'users.url_photo')
+                          ->where('pengaduan.slug', $slug)->first();
+      // dd($detail);
+      $dokumentall = DB::table('pengaduan')
+                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                      ->select('*')
+                      ->where('pengaduan.warga_id', $id)
+                      ->get();
+
+      // Jika url slug tidak ditemukan
+      if($detail == null){
+        abort(404);
+      }
+
+      $tanggapan = TanggapanModel::join('users', 'users.id', '=', 'tanggapan.id_userskpd')
+                                ->select('tanggapan.*', 'users.url_photo', 'users.nama')
+                                ->where('id_pengaduan', $detail->id)->get();
+
+      $listPengaduan = DB::table('pengaduan')
+                          ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                          ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                          ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                          ->select('*')
+                          ->where('master_skpd.nama_skpd', $detail->nama_skpd)
+                          ->where('pengaduan.flag_rahasia', 0)
+                          ->paginate(10);
+      // dd($listPengaduan);
+      return view('front.detailsemuapengaduan', compact('pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan'));
+
   }
 }

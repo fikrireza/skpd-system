@@ -16,7 +16,7 @@ class CustomAuthController extends Controller
     {
       session()->flush();
       Auth::logout();
-      return redirect()->route('homepages');
+      return redirect()->route('welcomepage');
     }
 
     public function loginprocess(Request $request)
@@ -29,7 +29,7 @@ class CustomAuthController extends Controller
           if($user->jeniskelamin == null || $user->noktp == null || $user->alamat == null){
             return redirect('profil')->with('messagefilled', "Harap Lengkapi Profil Anda Dengan Sebenarnya");
           }
-          return redirect('beranda');
+          return redirect('/');
         }
         else if($user->level==2)
         {
@@ -52,7 +52,7 @@ class CustomAuthController extends Controller
       }
       else
       {
-        return redirect()->route('homepages')->with('messageloginfailed', "Periksa kembali email dan password anda.");
+        return redirect()->route('welcomepage')->with('messageloginfailed', "Periksa kembali email dan password anda.");
       }
       // if(!$user)
       // {

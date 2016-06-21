@@ -39,7 +39,7 @@ class RegisterController extends Controller
         $message->to(Input::get('email'), Input::get('name'))->subject('Aktifasi Akun SIMPEDU');
       });
 
-      return redirect()->route('homepages')->with('message', "Silahkan lakukan aktivasi akun pada email anda.");
+      return redirect()->route('welcomepage')->with('message', "Silahkan lakukan aktivasi akun pada email anda.");
     }
 
     public function verify($code)
@@ -51,7 +51,7 @@ class RegisterController extends Controller
         $user->activated = 1;
         $user->save();
 
-        return redirect()->route('homepages')->with('message', "Akun anda telah aktif. Silahkan lakukan login.");
+        return redirect()->route('welcomepage')->with('message', "Akun anda telah aktif. Silahkan lakukan login.");
       }
       else // selain warga: administrator / user skpd
       {
@@ -77,7 +77,7 @@ class RegisterController extends Controller
         return redirect()->route('dashboard')->with('firsttimelogin', "Anda telah berhasil melakukan aktifasi akun. Selanjutnya, anda bisa menggunakan akun ini untuk login ke dalam sistem dan dapat menggunakan fitur yang telah disediakan.");
       }
       else {
-        return redirect()->route('homepages')->with('message', "Silahkan lakukan login.");
+        return redirect()->route('welcomepage')->with('message', "Silahkan lakukan login.");
       }
     }
 }

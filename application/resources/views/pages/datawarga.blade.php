@@ -20,19 +20,19 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Horizontal Form -->
-      <div class="box box-success">
+      <div class="box box-primary">
         <div class="box-header">
           <h3 class="box-title">Seluruh Identitas Pelapor</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelpengaduan" class="table table-hover">
             <thead>
-              <tr class="bg-green">
+              <tr class="bg-yellow">
                 <th>#</th>
                 <th>Nama Pelapor</th>
                 <th>Tanggal Terdaftar</th>
                 <th>Terakhir Login</th>
-                <th>Jumlah Aduan</th>
+                {{-- <th>Jumlah Aduan</th> --}}
                 <th>Jumlah Login</th>
                 <th>Status Akun</th>
                 <th>Aksi</th>
@@ -40,22 +40,25 @@
             </thead>
             <tbody>
               <?php $pageget = 1; ?>
-              @foreach($getdatawarga as $key)
+              @foreach($data['getdatawarga'] as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
                   <td>{{ $key->nama }}</td>
                   <td>{{ $key->created_at }}</td>
                   <td>{{ $key->updated_at }}</td>
+                  {{-- <td><span class="badge bg-blue">
+                    {{ $key->login_counter }}
+                  </span></td> --}}
                   <td><span class="badge bg-blue">{{ $key->login_counter }}</span></td>
-                  <td><span class="badge bg-maroon">{{ $key->login_counter }}</span></td>
                   <td>
                   @if($key->flag_user==0)
                     <span class="label bg-red"><i class="fa fa-remove"></i> &nbsp;Tidak Aktif</span>
                   @elseif($key->flag_user==1)
-                    <span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Aktif</span>
+                    <span class="label bg-green"><i class="fa fa-check"></i> &nbsp;Aktif</span>
                   @endif</td>
                   <td>
-                    <a href="{{url('wargaprofile', $key->id)}}" class="btn btn-xs btn-success">Lihat Profil</a>
+                    <a href="{{url('wargaprofile/show' , $key->id)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Profil'><i class="fa fa-eye"></i></a>
+                    {{-- <a href="{{url('wargaprofile')}}" class="btn btn-xs btn-success">Lihat Profil</a> --}}
                   </td>
                 </tr>
                 <?php $pageget++; ?>

@@ -1,13 +1,14 @@
+@if(session('level') == 1)
 <!-- About Me Box -->
 <div class="col-md-3">
   <div class="box box-primary">
     <div class="box-body box-profile" style="height:225px;">
-      @if($profiles->url_photo == null)
+      @if(auth()->user()->url_photo == null)
         <img class="profile-user-img img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
       @else
-        <img class="profile-user-img img-responsive img-circle" src="{{ asset('/images/'.$profiles->url_photo) }}" alt="{{$profiles->nama}}">
+        <img class="profile-user-img img-responsive img-circle" src="{{ asset('/images/'.auth()->user()->url_photo) }}" alt="{{auth()->user()->nama}}">
       @endif
-      <h3 class="profile-username text-center">{{ $profiles->nama}}</h3>
+      <h3 class="profile-username text-center">{{ auth()->user()->nama}}</h3>
       <ul class="list-group list-group-unbordered">
         <li class="list-group-item">
           <b>Pengaduan Anda</b> <span class="pull-right badge bg-green">{{ $pengaduanWid }}</span>
@@ -20,30 +21,53 @@
     <div class="box-body" style="margin-top:10px;">
       <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
       <p class="text-muted">
-        {{ $profiles->noktp}}
+        @if(auth()->user()->noktp == '')
+          -
+        @else
+          {{ auth()->user()->noktp}}
+        @endif
       </p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
       <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
-      <p class="text-muted">{{ $profiles->notelp}}</p>
+      <p class="text-muted">
+        @if(auth()->user()->notelp == '')
+          -
+        @else
+          {{ auth()->user()->notelp}}
+        @endif
+      </p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
       <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
-      <p class="text-muted">{{ $profiles->email}}</p>
+      <p class="text-muted">{{ auth()->user()->email}}</p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
       <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-      <p class="text-muted">{{ $profiles->jeniskelamin}}</p>
+      <p class="text-muted">@if(auth()->user()->jeniskelamin === 'P')
+                                Perempuan
+                            @elseif(auth()->user()->jeniskelamin === 'L')
+                                Laki-Laki
+                            @elseif(auth()->user()->jeniskelamin == '')
+                              -
+                            @endif</p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
       <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
-      <p class="text-muted">{{ $profiles->alamat}}</p>
+      <p class="text-muted">
+        @if(auth()->user()->alamat == '')
+          -
+        @else
+          {{ auth()->user()->alamat}}
+        @endif
+      </p>
     </div><!-- /.box-body -->
   </div><!-- /.box -->
+
   <div class="box box-primary">
     <div class="box-header with-border">
       <h3 class="box-title">Pengaduan Terbaru</h3>
@@ -92,3 +116,7 @@
     </div><!-- /.box-body -->
   </div><!-- /.box -->
 </div><!-- /.col -->
+
+@else
+  coba
+@endif

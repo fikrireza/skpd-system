@@ -1,5 +1,9 @@
 @extends('front.template')
 
+@section('title')
+  <title>SIMPEDU</title>
+@stop
+
 @section('content')
 
   @if(Session::has('ubahprofile'))
@@ -11,205 +15,60 @@
       </div>
   </div>
   @endif
-  
+
   <div class="col-md-9">
     @include('front.form')
 
   <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#kesehatan" data-toggle="tab" aria-expanded="true">Kesehatan</a></li>
-      <li class=""><a href="#perhubungan" data-toggle="tab" aria-expanded="false">Perhubungan</a></li>
-      <li class=""><a href="#pendidikan" data-toggle="tab" aria-expanded="false">Pendidikan</a></li>
-      <li class=""><a href="#kependudukan" data-toggle="tab" aria-expaded="false">Kependudukan</a></li>
-      <li class=""><a href="#tenagakerja" data-toggle="tab" aria-expaded="false">Tenaga Kerja</a></li>
-      <li class=""><a href="#polkam" data-toggle="tab" aria-expaded="false">Politik dan Keamanan</a></li>
-      <li class=""><a href="#geografi" data-toggle="tab" aria-expaded="false">Geografi</a></li>
+    @foreach($skpdonly as $skpd)
+      <li class=""><a href="#{{$skpd->nama_skpd}}" data-toggle="tab" aria-expanded="false">{{ $skpd->nama_skpd }}</a></li>
+    @endforeach
     </ul>
     <div class="tab-content">
-      <div class="tab-pane active" id="kesehatan">
-        <!-- Post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user1-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Pelayanan BPJS semakin tidak memuaskan</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
-            Mohon perhatiannya. Terima Kasih.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-        <!-- Post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user7-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Mohon perhatikan kesehatan warga tangerang</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-red">Belum ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Lorem ipsum represents a long-held tradition for designers,
-            typographers and the like. Some people hate it and argue for
-            its demise, but others ignore the hate as they create awesome
-            tools to help create filler text for everyone from bacon lovers
-            to Charlie Sheen fans. Some people hate it and argue for
-            its demise, but others ignore the hate as they create awesome
-            tools to help create filler text for everyone from bacon lovers
-            to Charlie Sheen fans.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user6-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Penyelenggaraan imunisasi nasional di tangerang</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
-            Mohon perhatiannya. Terima Kasih.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-      </div><!-- /.tab-pane -->
-      <div class="tab-pane" id="perhubungan">
-        <!-- Post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user4-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Contoh pengaduan warga</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
-            Mohon perhatiannya. Terima Kasih.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-        <!-- Post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Contoh pengaduan warga</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-red">Belum ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Lorem ipsum represents a long-held tradition for designers,
-            typographers and the like. Some people hate it and argue for
-            its demise, but others ignore the hate as they create awesome
-            tools to help create filler text for everyone from bacon lovers
-            to Charlie Sheen fans. Some people hate it and argue for
-            its demise, but others ignore the hate as they create awesome
-            tools to help create filler text for everyone from bacon lovers
-            to Charlie Sheen fans.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Contoh pengaduan warga</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
-            Mohon perhatiannya. Terima Kasih.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-      </div><!-- /.tab-pane -->
-
-      <div class="tab-pane" id="pendidikan">
-        <!-- Post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user4-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Contoh pengaduan warga</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
-            Mohon perhatiannya. Terima Kasih.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-        <!-- Post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user5-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Contoh pengaduan warga</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-red">Belum ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Lorem ipsum represents a long-held tradition for designers,
-            typographers and the like. Some people hate it and argue for
-            its demise, but others ignore the hate as they create awesome
-            tools to help create filler text for everyone from bacon lovers
-            to Charlie Sheen fans. Some people hate it and argue for
-            its demise, but others ignore the hate as they create awesome
-            tools to help create filler text for everyone from bacon lovers
-            to Charlie Sheen fans.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-        <div class="post">
-          <div class="user-block">
-            <img class="img-circle img-bordered-sm" src="{{ asset('/dist/img/user8-128x128.jpg') }}" alt="user image">
-            <span class="username">
-              <span>Contoh pengaduan warga</span>
-              <!-- <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a> -->
-            </span>
-            <span class="description"><span class="label bg-green">Telah ditanggapi</span> - 7:30 PM today</span>
-          </div><!-- /.user-block -->
-          <p>
-            Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double?
-            Mohon perhatiannya. Terima Kasih.
-          </p>
-          <p>
-            <a href="{{url('detail/pengaduan-warga')}}">[Selengkapnya]</a>
-          </p>
-        </div><!-- /.post -->
-      </div><!-- /.tab-pane -->
+      @foreach($skpdonly as $tabskpd)
+      <div class="tab-pane" id="{{$tabskpd->nama_skpd}}">
+        @foreach($AllTopiks as $skpd)
+          @foreach($skpd as $topik)
+          @if($topik->nama_skpd === $tabskpd->nama_skpd)
+          <div class="post">
+            <div class="user-block">
+              @if($topik->url_photo == null || $topik->flag_anonim == 1)
+                <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+              @else
+                <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$topik->url_photo) }}" alt="{{$topik->nama}}">
+              @endif
+              <span class="username">
+                <span>@if($topik->flag_anonim == 1)
+                  Tanpa Nama
+                @elseif($topik->flag_anonim == 0)
+                  {{$topik->nama}}
+                @endif</span>
+              </span>
+              <span class="description">{{ $topik->nama_topik}} - {{ \Carbon\Carbon::parse($topik->created_at)->format('d-M-y H:i')}}</span>
+            </div><!-- /.user-block -->
+            <p><b>{{ $topik->judul_pengaduan }}</b></p>
+            <p>{{ $topik->isi_pengaduan }}</p>
+            <ul class="list-inline">
+              @if($topik->flag_verifikasi == 1)
+                <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>
+              @elseif($topik->flag_mutasi == 1)
+                <li><a href="#" class="link-black text-sm"><span class="label bg-yellow"><span class="glyphicon glyphicon-repeat"></span> &nbsp;Dialihkan</span></a></li>
+              @elseif($topik->flag_tanggap == 0)
+                <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
+              @endif
+              @if($topik->warga_id == Auth::user()->id)
+              <li class="pull-right"><a href="{{ url('pengaduansaya/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+              @else
+              <li class="pull-right"><a href="{{ url('pengaduan/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+              @endif
+            </ul>
+          </div>
+          @endif
+        @endforeach
+      @endforeach
+      </div>
+      @endforeach
     </div><!-- /.tab-content -->
   </div><!-- /.nav-tabs-custom -->
 </div>

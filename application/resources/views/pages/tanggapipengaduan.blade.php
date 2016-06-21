@@ -1,17 +1,29 @@
 @extends('layouts.master')
 
 @section('title')
-  <title>Tanggapi Pengaduan</title>
+  @if(isset($data['binddatamutasi']))
+      <title>Tanggapi Pengaduan Mutasi</title>
+  @else
+      <title>Tanggapi Pengaduan</title>
+  @endif
 @stop
 
 @section('breadcrumb')
   <h1>
-    Tanggapi Pengaduan
+    @if(isset($data['binddatamutasi']))
+        Tanggapi Pengaduan Mutasi
+    @else
+        Tanggapi Pengaduan
+    @endif
     <small>Jawab Laporan Warga</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
-    <li class="active">Tanggapi Pengaduan</li>
+    @if(isset($data['binddatamutasi']))
+        <li class="active">Tanggapi Pengaduan Mutasi</li>
+    @else
+        <li class="active">Tanggapi Pengaduan</li>
+    @endif
   </ol>
 @stop
 
@@ -35,6 +47,8 @@
             <span class='username'><a href="#">
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->user->nama}}
+              @elseif(isset($data['binddatamutasi']))
+                  {{$data['getmutasi'][0]->nama}}
               @else
                 Nama Pengaduan
               @endif
@@ -42,12 +56,16 @@
             <span class='description'>
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->created_at}}
+              @elseif(isset($data['binddatamutasi']))
+                  {{$data['getmutasi'][0]->created_at}}
               @else
                 Tanggal Pengaduan
               @endif
               |
               @if(isset($data['binddatapengaduan']))
                 {{$data['binddatapengaduan']->topik->nama_topik}}
+              @elseif(isset($data['binddatamutasi']))
+                  {{$data['getmutasi'][0]->nama_topik}}
               @else
                 Topik Pengaduan
               @endif
@@ -63,6 +81,8 @@
           <p>
             @if(isset($data['binddatapengaduan']))
               {{$data['binddatapengaduan']->judul_pengaduan}}
+            @elseif(isset($data['binddatamutasi']))
+                {{$data['getmutasi'][0]->judul_pengaduan}}
             @else
               Judul Pengaduan
             @endif
@@ -70,6 +90,8 @@
           <p style="text-align:justify">
             @if(isset($data['binddatapengaduan']))
               {{$data['binddatapengaduan']->isi_pengaduan}}
+            @elseif(isset($data['binddatamutasi']))
+                {{$data['getmutasi'][0]->isi_pengaduan}}
             @else
               Isi Pengaduan
             @endif
@@ -86,7 +108,9 @@
         </div><!-- /.box-body -->
         <div class="box-footer">
           @if(isset($data['binddatapengaduan']))
-            {!! Form::model($data['binddatapengaduan'], ['route' => ['tanggap.update', $data['binddatapengaduan']->id], 'method' => "patch", 'class'=>'form-horizontal' , 'onsubmit'=>"return cekFile()" , 'name'=>"cekFrom"]) !!}
+            {!! Form::model($data['binddatapengaduan'], ['route' => ['tanggap.update', $data['binddatapengaduan']->id], 'method' => "patch", 'class'=>'form-horizontal']) !!}
+          @elseif(isset($data['binddatamutasi']))
+              <form class="form-horizontal" method="post" action="{{url('tanggap')}}">
           @else
             <form class="form-horizontal" method="post" action="#">
           @endif
@@ -97,6 +121,8 @@
               <input
                 @if(isset($data['binddatapengaduan']))
                   value="{{$data['binddatapengaduan']->id}}"
+                @elseif(isset($data['binddatamutasi']))
+                  value="{{$data['binddatamutasi']->id_pengaduan}}"
                 @endif
                 type="hidden" name="id" class="form-control" readonly="true"
                 @if(!$errors->has('id'))
@@ -104,19 +130,34 @@
                 @endif
               >
               <br>
-                @if(isset($data['binddatatanggapan']))
-                  <textarea name="tanggapan" readonly="true" class="form-control" rows="5" cols="40" style="border:1px solid #00a65a;margin-top:5px;">{{$data['binddatatanggapan']->tanggapan}}</textarea>
-                @else
-                  <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
-                @endif
-
+              @if(isset($data['binddatamutasi']))
+                {{-- <h4><span class="label bg-green">Data Mutasi dari SKPD
+                    @foreach($data['getmutasi'] as $key)
+                      {{$key->nama_skpd}}</span></h4>
+                    @endforeach --}}
+                <textarea name="tanggapanmutasi" readonly="true" class="form-control" rows="5" cols="40" style="border:1px solid #00a65a;margin-top:5px;">{{$data['binddatamutasi']->pesan_mutasi}}</textarea>
+              @endif
+              <br>
+                <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."
+                @if($errors->has('tanggapan'))
+                 style="border:1px solid #DD4B39;margin-top:5px;"
+                @endif>
+                </textarea>
               {{-- @else
                 <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini..">  {{$data['binddatatanggapan']->tanggapan}}</textarea> --}}
+                @if($errors->has('tanggapan'))
+                 <span class="help-block">
+                   <strong>{{ $errors->first('tanggapan')}}
+                   </strong>
+                 </span>
+                @endif
             <div class="footer pull-right" style="padding-top:5px;">
-                @if(isset($data['binddatatanggapan']))
-                    <button class="btn btn-primary btn-sm btn-flat" disabled="true">Kirim Tanggapan</button>
-                @else
+                @if(isset($data['binddatapengaduan']))
                     <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+                @elseif(isset($data['binddatamutasi']))
+                   <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+                @else
+                    <button class="btn btn-primary btn-sm btn-flat" disabled="true">Kirim Tanggapan</button>
                 @endif
               </div>
             </div>
@@ -126,64 +167,129 @@
     </div><!--/.col -->
 
     <div class="col-md-7">
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <div class="box-title">
-            Pengaduan Belum Ditanggapi
+      <!-- Custom Tabs -->
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          @if(isset($data['binddatapengaduanmutasi']))
+            <li><a href="#tab_1" data-toggle="tab">Data Belum Ditanggapi&nbsp;&nbsp; <span class="pull-right badge bg-blue">{{$data['getdatapengaduan']->count('nama')}}</a></li>
+            <li class="active"><a href="#tab_2" data-toggle="tab">Data Mutasi&nbsp;&nbsp; <span class="pull-right badge bg-blue">{{$data['getmutasi']->count('nama')}}</a></li>
+          @else
+            <li class="active"><a href="#tab_1" data-toggle="tab">
+              Data Belum Ditanggapi&nbsp;&nbsp; <span class="pull-right badge bg-blue">{{$data['getdatapengaduan']->count('nama')}}</span></a></li>
+            <li><a href="#tab_2" data-toggle="tab">Data Mutasi&nbsp;&nbsp; <span class="pull-right badge bg-blue">{{$data['getmutasi']->count('nama')}}</a></li>
+          @endif
+        </ul>
+        <div class="tab-content">
+          @if(isset($data['binddatapengaduanmutasi']))
+            <div class="tab-pane" id="tab_1">
+          @else
+            <div class="tab-pane active" id="tab_1">
+          @endif
+              <div class="box-body no-padding">
+                <table class="table">
+                  <tr class="bg-yellow">
+                    <th style="width:10px;">#</th>
+                    <th>Pelapor</th>
+                    <th>Kategori</th>
+                    <th>Tanggal Pengaduan</th>
+                    <th>Aksi</th>
+                  </tr>
+                  <?php
+                    $no;
+                    if($data['getdatapengaduan']->currentPage()==1)
+                      $no = 1;
+                    else
+                      $no = (($data['getdatapengaduan']->currentPage() - 1) * $data['getdatapengaduan']->perPage())+1;
+                    ?>
+                  @if($data['getdatapengaduan']->isEmpty())
+                    <tr>
+                      <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
+                    </tr>
+                  @elseif(isset($data['getdatapengaduan']))
+                    @foreach($data['getdatapengaduan'] as $key)
+                      <tr>
+                        <td>{{ $no }}</td>
+                        <td>{{ $key->nama }}</td>
+                        <td>{{ $key->nama_topik }}</td>
+                        <td>{{ $key->created_at }}</td>
+                        <td>
+                          @if($key->flag_tanggap==0)
+                            <a class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data Pengaduan' href="{{ route('tanggap.edit', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
+                          @endif
+                      </tr>
+                      <?php $no++; ?>
+                    @endforeach
+                  @endif
+                </table>
+              </div>
+              <div class="box-footer">
+                <div class="pagination pagination-sm no-margin pull-right">
+                  {{ $data['getdatapengaduan']->links() }}
+                </div>
+              </div>
           </div>
-          <div class='box-tools'>
-            <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
-            <button class='btn btn-box-tool' data-widget='remove'><i class='fa fa-times'></i></button>
-          </div><!-- /.box-tools -->
-        </div>
-        <div class="box-body no-padding">
-          <table class="table">
-            <tr class="bg-green">
-              <th style="width:10px;">#</th>
-              <th>Pelapor</th>
-              <th>Kategori</th>
-              <th>Tanggal</th>
-              <th>Aksi</th>
-            </tr>
-            <?php
-              $no;
-              if($data['getdatapengaduan']->currentPage()==1)
-                $no = 1;
-              else
-                $no = (($data['getdatapengaduan']->currentPage() - 1) * $data['getdatapengaduan']->perPage())+1;
-            ?>
-            @if($data['getdatapengaduan']->isEmpty())
-              <tr>
-                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
-              </tr>
-            @elseif(isset($data['getdatapengaduan']))
-              @foreach($data['getdatapengaduan'] as $key)
-                <tr>
-                  <td>{{ $no }}</td>
-                  <td>{{ $key->user->nama }}</td>
-                  <td>{{ $key->topik->nama_topik }}</td>
-                  <td>{{ $key->created_at }}</td>
-                  <td>
-                    @if($key->flag_tanggap==0)
-                      <a class="btn btn-xs btn-warning" href="{{ route('tanggap.edit', $key->id) }}">Belum Ditanggapi</a></td>
-                    @elseif($key->flag_tanggap==1)
-                      <a class="btn btn-xs btn-success" href="{{ route('tanggap.show', $key->id) }}">Sudah Ditanggapi</a></td>
-                    @endif
+          <!-- /.tab-pane -->
+          @if(isset($data['binddatapengaduanmutasi']))
+            <div class="tab-pane active" id="tab_2">
+          @else
+            <div class="tab-pane" id="tab_2">
+          @endif
+            <div class="box-body no-padding">
+              <table class="table">
+                <tr class="bg-yellow">
+                  <th style="width:10px;">#</th>
+                  <th>Pelapor</th>
+                  <th>Kategori</th>
+                  <th>Tanggal Mutasi</th>
+                  <th>SKPD Mutasi</th>
+                  <th>Aksi</th>
                 </tr>
-                <?php $no++; ?>
-              @endforeach
-            @endif
-          </table>
-        </div>
-        <div class="box-footer">
-          <div class="pagination pagination-sm no-margin pull-right">
-            {{ $data['getdatapengaduan']->links() }}
+                <?php
+                  $no;
+                  if($data['getmutasi']->currentPage()==1)
+                    $no = 1;
+                  else
+                    $no = (($data['getmutasi']->currentPage() - 1) * $data['getmutasi']->perPage())+1;
+                  ?>
+                @if($data['getmutasi']->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Mutasi tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($data['getmutasi']))
+                  @foreach($data['getmutasi'] as $key)
+                    <tr>
+                      <td>{{ $no }}</td>
+                      <td>{{ $key->nama }}</td>
+                      <td>{{ $key->nama_topik }}</td>
+                      <td>{{ $key->created_at }}</td>
+                      <td>{{ $key->nama_skpd }}</td>
+                      <td>
+                        @if($key->flag_tanggap==0)
+                          <a class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data Mutasi' href="{{ route('tanggap.show', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
+                        @endif
+                    </tr>
+                    <?php $no++; ?>
+                  @endforeach
+                @endif
+              </table>
+            </div>
+            <div class="box-footer">
+              <div class="pagination pagination-sm no-margin pull-right">
+                {{ $data['getmutasi']->links() }}
+              </div>
+            </div>
           </div>
+          <!-- /.tab-pane -->
         </div>
+        <!-- /.tab-content -->
       </div>
+      <!-- nav-tabs-custom -->
+    </div>
+
+    <div class="col-md-7">
+
     </div>
   </div>   <!-- /.row -->
-
 
   <!-- jQuery 2.1.4 -->
   <script src="{{asset('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
@@ -204,16 +310,6 @@
       });
     });
   </script>
-  <script>
-  function cekFile() {
-     var cek = document.forms['cekFrom']['tanggapan'].value;
-       if(cek==null || cek=="")
-       {
-         alert("Form harus di isi !!!");
-         return false;
-       }
-  }
- </script>
  <script>
    window.setTimeout(function() {
      $(".alert-success").fadeTo(500, 0).slideUp(500, function(){

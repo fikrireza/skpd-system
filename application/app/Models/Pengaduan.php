@@ -14,7 +14,7 @@ class Pengaduan extends Model
 
     public function topikpengaduan()
     {
-      return $this->hasMany('App\TopikAduan', 'id');
+      return $this->belongs_to('App\TopikAduan');
     }
 
     public function user()

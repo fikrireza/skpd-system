@@ -21,150 +21,257 @@
 
     <div class="row">
       <div class="col-md-3">
-
         <!-- Profile Image -->
+        @foreach($data['getdatawarga'] as $key)
         <div class="box box-primary">
           <div class="box-body box-profile" style="height:265px;">
             <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
-            <h3 class="profile-username text-center">Amanda Satyarini</h3>
+            <h3 class="profile-username text-center">{{$key->nama}}</h3>
             <p class="text-muted text-center">Warga Kabupaten Tangerang</p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <b>Jumlah Laporan Pengaduan</b> <span class="pull-right badge bg-green">2</span>
+                <b>Jumlah Laporan Pengaduan</b> <span class="pull-right badge bg-green">
+                    @if(Auth::user()->level=="0")
+                        {{$data['getdatajumlahpengaduanall']}}
+                    @elseif(Auth::user()->level=="2")
+                        {{$data['getdatajumlahpengaduan']}}
+                    @endif
+                </span>
               </li>
               <li class="list-group-item">
-                <b>Jumlah Login</b> <span class="pull-right badge bg-maroon">12</span>
+                <b>Jumlah Login</b> <span class="pull-right badge bg-maroon">{{$key->login_counter}}</span>
               </li>
             </ul>
           </div><!-- /.box-body -->
           <div class="box-body">
             <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
             <p class="text-muted">
-              32760621129010001
+              {{$key->noktp}}
             </p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
             <strong><i class="fa fa-phone-square margin-r-5"></i> No. Telp</strong>
-            <p class="text-muted">081289087875</p>
-
+            <p class="text-muted">{{$key->notelp}}</p>
             <hr style="margin-top:2px;margin-bottom:8px;">
-
             <strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
-            <p class="text-muted">amanda@gmail.com</p>
-
+            <p class="text-muted">{{$key->email}}</p>
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-female margin-r-5"></i> Jenis Kelamin</strong>
-            <p class="text-muted">Wanita</p>
-
+            <strong>
+              @if($key->jeniskelamin=="P")
+                <i class="fa fa-female margin-r-5"></i> Jenis Kelamin</strong>
+                <p class="text-muted">Wanita</p>
+              @elseif($key->jeniskelamin=="L")
+                <i class="fa fa-male margin-r-5"></i> Jenis Kelamin</strong>
+                <p class="text-muted">Pria</p>
+              @endif
             <hr style="margin-top:2px;margin-bottom:8px;">
 
 
             <strong><i class="fa fa-home margin-r-5"></i> Alamat</strong>
-            <p class="text-muted">Jalan Perumahan NEO Bintaro Blok I/2 Jakarta Selatan</p>
+            <p class="text-muted">{{$key->alamat}}</p>
 
             {{-- <hr style="margin-top:2px;margin-bottom:8px;">
-
             <button type="button" class="btn btn-flat bg-purple btn-xs pull-right" name="button">
               <i class="fa fa-edit"></i>&nbsp;&nbsp;
               Ubah Profil Saya
             </button> --}}
           </div><!-- /.box-body -->
         </div><!-- /.box -->
+        @endforeach
       </div><!-- /.col -->
       <div class="col-md-9">
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#activity" data-toggle="tab">Data Pengaduan SKPD Kesehatan</a></li>
+            @if(Auth::user()->level=="0")
+                <li class="active"><a href="#activity1" data-toggle="tab">Data Pengaduan Belum Ditanggapi</a></li>
+                <li class=""><a href="#activity2" data-toggle="tab">Data Pengaduan Sudah Ditanggapi</a></li>
+            @elseif(Auth::user()->level=="2")
+              @foreach($data['getdataskpd'] as $getskpd)
+                <li class="active"><a href="#activity1" data-toggle="tab">Data Pengaduan Belum Ditanggapi SKPD {{$getskpd->nama_skpd}}</a></li>
+                <li class=""><a href="#activity2" data-toggle="tab">Data Pengaduan Sudah Ditanggapi SKPD {{$getskpd->nama_skpd}}</a></li>
+              @endforeach
+            @endif
+
             {{-- <li><a href="#settings" data-toggle="tab">Ubah Profil</a></li> --}}
           </ul>
-          <div class="tab-content">
-            <div class="active tab-pane" id="activity">
-              <!-- Post -->
-              <div class="post">
-                <div class="user-block">
-                  <span class='username' style="margin-left:0px;">
-                    Obat yg sebelumnya dicover BPJS menjadi harus bayar
-                  </span>
-                  <span class='description' style="margin-left:0px;">
-                    Kategori Pelayanan Obat - 24 April 2016
-                  </span>
-                  <span class='description' style="margin-left:0px; padding-top:3px;">
-                    <span class="label bg-red">Belum ditanggapi</span>
-                  </span>
-                </div><!-- /.user-block -->
-                <p>
-                  Saya sedang dirawat di rs santosa central kebon jati - bandung. hari ini sabtu, 7 mei 2016 saya diberi copy resep yg harus ditebus di farmasi sebesar 117rb berupa lasix 2ampul. padahal dengan keluhan yg sama sebelumnya dengan obat yg sama tidak ada biaya apapun. saya kecewa sebagai pengguna bpjs kelas 1 non pbi, ditempatkan di ruang kelas 3 karena penuh. masih juga diminta bayar obat yg sebelumnya tidak dipungut biaya apapun. iuran naik tapi fasilitas menurun. harap segera ditindaklanjuti. trims
-                </p>
-
-                <div class="attachment-block clearfix">
-                  <b>Data Pendukung</b><br>
-                  <i class="text-muted">gambar.jpg</i>
-                  <div class="pull-right">
-                    <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
+          @if(Auth::user()->level=="0")
+            <div class="tab-content">
+              <div class="active tab-pane" id="activity1">
+                @if($data['getdatapengaduanbelumtanggapall']->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($data['getdatapengaduanbelumtanggapall']))
+                  @foreach($data['getdatapengaduanbelumtanggapall'] as $getdatapengaduanall)
+                  <div class="post">
+                    <div class="user-block">
+                      <span class='username' style="margin-left:0px;">
+                        {{$getdatapengaduanall->judul_pengaduan}}
+                      </span>
+                      <span class='description' style="margin-left:0px;">
+                        {{$getdatapengaduanall->nama_topik}} || {{$getdatapengaduanall->created_at}}
+                          <span class='text-muted pull-right'>SKPD : {{$getdatapengaduanall->nama_skpd}}</span>
+                      </span>
+                      <span class='description' style="margin-left:0px; padding-top:3px;">
+                        <span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum ditanggapi</span>
+                      </span>
+                    </div><!-- /.user-block -->
+                    <p>
+                      {{$getdatapengaduanall->isi_pengaduan}}
+                    </p>
+                  </div><!-- /.post -->
+                  @endforeach
+                @endif
+                <div class="box-footer">
+                  <div class="pagination pagination-sm no-margin pull-right">
+                    {{ $data['getdatapengaduanbelumtanggapall']->links() }}
                   </div>
-                </div><!-- /.attachment-block -->
+                </div>
+              </div><!-- /.tab-pane -->
+              <div class="tab-pane" id="activity2">
+                @if($data['getdatapengaduansudahtanggapall']->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($data['getdatapengaduansudahtanggapall']))
+                  @foreach($data['getdatapengaduansudahtanggapall'] as $getdatapengaduanall)
+                  <div class="post">
+                    <div class="user-block">
+                      <span class='username' style="margin-left:0px;">
+                        {{$getdatapengaduanall->judul_pengaduan}}
+                      </span>
+                      <span class='description' style="margin-left:0px;">
+                        {{$getdatapengaduanall->nama_topik}} || {{$getdatapengaduanall->created_at}}
+                          <span class='text-muted pull-right'>SKPD : {{$getdatapengaduanall->nama_skpd}}</span>
+                      </span>
+                      <span class='description' style="margin-left:0px; padding-top:3px;">
+                        @if($getdatapengaduanall->flag_tanggap==1)
+                          <span class="label bg-green"><i class="fa fa-check"></i> &nbsp;Telah ditanggapi</span>
+                        @else
+                          <span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum ditanggapi</span>
+                        @endif
+                      </span>
+                    </div><!-- /.user-block -->
+                    <p>
+                      {{$getdatapengaduanall->isi_pengaduan}}
+                    </p>
+                    @if($getdatapengaduanall->flag_tanggap==1)
+                      <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+                        <div style="padding-bottom:5px;">
+                          <b>Tanggapan</b>
+                        </div>
+                        <div class='box-comment'>
+                          <!-- User image -->
+                          <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
+                          <div class='comment-text'>
+                            <span class="username">
+                                {{$getdatapengaduanall->nama}}
+                              <span class='text-muted pull-right'>{{$getdatapengaduanall->created_tanggapan}}</span>
+                            </span><!-- /.username -->
+                            {{$getdatapengaduanall->tanggapan}}
 
-              </div><!-- /.post -->
-
-              <!-- Post -->
-              <div class="post">
-                <div class="user-block">
-                  <span class='username' style="margin-left:0px;">
-                    Aktifasi pendaftaran BPJS Kesehatan
-                  </span>
-                  <span class='description' style="margin-left:0px;">
-                    Kategori BPJS Kesehatan - 24 April 2016
-                  </span>
-                  <span class='description' style="margin-left:0px; padding-top:3px;">
-                    <span class="label bg-green">Telah ditanggapi</span>
-                  </span>
-                </div><!-- /.user-block -->
-                <p>
-                  Dear SKPD Kesehatan, saya melakukan registrasi baru untuk saya, istri dan anak saya. untuk saya dan istri registrasi dan aktivasi sudah berhasil, akan tetapi untuk anak saya belum bisa aktivasi, walaupun saya sudah terima email konfirmasi (2x emaill konfirmasi untuk anak saya). kenapa konfirmasi untuk anak saya tidak bisa di aktivasi, apakah karena datanya double? (saya sudah coba refres-f5 beberapa kali tetapi data aktivasi tetap tidak muncul. mohon informasinya no registrasi : bpjs-0000016816961 terima kasih banyak.
-                </p>
-
-                <div class="attachment-block clearfix">
-                  <b>Data Pendukung</b><br>
-                  <i class="text-muted">gambar.jpg</i>
-                  <div class="pull-right">
-                    <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
+                          </div><!-- /.comment-text -->
+                        </div><!-- /.box-comment -->
+                      </div><!-- /.box-footer -->
+                    @endif
+                  </div><!-- /.post -->
+                  @endforeach
+                @endif
+                <div class="box-footer">
+                  <div class="pagination pagination-sm no-margin pull-right">
+                    {{ $data['getdatapengaduansudahtanggapall']->links() }}
                   </div>
-                </div><!-- /.attachment-block -->
-
-                <div class='box-footer box-comments' style="border:1px solid #00a65a;">
-                  <div style="padding-bottom:5px;">
-                    <b>Tanggapan</b>
+                </div>
+              </div><!-- /.tab-pane -->
+            </div><!-- /.tab-content -->
+          @elseif(Auth::user()->level=="2")
+            <div class="tab-content">
+              <div class="active tab-pane" id="activity1">
+                @if($data['getdatapengaduanbelumtanggap']->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($data['getdatapengaduanbelumtanggap']))
+                  @foreach($data['getdatapengaduanbelumtanggap'] as $getdatapengaduan)
+                  <div class="post">
+                    <div class="user-block">
+                      <span class='username' style="margin-left:0px;">
+                        {{$getdatapengaduan->judul_pengaduan}}
+                      </span>
+                      <span class='description' style="margin-left:0px;">
+                        {{$getdatapengaduan->nama_topik}} || {{$getdatapengaduan->created_at}}
+                      </span>
+                      <span class='description' style="margin-left:0px; padding-top:3px;">
+                      <span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum ditanggapi</span>
+                      </span>
+                    </div><!-- /.user-block -->
+                    <p>
+                      {{$getdatapengaduan->isi_pengaduan}}
+                    </p>
+                  </div><!-- /.post -->
+                  @endforeach
+                @endif
+                <div class="box-footer">
+                  <div class="pagination pagination-sm no-margin pull-right">
+                    {{ $data['getdatapengaduanbelumtanggap']->links() }}
                   </div>
-                  <div class='box-comment'>
-                    <!-- User image -->
-                    <img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>
-                    <div class='comment-text'>
-                      <span class="username">
-                        Administrator SKPD Kesehatan
-                        <span class='text-muted pull-right'>25 April 2016</span>
-                      </span><!-- /.username -->
-                      Terima kasih atas keluhan yang disampaikan dan dengan ini kami sampaikan permohonan maaf atas ketidaknyamanan yang di alami Menjawab pertanyaan Bapak dapat kami sarankan agar peserta mencoba melakukan kembali pendaftaran online untuk anak Bapak dengan menggunakan nomor registrasi Bapak Stefanus dengan klik registrasi anggota keluarga dan masukan nomor registrasi Bapak stefanus setelah 1x24 jam dari pendaftaran sebelumnya. JIka peserta masih mendapatkan kendala dalam pendaftaran online, peserta dapat mendaftar di kantor cabang atau mendaftar di Bank BNI, BRI dan Mandiri Untuk informasi selanjutnya dapat menghubungi Call Centre BPJS Kesehatan di 500 400 Demikian informasi yang dapat kami sampaikan. Semoga Bapak beserta keluarga selalu dalam keadaan sehat. Terima kasih telah mengunjungi website BPJS Kesehatan. Salam BPJS Kesehatan
-                    </div><!-- /.comment-text -->
-                  </div><!-- /.box-comment -->
-                </div><!-- /.box-footer -->
-              </div><!-- /.post -->
+                </div>
+              </div><!-- /.tab-pane -->
+              <div class="tab-pane" id="activity2">
+                @if($data['getdatapengaduansudahtanggap']->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Pengaduan tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($data['getdatapengaduansudahtanggap']))
+                  @foreach($data['getdatapengaduansudahtanggap'] as $getdatapengaduan)
+                  <div class="post">
+                    <div class="user-block">
+                      <span class='username' style="margin-left:0px;">
+                        {{$getdatapengaduan->judul_pengaduan}}
+                      </span>
+                      <span class='description' style="margin-left:0px;">
+                        {{$getdatapengaduan->nama_topik}} || {{$getdatapengaduan->created_at}}
+                      </span>
+                      <span class='description' style="margin-left:0px; padding-top:3px;">
+                      <span class="label bg-green"><i class="fa fa-check"></i> &nbsp;Telah ditanggapi</span>
+                      </span>
+                    </div><!-- /.user-block -->
+                    <p>
+                      {{$getdatapengaduan->isi_pengaduan}}
+                    </p>
+                    @if($getdatapengaduan->flag_tanggap==1)
+                      <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+                        <div style="padding-bottom:5px;">
+                          <b>Tanggapan</b>
+                        </div>
+                        <div class='box-comment'>
+                          <!-- User image -->
+                          <img class='img-circle img-sm' src='{{asset('dist/img/logokabtangerang.png')}}' alt='user image'>
+                          <div class='comment-text'>
+                            <span class="username">
+                                {{$getdatapengaduan->nama}}
+                              <span class='text-muted pull-right'>{{$getdatapengaduan->created_tanggapan}}</span>
+                            </span><!-- /.username -->
+                            {{$getdatapengaduan->tanggapan}}
 
-              <div class="clearfix">
-                <ul class="pagination pagination-sm no-margin pull-right">
-                  <li><a href="#">&laquo;</a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">&raquo;</a></li>
-                </ul>
-              </div>
-
-            </div><!-- /.tab-pane -->
-
-          </div><!-- /.tab-content -->
+                          </div><!-- /.comment-text -->
+                        </div><!-- /.box-comment -->
+                      </div><!-- /.box-footer -->
+                    @endif
+                  </div><!-- /.post -->
+                  @endforeach
+                @endif
+                <div class="box-footer">
+                  <div class="pagination pagination-sm no-margin pull-right">
+                    {{ $data['getdatapengaduansudahtanggap']->links() }}
+                  </div>
+                </div>
+              </div><!-- /.tab-pane -->
+            </div><!-- /.tab-content -->
+          @endif
         </div><!-- /.nav-tabs-custom -->
       </div><!-- /.col -->
     </div><!-- /.row -->

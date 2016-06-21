@@ -11,36 +11,39 @@
 |
 */
 
-// Front
-Route::get('/', function() {
-  return view('index');
-});
+// Welcome Page & Umum //
+Route::get('/', ['as' => 'welcomepage', 'uses' => 'WelcomePageController@index']);
 
+Route::get('semua/{slug}', ['as' => 'perskpd', 'uses' => 'WelcomePageController@semuatopik'])->where('slug', '[A-Za-z0-9-]+');
+
+Route::get('detail/pengduan/{slug}', ['as' => 'detailpengaduan', 'uses' => 'WelcomePageController@detailpengaduan'])->where('slug', '[A-Za-z0-9-]+');
+// End Route for Umum & Walcome Page //
+
+
+// Front Akses Warga ------------------------------------------------------------------------------------------
 Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
-Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
 
-Route::resource('profil', 'ProfileWargaController');
+Route::get('profil', ['as' => 'profilwarga', 'uses' => 'ProfileWargaController@index']);
+
+Route::post('ubahpassword', ['as' => 'ubahpassword', 'uses' => 'ProfileWargaController@changePassword']);
 
 Route::post('sendpengaduan', ['as'=>'sendpengaduan', 'uses'=>'WargaController@postPengaduan']);
 
-Route::get('pengaduan', ['as' => 'pengaduan', 'uses' => 'WargaController@pengaduansaya']);
+Route::get('pengaduansaya', ['as' => 'pengaduansaya', 'uses' => 'WargaController@pengaduansaya']);
 
-Route::get('pengaduan/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z-]+');;
+Route::get('pengaduansaya/detail/{slug}', 'WargaController@detailPengaduan')->where('slug', '[A-Za-z0-9-]+');
 
-// Route::get('detail/laporan/pengaduan-pemadaman-listrik', function(){
-//   return view('front.detaillaporan');
-// });
+Route::post('pencarian', 'SearchController@getSearchWarga');
 
-Route::get('detail/pengaduan-warga', function(){
-  return view('front.detailpengaduan');
-});
+Route::get('semuapengaduan', ['as' => 'semuapengaduan', 'uses' => 'WargaController@semuapengaduan']);
+
+Route::get('semuapengaduan/detail/{slug}', 'WargaController@detailsemuapengaduan')->where('slug', '[A-Za-z0-9-]+');
+// End Route For Akses Warga
+
+Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
 
 Route::get('viewall/topik-aduan', function(){
   return view('front.lihatsemuabytopik');
-});
-
-Route::get('semualaporan', function(){
-  return view('front.semualaporan');
 });
 
 Route::get('detail/semua-pengaduan-lainnya', function(){
@@ -52,11 +55,15 @@ Route::get('/loginskpd', function () {
 });
 
 
-
-
 Route::get('dashboard', ['as'=>'dashboard', function(){
   return view('pages/dashboard');
 }]);
+Route::resource('dashboard', 'DashboardController');
+
+Route::get('header', ['as'=>'dashboard', function(){
+  return view('includes/header');
+}]);
+Route::resource('header', 'DashboardController');
 
 Route::get('homepages', ['as' => 'homepages', function(){
   return view('index');
@@ -113,20 +120,25 @@ Route::get('tanggap', function(){
 });
 Route::resource('tanggap', 'TanggapAduanController');
 
-Route::get('detailpengaduan', function(){
-  return view('pages.detailpengaduan');
-});
+// Route::get('detailpengaduan', function(){
+//   return view('pages.detailpengaduan');
+// });
+Route::get('detailpengaduan/show/{id}', 'DetailPengaduanController@show');
+Route::get('detailpengaduan/verifikasi/{id}', ['as'=>'detailpengaduan.verifikasi', 'uses'=>'DetailPengaduanController@verifikasi']);
+Route::post('detailpengaduan/mutasi', 'DetailPengaduanController@mutasi');
+Route::resource('detailpengaduan', 'DetailPengaduanController');
 
 Route::resource('lihatpengaduan', 'LihatPengaduanController');
+
 
 Route::get('pengaduanbytopik', function(){
   return view('pages.pengaduanbytopik');
 });
 
-Route::get('wargaprofile', function(){
-  return view('pages.wargaprofile');
-});
-
+// Route::get('wargaprofile', function(){
+//   return view('pages.wargaprofile');
+// });
+Route::get('wargaprofile/show/{id}', 'WargaProfileController@show');
 
 Route::get('datawarga', function(){
   return view('pages.datawarga');
@@ -140,10 +152,8 @@ Route::get('listdatapengaduanbyskpd', function(){
 
 
 
-Route::get('historipengaduan', function(){
-  return view('pages.historipengaduan');
-});
-
-Route::get('listhistoripengaduanall', function(){
-  return view('pages.listhistoripengaduanall');
-});
+Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
+Route::get('admin/historipengaduan/datatables', ['as'=>'datatables.histori', 'uses'=>'HistoriPengaduanController@getDataForDataTable']);
+Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
+Route::get('admin/slider', 'SliderController@index');
+Route::post('admin/slider', 'SliderController@upload');

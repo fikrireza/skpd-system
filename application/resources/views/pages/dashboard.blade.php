@@ -39,7 +39,13 @@
       <!-- small box -->
       <div class="small-box bg-teal">
         <div class="inner">
-          <h3>150</h3>
+          <h3>
+            @if(Auth::user()->level=="0")
+              {{$getcountpengaduanall}}
+            @elseif(Auth::user()->level=="2")
+              {{$getcountpengaduan}}
+            @endif
+            </h3>
           <p>Jumlah Pengaduan</p>
         </div>
         <div class="icon">
@@ -60,8 +66,14 @@
       <!-- small box -->
       <div class="small-box bg-purple">
         <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
-          <p>Pengaduan Terproses</p>
+          <h3>
+          @if(Auth::user()->level=="0")
+            {{$getcountpengaduantelahditanggapiall}}
+          @elseif(Auth::user()->level=="2")
+            {{$getcountpengaduantelahditanggapi}}
+          @endif
+            <sup style="font-size: 20px"></sup></h3>
+          <p>Pengaduan Telah Ditanggapi</p>
         </div>
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
@@ -73,7 +85,7 @@
       <!-- small box -->
       <div class="small-box bg-maroon">
         <div class="inner">
-          <h3>44</h3>
+          <h3>{{$getcountuser}}</h3>
           <p>Pengguna Terdaftar</p>
         </div>
         <div class="icon">
@@ -114,88 +126,94 @@
         </div>
         <div class="box-body chat" id="chat-box">
           <!-- chat item -->
-          <div class="item">
-            <img src="dist/img/user4-128x128.jpg" alt="user image" class="offline">
-            <p class="message">
-              <a href="#" class="name">
-                <small class="text-muted pull-right">
-                  <i class="fa fa-calendar"></i> 24 April 2016
-                    &nbsp;&nbsp;
-                  <i class="fa fa-clock-o"></i> 2:15
-                </small>
-                Amanda Satyarini
-              </a>
-              Yth. SKPD Kabupaten Tangerang terkait, Jika No. KK tidak terbaca pada saat Pendaftaran online bagaimana? Mohon informasinya, terima kasih.
-            </p>
-            <div class="attachment">
-              <b>Data Pendukung</b>
-              <p class="text-muted">
-                gambar.jpg
-              </p>
-              <div class="pull-right">
-                <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                @if(Session::has('akses'))
-                  @if(Session::get('akses')=="administrator")
-                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
-                  @else
-                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
-                  @endif
-                @endif
-              </div>
-            </div><!-- /.attachment -->
-          </div><!-- /.item -->
-          <!-- chat item -->
-          <div class="item">
-            <img src="dist/img/user3-128x128.jpg" alt="user image" class="offline">
-            <p class="message">
-              <a href="#" class="name">
-                <small class="text-muted pull-right">
-                  <i class="fa fa-calendar"></i> 24 April 2016
-                    &nbsp;&nbsp;
-                  <i class="fa fa-clock-o"></i> 2:15
-                </small>
-                Clara Lupita
-              </a>
-              Kepada Yth. Pemerintah Provinsi DKI Jakarta. Jalan di sebelah Untar (JL. Taman S Parman Blok C) jalannya sudah rusak parah dan kalau hujan sudah pasti tergenang. Sudah hampir setahun kondisinya begini dan kian hari makin parah. Mohon bantuannya untuk diperbaiki. Terima kasih.
-            </p>
-            <div class="attachment">
-              <div class="pull-right">
-                @if(Session::has('akses'))
-                  @if(Session::get('akses')=="administrator")
-                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
-                  @else
-                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
-                  @endif
-                @endif
-              </div>
-            </div><!-- /.attachment -->
-          </div><!-- /.item -->
-          <!-- chat item -->
-          <div class="item">
-            <img src="dist/img/user2-160x160.jpg" alt="user image" class="offline">
-            <p class="message">
-              <a href="#" class="name">
-                <small class="text-muted pull-right">
-                  <i class="fa fa-calendar"></i> 24 April 2016
-                    &nbsp;&nbsp;
-                  <i class="fa fa-clock-o"></i> 2:15
-                </small>
-                Bambang Pamungkis
-              </a>
-              Saya ingin melaporkan bahwa kini penjualan satwa liar (dilindungi) tidak hanya terjadi di pinggir jalan saja, namun makin merambah dalam bentuk media sosial yang sangat sulit untuk dideteksi. Mohon responnya. Tks.
-            </p>
-            <div class="attachment">
-              <div class="pull-right">
-                @if(Session::has('akses'))
-                  @if(Session::get('akses')=="administrator")
-                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
-                  @else
-                    <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
-                  @endif
-                @endif
-              </div>
-            </div><!-- /.attachment -->
-          </div><!-- /.item -->
+          @if(Auth::user()->level=="0")
+            @foreach($getlihatpengaduanall as $key)
+              <div class="item">
+                <img src="dist/img/user4-128x128.jpg" alt="user image" class="offline">
+                <p class="message">
+                  <a href="{{url('wargaprofile/show', $key->User->id)}}" class="name">
+                    <small class="text-muted pull-right">
+                      <i class="fa fa-calendar"></i>
+                      <?php
+                        $date = $key->created_at;
+                        $justdate = substr($date, 0, 10);
+                        $explode = explode("-", $justdate);
+                        echo $explode[2]."-".$explode[1]."-".$explode[0];
+                      ?>
+                        &nbsp;&nbsp;
+                      <i class="fa fa-clock-o"></i>
+                      <?php
+                        $justtime = substr($date, 12);
+                        echo $justtime;
+                      ?>
+                    </small>
+                    {{$key->User->nama}}
+                  </a>
+                    {{$key->isi_pengaduan}}
+                </p>
+                <div class="attachment">
+                  <b>Data Pendukung</b>
+                  <p class="text-muted">
+                    gambar.jpg
+                  </p>
+                  <div class="pull-right">
+                    <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                    @if(Session::has('akses'))
+                      @if(Session::get('akses')=="administrator")
+                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                      @else
+                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                      @endif
+                    @endif
+                  </div>
+                </div><!-- /.attachment -->
+              </div><!-- /.item -->
+            @endforeach
+          @elseif(Auth::user()->level=="2")
+            @foreach($getlihatpengaduan as $key)
+              <div class="item">
+                <img src="dist/img/user4-128x128.jpg" alt="user image" class="offline">
+                <p class="message">
+                  <a href="{{url('wargaprofile/show', $key->iduser)}}" class="name">
+                    <small class="text-muted pull-right">
+                      <i class="fa fa-calendar"></i>
+                      <?php
+                        $date = $key->created_at;
+                        $justdate = substr($date, 0, 10);
+                        $explode = explode("-", $justdate);
+                        echo $explode[2]."-".$explode[1]."-".$explode[0];
+                      ?>
+                        &nbsp;&nbsp;
+                      <i class="fa fa-clock-o"></i>
+                      <?php
+                        $justtime = substr($date, 12);
+                        echo $justtime;
+                      ?>
+                    </small>
+                    {{$key->nama}}
+                  </a>
+                    {{$key->isi_pengaduan}}
+                </p>
+                <div class="attachment">
+                  <b>Data Pendukung</b>
+                  <p class="text-muted">
+                    gambar.jpg
+                  </p>
+                  <div class="pull-right">
+                    <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                    @if(Session::has('akses'))
+                      @if(Session::get('akses')=="administrator")
+                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
+                      @else
+                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
+                      @endif
+                    @endif
+                  </div>
+                </div><!-- /.attachment -->
+              </div><!-- /.item -->
+            @endforeach
+          @endif
+
         </div><!-- /.chat -->
         <div class="box-footer">
           <a href="{{url('lihatpengaduan')}}" class="btn btn-primary pull-right"><i class="fa fa-eye"></i> &nbsp;&nbsp;Lihat Seluruh Pengaduan</a>
@@ -244,54 +262,27 @@
                 </span>
               </a>
             </li>
-            <li>
-              <a href="{{url('pengaduanbytopik')}}">
-                Pelayanan E-KTP &amp; KK
-                <span class="pull-right text-red">
-                  <b>12%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Lalu Lintas
-                <span class="pull-right text-green">
-                  <b>87%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Perizinan
-                <span class="pull-right text-yellow">
-                  <b>55%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Pendidikan
-                <span class="pull-right text-red">
-                  <b>12%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="{{url('pengaduanbytopik')}}">
-                Kesehatan
-                <span class="pull-right text-green">
-                  <b>98%</b>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Lainnya
-                <span class="pull-right text-yellow">
-                  <b>57%</b>
-                </span>
-              </a>
-            </li>
+            @if($getmasterskpd->isEmpty())
+              <tr>
+                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
+              </tr>
+            @elseif(isset($getmasterskpd))
+            @foreach($getmasterskpd as $keyskpd)
+              <li>
+                <a href="{{url('pengaduanbytopik')}}">
+                  {{$keyskpd->nama_skpd}}
+                  <span class="pull-right text-red">
+                    <b>{{$keyskpd->jumlahpengaduan}}</b>
+                  </span>
+                </a>
+              </li>
+            @endforeach
+          @endif
+          <div class="box-footer">
+            <div class="pagination pagination-sm no-margin pull-right">
+              {{ $getmasterskpd->links() }}
+            </div>
+          </div>
           </ul>
         </div><!-- /.footer -->
       </div><!-- /.box -->
@@ -300,53 +291,20 @@
         <div class="box-header with-border">
           <h3 class="box-title"><i class="fa fa-user"></i> &nbsp;Identitas Pelapor</h3>
           <div class="box-tools pull-right">
-            <span class="label label-warning">8 Pendaftar Baru</span>
+            <span class="label label-warning">{{$recordusers}} Pendaftar Baru</span>
             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
         </div><!-- /.box-header -->
         <div class="box-body no-padding">
           <ul class="users-list clearfix">
-            <li>
-              <img src="dist/img/user4-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="{{url('wargaprofile')}}">Amanda Satyarini</a>
-              <span class="users-list-date">15 Jan</span>
-            </li>
-            <li>
-              <img src="dist/img/user1-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="{{url('wargaprofile')}}">Alexander Pierce</a>
-              <span class="users-list-date">Today</span>
-            </li>
-            <li>
-              <img src="dist/img/user8-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Norman</a>
-              <span class="users-list-date">Yesterday</span>
-            </li>
-            <li>
-              <img src="dist/img/user7-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Jane</a>
-              <span class="users-list-date">12 Jan</span>
-            </li>
-            <li>
-              <img src="dist/img/user6-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">John</a>
-              <span class="users-list-date">12 Jan</span>
-            </li>
-            <li>
-              <img src="dist/img/user2-160x160.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Alexander</a>
-              <span class="users-list-date">13 Jan</span>
-            </li>
-            <li>
-              <img src="dist/img/user5-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Sarah</a>
-              <span class="users-list-date">14 Jan</span>
-            </li>
-            <li>
-              <img src="dist/img/user3-128x128.jpg" alt="User Image">
-              <a class="users-list-name" href="#">Nadia</a>
-              <span class="users-list-date">15 Jan</span>
-            </li>
+            @foreach($getuser as $key)
+              <li>
+                <img src="dist/img/user4-128x128.jpg" alt="User Image">
+                <a class="users-list-name" href="{{url('wargaprofile/show', $key->id)}}">{{$key->nama}}</a>
+                <span class="users-list-date">{{$key->tgl_lahir}}</span>
+              </li>
+            @endforeach
           </ul><!-- /.users-list -->
         </div><!-- /.box-body -->
         <div class="box-footer text-center">

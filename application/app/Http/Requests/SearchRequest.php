@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
-class PengaduanRequest extends Request
+class SearchRequest extends Request
 {
   /**
 	 * Determine if the user is authorized to make this request.
@@ -24,19 +22,14 @@ class PengaduanRequest extends Request
   public function rules()
   {
     return [
-      'topik' => 'required',
-      'judul'  => 'required|max:150|min:3',
-      'isi' => 'required',
-      'dokumen.*' => 'mimes:jpg,bmp,docx,xlsc,png,pdf'
+      'qr' => 'required|string',
     ];
   }
 
   public function message()
   {
     return[
-      'topik.required' => 'Wajib di Isi',
-      'judul.required' => 'Wajib di Isi',
-      'isi.required' => 'Wajib di Isi',
+      'qr.required' => 'Wajib di Isi'
     ];
   }
 }
