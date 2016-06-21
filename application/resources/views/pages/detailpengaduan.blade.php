@@ -95,6 +95,15 @@
   </div>
 
   <div class="row">
+    <div class="col-md-12">
+      @if(Session::has('message'))
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+          <p>{{ Session::get('message') }}</p>
+        </div>
+      @endif
+    </div>
 
     <div class="col-md-12">
       <!-- Horizontal Form -->
@@ -219,5 +228,12 @@
     $(document).ready(function(){
       $(".select2").select2();
     });
+  </script>
+  <script>
+    window.setTimeout(function() {
+      $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove();
+      });
+    }, 2000);
   </script>
 @stop
