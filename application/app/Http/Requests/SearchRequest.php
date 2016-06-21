@@ -26,7 +26,7 @@ class SearchRequest extends Request
     ];
   }
 
-  public function message()
+  public function messages()
   {
     return[
       'qr.required' => 'Wajib di Isi'
