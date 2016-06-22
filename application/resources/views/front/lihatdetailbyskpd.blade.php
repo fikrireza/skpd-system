@@ -29,7 +29,7 @@
               <div class="col-md-9">
                 <div class="box box-primary" style="min-height:800px">
                   <div class="box-header with-border">
-                    <h3 class="box-title">Semua Pengaduan : {{ $cekSlug->nama_skpd}}</h3>
+                    <h3 class="box-title">{{ $cekSlug->nama_skpd}}</h3>
                   </div>
                   <div class="box-body">
                     @foreach($allpengaduan as $pengaduan)
@@ -51,6 +51,53 @@
                       </div><!-- /.user-block -->
                       <p><b>{{ $pengaduan->judul_pengaduan }}</b></p>
                       <p>{{ $pengaduan->isi_pengaduan }}</p>
+
+                      <div class="timeline-body">
+                      @foreach($dokumentall as $dok)
+                        @if($pengaduan->id === $dok->pengaduan_id)
+                          {{-- <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm"> --}}
+                            @if (strpos($dok->url_dokumen, '.pdf'))
+                              <img width="3%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
+                            @elseif(strpos($dok->url_dokumen, '.png'))
+                              <img width="3%" src="{{ asset('dist\img\png.png') }}" alt="..." class="margin">
+                            @elseif(strpos($dok->url_dokumen, '.jpg'))
+                              <img width="3%" src="{{ asset('dist\img\jpg.png') }}" alt="..." class="margin">
+                            @elseif(strpos($dok->url_dokumen, '.docx'))
+                              <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                            @elseif(strpos($dok->url_dokumen, '.xlsx'))
+                              <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                            @endif
+                          {{-- </a> --}}
+                        @endif
+                      @endforeach
+                      </div>
+
+                      @if($tanggapan->isEmpty())
+
+                      @else
+                        <div class='box-footer box-comments' style="border:1px solid #00a65a;">
+                          <div style="padding-bottom:5px;">
+                            <b>Tanggapan SKPD</b>
+                          </div>
+                          @foreach($tanggapan as $tanggap)
+                          <div class='box-comment'>
+                            @if($tanggap->url_photo == null)
+                              <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                            @else
+                              <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$tanggap->url_photo) }}">
+                            @endif
+                            <div class='comment-text'>
+                              <span class="username">
+                                {{ $tanggap->id_userskpd }}
+                                <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($tanggap->created_at)->format('d-M-y H:i')}}</span>
+                              </span>
+                              {{ $tanggap->tanggapan }}
+                            </div>
+                          </div>
+                          @endforeach
+                        </div>
+                      @endif
+                      </br>
                       <ul class="list-inline">
                         @if($pengaduan->flag_verifikasi == 1)
                           <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>
@@ -59,13 +106,12 @@
                         @elseif($pengaduan->flag_tanggap == 0)
                           <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
                         @endif
-                        <li class="pull-right"><a href="{{url('detail/pengaduan/'.$pengaduan->slug)}}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
                       </ul>
                     </div>
                     @endforeach
                   </div>
                   <div class="box-footer">
-                    {{ $allpengaduan->links()}}
+
                   </div>
                 </div>
               </div>

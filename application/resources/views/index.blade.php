@@ -271,7 +271,7 @@
                         <span class="product-description-custom">
                         {{str_limit($topik->isi_pengaduan, 60)}}
                         </span>
-                        <a href="{{url('detail/pengduan/'.$topik->slug)}}">
+                        <a href="{{url('detail/pengaduan/'.$topik->slug)}}">
                           [Selengkapnya]
                         </a>
                       </div>
