@@ -19,9 +19,9 @@ class SlidersController extends Controller
    */
   public function __construct()
   {
-    $this->middleware('isAdmin');
+    // $this->middleware('isAdmin');
   }
-  
+
   public function index()
   {
     $sliders = Sliders::join('users', 'users.id', '=', 'sliders.id_users')
@@ -35,7 +35,7 @@ class SlidersController extends Controller
   public function upload(SlidersRequest $request)
   {
     $imageName = $request->file('url_gambar')->getClientOriginalName();
-	  $request->file('url_gambar')->move( base_path() . '\..\images', $imageName );
+	  $request->file('url_gambar')->move('images', $imageName );
 
     $Slider = Sliders::create([
               'id_users' => $request->input('id_users'),
