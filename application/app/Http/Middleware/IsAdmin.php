@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
+use Illuminate\Http\RedirectResponse;
 
 class isAdmin
 {
@@ -21,6 +21,7 @@ class isAdmin
       {
         return $next($request);
       }
-      return redirect('/');
+
+      return new RedirectResponse(url('/'));
     }
 }

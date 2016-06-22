@@ -19,7 +19,7 @@ class SlidersController extends Controller
    */
   public function __construct()
   {
-    // $this->middleware('isAdmin');
+    $this->middleware('isAdmin');
   }
 
   public function index()
