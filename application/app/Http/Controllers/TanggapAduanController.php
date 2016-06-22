@@ -17,9 +17,6 @@ use App\Http\Requests\TanggapanRequest;
 use DB;
 use Auth;
 
-
-
-
 class TanggapAduanController extends Controller
 {
     public function index()
