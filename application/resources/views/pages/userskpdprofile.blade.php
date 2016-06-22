@@ -28,6 +28,51 @@
   <!-- END DURATION TIME ALERT -->
 
   <section class="content">
+    <div class="modal modal-default fade" id="myModal" role="dialog">
+      <div class="modal-dialog" style="width:80%">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Detail Pengaduan</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <!-- Horizontal Form -->
+              <div class="box box-widget">
+                <div class='box-header with-border'>
+                  <div class='user-block'>
+                    <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
+                    <span class='username'><a href="#">Bambang Pamungkis</a></span>
+                    <span class='description'><span id="tanggal_pengaduan"></span> | <span id="judul_pengaduan"></span></span>
+                  </div><!-- /.user-block -->
+                </div><!-- /.box-header -->
+                <div class='box-body'>
+                  <!-- post text -->
+                  <div id="isi_pengaduan" style="margin-bottom:10px;"></div>
+
+                  <!-- Attachment -->
+                  <div class="attachment-block clearfix">
+                    <b>Data Pendukung</b><br>
+                    <i class="text-muted">gambar.jpg</i>
+                    <div class="pull-right">
+                      <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
+                    </div>
+                  </div>
+
+                  <div id="tanggapan"></div>
+
+                </div><!-- /.box-body -->
+
+              </div><!-- /.box -->
+            </div><!--/.col -->
+
+          </div>   <!-- /.row -->
+          <div class="modal-footer">
+            <button type="reset" class="btn btn-warning pull-right btn-sm btn-flat pull-right" data-dismiss="modal">Kembali</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col-md-12">
@@ -145,7 +190,11 @@
                             echo substr($tgltanggapan, 0, 10);
                           ?>
                         </td>
-                        <td><a href="{{url('detailpengaduan')}}" class="label bg-green">Lihat</a></td>
+                        <td>
+                          <span data-toggle="tooltip" title="View Data">
+                            <a href="" data-value="{{ $k->id }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
+                          </span>
+                        </td>
                       </tr>
                       <?php $no++; ?>
                     @endforeach
@@ -344,6 +393,52 @@
         checkboxClass: 'icheckbox_minimal-blue',
         radioClass: 'iradio_minimal-blue'
       });
+
+      $('a.viewdetail').click(function(){
+        var a = $(this).data('value');
+        $.ajax({
+          url: "{{ url('/') }}/pengaduandetail/bind/"+a,
+          dataType: 'json',
+          success: function(data){
+            //get
+            var id = data[0].id;
+            var judul_pengaduan = data[0].judul_pengaduan;
+            var tanggal_pengaduan = data[0].tanggal_pengaduan;
+            var isi_pengaduan = data[0].isi_pengaduan;
+            var tanggap = data[0].tanggapan;
+            var nama_penanggap = data[0].nama;
+            var nama_skpd = data[0].nama_skpd;
+
+            // set
+            $('span#judul_pengaduan').html(judul_pengaduan);
+            $('span#tanggal_pengaduan').html(tanggal_pengaduan);
+            $('div#isi_pengaduan').html(isi_pengaduan);
+            if(tanggap!=null)
+            {
+              $('div#tanggapan').html(
+                "<div class='box-footer box-comments' style='border:1px solid #00a65a;'>"+
+                "<div style='padding-bottom:5px;'>"+
+                "<b>Tanggapan</b>"+
+                "</div>"+
+                "<div class='box-comment'>"+
+                "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
+                "<div class='comment-text'>"+
+                "<span class='username'>"+
+                nama_penanggap + " || Administrator SKPD " + nama_skpd +
+                "<span class='text-muted pull-right'>25 April 2016</span>"+
+                "</span>"+
+                tanggap +
+                "</div>"+
+                "</div>"+
+                "</div>"
+              );
+            }
+            else {
+              $('div#tanggapan').html("");
+            }
+          }
+        });
+      })
     });
   </script>
 @stop
