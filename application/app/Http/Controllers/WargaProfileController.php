@@ -98,7 +98,7 @@ class WargaProfileController extends Controller
                             ->where('pengaduan.warga_id', $id)
                             ->orderby('pengaduan.created_at', 'desc')
                             ->select('*', 'tanggapan.created_at as created_tanggapan', 'pengaduan.created_at as created_pengaduan')
-                            ->paginate();
+                            ->paginate(5);
                             //  dd($getdatapengaduansudahtanggapall);
 
         return view('pages.wargaprofile')->with('data', compact('getdatapengaduanbelumtanggap', 'getdatapengaduansudahtanggap',

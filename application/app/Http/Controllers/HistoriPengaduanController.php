@@ -23,7 +23,7 @@ class HistoriPengaduanController extends Controller
    */
   public function __construct()
   {
-    $this->middleware('isAdmin');
+    // $this->middleware('isAdmin');
   }
 
   public function index()
@@ -94,7 +94,7 @@ class HistoriPengaduanController extends Controller
                         		ON tbl_blm_tanggap.month_blm_tanggap = temp.filters');
 
     $kosong = array(["filters" => "2017", "jumlah_pengaduan" => "0", "jumlah_tanggap" => "0", "jumlah_blm_tanggap" => "0"]);
-    
+
     if($years == "semua"){
       $toChart = json_encode($tahun);
     }
