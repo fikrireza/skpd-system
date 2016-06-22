@@ -18,7 +18,7 @@ class isWarga
   public function handle($request, Closure $next)
   {
     // Level 1 itu adalah warga
-    if(session('level') === 1)
+    if(session('level') == 1)
     {
       return $next($request);
     }

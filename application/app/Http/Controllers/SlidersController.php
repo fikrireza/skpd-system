@@ -12,13 +12,23 @@ use App\User;
 
 class SlidersController extends Controller
 {
+  /**
+   * Authentication controller.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->middleware('isAdmin');
+  }
+  
   public function index()
   {
     $sliders = Sliders::join('users', 'users.id', '=', 'sliders.id_users')
                         ->select('users.nama', 'sliders.*')
                         ->orderby('sliders.updated_at', 'desc')
                         ->get();
-    
+
     return view('admin.slider', compact('sliders'));
   }
 

@@ -16,7 +16,8 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-      if(Auth::user()->level == 0)
+      // 0 Untuk ADMIN || 2 untuk SKPD
+      if(session('level') == 0 || session('level') == 2)
       {
         return $next($request);
       }
