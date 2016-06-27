@@ -70,7 +70,7 @@
               @if($topik->warga_id == Auth::user()->id)
               <li class="pull-right"><a href="{{ url('pengaduansaya/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
               @else
-              <li class="pull-right"><a href="{{ url('pengaduan/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+              <li class="pull-right"><a href="{{ url('semuapengaduan/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
               @endif
             </ul>
           </div>
