@@ -56,9 +56,9 @@
         @elseif($search->flag_tanggap == 0)
           <li><a class="link-black text-sm"><span class="label bg-red"><span class="glyphicon glyphicon-remove"></span> Belum Ditanggapi</span></a></li>
         @endif
-        @if($search->warga_id == auth()->user()->id)
+        {{-- @if($search->warga_id == auth()->user()->id) --}}
         <li class="pull-right"><a href="{{ url('semuapengaduan/detail', $search->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
-        @endif
+        {{-- @endif --}}
       </ul>
     </div>
       @endforeach
