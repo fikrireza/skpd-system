@@ -46,7 +46,7 @@
         <div class="icon">
           <i class="ion ion-speakerphone"></i>
         </div>
-        <a href="{{url('listhistoripengaduanall')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <div class="small-box-footer"></div>
       </div>
       <div class="small-box bg-aqua">
         <div class="inner">
@@ -56,7 +56,7 @@
         <div class="icon">
           <i class="fa fa-smile-o"></i>
         </div>
-        <a href="{{url('listhistoripengaduanall')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <div class="small-box-footer"></div>
       </div>
       <div class="small-box bg-red">
         <div class="inner">
@@ -66,11 +66,11 @@
         <div class="icon">
           <i class="fa fa-meh-o"></i>
         </div>
-        <a href="{{url('listhistoripengaduanall')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <div class="small-box-footer"></div>
       </div>
     </div>
   </div><!-- /.row (main row) -->
-  
+
 
   <!-- Bootstrap 3.3.5 -->
   <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
