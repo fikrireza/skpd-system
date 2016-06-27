@@ -51,8 +51,8 @@ class SearchController extends Controller
     }
 
     $bantu = implode(' OR ',$searchTermBits);
-    $searches = DB::select("select * FROM pengaduan WHERE ".$bantu." order by created_at DESC");
-
+    $searches = DB::select("select pengaduan.*, topik_pengaduan.nama_topik, users.nama, users.url_photo FROM pengaduan, topik_pengaduan, users WHERE ".$bantu." AND topik_pengaduan.id = pengaduan.topik_id AND pengaduan.warga_id = users.id ORDER BY pengaduan.created_at DESC");
+    // dd($searches);
     return view('front.pencarian', compact('pengaduanWid', 'tanggapWid','searches', 'kalimat'));
 
   }
