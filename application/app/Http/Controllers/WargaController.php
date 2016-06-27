@@ -56,7 +56,7 @@ class WargaController extends Controller
                       ->get();
     $grouping = collect($AllTopikQuery);
     $AllTopiks = $grouping->groupBy('nama_skpd')->toArray();
-    
+
     $skpdonly  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -280,7 +280,7 @@ class WargaController extends Controller
                           ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                           ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
                           ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                          ->select('*')
+                          ->select('*', 'pengaduan.slug')
                           ->where('master_skpd.nama_skpd', $detail->nama_skpd)
                           ->where('pengaduan.flag_rahasia', 0)
                           ->paginate(10);
