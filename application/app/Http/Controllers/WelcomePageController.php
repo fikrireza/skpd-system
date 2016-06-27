@@ -12,6 +12,7 @@ use App\TopikAduan;
 use App\MasterSKPD;
 use App\Models\TanggapanModel;
 use App\Models\Sliders;
+use Image;
 
 class WelcomePageController extends Controller
 {
@@ -58,11 +59,12 @@ class WelcomePageController extends Controller
     $skpdonly  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
-                      ->select('master_skpd.nama_skpd as nama_skpd', 'master_skpd.slug as slug')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'master_skpd.slug as slug', DB::raw('count(pengaduan.topik_id) as jumlah_pengaduan'))
                       ->where('master_skpd.flag_skpd', 1)
                       ->where('pengaduan.flag_rahasia', 0)
                       ->where('pengaduan.flag_verifikasi', 1)
                       ->groupBy('nama_skpd')
+                      ->orderby('jumlah_pengaduan', 'desc')
                       ->get();
     //dd($skpdonly);
     $sliders = Sliders::orderby('updated_at', 'desc')->get();

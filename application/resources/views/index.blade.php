@@ -43,9 +43,9 @@
                     <?php $active = 1;?>
                     @foreach($sliders as $slider)
                       @if($active++ == 1)
-                        <div class="active item"><img src="{{asset('images/'.$slider->url_gambar)}}"></div>
+                        <div class="active item"><img src="{{asset('images/'.$slider->url_gambar)}}" width="900" height="500"></div>
                       @endif
-                        <div class="item"><img src="{{asset('images/'.$slider->url_gambar)}}"></div>
+                        <div class="item"><img src="{{asset('images/'.$slider->url_gambar)}}" width="900" height="500"></div>
                     @endforeach
                   </div>
                     <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="fa fa-angle-left"></span></a>
@@ -174,7 +174,6 @@
                 <div class="icon">
                   <i class="ion ion-speakerphone"></i>
                 </div>
-                {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-xs-12">
@@ -186,7 +185,6 @@
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                {{-- <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-xs-12">
@@ -198,7 +196,6 @@
                 <div class="icon">
                   <i class="ion ion-person-stalker"></i>
                 </div>
-                {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
 
@@ -211,7 +208,6 @@
                 <div class="icon">
                   <i class="ion ion-eye"></i>
                 </div>
-                {{-- <a href="{{url('datawarga')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a> --}}
               </div>
             </div>
           </div>
