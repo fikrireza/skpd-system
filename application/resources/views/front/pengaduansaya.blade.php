@@ -38,7 +38,7 @@
               </span>
             </div><!-- /.user-block -->
             <p>
-              {{ $pengaduan->isi_pengaduan}}
+              {!! $pengaduan->isi_pengaduan !!}
             </p>
             <div class="timeline-body">
             @foreach($dokumentall as $dok)

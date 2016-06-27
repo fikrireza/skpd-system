@@ -50,7 +50,7 @@
                         <span class="description">{{ $pengaduan->nama_skpd}} - {{ \Carbon\Carbon::parse($pengaduan->created_at)->format('d-M-y H:i')}}</span>
                       </div><!-- /.user-block -->
                       <p><b>{{ $pengaduan->judul_pengaduan }}</b></p>
-                      <p>{{ $pengaduan->isi_pengaduan }}</p>
+                      <p>{!! $pengaduan->isi_pengaduan !!}</p>
                       <ul class="list-inline">
                         @if($pengaduan->flag_verifikasi == 1)
                           <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>

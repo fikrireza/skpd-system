@@ -22,7 +22,7 @@
         </span>
       </div><!-- /.user-block -->
       <p>
-        {{ $detail->isi_pengaduan}}
+        {!! $detail->isi_pengaduan !!}
       </p>
       <div class="timeline-body">
       @foreach($dokumentall as $dok)
@@ -59,7 +59,7 @@
                 Administrator SKPD
                 <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($tanggap->created_at)->format('d-M-y H:i')}}</span>
               </span><!-- /.username -->
-              {{ $tanggap->tanggapan }}
+              {!! $tanggap->tanggapan !!}
             </div><!-- /.comment-text -->
           </div><!-- /.box-comment -->
           @endforeach
@@ -98,7 +98,7 @@
             </span>
           </div><!-- /.user-block -->
           <p>
-            {{ $pengaduan->isi_pengaduan}}
+            {!! $pengaduan->isi_pengaduan !!}
           </p>
           <div class="timeline-body">
           @foreach($dokumentall as $dok)

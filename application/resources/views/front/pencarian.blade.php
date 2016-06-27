@@ -46,7 +46,7 @@
         </span>
       </div>
       <p>
-        {{ $search->isi_pengaduan}}
+        {!! $search->isi_pengaduan !!}
       </p>
       <ul class="list-inline">
         @if($search->flag_verifikasi == 1)
