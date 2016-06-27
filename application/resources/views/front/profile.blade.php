@@ -13,14 +13,11 @@
       {{ Session::get('messagefilled') }}
     </div>
   @endif
-
   <div class="col-md-9">
     <div class="box box-info">
-
       <div class="box-header with-border">
         <h3 class="box-title">{{$profiles->nama}}</h3>
-      </div><!-- /.box-header -->
-      <!-- form start -->
+      </div>
       <div class="row">
         <form class="form-horizontal" action="{{ url('profil')}}" method="POST" enctype="multipart/form-data">
           {{ csrf_field() }}
@@ -33,12 +30,12 @@
               @else
                 <img class="img-square" src="{{ asset('/images/'.$profiles->url_photo) }}" alt="{{$profiles->nama}}" width="215" height="215">
               @endif
-            </div><!-- /.widget-user-image -->
-            <h5 class="widget-user-desc" align="center">Bergabung {{ \Carbon\Carbon::parse($profiles->created_at)->format('d-M-y')}}</h5>
+            </div>
+            <h5 class="widget-user-desc">Bergabung {{ \Carbon\Carbon::parse($profiles->created_at)->format('d-M-y')}}</h5>
           </div>
           <div class="box-footer">
             <input type="file" name="url_photo" id="url_photo" accept=".jpg, .bmp, .png"></input>
-          </div><!-- /.box-footer -->
+          </div>
         </div>
         <div class="col-md-9">
             <div class="box-body">
@@ -103,7 +100,7 @@
                         <strong>{{ $errors->first('tgl_lahir')}}</strong>
                       </span>
                     @endif
-                  </div><!-- /.input group -->
+                  </div>
                 </div>
               </div>
               <div class="form-group{{ $errors->has('notelp') ? 'has-error' : '' }}">
@@ -167,20 +164,20 @@
                   @endif
                 </div>
               </div>
-            </div><!-- /.box-body -->
+            </div>
             <div class="box-footer">
               <button type="submit" class="btn btn-info pull-right">Ubah Data</button>
-            </div><!-- /.box-footer -->
+            </div>
           </div>
         </form>
-      </div><!-- row -->
-    </div><!-- box form -->
+      </div>
+    </div>
 
     <div class="box box-info">
       <div class="box-header with-border">
         <h3 class="box-title">Ubah Password</h3>
-      </div><!-- /.box-header -->
-      <!-- form start -->
+      </div>
+
       <form class="form-horizontal" action="{{ route('ubahpassword') }}" method="post">
         {{ csrf_field() }}
         <div class="box-body">
@@ -208,9 +205,7 @@
             <label class="col-sm-3 control-label">Password Baru</label>
             <div class="col-sm-9">
               <input name="newpass" type="password" class="form-control" placeholder="Password Baru Minimal 8 Karakter" @if(!$errors->has('newpass'))
-                value="{{ old('newpass') }}"
-              @endif
-              >
+                value="{{ old('newpass') }}"@endif>
               @if($errors->has('newpass'))
                 <span class="help-block">
                   <strong>{{ $errors->first('newpass') }}
@@ -224,9 +219,7 @@
             <div class="col-sm-9">
               <input name="newpass_confirmation" type="password" class="form-control" placeholder="Konfirmasi Password Baru"
               @if(!$errors->has('newpass_confirmation'))
-                value="{{ old('newpass_confirmation') }}"
-              @endif
-              >
+                value="{{ old('newpass_confirmation') }}"@endif>
               @if($errors->has('newpass_confirmation'))
                 <span class="help-block">
                   <strong>{{ $errors->first('newpass_confirmation') }}
@@ -237,11 +230,11 @@
           </div>
           <div class="box-footer">
             <button type="submit" class="btn btn-info pull-right">Ubah Password</button>
-          </div><!-- /.box-footer -->
+          </div>
         </div>
       </form>
     </div>
-  </div><!-- /.col -->
+  </div>
 
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
@@ -249,8 +242,8 @@
       <div class="info-box-content">
         <span class="info-box-text">Laporan Anda</span>
         <span class="info-box-number">{{ $pengaduanWid }}</span>
-      </div><!-- /.info-box-content -->
-    </div><!-- /.info-box -->
+      </div>
+    </div>
   </div>
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
@@ -258,16 +251,15 @@
       <div class="info-box-content">
         <span class="info-box-text">Telah Ditanggapi</span>
         <span class="info-box-number">{{ $tanggapWid }}</span>
-      </div><!-- /.info-box-content -->
-    </div><!-- /.info-box -->
+      </div>
+    </div>
   </div>
 
   <div class="col-md-3">
-      <!-- About Me Box -->
     <div class="box box-primary">
       <div class="box-header with-border">
         <h3 class="box-title">Laporan Terbaru</h3>
-      </div><!-- /.box-header -->
+      </div>
       <div class="box-body">
         <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
         <p class="text-muted">
@@ -283,7 +275,7 @@
 
         <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-      </div><!-- /.box-body -->
-    </div><!-- /.box -->
-  </div><!-- /.col -->
+      </div>
+    </div>
+  </div>
 @stop

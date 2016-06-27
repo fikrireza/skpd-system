@@ -24,6 +24,7 @@ Route::get('detail/pengaduan/{slug}', ['as' => 'detailpengaduan', 'uses' => 'Wel
 Route::get('beranda', ['as' => 'beranda', 'uses' => 'WargaController@index']);
 
 Route::get('profil', ['as' => 'profilwarga', 'uses' => 'ProfileWargaController@index']);
+Route::post('profil', 'ProfileWargaController@store');
 
 Route::post('ubahpassword', ['as' => 'ubahpassword', 'uses' => 'ProfileWargaController@changePassword']);
 

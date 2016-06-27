@@ -14,6 +14,7 @@ use Carbon;
 use Auth;
 use Hash;
 use Validator;
+use Image;
 
 class ProfileWargaController extends Controller
 {
@@ -52,8 +53,8 @@ class ProfileWargaController extends Controller
       $profil->alamat = $request->alamat;
       $profil->save();
     } else {
-      $photo_name = time().'-'.$file->getClientOriginalName();
-      $file->move(base_path().'\..\images', $photo_name);
+      $photo_name = time(). '.' . $file->getClientOriginalExtension();
+      Image::make($file)->resize(200,200)->save('images/'. $photo_name);
 
       $profil = User::find($request->id);
       $profil->nama = $request->nama;
