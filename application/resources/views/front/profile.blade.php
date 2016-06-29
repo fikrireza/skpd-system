@@ -288,4 +288,10 @@
           radioClass: 'iradio_minimal-blue'
   });
   </script>
+
+  <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('/plugins/datepicker/locales/bootstrap-datepicker.id.js') }}"></script>
+  <script>
+  $('#tgl_lahir').datepicker();
+  </script>
 @stop
