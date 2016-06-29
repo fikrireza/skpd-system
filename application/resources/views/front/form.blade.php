@@ -1,7 +1,3 @@
-@section('headScript')
-<link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
-@stop
-
 <div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title">Ajukan Keluhan Anda</h3>
@@ -13,10 +9,16 @@
     <div class="box-body">
       <div class="form-group{{ $errors->has('topik') ? 'has-error' : '' }}">
         <label>Kategori Pengaduan</label>
-        <select name="topik" class="form-control select2" style="width: 100%;">
+        <select class="form-control select2" name="topik" style="width: 100%;">
           <option value="">-- Pilih Kategori --</option>
           @foreach($topiks as $isi)
-          <option value="{{ $isi->id}}"><b>{{ $isi->nama_skpd}}</b> - {{ $isi->nama_topik}}</option>
+            <optgroup label="{{ $isi->nama_skpd }}">
+              @foreach($topikgroup as $isis)
+                @if($isi->nama_skpd === $isis->nama_skpd)
+                  <option value="{{ $isis->id}}">{{ $isis->nama_topik}}</option>
+                @endif
+              @endforeach
+            </optgroup>
           @endforeach
         </select>
         @if($errors->has('topik'))
@@ -75,24 +77,22 @@
 @section('script')
   <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
   <script type="text/javascript">
-    $(document).ready(function(){
-      $(".select2").select2();
-    });
+  $(".select2").select2();
   </script>
   <script src="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
-    <script>
-      $(function () {
-        $(".textarea").wysihtml5({
-          toolbar: {
-            "font-styles": false, //Font styling, e.g. h1, h2, etc.
-            "emphasis": false, //Italics, bold, etc.
-            "lists": false, //(Un)ordered lists, e.g. Bullets, Numbers.
-            "html": true, //Button which allows you to edit the generated HTML.
-            "link": false, //Button to insert a link.
-            "image": false, //Button to insert an image.
-            "color": true //Button to change color of font
-         }
-        });
+  <script>
+    $(function () {
+      $(".textarea").wysihtml5({
+        toolbar: {
+          "font-styles": false, //Font styling, e.g. h1, h2, etc.
+          "emphasis": false, //Italics, bold, etc.
+          "lists": false, //(Un)ordered lists, e.g. Bullets, Numbers.
+          "html": true, //Button which allows you to edit the generated HTML.
+          "link": false, //Button to insert a link.
+          "image": false, //Button to insert an image.
+          "color": true //Button to change color of font
+       }
       });
-    </script>
+    });
+  </script>
 @stop
