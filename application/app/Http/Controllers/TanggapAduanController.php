@@ -123,7 +123,7 @@ class TanggapAduanController extends Controller
         $binddatapengaduan = LihatPengaduanModel::find($id);
         $data['binddatapengaduan'] = $binddatapengaduan;
         $data['getdokumen'] = $getdokumen;
-        // dd($data);
+
         return view('pages/tanggapipengaduan')->with('data', $data);
     }
 
@@ -180,7 +180,7 @@ class TanggapAduanController extends Controller
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*')
-                      ->where('dokumen_pengaduan.pengaduan_id', $id)
+                      // ->where('dokumen_pengaduan.pengaduan_id', $id)
                       ->get();
 
       $binddatapengaduan = LihatPengaduanModel::find($id);
