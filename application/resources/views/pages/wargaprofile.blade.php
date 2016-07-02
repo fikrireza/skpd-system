@@ -25,7 +25,11 @@
         @foreach($data['getdatawarga'] as $key)
         <div class="box box-primary">
           <div class="box-body box-profile" style="height:265px;">
-            <img class="profile-user-img img-responsive img-circle" src="{{asset('dist/img/user4-128x128.jpg')}}" alt="User profile picture">
+            @if($key->url_photo == null)
+              <img class="profile-user-img img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User profile picture">
+            @else
+              <img class="profile-user-img img-responsive img-circle" src="{{ asset('/images/'.$key->url_photo) }}" alt="{{$key->nama}}">
+            @endif
             <h3 class="profile-username text-center">{{$key->nama}}</h3>
             <p class="text-muted text-center">Warga Kabupaten Tangerang</p>
 

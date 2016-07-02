@@ -37,6 +37,13 @@ class DashboardController extends Controller
                           ->orderby('pengaduan.created_at', 'desc')
                           ->limit(3)->get();
       // dd($getlihatpengaduan);
+      $getdokumen = DB::table('pengaduan')
+                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*')
+                      ->where('pengaduan.warga_id', '26')
+                      ->get();
+                      // dd($getdokumen);
       $getcountpengaduanall = LihatPengaduanModel::where('flag_mutasi', '0')->count('warga_id');
       $getcountpengaduan = DB::table('pengaduan')
                       ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -89,11 +96,11 @@ class DashboardController extends Controller
                      ->groupBy('master_skpd.id')
                      ->paginate(7);
 
-      // dd($getmasterskpd);
+      // dd($getlihatpengaduanall);
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
-      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd'));
+      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getdokumen'));
     }
 
     /**

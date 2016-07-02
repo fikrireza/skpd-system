@@ -63,14 +63,24 @@
         <div class="box box-widget">
           <div class='box-header with-border'>
             <div class='user-block'>
-              <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
+              @if($data['binddatapengaduan']->user->url_photo == null || $data['binddatapengaduan']->flag_anonim==1)
+                <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
+              @else
+                <img class="img-circle" src="{{ asset('/images/'.$data['binddatapengaduan']->user->url_photo) }}" alt="{{$data['binddatapengaduan']->user->nama}}">
+              @endif
               <span class='username'><a href="#">
                 @if(isset($data['binddatapengaduan']))
-                  {{$data['binddatapengaduan']->user->nama}}
+                  @if($data['binddatapengaduan']->flag_anonim==0)
+                    {{$data['binddatapengaduan']->user->nama}}
+                  @else
+                    Nama Dirahasiakan
+                  @endif
                 @elseif(isset($data['binddatamutasi']))
-                  {{$data['getmutasi'][0]->nama}}
-                @else
-                  Nama Pengaduan
+                  @if($data['binddatapengaduan']->flag_anonim==0)
+                    {{$data['getmutasi'][0]->nama}}
+                  @else
+                    Nama Dirahasiakan
+                  @endif
                 @endif
               </a></span>
               <span class='description'>
@@ -119,7 +129,13 @@
             <!-- Attachment -->
             <div class="attachment-block clearfix">
               <b>Data Pendukung</b><br>
-              <i class="text-muted">gambar.jpg</i>
+              @foreach($getdokumen as $dok)
+                  @if($binddatapengaduan->id === $dok->pengaduan_id)
+                  <i class="text-muted">{{$dok->url_dokumen}}</i>
+                  @else
+                    <i class="text-muted">Tidak Ada Data Pendukung</i>
+                  @endif
+              @endforeach
               <div class="pull-right">
                 <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
               </div>
@@ -227,7 +243,11 @@
                     @foreach($data['getdatapengaduan'] as $key)
                       <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $key->nama }}</td>
+                        @if($key->flag_anonim==0)
+                          <td>{{ $key->nama }}</td>
+                        @elseif($key->flag_anonim==1)
+                            <td>Nama Dirahasiakan</td>
+                        @endif
                         <td>{{ $key->nama_topik }}</td>
                         <td>{{ $key->created_at }}</td>
                         <td>
@@ -277,7 +297,11 @@
                   @foreach($data['getmutasi'] as $key)
                     <tr>
                       <td>{{ $no }}</td>
-                      <td>{{ $key->nama }}</td>
+                      @if($key->flag_anonim==0)
+                        <td>{{ $key->nama }}</td>
+                      @elseif($key->flag_anonim==1)
+                          <td>Nama Dirahasiakan</td>
+                      @endif
                       <td>{{ $key->nama_topik }}</td>
                       <td>{{ $key->created_at }}</td>
                       <td>{{ $key->nama_skpd }}</td>

@@ -129,9 +129,17 @@
           @if(Auth::user()->level=="0")
             @foreach($getlihatpengaduanall as $key)
               <div class="item">
-                <img src="dist/img/user4-128x128.jpg" alt="user image" class="offline">
+                @if($key->User->url_photo == null || $key->flag_anonim==1)
+                  <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                @else
+                  <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$key->User->url_photo) }}" alt="{{$key->User->nama}}">
+                @endif
                 <p class="message">
-                  <a href="{{url('wargaprofile/show', $key->User->id)}}" class="name">
+                  @if($key->flag_anonim==0)
+                    <a href="{{url('wargaprofile/show', $key->User->id)}}" class="name">
+                  @elseif($key->flag_anonim==1)
+                    <a href="#" class="name">
+                  @endif
                     <small class="text-muted pull-right">
                       <i class="fa fa-calendar"></i>
                       <?php
@@ -147,17 +155,33 @@
                         echo $justtime;
                       ?>
                     </small>
-                    {{$key->User->nama}}
+                    @if($key->flag_anonim==0)
+                      {{$key->User->nama}}
+                    @elseif($key->flag_anonim==1)
+                      Nama Dirahasiakan
+                    @endif
                   </a>
                     {{$key->isi_pengaduan}}
                 </p>
                 <div class="attachment">
                   <b>Data Pendukung</b>
                   <p class="text-muted">
-                    gambar.jpg
+                    @foreach($getdokumen as $dok)
+                        @if($key->id === $dok->pengaduan_id)
+                          {{$dok->url_dokumen}}
+                        @else
+                          Tidak Ada Data Pendukung
+                        @endif
+                    @endforeach
                   </p>
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                    @foreach($getdokumen as $dok)
+                        @if($key->id === $dok->pengaduan_id)
+                          <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                        @else
+                          <a href="#" class="btn btn-default btn-sm btn-flat" disabled="true">Download Data Pendukung</a>
+                        @endif
+                    @endforeach
                     @if(Session::has('akses'))
                       @if(Session::get('akses')=="administrator")
                         <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
@@ -172,9 +196,17 @@
           @elseif(Auth::user()->level=="2")
             @foreach($getlihatpengaduan as $key)
               <div class="item">
-                <img src="dist/img/user4-128x128.jpg" alt="user image" class="offline">
+                @if($key->url_photo == null || $key->flag_anonim==1)
+                  <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                @else
+                  <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$key->url_photo) }}" alt="{{$key->nama}}">
+                @endif
                 <p class="message">
-                  <a href="{{url('wargaprofile/show', $key->iduser)}}" class="name">
+                    @if($key->flag_anonim==0)
+                      <a href="{{url('wargaprofile/show', $key->iduser)}}" class="name">
+                    @elseif($key->flag_anonim==1)
+                      <a href="#" class="name">
+                    @endif
                     <small class="text-muted pull-right">
                       <i class="fa fa-calendar"></i>
                       <?php
@@ -190,17 +222,39 @@
                         echo $justtime;
                       ?>
                     </small>
-                    {{$key->nama}}
+                    @if($key->flag_anonim=="0")
+                      {{$key->nama}}
+                    @elseif($key->flag_anonim=="1")
+                      Nama Dirahasiakan
+                    @endif
                   </a>
                     {{$key->isi_pengaduan}}
                 </p>
                 <div class="attachment">
                   <b>Data Pendukung</b>
                   <p class="text-muted">
-                    gambar.jpg
+                    @foreach($getdokumen as $dok)
+                        @if($key->id === $dok->pengaduan_id)
+                          {{$dok->url_dokumen}}
+                        @else
+                          Tidak Ada Data Pendukung
+                        @endif
+                    @endforeach
                   </p>
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                    @foreach($getdokumen as $dok)
+                        @if($key->id === $dok->pengaduan_id)
+                          <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                        @else
+                          <a href="#" class="btn btn-default btn-sm btn-flat" disabled="true">Download Data Pendukung</a>
+                        @endif
+                    @endforeach
+                    @if($key->flag_tanggap==0)
+                      <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-warning btn-sm btn-flat">Belum ditanggapi</a>
+                    @else
+                      <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-success btn-sm btn-flat">Sudah ditanggapi</a>
+                    @endif
+
                     @if(Session::has('akses'))
                       @if(Session::get('akses')=="administrator")
                         <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
@@ -300,7 +354,11 @@
           <ul class="users-list clearfix">
             @foreach($getuser as $key)
               <li>
-                <img src="dist/img/user4-128x128.jpg" alt="User Image">
+                @if($key->url_photo == null)
+                  <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}"  alt="User Avatar">
+                @else
+                  <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$key->url_photo) }}" alt="{{$key->nama}}">
+                @endif
                 <a class="users-list-name" href="{{url('wargaprofile/show', $key->id)}}">{{$key->nama}}</a>
                 <span class="users-list-date">{{$key->tgl_lahir}}</span>
               </li>

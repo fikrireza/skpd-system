@@ -85,9 +85,14 @@ class DetailPengaduanController extends Controller
       }
 
       $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
-      // dd($gettopik);
+      $getdokumen = DB::table('pengaduan')
+                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*')
+                      ->get();
+      // dd($tanggapanall);
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
-      'tanggapan', 'tanggapanall', 'gettopik'));
+      'tanggapan', 'tanggapanall', 'gettopik', 'getdokumen'));
     }
 
     /**
@@ -175,8 +180,13 @@ class DetailPengaduanController extends Controller
       }
 
       $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
+      $getdokumen = DB::table('pengaduan')
+                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*')
+                      ->get();
 
-      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan', 'gettopik'));
+      return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd', 'tanggapan', 'gettopik', 'getdokumen'));
       // return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
     }
 
