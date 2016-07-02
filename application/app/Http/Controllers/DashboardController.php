@@ -41,7 +41,7 @@ class DashboardController extends Controller
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*')
-                      ->where('pengaduan.warga_id', '26')
+                      // ->where('pengaduan.warga_id', 'users.id')
                       ->get();
                       // dd($getdokumen);
       $getcountpengaduanall = LihatPengaduanModel::where('flag_mutasi', '0')->count('warga_id');

@@ -136,10 +136,11 @@
           <!-- Attachment -->
           <div class="attachment-block clearfix">
             <b>Data Pendukung</b><br>
-            @foreach($data['getdokumen'] as $dok)
+            @foreach($getdokumen as $dok)
                 {{-- @if($binddatapengaduan->id === $dok->pengaduan_id) --}}
+              @if($binddatapengaduan->id === $dok->pengaduan_id)
                 <i class="text-muted">{{$dok->url_dokumen}}</i>
-
+              @endif
             @endforeach
             <div class="pull-right">
               {{-- button dibawah cuma buat user skpd cuuuy, akses admin ga bisa --}}
@@ -157,8 +158,6 @@
               @foreach($getdokumen as $dok)
                   @if($binddatapengaduan->id === $dok->pengaduan_id)
                     <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                  @else
-                    <a href="#" class="btn btn-default btn-sm btn-flat" disabled="true">Download Data Pendukung</a>
                   @endif
               @endforeach
             </div>

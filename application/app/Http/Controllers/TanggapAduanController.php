@@ -117,12 +117,13 @@ class TanggapAduanController extends Controller
                         ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                         ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                         ->select('*')
+                        ->where('dokumen_pengaduan.pengaduan_id', $id)
                         ->get();
         $data['getmutasi'] = $getmutasi;
         $binddatapengaduan = LihatPengaduanModel::find($id);
         $data['binddatapengaduan'] = $binddatapengaduan;
         $data['getdokumen'] = $getdokumen;
-        dd($data);
+        // dd($data);
         return view('pages/tanggapipengaduan')->with('data', $data);
     }
 
@@ -175,11 +176,20 @@ class TanggapAduanController extends Controller
                         ->paginate(10);
       $data['getmutasi'] = $getmutasi;
 
+      $getdokumen = DB::table('pengaduan')
+                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*')
+                      ->where('dokumen_pengaduan.pengaduan_id', $id)
+                      ->get();
+
       $binddatapengaduan = LihatPengaduanModel::find($id);
       $data['binddatapengaduanmutasi'] = $binddatapengaduan;
 
       $binddatamutasi = DataMutasiModel::find($id);
       $data['binddatamutasi'] = $binddatamutasi;
+
+      $data['getdokumen'] = $getdokumen;
 
         // dd($data);
 

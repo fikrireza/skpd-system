@@ -169,8 +169,6 @@
                     @foreach($getdokumen as $dok)
                         @if($key->id === $dok->pengaduan_id)
                           {{$dok->url_dokumen}}
-                        @else
-                          Tidak Ada Data Pendukung
                         @endif
                     @endforeach
                   </p>
@@ -178,8 +176,6 @@
                     @foreach($getdokumen as $dok)
                         @if($key->id === $dok->pengaduan_id)
                           <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                        @else
-                          <a href="#" class="btn btn-default btn-sm btn-flat" disabled="true">Download Data Pendukung</a>
                         @endif
                     @endforeach
                     @if(Session::has('akses'))
@@ -232,21 +228,17 @@
                 </p>
                 <div class="attachment">
                   <b>Data Pendukung</b>
-                  <p class="text-muted">
-                    @foreach($getdokumen as $dok)
-                        @if($key->id === $dok->pengaduan_id)
-                          {{$dok->url_dokumen}}
-                        @else
-                          Tidak Ada Data Pendukung
-                        @endif
-                    @endforeach
+                  <p class="text-muted">'
+                      @foreach($getdokumen as $dok)
+                          @if($key->id === $dok->pengaduan_id)
+                            {{$dok->url_dokumen}}
+                          @endif
+                      @endforeach
                   </p>
                   <div class="pull-right">
                     @foreach($getdokumen as $dok)
                         @if($key->id === $dok->pengaduan_id)
                           <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                        @else
-                          <a href="#" class="btn btn-default btn-sm btn-flat" disabled="true">Download Data Pendukung</a>
                         @endif
                     @endforeach
                     @if($key->flag_tanggap==0)

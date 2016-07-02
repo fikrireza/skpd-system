@@ -127,20 +127,15 @@
               @endif
             </p>
             <!-- Attachment -->
+            @if($data['getdokumen'] != null)
             <div class="attachment-block clearfix">
               <b>Data Pendukung</b><br>
-              @foreach($getdokumen as $dok)
-                  @if($binddatapengaduan->id === $dok->pengaduan_id)
-                  <i class="text-muted">{{$dok->url_dokumen}}</i>
-                  @else
-                    <i class="text-muted">Tidak Ada Data Pendukung</i>
-                  @endif
-              @endforeach
+                <i class="text-muted">{{$data['getdokumen'][0]->url_dokumen}}</i>
               <div class="pull-right">
-                <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
+                <a href="{{ asset('\..\documents').'/'.$data['getdokumen'][0]->url_dokumen}}" download="{{$data['getdokumen'][0]->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
               </div>
             </div><!-- /.attachment-block -->
-
+            @endif
           </div><!-- /.box-body -->
           <div class="box-footer">
             @if(isset($data['binddatapengaduan']))
