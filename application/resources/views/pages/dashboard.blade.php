@@ -34,7 +34,6 @@
         </div>
       @endif
     </div>
-
     <div class="col-lg-4 col-md-4 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-teal">
@@ -189,6 +188,7 @@
                 </div><!-- /.attachment -->
               </div><!-- /.item -->
             @endforeach
+
           @elseif(Auth::user()->level=="2")
             @foreach($getlihatpengaduan as $key)
               <div class="item">
