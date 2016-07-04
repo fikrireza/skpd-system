@@ -315,7 +315,7 @@
             @elseif(isset($getmasterskpd))
             @foreach($getmasterskpd as $keyskpd)
               <li>
-                <a href="{{url('pengaduanbytopik')}}">
+                <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
                   {{$keyskpd->nama_skpd}}
                   <span class="pull-right text-red">
                     <b>{{$keyskpd->jumlahpengaduan}}</b>

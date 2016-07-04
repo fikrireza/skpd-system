@@ -22,7 +22,10 @@
       <!-- Horizontal Form -->
       <div class="box box-warning">
         <div class="box-header">
-          <h3 class="box-title">Seluruh Pengaduan dengan Topik : Kesehatan</h3>
+          @foreach($data['getmasterskpdtopik'] as $keyTopik)
+            <h3 class="box-title">Seluruh Pengaduan dengan Jenis Pengaduan : {{ $keyTopik->nama_skpd }}</h3>
+            @break;
+          @endforeach
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelpengaduan" class="table table-hover">
@@ -34,142 +37,45 @@
                 <th>Tanggal</th>
                 <th>Status Verifikasi</th>
                 <th>Status Aduan</th>
-                <th>Aksi</th>
+                <!-- <th>Aksi</th> -->
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Bambang Pamungkis</td>
-                <td>BPJS Kesehatan</td>
-                <td>24 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Amanda Satyarini</td>
-                <td>BPJS Kesehatan</td>
-                <td>25 April 2016</td>
-                <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
-                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Brenda Marsalia</td>
-                <td>BPJS Kesehatan</td>
-                <td>26 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Bambang Pamungkis</td>
-                <td>BPJS Kesehatan</td>
-                <td>24 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Amanda Satyarini</td>
-                <td>BPJS Kesehatan</td>
-                <td>25 April 2016</td>
-                <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
-                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Brenda Marsalia</td>
-                <td>BPJS Kesehatan</td>
-                <td>26 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Bambang Pamungkis</td>
-                <td>BPJS Kesehatan</td>
-                <td>24 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>Amanda Satyarini</td>
-                <td>BPJS Kesehatan</td>
-                <td>25 April 2016</td>
-                <td><span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span></td>
-                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>9</td>
-                <td>Brenda Marsalia</td>
-                <td>BPJS Kesehatan</td>
-                <td>26 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>10</td>
-                <td>Bambang Pamungkis</td>
-                <td>BPJS Kesehatan</td>
-                <td>24 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>11</td>
-                <td>Amanda Satyarini</td>
-                <td>BPJS Kesehatan</td>
-                <td>25 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
-              <tr>
-                <td>12</td>
-                <td>Brenda Marsalia</td>
-                <td>BPJS Kesehatan</td>
-                <td>26 April 2016</td>
-                <td><span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span></td>
-                <td><span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span></td>
-                <td>
-                  <a href="{{url('detailpengaduan')}}" class="btn btn-xs btn-success">Lihat</a>
-                </td>
-              </tr>
+              <?php $pageget = 1; ?>
+
+              @foreach($data['getmasterskpdtopik'] as $key)
+                <tr>
+                  <td>{{ $pageget }}</td>
+                  <td>{{ $key->nama }}</td>
+                  <td>{{ $key->nama_topik }}</td>
+                  <td>
+                    <?php
+                      $date = $key->created_at;
+                      $justdate = substr($date, 0, 10);
+                      $explode = explode("-", $justdate);
+                      echo $explode[2]."-".$explode[1]."-".$explode[0];
+                    ?>
+                  </td>
+                  <td>
+                    @if($key->flag_verifikasi==0)
+                      <span class="label bg-yellow"><i class="fa fa-exclamation-triangle"></i> &nbsp;Belum Diverifikasi</span>
+                    @elseif($key->flag_verifikasi==1)
+                      <span class="label bg-teal"><i class="fa fa-check"></i> &nbsp;Telah Diverifikasi</span>
+                    @endif
+                  </td>
+                  <td>
+                    @if($key->flag_tanggap==0)
+                      <span class="label bg-red"><i class="fa fa-close"></i> &nbsp;Belum Ditanggapi</span>
+                    @elseif($key->flag_tanggap==1)
+                      <span class="label bg-primary"><i class="fa fa-check"></i> &nbsp;Telah Ditanggapi</span>
+                    @endif
+                  </td>
+                  <!-- <td>
+                    <a href="{{url('detailpengaduan/show', $key->id_pengaduan)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
+                  </td> -->
+                </tr>
+                <?php $pageget++; ?>
+              @endforeach
             </tbody>
           </table>
         </div><!-- /.box-body -->

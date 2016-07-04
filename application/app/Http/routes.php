@@ -132,13 +132,15 @@ Route::resource('detailpengaduan', 'DetailPengaduanController');
 Route::resource('lihatpengaduan', 'LihatPengaduanController');
 
 
-Route::get('pengaduanbytopik', function(){
-  return view('pages.pengaduanbytopik');
-});
+// Route::get('pengaduanbytopik', function(){
+//   return view('pages.pengaduanbytopik');
+// });
 
 // Route::get('wargaprofile', function(){
 //   return view('pages.wargaprofile');
 // });
+Route::get('pengaduanbytopik/show/{id}', 'PengaduanByTopikController@show');
+
 Route::get('wargaprofile/show/{id}', 'WargaProfileController@show');
 
 Route::get('datawarga', function(){
