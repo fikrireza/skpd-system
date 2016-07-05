@@ -161,3 +161,4 @@ Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getA
 Route::get('admin/slider', ['as' => 'slider', 'uses' => 'SlidersController@index']);
 Route::post('admin/slider', 'SlidersController@upload');
 Route::get('admin/slider/{id}', 'SlidersController@update');
+Route::get('admin/deleteslider/{id}', 'SlidersController@hapus');

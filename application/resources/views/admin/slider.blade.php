@@ -21,6 +21,25 @@
     });
   }, 5000);
 </script>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Hapus Data Slider</h4>
+      </div>
+      <div class="modal-body">
+        <p>Apakah anda yakin untuk menghapus data ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
+        <a class="btn btn-danger  btn-flat" id="sethapus">Ya, saya yakin</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 {{-- <!-- END DURATION TIME ALERT --> --}}
 <div class="row">
   <!-- START MESSAGE -->
@@ -79,18 +98,38 @@
             <th>Gambar</th>
             <th>User</th>
             <th>Status</th>
+            <th>Aksi</th>
           </tr>
           <?php $no = 1;?>
           @foreach($sliders as $slider)
           <tr>
             <td>{{ $no++ }}</td>
-            <td><img src="{{ asset('/images/'.$slider->url_gambar) }}" width="40%"></td>
+            <td><img src="{{ asset('/images/'.$slider->url_gambar) }}" width="200px"></td>
             <td>{{ $slider->nama }}</td>
-            <td>@if($slider->flag_slider == 1)
-                  <a href="{{ url('/admin/slider', $slider->id) }}"><button type="button" class="btn btn">Aktif</button></a>
+            <td>
+                @if($slider->flag_slider == 1)
+                  <span class="label bg-primary">
+                    Aktif
+                  </span>
                 @elseif($slider->flag_slider == 0)
-                  <a href="{{ url('/admin/slider', $slider->id) }}"><button type="button" class="btn btn-danger">Tidak Aktif</button></a>
+                  <span class="label bg-red">
+                    Tidak Aktif
+                  </span>
                 @endif
+            </td>
+            <td>
+              @if($slider->flag_slider == 1)
+                <span data-toggle="tooltip" title="Non Aktifkan">
+                  <a href="{{ url('/admin/slider', $slider->id) }}" class="btn btn-default bg-marron btn-flat btn-xs"><i class="fa fa-ban"></i></a>
+                </span>
+              @elseif($slider->flag_slider == 0)
+                <span data-toggle="tooltip" title="Aktifkan">
+                  <a href="{{ url('/admin/slider', $slider->id) }}" class="btn btn-primary btn-flat btn-xs"><i class="fa fa-check"></i></a>
+                </span>
+              @endif
+              <span data-toggle="tooltip" title="Hapus">
+                <a href="#" data-value="{{ $slider->id }}" class="btn btn-danger bg-marron btn-flat btn-xs hapus" data-toggle="modal" data-target="#myModal"><i class="fa fa-close"></i></a>
+              </span>
             </td>
           <tr>
           @endforeach
@@ -118,4 +157,13 @@
 <script src="{{ asset('plugins/fastclick/fastclick.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/app.min.js') }}"></script>
+
+<script>
+  $(function(){
+    $('a.hapus').click(function(){
+      var a = $(this).data('value');
+      $('#sethapus').attr('href', "{{ url('/') }}/admin/deleteslider/"+a);
+    });
+  });
+</script>
 @stop

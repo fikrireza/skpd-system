@@ -43,7 +43,7 @@ class SlidersController extends Controller
               'flag_slider' => 1
     ]);
 
-    return redirect()->route('slider')->with('message', 'Slider Berhasil DiUpload');
+    return redirect()->route('slider')->with('message', 'Berhasil mengupload data slider.');
   }
 
   public function update($id){
@@ -52,12 +52,19 @@ class SlidersController extends Controller
 		if($Slider->flag_slider == 1){
 			$Slider->flag_slider = 0;
 			$Slider->save();
-      return redirect('/admin/slider')->with('message', 'Slider Telah Di Non Aktifkan');
+      return redirect('/admin/slider')->with('message', 'Berhasil menonaktifkan data slider');
 		}elseif($Slider->flag_slider == 0){
 			$Slider->flag_slider = 1;
 			$Slider->save();
-      return redirect('/admin/slider')->with('message', 'Slider Telah DiAktifkan');
+      return redirect('/admin/slider')->with('message', 'Berhasil mengaktifkan data slider.');
 		}
 	}
+
+  public function hapus($id){
+    $get = Sliders::find($id);
+    $get->delete();
+
+    return redirect('/admin/slider')->with('message', 'Berhasil menghapus data slider.');
+  }
 
 }
