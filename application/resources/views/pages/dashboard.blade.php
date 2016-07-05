@@ -160,7 +160,7 @@
                       Nama Dirahasiakan
                     @endif
                   </a>
-                    {{$key->isi_pengaduan}}
+                    <?php echo strip_tags($key->isi_pengaduan); ?>
                 </p>
                 <div class="attachment">
                   <b>Data Pendukung</b>
@@ -234,8 +234,8 @@
                       Nama Dirahasiakan
                     @endif
                   </a>
-                    {{$key->isi_pengaduan}}
-                </p>
+                    <?php echo strip_tags($key->isi_pengaduan); ?>
+                  </p>
                 <div class="attachment">
                   <b>Data Pendukung</b>
                   <p class="text-muted">
