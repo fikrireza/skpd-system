@@ -228,32 +228,44 @@
                 </p>
                 <div class="attachment">
                   <b>Data Pendukung</b>
-                  <p class="text-muted">'
-                      @foreach($getdokumen as $dok)
-                          @if($key->id === $dok->pengaduan_id)
-                            {{$dok->url_dokumen}}
+                  <p class="text-muted">
+                    <?php $cekdok="0"; ?>
+                    @foreach($getdokumen as $dok)
+                      @if($key->id === $dok->pengaduan_id)
+                        <?php $cekdok="1"; ?>
+                        <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm">
+                          @if (strpos($dok->url_dokumen, '.pdf'))
+                            <img width="5%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
+                          @elseif(strpos($dok->url_dokumen, '.png'))
+                            <img width="5%" src="{{ asset('dist\img\png.png') }}" alt="..." class="margin">
+                          @elseif(strpos($dok->url_dokumen, '.jpg'))
+                            <img width="5%" src="{{ asset('dist\img\jpg.png') }}" alt="..." class="margin">
+                          @elseif(strpos($dok->url_dokumen, '.docx'))
+                            <img width="5%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                          @elseif(strpos($dok->url_dokumen, '.xlsx'))
+                            <img width="5%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
                           @endif
-                      @endforeach
+                        </a>
+                      @endif
+                    @endforeach
+                    @if($cekdok=="0")
+                      Data tidak tersedia.
+                    @endif
                   </p>
                   <div class="pull-right">
-                    @foreach($getdokumen as $dok)
-                        @if($key->id === $dok->pengaduan_id)
-                          <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                        @endif
-                    @endforeach
                     @if($key->flag_tanggap==0)
                       <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-warning btn-sm btn-flat">Belum ditanggapi</a>
                     @else
                       <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-success btn-sm btn-flat">Sudah ditanggapi</a>
                     @endif
 
-                    @if(Session::has('akses'))
+                    {{-- @if(Session::has('akses'))
                       @if(Session::get('akses')=="administrator")
                         <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
                       @else
                         <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
                       @endif
-                    @endif
+                    @endif --}}
                   </div>
                 </div><!-- /.attachment -->
               </div><!-- /.item -->

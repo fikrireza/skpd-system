@@ -31,12 +31,13 @@ class DashboardController extends Controller
                           ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                           ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                           ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                          ->select('*', 'pengaduan.id','users.id as iduser')
+                          ->select('users.nama', 'users.url_photo', 'pengaduan.id', 'pengaduan.isi_pengaduan','users.id as iduser', 'pengaduan.flag_anonim', 'pengaduan.created_at', 'pengaduan.flag_tanggap')
                           ->where('master_skpd.id', $userid->id_skpd)
                           ->where('flag_mutasi', '0')
                           ->orderby('pengaduan.created_at', 'desc')
                           ->limit(3)->get();
       // dd($getlihatpengaduan);
+
       $getdokumen = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')

@@ -22,7 +22,7 @@ class WargaController extends Controller
    */
   public function __construct()
   {
-    $this->middleware('isWarga');
+    // $this->middleware('isWarga');
   }
 
   /**
