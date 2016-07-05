@@ -40,37 +40,37 @@
     </div>
     <div class="col-md-5">
       <!-- Horizontal Form -->
-      @if(!isset($data['binddatapengaduan']))
-        <div class="alert alert-info">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-          <h4>Informasi Untuk Anda</h4>
-          <ul>
-            <li>
-              <p>Dengan menggunakan fitur ini, anda dapat menanggapi setiap pengaduan warga dengan tanpa melakukan verifikasi pengaduan terlebih dahulu.</p>
-            </li>
-            <li>
-              <p>Jika anda hanya ingin melakukan verifikasi tanpa melakukan penanggapan, anda dapat menggunakan fitur verifikasi data pada menu <b>Lihat Semua Pengaduan >> Lihat Data Pengaduan >> Verifikasi Pengaduan.</b></p>
-            </li>
-            <li>
-              <p>Jika anda mendapati pengaduan yang tidak sesuai dengan topik pengaduan anda, maka anda bisa menggunakan fitur mutasi pengaduan pada menu <b>Lihat Semua Pengaduan >> Lihat Data Pengaduan >> Mutasi Pengaduan.</b></p>
-            </li>
-            <li>
-              <p>Untuk menanggapi pengaduan, silahkan lakukan binding data dengan cara klik tombol <b>Lihat Data Pengaduan</b> pada tabel disamping.</p>
-            </li>
-          </ul>
-        </div>
-      @else
         <div class="box box-widget">
           <div class='box-header with-border'>
             <div class='user-block'>
-              <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
+                @if(isset($data['binddatapengaduan']))
+                  @if($data['binddatapengaduan']->user->url_photo == null || $data['binddatapengaduan']->flag_anonim==1)
+                    <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
+                  @else
+                    <img class="img-circle" src="{{ asset('/images/'.$data['binddatapengaduan']->user->url_photo) }}" alt="{{$data['binddatapengaduan']->user->nama}}">
+                  @endif
+                @elseif(isset($data['binddatapengaduanmutasi']))
+                  @if($data['getmutasi'][0]->url_photo == null || $data['getmutasi'][0]->flag_anonim==1)
+                    <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
+                  @else
+                    <img class="img-circle" src="{{ asset('/images/'.$data['getmutasi'][0]->url_photo) }}" alt="{{$data['getmutasi'][0]->nama}}">
+                  @endif
+                @else
+                    <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
+                @endif
               <span class='username'><a href="#">
                 @if(isset($data['binddatapengaduan']))
-                  {{$data['binddatapengaduan']->user->nama}}
+                  @if($data['binddatapengaduan']->flag_anonim==0)
+                    {{$data['binddatapengaduan']->user->nama}}
+                  @else
+                    Nama Dirahasiakan
+                  @endif
                 @elseif(isset($data['binddatamutasi']))
-                  {{$data['getmutasi'][0]->nama}}
-                @else
-                  Nama Pengaduan
+                  @if($data['binddatapengaduanmutasi']->flag_anonim==0)
+                    {{$data['getmutasi'][0]->nama}}
+                  @else
+                    Nama Dirahasiakan
+                  @endif
                 @endif
               </a></span>
               <span class='description'>
@@ -117,14 +117,37 @@
               @endif
             </p>
             <!-- Attachment -->
-            <div class="attachment-block clearfix">
-              <b>Data Pendukung</b><br>
-              <i class="text-muted">gambar.jpg</i>
-              <div class="pull-right">
-                <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
+            @if($data['getdokumen'] != null)
+              @if(isset($data['binddatapengaduan']))
+                <div class="attachment-block clearfix">
+                  <b>Data Pendukung</b><br>
+                    <i class="text-muted">{{$data['getdokumen'][0]->url_dokumen}}</i>
+                  <div class="pull-right">
+                    <a href="{{ asset('\..\documents').'/'.$data['getdokumen'][0]->url_dokumen}}" download="{{$data['getdokumen'][0]->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                  </div>
+                </div><!-- /.attachment-block -->
+              @elseif(isset($data['binddatapengaduanmutasi']))
+                <div class="attachment-block clearfix">
+                <b>Data Pendukung</b><br>
+                  @foreach($data['getdokumen'] as $dok)
+                      @if($data['binddatamutasi']->id_pengaduan === $dok->pengaduan_id)
+                        <i class="text-muted">{{$dok->url_dokumen}}</i>
+                      @endif
+                  @endforeach
+                  @foreach($data['getdokumen'] as $dok)
+                    @if($data['binddatamutasi']->id_pengaduan === $dok->pengaduan_id)
+                      <div class="pull-right">
+                        <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                      </div>
+                      @endif
+                  @endforeach
+                </div><!-- /.attachment-block -->
+              @endif
+              @else
+              <div class="attachment-block clearfix">
+                <b>Data Pendukung</b><br>
               </div>
-            </div><!-- /.attachment-block -->
-
+            @endif
           </div><!-- /.box-body -->
           <div class="box-footer">
             @if(isset($data['binddatapengaduan']))
@@ -156,6 +179,7 @@
                   @endforeach --}}
                   <textarea name="tanggapanmutasi" readonly="true" class="form-control" rows="5" cols="40" style="border:1px solid #00a65a;margin-top:5px;">{{$data['binddatamutasi']->pesan_mutasi}}</textarea>
                 @endif
+                <br>
                 <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."
                 @if($errors->has('tanggapan'))
                   style="border:1px solid #DD4B39;margin-top:5px;"
@@ -181,7 +205,6 @@
             </form>
           </div><!-- /.box-footer -->
         </div><!-- /.box -->
-      @endif
     </div><!--/.col -->
 
     <div class="col-md-7">
@@ -227,7 +250,11 @@
                     @foreach($data['getdatapengaduan'] as $key)
                       <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $key->nama }}</td>
+                        @if($key->flag_anonim==0)
+                          <td>{{ $key->nama }}</td>
+                        @elseif($key->flag_anonim==1)
+                            <td>Nama Dirahasiakan</td>
+                        @endif
                         <td>{{ $key->nama_topik }}</td>
                         <td>{{ $key->created_at }}</td>
                         <td>
@@ -277,7 +304,11 @@
                   @foreach($data['getmutasi'] as $key)
                     <tr>
                       <td>{{ $no }}</td>
-                      <td>{{ $key->nama }}</td>
+                      @if($key->flag_anonim==0)
+                        <td>{{ $key->nama }}</td>
+                      @elseif($key->flag_anonim==1)
+                          <td>Nama Dirahasiakan</td>
+                      @endif
                       <td>{{ $key->nama_topik }}</td>
                       <td>{{ $key->created_at }}</td>
                       <td>{{ $key->nama_skpd }}</td>

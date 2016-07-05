@@ -37,6 +37,13 @@ class DashboardController extends Controller
                           ->orderby('pengaduan.created_at', 'desc')
                           ->limit(3)->get();
       // dd($getlihatpengaduan);
+      $getdokumen = DB::table('pengaduan')
+                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*')
+                      // ->where('pengaduan.warga_id', 'users.id')
+                      ->get();
+                      // dd($getdokumen);
       $getcountpengaduanall = LihatPengaduanModel::where('flag_mutasi', '0')->count('warga_id');
       $getcountpengaduan = DB::table('pengaduan')
                       ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -82,18 +89,18 @@ class DashboardController extends Controller
                   ->where('level', '1')->count('activated');
       // dd($recordusers);
       // $getmasterskpd = MasterSKPD::select('*')->paginate(10);
-         $getmasterskpd = DB::table('master_skpd')
-                     ->leftJoin('topik_pengaduan', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
-                     ->leftJoin('pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
-                     ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd', DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id')
-                     ->groupBy('master_skpd.id')
-                     ->paginate(7);
-
-      // dd($getmasterskpd);
+      $getmasterskpd = DB::table('master_skpd')
+                   ->leftJoin('topik_pengaduan', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                   ->leftJoin('pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                   ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd',
+                   DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id', 'topik_id')
+                   ->groupBy('master_skpd.id')
+                   ->paginate(7);
+  // dd($getmasterskpd);
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
-      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd'));
+      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getdokumen'));
     }
 
     /**

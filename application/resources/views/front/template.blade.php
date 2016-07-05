@@ -2,7 +2,7 @@
 <html>
   <head>
     @yield('title')
-    @include('includes.head')
+    @include('front.head')
     @yield('headScript')
     <link rel="stylesheet" href="{{asset('dist/css/customcss.css')}}" media="screen" title="no title" charset="utf-8">
   </head>
@@ -51,6 +51,6 @@
     <script src="{{ asset('/dist/js/app.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('/dist/js/demo.js') }}"></script>
-    @yield('script')
+@yield('script')
   </body>
 </html>

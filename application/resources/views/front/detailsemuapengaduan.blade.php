@@ -29,7 +29,7 @@
           @endif
           </span>
         </div>
-        <p>{{ $detail->isi_pengaduan }}</p>
+        <p>{!! $detail->isi_pengaduan !!}</p>
 
         @if($tanggapan->isEmpty())
 

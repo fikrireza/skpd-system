@@ -37,6 +37,7 @@ class LihatPengaduanController extends Controller
                     ->select('*', 'pengaduan.id', 'users.id as iduser')
                     ->orderby('pengaduan.created_at', 'desc')
                     ->get();
+                    // dd($getdatapengaduan);
       return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan', 'getdatapengaduanall'));
     }
 

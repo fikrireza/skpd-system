@@ -44,7 +44,11 @@
                   @foreach($data['getdatapengaduanall'] as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
-                  <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
+                  @if($key->flag_anonim==0)
+                    <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
+                  @elseif($key->flag_anonim==1)
+                    <td><a href="#">Nama Dirahasiakan</a></td>
+                  @endif
                   <td>{{ $key->nama_topik }}</td>
                   <td>
                     <?php
@@ -84,7 +88,11 @@
               @foreach($data['getdatapengaduan'] as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
-                  <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
+                  @if($key->flag_anonim==0)
+                      <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
+                  @elseif($key->flag_anonim==1)
+                    <td><a href="#">Nama Dirahasiakan</a></td>
+                  @endif
                   <td>{{ $key->nama_topik }}</td>
                   <td>
                     <?php

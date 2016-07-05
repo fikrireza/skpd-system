@@ -110,8 +110,16 @@
       <div class="box box-widget">
         <div class='box-header with-border'>
           <div class='user-block'>
-            <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
-            <span class='username'><a href="#">{{$binddatapengaduan->user->nama}}</a></span>
+            @if($binddatapengaduan->user->url_photo == null || $binddatapengaduan->flag_anonim==1)
+              <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
+            @else
+              <img class="img-circle" src="{{ asset('/images/'.$binddatapengaduan->user->url_photo) }}" alt="{{$binddatapengaduan->user->nama}}">
+            @endif
+            @if($binddatapengaduan->flag_anonim==0)
+                <span class='username'><a href="#">{{$binddatapengaduan->user->nama}}</a></span>
+            @else
+              <span class='username'><a href="#">Nama Dirahasiakan</a></span>
+            @endif
             <span class='description'>{{$binddatapengaduan->created_at}} | {{$binddatapengaduan->topik->nama_topik}}</span>
           </div><!-- /.user-block -->
           <div class='box-tools'>
@@ -128,7 +136,12 @@
           <!-- Attachment -->
           <div class="attachment-block clearfix">
             <b>Data Pendukung</b><br>
-            <i class="text-muted">gambar.jpg</i>
+            @foreach($getdokumen as $dok)
+                {{-- @if($binddatapengaduan->id === $dok->pengaduan_id) --}}
+              @if($binddatapengaduan->id === $dok->pengaduan_id)
+                <i class="text-muted">{{$dok->url_dokumen}}</i>
+              @endif
+            @endforeach
             <div class="pull-right">
               {{-- button dibawah cuma buat user skpd cuuuy, akses admin ga bisa --}}
               @if(Auth::user()->level=="2")
@@ -142,7 +155,11 @@
               @endif
 
               {{-- button download, user skpd sama admin bisa pake --}}
-              <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
+              @foreach($getdokumen as $dok)
+                  @if($binddatapengaduan->id === $dok->pengaduan_id)
+                    <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
+                  @endif
+              @endforeach
             </div>
           </div><!-- /.attachment-block -->
 

@@ -140,10 +140,10 @@
                   <div class="col-sm-9">
                     <div class="radio">
                       <label>
-                        <input type="radio" name="jeniskelamin" id="optionsRadios1" value="L" @if($profiles->jeniskelamin == "L")checked="checked"@endif>Pria
+                        <input type="radio" name="jeniskelamin" class="minimal" value="L" @if($profiles->jeniskelamin == "L")checked="checked"@endif>Pria
                       </label>
                       <label>
-                        <input type="radio" name="jeniskelamin" id="optionsRadios2" value="P" @if($profiles->jeniskelamin == "P")checked="checked"@endif>Wanita
+                        <input type="radio" name="jeniskelamin" class="minimal" value="P" @if($profiles->jeniskelamin == "P")checked="checked"@endif>Wanita
                       </label>
                     </div>
                     @if($errors->has('jeniskelamin'))
@@ -278,4 +278,20 @@
       </div>
     </div>
   </div>
+@stop
+
+@section('script')
+  <!-- iCheck 1.0.1 -->
+  <script src="{{ asset('/plugins/iCheck/icheck.min.js') }}"></script>
+  <script>
+  $('input[type="radio"].minimal').iCheck({
+          radioClass: 'iradio_minimal-blue'
+  });
+  </script>
+
+  <script src="{{ asset('/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('/plugins/datepicker/locales/bootstrap-datepicker.id.js') }}"></script>
+  <script>
+  $('#tgl_lahir').datepicker();
+  </script>
 @stop

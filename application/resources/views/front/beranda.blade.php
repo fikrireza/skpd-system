@@ -58,7 +58,7 @@
               <span class="description">{{ $topik->nama_topik}} - {{ \Carbon\Carbon::parse($topik->created_at)->format('d-M-y H:i')}}</span>
             </div><!-- /.user-block -->
             <p><b>{{ $topik->judul_pengaduan }}</b></p>
-            <p>{{ $topik->isi_pengaduan }}</p>
+            <p>{!! $topik->isi_pengaduan !!}</p>
             <ul class="list-inline">
               @if($topik->flag_verifikasi == 1)
                 <li><a href="#" class="link-black text-sm"><span class="label bg-green"><span class="glyphicon glyphicon-ok"></span> &nbsp;Ter-Verifikasi</span></a></li>
@@ -70,7 +70,7 @@
               @if($topik->warga_id == Auth::user()->id)
               <li class="pull-right"><a href="{{ url('pengaduansaya/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
               @else
-              <li class="pull-right"><a href="{{ url('pengaduan/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
+              <li class="pull-right"><a href="{{ url('semuapengaduan/detail', $topik->slug) }}"><button type="submit" class="btn btn-xs">Selengkapnya</button></a></li>
               @endif
             </ul>
           </div>

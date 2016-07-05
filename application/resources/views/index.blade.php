@@ -288,7 +288,8 @@
                           {{$topik->nama}}
                         @endif</span>
                         <span class="product-description-custom">
-                        {{str_limit($topik->isi_pengaduan, 60)}}
+                        <?php $isi_pengaduan = strip_tags($topik->isi_pengaduan); ?>
+                        {!! str_limit($isi_pengaduan, 60) !!}
                         </span>
                         <a href="{{url('detail/pengaduan/'.$topik->slug)}}">
                           [Selengkapnya]

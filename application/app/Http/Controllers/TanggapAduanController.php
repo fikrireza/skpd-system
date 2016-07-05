@@ -46,7 +46,12 @@ class TanggapAduanController extends Controller
                       ->orderby('mutasi.created_at', 'desc')
                       ->paginate(10);
                       // dd($getmutasi);
-      return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
+      $getdokumen = DB::table('pengaduan')
+                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*')
+                      ->get();
+      return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi' , 'getdokumen'));
     }
 
     public function store(TanggapanRequest $request)
@@ -108,9 +113,17 @@ class TanggapAduanController extends Controller
                         ->where('mutasi.id_userskpd', $userid->id_skpd)
                         ->orderby('mutasi.created_at', 'desc')
                         ->paginate(10);
+        $getdokumen = DB::table('pengaduan')
+                        ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                        ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                        ->select('*')
+                        ->where('dokumen_pengaduan.pengaduan_id', $id)
+                        ->get();
         $data['getmutasi'] = $getmutasi;
         $binddatapengaduan = LihatPengaduanModel::find($id);
         $data['binddatapengaduan'] = $binddatapengaduan;
+        $data['getdokumen'] = $getdokumen;
+
         return view('pages/tanggapipengaduan')->with('data', $data);
     }
 
@@ -163,11 +176,20 @@ class TanggapAduanController extends Controller
                         ->paginate(10);
       $data['getmutasi'] = $getmutasi;
 
+      $getdokumen = DB::table('pengaduan')
+                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*')
+                      // ->where('dokumen_pengaduan.pengaduan_id', $id)
+                      ->get();
+
       $binddatapengaduan = LihatPengaduanModel::find($id);
       $data['binddatapengaduanmutasi'] = $binddatapengaduan;
 
       $binddatamutasi = DataMutasiModel::find($id);
       $data['binddatamutasi'] = $binddatamutasi;
+
+      $data['getdokumen'] = $getdokumen;
 
         // dd($data);
 

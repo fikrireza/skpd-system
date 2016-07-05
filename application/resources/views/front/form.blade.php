@@ -1,7 +1,3 @@
-@section('headScript')
-<link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
-@stop
-
 <div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title">Ajukan Keluhan Anda</h3>
@@ -13,11 +9,16 @@
     <div class="box-body">
       <div class="form-group{{ $errors->has('topik') ? 'has-error' : '' }}">
         <label>Kategori Pengaduan</label>
-        {{-- {!! Form::select('topik', $topiks, null, ['class' => 'form-control select2', 'placeholder' => '-- Pilih Kategori --']) !!} --}}
-        <select class="form-control select2" name="topik">
+        <select class="form-control select2" name="topik" style="width: 100%;">
           <option value="">-- Pilih Kategori --</option>
           @foreach($topiks as $isi)
-          <option value="{{ $isi->id}}">{{ $isi->nama_skpd}} - {{ $isi->nama_topik}}</option>
+            <optgroup label="{{ $isi->nama_skpd }}">
+              @foreach($topikgroup as $isis)
+                @if($isi->nama_skpd === $isis->nama_skpd)
+                  <option value="{{ $isis->id}}">{{ $isis->nama_topik}}</option>
+                @endif
+              @endforeach
+            </optgroup>
           @endforeach
         </select>
         @if($errors->has('topik'))
@@ -37,7 +38,7 @@
       </div>
       <div class="form-group{{ $errors->has('isi') ? 'has-error' : '' }}">
         <label>Tuliskan Pengaduan Anda</label>
-        <textarea class="form-control" rows="5" name="isi" placeholder="Apa Laporan Anda...?">{{ old('isi')}}</textarea>
+          <textarea class="textarea" rows="5" name="isi" placeholder="Apa Laporan Anda...?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('isi')}}</textarea>
         @if($errors->has('isi'))
           <span class="help-block">
             <strong>{{ $errors->first('isi')}}</strong>
@@ -76,8 +77,22 @@
 @section('script')
   <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
   <script type="text/javascript">
-    $(document).ready(function(){
-      $(".select2").select2();
+  $(".select2").select2();
+  </script>
+  <script src="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+  <script>
+    $(function () {
+      $(".textarea").wysihtml5({
+        toolbar: {
+          "font-styles": false, //Font styling, e.g. h1, h2, etc.
+          "emphasis": false, //Italics, bold, etc.
+          "lists": false, //(Un)ordered lists, e.g. Bullets, Numbers.
+          "html": true, //Button which allows you to edit the generated HTML.
+          "link": false, //Button to insert a link.
+          "image": false, //Button to insert an image.
+          "color": true //Button to change color of font
+       }
+      });
     });
   </script>
 @stop
