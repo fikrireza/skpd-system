@@ -8,7 +8,13 @@
 @section('breadcrumb')
   <h1>
     Profile Saya
-    <small>Halaman profil User SKPD</small>
+    <small>Halaman Profil
+        @if(Auth::user()->level=="0")
+          {{ "Administrator" }}
+        @else
+          {{ "User SKPD" }}
+        @endif
+    </small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
@@ -89,9 +95,20 @@
         <!-- Profile Image -->
         <div class="box box-primary">
           <div class="box-body box-profile" style="height:265px;">
-            <img class="profile-user-img img-responsive img-circle" src="{{ url('/') }}/images/userdefault.png" alt="User profile picture">
-            <h3 class="profile-username text-center">Anton</h3>
-            <p class="text-muted text-center">User SKPD</p>
+            @if($getprofile->url_photo=="")
+              <img class="profile-user-img img-responsive img-circle" src="{{ url('/') }}/images/userdefault.png" alt="User profile picture">
+            @else
+              ada
+              <img class="profile-user-img img-responsive img-circle" src="{{ url('/') }}/images/{{$getprofile->url_photo}}" alt="User profile picture">
+            @endif
+            <h3 class="profile-username text-center">{{ $getprofile->nama }}</h3>
+            <p class="text-muted text-center">
+              @if(Auth::user()->level=="0")
+                {{ "Administrator" }}
+              @else
+                {{ "User SKPD" }}
+              @endif
+            </p>
 
             <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
@@ -105,29 +122,37 @@
           <div class="box-body">
             <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
             <p class="text-muted">
-              32760621129010001
+              {{ $getprofile->noktp }}
             </p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
             <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
-            <p class="text-muted">081289087875</p>
+            <p class="text-muted">{{ $getprofile->notelp }}</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
             <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
-            <p class="text-muted">anton@gmail.com</p>
+            <p class="text-muted">{{ $getprofile->email }}</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
             <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-            <p class="text-muted">Pria</p>
+            <p class="text-muted">
+              @if($getprofile->jeniskelamin=="L")
+                Pria
+              @else
+                Wanita
+              @endif
+            </p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
 
             <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+            <p class="text-muted">
+              {{ $getprofile->alamat }}
+            </p>
 
           </div><!-- /.box-body -->
         </div><!-- /.box -->
