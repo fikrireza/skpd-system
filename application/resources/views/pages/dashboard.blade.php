@@ -6,16 +6,12 @@
 
 @section('breadcrumb')
   <h1>
-    @if(Session::has('akses'))
-      @if(Session::get('akses')=="administrator")
-        Halaman Utama Administrator Utama
-      @elseif(Session::get('akses')=="kesehatan")
-        Halaman Utama Admin SKPD Kesehatan
-      @elseif(Session::get('akses')=="pendidikan")
-        Halaman Utama Admin SKPD Pendidikan
-      @endif
+    @if(Auth::user()->level=="0")
+      Halaman Utama Adminstrator
+    @else
+      Halaman Utama User SKPD
     @endif
-    <small>Data Statistik</small>
+    <small>Dashboard Panel</small>
   </h1>
   <ol class="breadcrumb">
     <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
@@ -308,12 +304,14 @@
             </div><!-- /.col -->
             <div class="col-md-6" style="padding-left:0px">
               <ul class="chart-legend clearfix">
-                <li><i class="fa fa-circle-o text-red"></i> E-KTP &amp; KK</li>
-                <li><i class="fa fa-circle-o text-green"></i> Lalu Lintas</li>
-                <li><i class="fa fa-circle-o text-yellow"></i> Perizinan</li>
-                <li><i class="fa fa-circle-o text-aqua"></i> Pendidikan</li>
-                <li><i class="fa fa-circle-o text-light-blue"></i> Kesehatan</li>
-                <li><i class="fa fa-circle-o text-gray"></i> Lainnya</li>
+                <?php
+                  $color = ['text-red','text-green','text-yellow','text-aqua','text-light-blue','text-gray'];
+                  $i = 0;
+                ?>
+                @foreach($getitemforpiechart as $key)
+                  <li><i class="fa fa-circle-o <?php echo $color[$i]; ?>"></i> {{ $key->nama_skpd }} </li>
+                  <?php $i++; ?>
+                @endforeach
               </ul>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -383,6 +381,7 @@
           <a class="btn btn-primary" href="{{url('datawarga')}}">
             <i class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Semua Identitas Pelapor
           </a>
+
         </div><!-- /.box-footer -->
       </div><!--/.box -->
     </section><!-- right col -->
@@ -426,16 +425,78 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   {{-- <script src="{{ asset('/dist/js/pages/dashboard.js') }}"></script> --}}
 
-  <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
-  {{-- @if(Session::has('akses'))
-    @if(Session::get('akses')=="kesehatan")
-      <script src="{{ asset('dist/js/pages/dashboardkesehatan.js') }}"></script>
-    @elseif(Session::get('akses')=="pendidikan")
-      <script src="{{ asset('dist/js/pages/dashboardpendidikan.js') }}"></script>
-    @elseif(Session::get('akses')=="administrator")
-      <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script>
-    @endif
-  @endif --}}
+  {{-- <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script> --}}
+  <script type="text/javascript">
+    $(function () {
+      'use strict';
+      var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+      var pieChart = new Chart(pieChartCanvas);
+
+      var pieOptions = {
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        //String - The colour of each segment stroke
+        segmentStrokeColor: "#fff",
+        //Number - The width of each segment stroke
+        segmentStrokeWidth: 1,
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        //Number - Amount of animation steps
+        animationSteps: 100,
+        //String - Animation easing effect
+        animationEasing: "easeOutBounce",
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: true,
+        //Boolean - Whether we animate scaling the Doughnut from the centre
+        animateScale: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+        //String - A legend template
+        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
+        //String - A tooltip template
+        tooltipTemplate: "<%=value %>"
+      };
+      //Create pie or douhnut chart
+      // You can switch between pie and douhnut using the method below.
+      // var PieData;
+        $.ajax({
+          type: "GET",
+          url: "{{ url('adminpiechart') }}"
+        })
+        .done(function( data ) {
+          // chart.setData(JSON.parse(data));
+          pieChart.Doughnut(data, pieOptions);
+        })
+        .fail(function() {
+          alert( "error parsing" );
+        });
+      //-----------------
+      //- END PIE CHART -
+      //-----------------
+
+      var area = new Morris.Area({
+        element: 'revenue-chart',
+        data: [
+          { y: '2015-01', a: 1, b: 3, c: 2, d: 6, e: 8 },
+          { y: '2015-02', a: 2,  b: 6, c: 8, d: 2, e: 3  },
+          { y: '2015-03', a: 5,  b: 2, c: 9, d: 5, e: 6  },
+          { y: '2015-04', a: 4,  b: 2, c: 3, d: 5, e: 8  },
+          { y: '2015-05', a: 7,  b: 7, c: 2, d: 8, e: 5  },
+          { y: '2015-06', a: 9,  b: 3, c: 7, d: 1, e: 2  },
+          { y: '2015-07', a: 7, b: 5, c: 8, d: 7, e: 1  }
+        ],
+        xkey: 'y',
+        ykeys: ['a', 'b', 'c', 'd', 'e'],
+        labels: ['Pelayanan', 'Kesehatan', 'Lalu Lintas', 'Pendidikan', 'Teknologi'],
+        lineColors: ['#605ca8', '#00a65a', '#3c8dbc', '#f39c12', '#D81B60'],
+        hideHover: 'auto'
+      });
+    });
+
+  </script>
+
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('/dist/js/demo.js') }}"></script>
 @stop

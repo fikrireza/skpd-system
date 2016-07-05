@@ -106,10 +106,19 @@ class DashboardController extends Controller
                    ->groupBy('master_skpd.id')
                    ->paginate(7);
   // dd($getmasterskpd);
+
+      $getitemforpiechart = DB::table('pengaduan')
+              ->join('topik_pengaduan', 'topik_pengaduan.id' , '=', 'pengaduan.topik_id')
+              ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+              ->select(DB::raw('count(*) as jumlahpengaduan'),'master_skpd.nama_skpd')
+              ->groupBy('master_skpd.nama_skpd')
+              ->limit(5)
+              ->get();
+      // dd($getitemforpiechart);
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
-      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getdokumen'));
+      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getdokumen','getitemforpiechart'));
     }
 
     /**
@@ -168,30 +177,28 @@ class DashboardController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function adminpiechart()
     {
+      $get = DB::table('pengaduan')
+              ->join('topik_pengaduan', 'topik_pengaduan.id' , '=', 'pengaduan.topik_id')
+              ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+              ->select(DB::raw('count(*) as jumlahpengaduan'),'master_skpd.nama_skpd')
+              ->groupBy('master_skpd.nama_skpd')
+              ->limit(5)
+              ->get();
 
+      $color = ['#f56954','#00a65a','#f39c12','#00c0ef','#3c8dbc','#d2d6de'];
+      $data = array();
+      $i = 0;
+      foreach ($get as $key) {
+          $data[$i] = [
+            "value" => $key->jumlahpengaduan,
+            "color" => $color[$i],
+            "highlight" => $color[$i],
+            "label" => $key->nama_skpd
+          ];
+          $i++;
+      }
+      return $data;
     }
-
-    public function bind($id)
-    {
-
-    }
-
-    public function getDataSKPD()
-    {
-
-    }
-
-    public function detailSKPD($id)
-    {
-
-    }
-
 }

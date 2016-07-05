@@ -22,7 +22,7 @@
       <!-- Horizontal Form -->
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Seluruh Data Pengaduan Untuk SKPD Kesehatan</h3>
+          <h3 class="box-title">Seluruh Data Pengaduan</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <table id="tabelpengaduan" class="table table-hover">

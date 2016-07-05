@@ -59,6 +59,9 @@ Route::get('/loginskpd', function () {
 Route::get('dashboard', ['as'=>'dashboard', function(){
   return view('pages/dashboard');
 }]);
+
+Route::get('adminpiechart', 'DashboardController@adminpiechart');
+
 Route::resource('dashboard', 'DashboardController');
 
 Route::get('header', ['as'=>'dashboard', function(){
