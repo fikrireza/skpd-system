@@ -85,12 +85,9 @@ class DetailPengaduanController extends Controller
       }
 
       $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
-      $getdokumen = DB::table('pengaduan')
-                      ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
-                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                      ->select('*')
+      $getdokumen = DB::table('dokumen_pengaduan')
+                      ->where('pengaduan_id', $id)
                       ->get();
-      // dd($tanggapanall);
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
       'tanggapan', 'tanggapanall', 'gettopik', 'getdokumen'));
     }
