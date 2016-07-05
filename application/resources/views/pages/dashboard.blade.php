@@ -422,80 +422,72 @@
   <script src="{{ asset('plugins/fastclick/fastclick.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('dist/js/app.min.js') }}"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  {{-- <script src="{{ asset('/dist/js/pages/dashboard.js') }}"></script> --}}
 
-  {{-- <script src="{{ asset('dist/js/pages/dashboard2.js') }}"></script> --}}
-  <script type="text/javascript">
-    $(function () {
-      'use strict';
-      var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
-      var pieChart = new Chart(pieChartCanvas);
+  @if(Auth::user()->level == "0")
+    <script type="text/javascript">
+      $(function () {
+        'use strict';
+        var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas);
 
-      var pieOptions = {
-        //Boolean - Whether we should show a stroke on each segment
-        segmentShowStroke: true,
-        //String - The colour of each segment stroke
-        segmentStrokeColor: "#fff",
-        //Number - The width of each segment stroke
-        segmentStrokeWidth: 1,
-        //Number - The percentage of the chart that we cut out of the middle
-        percentageInnerCutout: 50, // This is 0 for Pie charts
-        //Number - Amount of animation steps
-        animationSteps: 100,
-        //String - Animation easing effect
-        animationEasing: "easeOutBounce",
-        //Boolean - Whether we animate the rotation of the Doughnut
-        animateRotate: true,
-        //Boolean - Whether we animate scaling the Doughnut from the centre
-        animateScale: false,
-        //Boolean - whether to make the chart responsive to window resizing
-        responsive: true,
-        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-        maintainAspectRatio: false,
-        //String - A legend template
-        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
-        //String - A tooltip template
-        tooltipTemplate: "<%=value %>"
-      };
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      // var PieData;
+        var pieOptions = {
+          segmentShowStroke: true,
+          segmentStrokeColor: "#fff",
+          segmentStrokeWidth: 1,
+          percentageInnerCutout: 50,
+          animationSteps: 100,
+          animationEasing: "easeOutBounce",
+          animateRotate: true,
+          animateScale: false,
+          responsive: true,
+          maintainAspectRatio: false,
+          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
+          tooltipTemplate: "<%=value %>"
+        };
+
         $.ajax({
           type: "GET",
           url: "{{ url('adminpiechart') }}"
         })
         .done(function( data ) {
-          // chart.setData(JSON.parse(data));
           pieChart.Doughnut(data, pieOptions);
         })
         .fail(function() {
           alert( "error parsing" );
         });
-      //-----------------
-      //- END PIE CHART -
-      //-----------------
 
-      var area = new Morris.Area({
-        element: 'revenue-chart',
-        data: [
-          { y: '2015-01', a: 1, b: 3, c: 2, d: 6, e: 8 },
-          { y: '2015-02', a: 2,  b: 6, c: 8, d: 2, e: 3  },
-          { y: '2015-03', a: 5,  b: 2, c: 9, d: 5, e: 6  },
-          { y: '2015-04', a: 4,  b: 2, c: 3, d: 5, e: 8  },
-          { y: '2015-05', a: 7,  b: 7, c: 2, d: 8, e: 5  },
-          { y: '2015-06', a: 9,  b: 3, c: 7, d: 1, e: 2  },
-          { y: '2015-07', a: 7, b: 5, c: 8, d: 7, e: 1  }
-        ],
-        xkey: 'y',
-        ykeys: ['a', 'b', 'c', 'd', 'e'],
-        labels: ['Pelayanan', 'Kesehatan', 'Lalu Lintas', 'Pendidikan', 'Teknologi'],
-        lineColors: ['#605ca8', '#00a65a', '#3c8dbc', '#f39c12', '#D81B60'],
-        hideHover: 'auto'
+        $.ajax({
+          type: "GET",
+          url: "{{ url('adminareachart') }}"
+        })
+        .done(function( datax ) {
+          $.ajax({
+            type: "GET",
+            url: "{{ url('countpengaduanbyskpd') }}"
+          })
+          .done(function( dataxx ) {
+            var area = new Morris.Area({
+              element: 'revenue-chart',
+              data: datax,
+              xkey: 'y',
+              ykeys: ['a', 'b', 'c', 'd', 'e'],
+              labels: [dataxx[0], dataxx[1], dataxx[2], dataxx[3], dataxx[4]],
+              lineColors: ['#605ca8', '#00a65a', '#3c8dbc', '#f39c12', '#D81B60'],
+              hideHover: 'auto'
+            });
+          })
+          .fail(function() {
+            alert( "error parsing" );
+          });
+        })
+        .fail(function() {
+          alert( "error parsing" );
+        });
+
+
       });
-    });
-
-  </script>
+    </script>
+  @endif
 
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('/dist/js/demo.js') }}"></script>

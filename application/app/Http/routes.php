@@ -61,6 +61,8 @@ Route::get('dashboard', ['as'=>'dashboard', function(){
 }]);
 
 Route::get('adminpiechart', 'DashboardController@adminpiechart');
+Route::get('adminareachart', 'DashboardController@adminareachart');
+Route::get('countpengaduanbyskpd', 'DashboardController@countpengaduanbyskpd');
 
 Route::resource('dashboard', 'DashboardController');
 

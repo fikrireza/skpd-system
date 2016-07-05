@@ -96,8 +96,7 @@ class DashboardController extends Controller
       $recordusers = DB::table('users')->select(DB::raw('*'))
                   ->whereRaw('Date(created_at) = CURDATE()')
                   ->where('level', '1')->count('activated');
-      // dd($recordusers);
-      // $getmasterskpd = MasterSKPD::select('*')->paginate(10);
+
       $getmasterskpd = DB::table('master_skpd')
                    ->leftJoin('topik_pengaduan', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
                    ->leftJoin('pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
@@ -105,7 +104,6 @@ class DashboardController extends Controller
                    DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id', 'topik_id')
                    ->groupBy('master_skpd.id')
                    ->paginate(7);
-  // dd($getmasterskpd);
 
       $getitemforpiechart = DB::table('pengaduan')
               ->join('topik_pengaduan', 'topik_pengaduan.id' , '=', 'pengaduan.topik_id')
@@ -114,7 +112,8 @@ class DashboardController extends Controller
               ->groupBy('master_skpd.nama_skpd')
               ->limit(5)
               ->get();
-      // dd($getitemforpiechart);
+
+
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
@@ -200,5 +199,52 @@ class DashboardController extends Controller
           $i++;
       }
       return $data;
+    }
+
+    public function adminareachart()
+    {
+      $getbignumber = DB::table('master_skpd')
+                        ->leftJoin('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                        ->leftJoin('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                        ->select(DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.nama_skpd')
+                        ->groupBy('master_skpd.nama_skpd')
+                        ->orderby('jumlahpengaduan', 'desc')
+                        ->limit(5)->get();
+
+      $getnamaskpd = array();
+      $i = 0;
+      foreach ($getbignumber as $key) {
+        $getnamaskpd[$i] = $key->nama_skpd;
+        $i++;
+      }
+      $getdataforareachart = DB::table('pengaduan')
+                              ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'), DB::raw("sum(master_skpd.nama_skpd='$getnamaskpd[0]') as 'a'"), DB::raw("sum(master_skpd.nama_skpd='$getnamaskpd[1]') as 'b'"), DB::raw("sum(master_skpd.nama_skpd='$getnamaskpd[2]') as 'c'"), DB::raw("sum(master_skpd.nama_skpd='$getnamaskpd[3]') as 'd'"), DB::raw("sum(master_skpd.nama_skpd='$getnamaskpd[4]') as 'e'"))
+                              ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                              ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                              ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
+                              ->orderby('pengaduan.created_at', 'asc')
+                              ->get();
+                              // dd($getdataforareachart);
+      return $getdataforareachart;
+
+    }
+
+    public function countpengaduanbyskpd()
+    {
+      $getbignumber = DB::table('master_skpd')
+                        ->leftJoin('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                        ->leftJoin('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                        ->select(DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.nama_skpd')
+                        ->groupBy('master_skpd.nama_skpd')
+                        ->orderby('jumlahpengaduan', 'desc')
+                        ->limit(5)->get();
+
+      $getnamaskpd = array();
+      $i = 0;
+      foreach ($getbignumber as $key) {
+        $getnamaskpd[$i] = $key->nama_skpd;
+        $i++;
+      }
+      return $getnamaskpd;
     }
 }

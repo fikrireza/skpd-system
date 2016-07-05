@@ -36,7 +36,7 @@
               <li>
                 <a href="#">
                   <i class="fa fa-users text-red"></i>
-                
+
                   pengaduan belum diproses
                 </a>
               </li>
