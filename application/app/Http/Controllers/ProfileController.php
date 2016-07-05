@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use App\Models\TanggapanModel;
 use Auth;
 use Hash;
 use DB;
@@ -17,6 +18,7 @@ class ProfileController extends Controller
   {
     $id = Auth::user()->id;
     $getprofile = User::find($id);
+    $getcounttanggap = TanggapanModel::where('id_userskpd', $id)->count();
 
     $gethistoritanggapan = DB::table('pengaduan')
                             ->join('users', 'pengaduan.warga_id', '=', 'users.id')
@@ -25,7 +27,7 @@ class ProfileController extends Controller
                             ->where('tanggapan.id_userskpd', $id)
                             ->get();
                             // dd($gethistoritanggapan);
-    return view('pages.userskpdprofile')->with('getprofile', $getprofile)->with('gethistoritanggapan', $gethistoritanggapan);
+    return view('pages.userskpdprofile')->with('getprofile', $getprofile)->with('gethistoritanggapan', $gethistoritanggapan)->with('getcounttanggap', $getcounttanggap);
   }
 
   public function store(Request $request)

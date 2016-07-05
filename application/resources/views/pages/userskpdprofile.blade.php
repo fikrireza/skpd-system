@@ -94,7 +94,13 @@
 
         <!-- Profile Image -->
         <div class="box box-primary">
-          <div class="box-body box-profile" style="height:265px;">
+          <div class="box-body box-profile"
+            @if(Auth::user()->level=="0")
+              style="height:225px;"
+            @else
+              style="height:265px;"
+            @endif
+          >
             @if($getprofile->url_photo=="")
               <img class="profile-user-img img-responsive img-circle" src="{{ url('/') }}/images/userdefault.png" alt="User profile picture">
             @else
@@ -111,14 +117,21 @@
             </p>
 
             <ul class="list-group list-group-unbordered">
+              @if(Auth::user()->level=="2")
+                <li class="list-group-item">
+                  <b>Jumlah Tanggapan Pengaduan</b> <span class="pull-right badge bg-green">
+                    {{$getcounttanggap}}
+                  </span>
+                </li>
+              @endif
               <li class="list-group-item">
-                <b>Jumlah Tanggapan Pengaduan</b> <span class="pull-right badge bg-green">2</span>
-              </li>
-              <li class="list-group-item">
-                <b>Jumlah Login</b> <span class="pull-right badge bg-maroon">32</span>
+                <b>Jumlah Login</b> <span class="pull-right badge bg-maroon">
+                  {{$getprofile->login_counter}}
+                </span>
               </li>
             </ul>
           </div><!-- /.box-body -->
+
           <div class="box-body">
             <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
             <p class="text-muted">
