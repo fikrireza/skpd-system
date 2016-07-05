@@ -114,7 +114,7 @@ class WargaController extends Controller
         foreach ($request->file('dokumen') as $file)
         {
           $photo_name = time().'-'.$file->getClientOriginalName();
-          $file->move(base_path().'\..\documents', $photo_name);
+          $file->move('documents', $photo_name);
           $dokPengaduan = DokumenPengaduan::create([
                       'url_dokumen'   => $photo_name,
                       'pengaduan_id'  => $pengaduan->id,
