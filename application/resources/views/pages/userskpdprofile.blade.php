@@ -210,32 +210,39 @@
                       <th>Tanggal Tanggapan</th>
                       <th style="width: 40px">Aksi</th>
                     </tr>
-                    <?php $no=1; ?>
-                    @foreach($gethistoritanggapan as $k)
+                    @if($gethistoritanggapan)
+                      <?php $no=1; ?>
+                      @foreach($gethistoritanggapan as $k)
+                        <tr>
+                          <td>{{$no}}</td>
+                          <td>{{$k->judul_pengaduan}}</td>
+                          <td>{{$k->nama}}</td>
+                          <td>
+                            <?php
+                              $tglpengaduan = $k->tanggal_pengaduan;
+                              echo substr($tglpengaduan, 0, 10);
+                            ?>
+                          </td>
+                          <td>
+                            <?php
+                              $tgltanggapan = $k->tanggal_tanggapan;
+                              echo substr($tgltanggapan, 0, 10);
+                            ?>
+                          </td>
+                          <td>
+                            <span data-toggle="tooltip" title="View Data">
+                              <a href="" data-value="{{ $k->id }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
+                            </span>
+                          </td>
+                        </tr>
+                        <?php $no++; ?>
+                      @endforeach
+                    @else
                       <tr>
-                        <td>{{$no}}</td>
-                        <td>{{$k->judul_pengaduan}}</td>
-                        <td>{{$k->nama}}</td>
-                        <td>
-                          <?php
-                            $tglpengaduan = $k->tanggal_pengaduan;
-                            echo substr($tglpengaduan, 0, 10);
-                          ?>
-                        </td>
-                        <td>
-                          <?php
-                            $tgltanggapan = $k->tanggal_tanggapan;
-                            echo substr($tgltanggapan, 0, 10);
-                          ?>
-                        </td>
-                        <td>
-                          <span data-toggle="tooltip" title="View Data">
-                            <a href="" data-value="{{ $k->id }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
-                          </span>
-                        </td>
+                        <td colspan="6" class="text-muted" style="text-align:center;"><i>Data tidak tersedia.</i></td>
                       </tr>
-                      <?php $no++; ?>
-                    @endforeach
+                    @endif
+
                   </table>
                 </div><!-- /.post -->
 
