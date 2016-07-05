@@ -26,7 +26,15 @@ class DashboardController extends Controller
       $idlogin = Auth::user()->id;
       $userid = User::find($idlogin);
 
-      $getlihatpengaduanall = LihatPengaduanModel::select('*')->orderby('created_at','desc')->limit(3)->get();
+      $getlihatpengaduanall = DB::table('pengaduan')
+                          ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                          ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                          ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                          ->select('users.nama', 'users.url_photo', 'pengaduan.id', 'pengaduan.isi_pengaduan','users.id as iduser', 'pengaduan.flag_anonim', 'pengaduan.created_at', 'pengaduan.flag_tanggap')
+                          ->where('flag_mutasi', '0')
+                          ->orderby('pengaduan.created_at', 'desc')
+                          ->limit(3)->get();
+      // dd($getlihatpengaduanall);
       $getlihatpengaduan = DB::table('pengaduan')
                           ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                           ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')

@@ -128,14 +128,14 @@
           @if(Auth::user()->level=="0")
             @foreach($getlihatpengaduanall as $key)
               <div class="item">
-                @if($key->User->url_photo == null || $key->flag_anonim==1)
+                @if($key->url_photo == null || $key->flag_anonim==1)
                   <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
                 @else
-                  <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$key->User->url_photo) }}" alt="{{$key->User->nama}}">
+                  <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$key->url_photo) }}" alt="{{$key->nama}}">
                 @endif
                 <p class="message">
                   @if($key->flag_anonim==0)
-                    <a href="{{url('wargaprofile/show', $key->User->id)}}" class="name">
+                    <a href="{{url('wargaprofile/show', $key->iduser)}}" class="name">
                   @elseif($key->flag_anonim==1)
                     <a href="#" class="name">
                   @endif
@@ -155,7 +155,7 @@
                       ?>
                     </small>
                     @if($key->flag_anonim==0)
-                      {{$key->User->nama}}
+                      {{$key->nama}}
                     @elseif($key->flag_anonim==1)
                       Nama Dirahasiakan
                     @endif
@@ -165,24 +165,34 @@
                 <div class="attachment">
                   <b>Data Pendukung</b>
                   <p class="text-muted">
+                    <?php $cekdok="0"; ?>
                     @foreach($getdokumen as $dok)
-                        @if($key->id === $dok->pengaduan_id)
-                          {{$dok->url_dokumen}}
-                        @endif
+                      @if($key->id === $dok->pengaduan_id)
+                        <?php $cekdok="1"; ?>
+                        <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm">
+                          @if (strpos($dok->url_dokumen, '.pdf'))
+                            <img width="5%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
+                          @elseif(strpos($dok->url_dokumen, '.png'))
+                            <img width="5%" src="{{ asset('dist\img\png.png') }}" alt="..." class="margin">
+                          @elseif(strpos($dok->url_dokumen, '.jpg'))
+                            <img width="5%" src="{{ asset('dist\img\jpg.png') }}" alt="..." class="margin">
+                          @elseif(strpos($dok->url_dokumen, '.docx'))
+                            <img width="5%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                          @elseif(strpos($dok->url_dokumen, '.xlsx'))
+                            <img width="5%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                          @endif
+                        </a>
+                      @endif
                     @endforeach
+                    @if($cekdok=="0")
+                      Data tidak tersedia.
+                    @endif
                   </p>
                   <div class="pull-right">
-                    @foreach($getdokumen as $dok)
-                        @if($key->id === $dok->pengaduan_id)
-                          <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                        @endif
-                    @endforeach
-                    @if(Session::has('akses'))
-                      @if(Session::get('akses')=="administrator")
-                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Lihat Pengaduan</a>
-                      @else
-                        <a href="{{url('detailpengaduan')}}" class="btn btn-success btn-sm btn-flat">Proses Pengaduan</a>
-                      @endif
+                    @if($key->flag_tanggap==0)
+                      <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-warning btn-sm btn-flat">Belum ditanggapi</a>
+                    @else
+                      <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-success btn-sm btn-flat">Sudah ditanggapi</a>
                     @endif
                   </div>
                 </div><!-- /.attachment -->
