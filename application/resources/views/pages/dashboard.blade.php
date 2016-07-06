@@ -503,12 +503,22 @@
 
         $.ajax({
           type: "GET",
-          url: "{{ url('adminareachart') }}"
+          @if(Auth::user()->level == "0")
+              url: "{{ url('adminareachart') }}"
+          @else
+              url: "{{ url('adminareachartSKPD') }}"
+          @endif
+
         })
         .done(function( datax ) {
           $.ajax({
             type: "GET",
-            url: "{{ url('countpengaduanbyskpd') }}"
+            @if(Auth::user()->level == "0")
+                url: "{{ url('countpengaduanbyskpd') }}"
+            @else
+                url: "{{ url('countpengaduanbytopik') }}"
+            @endif
+
           })
           .done(function( dataxx ) {
             var area = new Morris.Area({
