@@ -104,7 +104,14 @@ class DashboardController extends Controller
                    DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id', 'topik_id')
                    ->groupBy('master_skpd.id')
                    ->paginate(7);
-
+     $getmasterskpdtopik = DB::table('topik_pengaduan')
+                   ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
+                    DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+                   ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+                   ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
+                   ->groupBy('topik_pengaduan.id')
+                   ->paginate(7);
+      // dd($getmasterskpdtopik);
       $getitemforpiechart = DB::table('pengaduan')
               ->join('topik_pengaduan', 'topik_pengaduan.id' , '=', 'pengaduan.topik_id')
               ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
@@ -113,11 +120,12 @@ class DashboardController extends Controller
               ->limit(5)
               ->get();
 
-
+              // dd($getitemforpiechart);
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
-      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getdokumen','getitemforpiechart'));
+      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getmasterskpdtopik',
+       'getdokumen','getitemforpiechart'));
     }
 
     /**

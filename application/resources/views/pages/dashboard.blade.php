@@ -280,7 +280,7 @@
 
         </div><!-- /.chat -->
         <div class="box-footer">
-          <a href="{{url('lihatpengaduan')}}" class="btn btn-primary pull-right"><i class="fa fa-eye"></i> &nbsp;&nbsp;Lihat Seluruh Pengaduan</a>
+          <a href="{{url('lihatpengaduan')}}" class="btn btn-primary pull-right btn-flat"><i class="fa fa-eye"></i> &nbsp;&nbsp;Lihat Seluruh Pengaduan</a>
         </div>
       </div><!-- /.box (chat box) -->
 
@@ -328,27 +328,53 @@
                 </span>
               </a>
             </li>
-            @if($getmasterskpd->isEmpty())
-              <tr>
-                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
-              </tr>
-            @elseif(isset($getmasterskpd))
-            @foreach($getmasterskpd as $keyskpd)
-              <li>
-                <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
-                  {{$keyskpd->nama_skpd}}
-                  <span class="pull-right text-red">
-                    <b>{{$keyskpd->jumlahpengaduan}}</b>
-                  </span>
-                </a>
-              </li>
-            @endforeach
-          @endif
-          <div class="box-footer">
-            <div class="pagination pagination-sm no-margin pull-right">
-              {{ $getmasterskpd->links() }}
-            </div>
-          </div>
+            @if(Auth::user()->level == "0")
+                @if($getmasterskpd->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($getmasterskpd))
+                @foreach($getmasterskpd as $keyskpd)
+                  <li>
+                    <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
+                      {{$keyskpd->nama_skpd}}
+                      <span class="pull-right text-red">
+                        <b>{{$keyskpd->jumlahpengaduan}}</b>
+                      </span>
+                    </a>
+                  </li>
+                @endforeach
+              @endif
+              <div class="box-footer">
+                <div class="pagination pagination-sm no-margin pull-right">
+                  {{ $getmasterskpd->links() }}
+                </div>
+              </div>
+            @elseif(Auth::user()->level == "2")
+                @if($getmasterskpdtopik->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Topik tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($getmasterskpdtopik))
+                @foreach($getmasterskpdtopik as $keytopik)
+                  <li>
+                    <a href="{{url('pengaduanbytopik/show', $keytopik->id)}}">
+                      {{$keytopik->nama_topik}}
+                      <span class="pull-right text-red">
+                        <b>{{$keytopik->jumlahpengaduan}}</b>
+                      </span>
+                    </a>
+                  </li>
+                @endforeach
+              @endif
+              <div class="box-footer">
+                <div class="pagination pagination-sm no-margin pull-right">
+                  {{ $getmasterskpdtopik->links() }}
+                </div>
+              </div>
+            @endif
+
+
           </ul>
         </div><!-- /.footer -->
       </div><!-- /.box -->
@@ -378,7 +404,7 @@
           </ul><!-- /.users-list -->
         </div><!-- /.box-body -->
         <div class="box-footer text-center">
-          <a class="btn btn-primary" href="{{url('datawarga')}}">
+          <a class="btn btn-primary btn-flat" href="{{url('datawarga')}}">
             <i class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Semua Identitas Pelapor
           </a>
 

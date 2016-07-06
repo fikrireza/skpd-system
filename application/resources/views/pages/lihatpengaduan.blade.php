@@ -79,7 +79,7 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
+                    <a href="{{url('detailpengaduan/show', $key->id)}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data Pengaduan'><i class="fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php $pageget++; ?>
