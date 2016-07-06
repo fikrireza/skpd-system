@@ -119,13 +119,21 @@ class DashboardController extends Controller
               ->groupBy('master_skpd.nama_skpd')
               ->limit(5)
               ->get();
+      $getitemforpiechartskpd = DB::table('topik_pengaduan')
+                    ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
+                     DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+                    ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+                    ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
+                    ->groupBy('topik_pengaduan.id')
+                    ->limit(5)
+                    ->get();
 
-              // dd($getitemforpiechart);
+              // dd($getitemforpiechartskpd);
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
       'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getmasterskpdtopik',
-       'getdokumen','getitemforpiechart'));
+       'getdokumen','getitemforpiechart', 'getitemforpiechartskpd'));
     }
 
     /**
@@ -184,6 +192,8 @@ class DashboardController extends Controller
 
     }
 
+
+
     public function adminpiechart()
     {
       $get = DB::table('pengaduan')
@@ -203,6 +213,35 @@ class DashboardController extends Controller
             "color" => $color[$i],
             "highlight" => $color[$i],
             "label" => $key->nama_skpd
+          ];
+          $i++;
+      }
+      return $data;
+    }
+
+    public function adminpiechartSKPD()
+    {
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
+
+      $get = DB::table('topik_pengaduan')
+              ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
+               DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+              ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+              ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
+              ->groupBy('topik_pengaduan.id')
+              ->limit(5)
+              ->get();
+
+      $color = ['#f56954','#00a65a','#f39c12','#00c0ef','#3c8dbc','#d2d6de'];
+      $data = array();
+      $i = 0;
+      foreach ($get as $key) {
+          $data[$i] = [
+            "value" => $key->jumlahpengaduan,
+            "color" => $color[$i],
+            "highlight" => $color[$i],
+            "label" => $key->nama_topik
           ];
           $i++;
       }

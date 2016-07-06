@@ -303,16 +303,30 @@
               </div><!-- ./chart-responsive -->
             </div><!-- /.col -->
             <div class="col-md-6" style="padding-left:0px">
-              <ul class="chart-legend clearfix">
-                <?php
-                  $color = ['text-red','text-green','text-yellow','text-aqua','text-light-blue','text-gray'];
-                  $i = 0;
-                ?>
-                @foreach($getitemforpiechart as $key)
-                  <li><i class="fa fa-circle-o <?php echo $color[$i]; ?>"></i> {{ $key->nama_skpd }} </li>
-                  <?php $i++; ?>
-                @endforeach
-              </ul>
+              @if(Auth::user()->level == "0")
+                <ul class="chart-legend clearfix">
+                  <?php
+                    $color = ['text-red','text-green','text-yellow','text-aqua','text-light-blue','text-gray'];
+                    $i = 0;
+                  ?>
+                  @foreach($getitemforpiechart as $key)
+                    <li><i class="fa fa-circle-o <?php echo $color[$i]; ?>"></i> {{ $key->nama_skpd }} </li>
+                    <?php $i++; ?>
+                  @endforeach
+                </ul>
+              @else
+                <ul class="chart-legend clearfix">
+                  <?php
+                    $color = ['text-red','text-green','text-yellow','text-aqua','text-light-blue','text-gray'];
+                    $i = 0;
+                  ?>
+                  @foreach($getitemforpiechartskpd as $key)
+                    <li><i class="fa fa-circle-o <?php echo $color[$i]; ?>"></i> {{ $key->nama_topik }} </li>
+                    <?php $i++; ?>
+                  @endforeach
+                </ul>
+              @endif
+
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.box-body -->
@@ -449,7 +463,7 @@
   <!-- AdminLTE App -->
   <script src="{{ asset('dist/js/app.min.js') }}"></script>
 
-  @if(Auth::user()->level == "0")
+
     <script type="text/javascript">
       $(function () {
         'use strict';
@@ -473,7 +487,12 @@
 
         $.ajax({
           type: "GET",
-          url: "{{ url('adminpiechart') }}"
+          @if(Auth::user()->level == "0")
+            url: "{{ url('adminpiechart') }}"
+          @else
+            url: "{{ url('adminpiechartSKPD') }}"
+          @endif
+
         })
         .done(function( data ) {
           pieChart.Doughnut(data, pieOptions);
@@ -513,7 +532,6 @@
 
       });
     </script>
-  @endif
 
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('/dist/js/demo.js') }}"></script>
