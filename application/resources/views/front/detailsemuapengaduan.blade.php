@@ -97,7 +97,7 @@
               </span>
             </div>
             <p>
-              {{ $list->isi_pengaduan}}
+              {!! $list->isi_pengaduan !!}
             </p>
             <ul class="list-inline">
               @if($list->flag_verifikasi == 1)
