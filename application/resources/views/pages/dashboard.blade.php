@@ -66,7 +66,15 @@
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a class="small-box-footer">
+          <i>Terdapat
+            @if(Auth::user()->level=="0")
+            {{$getcountpengaduantelahditanggapiall}}
+            @elseif(Auth::user()->level=="2")
+              {{$getcountpengaduantelahditanggapi}}
+            @endif
+            pengaduan sudah di tanggapi.</i>
+        </a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-3 col-md-3 col-xs-12">
@@ -85,7 +93,15 @@
         <div class="icon">
           <i class="fa fa-code-fork"></i>
         </div>
-        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a class="small-box-footer">
+          <i>Terdapat
+            @if(Auth::user()->level=="0")
+              {{$getcountmutasiall}}
+            @elseif(Auth::user()->level=="2")
+              {{$getcountmutasi}}
+            @endif
+            data yang sudah dimutasi.</i>
+        </a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-3 col-md-3 col-xs-12">
@@ -346,10 +362,14 @@
           <ul class="nav nav-pills nav-stacked">
             <li>
               <a>
-              <b>Jenis Pengaduan</b>
+                @if(Auth::user()->level=="0")
+                  <b>SKPD Terkait</b>
+                @else
+                  <b>Kategori Pengaduan</b>
+                @endif
                 <span class="pull-right">
                   <b>
-                    Pengaduan Terproses
+                    Jumlah Pengaduan
                   </b>
                 </span>
               </a>
