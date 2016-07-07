@@ -104,7 +104,6 @@
             @if($getprofile->url_photo=="")
               <img class="profile-user-img img-responsive img-circle" src="{{ url('/') }}/images/userdefault.png" alt="User profile picture">
             @else
-              ada
               <img class="profile-user-img img-responsive img-circle" src="{{ url('/') }}/images/{{$getprofile->url_photo}}" alt="User profile picture">
             @endif
             <h3 class="profile-username text-center">{{ $getprofile->nama }}</h3>
@@ -262,7 +261,7 @@
                   {{ 'active' }}
                 @endif
               tab-pane" id="settings">
-                <form class="form-horizontal" action="{{ route('profile.store') }}" method="post">
+                <form class="form-horizontal" action="{{ route('profile.store') }}" method="post" enctype="multipart/form-data">
                   {{ csrf_field() }}
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Nama</label>
@@ -322,14 +321,9 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div>
-                        <label>
-                          <input type="checkbox" class="minimal" name="jaminan">
-                          &nbsp;
-                          Saya menjamin data yang saya masukkan adalah benar.</a>
-                        </label>
-                      </div>
+                    <label class="col-sm-2 control-label">Foto Profil</label>
+                    <div class="col-sm-10">
+                      <input name="url_photo" type="file" class="form-control" value="{{ $getprofile->url_photo }}">
                     </div>
                   </div>
                   <div class="form-group">

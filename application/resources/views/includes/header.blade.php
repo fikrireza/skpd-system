@@ -48,7 +48,11 @@
       <!-- User Account: style can be found in dropdown.less -->
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <img src="{{ url('/') }}/images/userdefault.png" class="user-image" alt="User Image">
+          @if(Auth::user()->url_photo!="")
+            <img src="{{ url('/') }}/images/{{Auth::user()->url_photo}}" class="user-image" alt="User Image">
+          @else
+            <img src="{{ url('/') }}/images/userdefault.png" class="user-image" alt="User Image">
+          @endif
           <span class="hidden-xs">
             @if(Auth::user()->nama!="")
               {{ Auth::user()->nama }}
@@ -60,7 +64,11 @@
         <ul class="dropdown-menu">
           <!-- User image -->
           <li class="user-header">
-            <img src="{{ url('/') }}/images/userdefault.png" class="img-circle" alt="User Image">
+            @if(Auth::user()->url_photo!="")
+              <img src="{{ url('/') }}/images/{{Auth::user()->url_photo}}" class="img-circle" alt="User Image">
+            @else
+              <img src="{{ url('/') }}/images/userdefault.png" class="img-circle" alt="User Image">
+            @endif
             <p>
               @if(Auth::user()->nama!="")
                 {{ Auth::user()->nama }}

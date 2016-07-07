@@ -2,7 +2,11 @@
   <!-- Sidebar user panel -->
   <div class="user-panel">
     <div class="pull-left image">
-      <img src="{{ url('/') }}/images/userdefault.png" class="img-circle" alt="User Image">
+      @if(Auth::user()->url_photo!="")
+        <img src="{{ url('/') }}/images/{{Auth::user()->url_photo}}" class="img-circle" alt="User Image">
+      @else
+        <img src="{{ url('/') }}/images/userdefault.png" class="img-circle" alt="User Image">
+      @endif
     </div>
     <div class="pull-left info">
       <p>
