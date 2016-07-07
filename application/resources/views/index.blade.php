@@ -11,16 +11,14 @@
 
       @include('includes.navbarumum')
 
-      <!-- Full Width Column -->
       <div class="content-wrapper custombackground">
         <div class="container">
-          <!-- Main content -->
           <section class="content">
 
             @if(Session::has('message'))
               <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4><i class="icon fa fa-info"></i> Informasi</h4>
+                <h4><i class="icon fa fa-info"></i> Informasi!</h4>
                 {{ Session::get('message') }}
               </div>
             @endif
@@ -30,6 +28,14 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4><i class="icon fa fa-ban"></i> Login Gagal!</h4>
                 {{ Session::get('messageloginfailed') }}
+              </div>
+            @endif
+
+            @if(Session::has('passwordbaru'))
+              <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-info"></i> Sukses Login!</h4>
+                {{ Session::get('passwordbaru') }}
               </div>
             @endif
 
@@ -91,7 +97,7 @@
                           </div>
                         </div>
                       </form>
-                      <a href="#">Lupa Password? Klik disini.</a><br>
+                      Lupa Password? <a href="{{ url('lupa_password') }}">Klik disini.</a><br>
                     </div>
                   </div>
 

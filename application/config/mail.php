@@ -18,7 +18,7 @@ return [
   'driver' => 'log',
   'host' => 'mail.smtp2go.com',
   'port' => 2525,
-  'from' => array('address' => 'sender@example.com', 'name' => 'SIMPEDU'),
+  'from' => array('address' => 'no-reply@simpedu.tangerangkab.go.id', 'name' => 'SIMPEDU'),
   'encryption' => 'tls',
   'username' => 'dudyali@gmail.com',
   'password' => 's3cur3',

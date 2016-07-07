@@ -90,6 +90,14 @@ Route::post('register', 'RegisterController@wargaregisterprocess');
 
 Route::get('/register/verify/{code}', 'RegisterController@verify');
 
+// Password reset link request routes...
+Route::get('lupa_password', 'Auth\PasswordController@getEmail');
+Route::post('email/reset', ['as' => 'emailreset', 'uses' => 'Auth\PasswordController@postEmail']);
+
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', ['as' => 'passwordreset', 'uses' => 'Auth\PasswordController@postReset']);
+
 
 // administrator akses
 Route::resource('dataskpd', 'MasterSKPDController');
