@@ -249,17 +249,15 @@
                   <h3 class="box-title">&nbsp;&nbsp;&nbsp;Tentang SIMPEDU</h3>
                 </div>
                 <div class="box-body clearfix">
+                  @if($tentang != null)
                   <blockquote class="pull-left">
-                    <p style="font-size:15px;">
-                      SIMPEDU (Sistem Informasi Pengaduan Terpadu) adalah sebuah sarana pengaduan untuk warga Kabupaten Tangerang berbasis website yang mudah diakses dan terpadu dengan 36 Satuan Kerja Pemerintah Daerah di Kabupaten Tangerang. SIMPEDU dikembangkan dalam rangka meningkatkan partisipasi masyarakat untuk pengawasan program dan kinerja pemerintah daerah dalam penyelenggaraan pembangunan dan pelayanan publik.
-                    </p>
-                    <small>Pemerintah Kabupaten Tangerang</small>
+                    {!! $tentang->isi_tentang !!}
                   </blockquote>
+                  @endif
                 </div>
               </div>
             </div>
           </div>
-
           <div class="row">
             <?php $batasskpd = 1; ?>
             @foreach($skpdonly as $tabskpd)

@@ -101,9 +101,16 @@
         </ul>
       </li>
       <li class="treeview">
-        <a href="{{url('admin/slider')}}">
-          <i class="fa fa-image"></i> <span>Slider & Qoutes</span>
+        <a href=#>
+          <i class="fa fa-cog"></i>
+          <span>Extravaganza</span>
+          <i class="fa fa-angle-left pull-right"></i>
         </a>
+        <ul class="treeview-menu">
+          <li><a href="{{url('admin/slider')}}"><i class="fa fa-image"></i> <span>Slider</span></a></li>
+          <li><a href="{{url('admin/tentang')}}"><i class="fa fa-glass"></i> <span>Tentang</span></a></li>
+          <li><a href="{{url('admin/syaratketentuan')}}"><i class="fa fa-gavel"></i> <span>Syarat & Ketentuan</span></a></li>
+        </ul>
       </li>
     @endif
   </ul>

@@ -173,9 +173,11 @@ Route::get('listdatapengaduanbyskpd', function(){
 
 
 Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
-Route::get('admin/historipengaduan/datatables', ['as'=>'datatables.histori', 'uses'=>'HistoriPengaduanController@getDataForDataTable']);
 Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
 Route::get('admin/slider', ['as' => 'slider', 'uses' => 'SlidersController@index']);
 Route::post('admin/slider', 'SlidersController@upload');
 Route::get('admin/slider/{id}', 'SlidersController@update');
 Route::get('admin/deleteslider/{id}', 'SlidersController@hapus');
+Route::get('admin/tentang', ['as' => 'tentang', 'uses' => 'TentangController@index']);
+Route::post('admin/tentang', 'TentangController@store');
+Route::post('admin/tentang/update', 'TentangController@update');
