@@ -85,11 +85,13 @@ class DetailPengaduanController extends Controller
       }
 
       $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
+      $gettskpd = MasterSKPD::whereNotIn('id', $data)->get();
+
       $getdokumen = DB::table('dokumen_pengaduan')
                       ->where('pengaduan_id', $id)
                       ->get();
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
-      'tanggapan', 'tanggapanall', 'gettopik', 'getdokumen'));
+      'tanggapan', 'tanggapanall', 'gettopik', 'gettskpd', 'getdokumen'));
     }
 
     /**

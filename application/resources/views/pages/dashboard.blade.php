@@ -30,7 +30,7 @@
         </div>
       @endif
     </div>
-    <div class="col-lg-4 col-md-4 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-teal">
         <div class="inner">
@@ -46,18 +46,11 @@
         <div class="icon">
           <i class="ion ion-speakerphone"></i>
         </div>
-        <a
-          @if(Session::has('akses'))
-            @if(Session::get('akses')=="administrator")
-              href="{{url('historipengaduan')}}"
-            @else
-              href="{{url('lihatpengaduan')}}"
-            @endif
-          @endif
+        <a href="{{url('lihatpengaduan')}}"
          class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
-    <div class="col-lg-4 col-md-4 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-purple">
         <div class="inner">
@@ -73,10 +66,45 @@
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a class="small-box-footer">
+          <i>Terdapat
+            @if(Auth::user()->level=="0")
+            {{$getcountpengaduantelahditanggapiall}}
+            @elseif(Auth::user()->level=="2")
+              {{$getcountpengaduantelahditanggapi}}
+            @endif
+            pengaduan sudah di tanggapi.</i>
+        </a>
       </div>
     </div><!-- ./col -->
-    <div class="col-lg-4 col-md-4 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-xs-12">
+      <!-- small box -->
+      <div class="small-box bg-yellow">
+        <div class="inner">
+          <h3>
+          @if(Auth::user()->level=="0")
+            {{$getcountmutasiall}}
+          @elseif(Auth::user()->level=="2")
+            {{$getcountmutasi}}
+          @endif
+            <sup style="font-size: 20px"></sup></h3>
+          <p>Pengaduan Telah Dimutasi</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-code-fork"></i>
+        </div>
+        <a class="small-box-footer">
+          <i>Terdapat
+            @if(Auth::user()->level=="0")
+              {{$getcountmutasiall}}
+            @elseif(Auth::user()->level=="2")
+              {{$getcountmutasi}}
+            @endif
+            data yang dimutasi.</i>
+        </a>
+      </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-md-3 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-maroon">
         <div class="inner">
@@ -181,7 +209,7 @@
                       @endif
                     @endforeach
                     @if($cekdok=="0")
-                      Data tidak tersedia.
+                      Pengaduan ini tidak memiliki data pendukung.
                     @endif
                   </p>
                   <div class="pull-right">
@@ -255,7 +283,7 @@
                       @endif
                     @endforeach
                     @if($cekdok=="0")
-                      Data tidak tersedia.
+                      Pengaduan ini tidak memiliki data pendukung.
                     @endif
                   </p>
                   <div class="pull-right">
@@ -334,10 +362,14 @@
           <ul class="nav nav-pills nav-stacked">
             <li>
               <a>
-              <b>Jenis Pengaduan</b>
+                @if(Auth::user()->level=="0")
+                  <b>SKPD Terkait</b>
+                @else
+                  <b>Kategori Pengaduan</b>
+                @endif
                 <span class="pull-right">
                   <b>
-                    Pengaduan Terproses
+                    Jumlah Pengaduan
                   </b>
                 </span>
               </a>
@@ -348,16 +380,16 @@
                     <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
                   </tr>
                 @elseif(isset($getmasterskpd))
-                @foreach($getmasterskpd as $keyskpd)
-                  <li>
-                    <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
-                      {{$keyskpd->nama_skpd}}
-                      <span class="pull-right text-red">
-                        <b>{{$keyskpd->jumlahpengaduan}}</b>
-                      </span>
-                    </a>
-                  </li>
-                @endforeach
+                  @foreach($getmasterskpd as $keyskpd)
+                    <li>
+                      <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
+                        {{$keyskpd->nama_skpd}}
+                        <span class="pull-right text-red">
+                          <b>{{$keyskpd->jumlahpengaduan}}</b>
+                        </span>
+                      </a>
+                    </li>
+                  @endforeach
               @endif
               <div class="box-footer">
                 <div class="pagination pagination-sm no-margin pull-right">

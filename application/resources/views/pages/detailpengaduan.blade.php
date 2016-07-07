@@ -44,12 +44,24 @@
                   </div>
                   <div class="form-group">
                     <label>
-                      Pilih Topik :
+                      Kategori Pengaduan :
                     </label>
-                    <select class="form-control select2" name="id_topik" style="width: 100%;">
+                    {{-- <select class="form-control select2" name="id_topik" style="width: 100%;">
                       <option selected="selected"></option>
                       @foreach($gettopik as $key)
                         <option value="{{ $key->id }}">{{ $key->kode_topik }} - {{ $key->nama_topik }}</option>
+                      @endforeach
+                    </select> --}}
+                    <select class="form-control select2" name="topik" style="width: 100%;">
+                      <option value="">-- Pilih Kategori --</option>
+                      @foreach($gettskpd as $getdataskpd)
+                        <optgroup label="{{ $getdataskpd->nama_skpd }}">
+                          @foreach($gettopik as $getdatatopik)
+                            @if($getdataskpd->id === $getdatatopik->id_skpd)
+                              <option value="{{ $getdatatopik->id}}">{{ $getdatatopik->nama_topik}}</option>
+                            @endif
+                          @endforeach
+                        </optgroup>
                       @endforeach
                     </select>
                   </div>
@@ -138,29 +150,27 @@
           <!-- Attachment -->
           <div class="attachment-block clearfix">
             <b>Data Pendukung</b><br>
-            @if($binddatapengaduan->flag_verifikasi==0)
-            @endif
             <?php $cekdok="0"; ?>
             @foreach($getdokumen as $dok)
                 <?php $cekdok="1"; ?>
-                @if($binddatapengaduan->id === $dok->pengaduan_id)
-                <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm">
-                  @if (strpos($dok->url_dokumen, '.pdf'))
-                    <img width="3%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
-                  @elseif(strpos($dok->url_dokumen, '.png'))
-                    <img width="3%" src="{{ asset('dist\img\png.png') }}" alt="..." class="margin">
-                  @elseif(strpos($dok->url_dokumen, '.jpg'))
-                    <img width="3%" src="{{ asset('dist\img\jpg.png') }}" alt="..." class="margin">
-                  @elseif(strpos($dok->url_dokumen, '.docx'))
-                    <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
-                  @elseif(strpos($dok->url_dokumen, '.xlsx'))
-                    <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
-                  @endif
-                </a>
-              @endif
+                @if($binddatapengaduan->id == $dok->pengaduan_id)
+                  <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm">
+                    @if (strpos($dok->url_dokumen, '.pdf'))
+                      <img width="3%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
+                    @elseif(strpos($dok->url_dokumen, '.png'))
+                      <img width="3%" src="{{ asset('dist\img\png.png') }}" alt="..." class="margin">
+                    @elseif(strpos($dok->url_dokumen, '.jpg'))
+                      <img width="3%" src="{{ asset('dist\img\jpg.png') }}" alt="..." class="margin">
+                    @elseif(strpos($dok->url_dokumen, '.docx'))
+                      <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                    @elseif(strpos($dok->url_dokumen, '.xlsx'))
+                      <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
+                    @endif
+                  </a>
+                @endif
             @endforeach
             @if($cekdok=="0")
-                Data tidak tersedia.
+                <span class="text-muted"><i>Pengaduan ini tidak memiliki data pendukung.</i></span>
             @endif
             <div class="pull-right">
               {{-- button dibawah cuma buat user skpd cuuuy, akses admin ga bisa --}}

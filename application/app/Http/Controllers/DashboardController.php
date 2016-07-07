@@ -66,6 +66,19 @@ class DashboardController extends Controller
                       ->orderby('pengaduan.created_at', 'desc')
                       ->count('nama');
 
+      $getcountmutasiall = LihatPengaduanModel::where('flag_mutasi', '1')->count('warga_id');
+      $getcountmutasi = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*', 'pengaduan.id')
+                      ->where('master_skpd.id', $userid->id_skpd)
+                      ->where('flag_mutasi', '1')
+                      // ->where('flag_tanggap', '1')
+                      // ->where('flag_verifikasi', '1')
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->count('nama');
+
       $getcountpengaduantelahditanggapiall = LihatPengaduanModel::where('flag_tanggap', '1')->count('flag_tanggap');
       $getcountpengaduantelahditanggapi = DB::table('pengaduan')
                       ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -103,7 +116,10 @@ class DashboardController extends Controller
                    ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd',
                    DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id', 'topik_id')
                    ->groupBy('master_skpd.id')
+                   ->orderby('jumlahpengaduan', 'desc')
                    ->paginate(7);
+                  //  dd($getmasterskpd);
+
      $getmasterskpdtopik = DB::table('topik_pengaduan')
                    ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
                     DB::raw('count(pengaduan.id) as jumlahpengaduan'))
@@ -131,6 +147,7 @@ class DashboardController extends Controller
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
+      'getcountmutasi', 'getcountmutasiall',
       'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getmasterskpdtopik',
        'getdokumen','getitemforpiechart', 'getitemforpiechartskpd'));
     }
@@ -299,13 +316,16 @@ class DashboardController extends Controller
       $getdataforareachart = DB::table('pengaduan')
                               ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'),
                                DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[0]') as 'a'"),
-                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"))
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"),
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[2]') as 'c'"),
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[3]') as 'd'"),
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[4]') as 'e'"))
                               ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                               ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                               ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
                               ->orderby('pengaduan.created_at', 'asc')
                               ->get();
-                              
+
       return $getdataforareachart;
     }
 
