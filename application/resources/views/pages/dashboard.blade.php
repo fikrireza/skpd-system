@@ -100,7 +100,7 @@
             @elseif(Auth::user()->level=="2")
               {{$getcountmutasi}}
             @endif
-            data yang sudah dimutasi.</i>
+            data yang dimutasi.</i>
         </a>
       </div>
     </div><!-- ./col -->
