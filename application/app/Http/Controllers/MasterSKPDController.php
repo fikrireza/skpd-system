@@ -9,6 +9,7 @@ use App\MasterSKPD;
 use DB;
 use App\TopikAduan;
 use App\Models\Pengaduan;
+use App\Models\DokumenPengaduan;
 
 class MasterSKPDController extends Controller
 {
@@ -171,6 +172,7 @@ class MasterSKPDController extends Controller
                       ->where('master_skpd.id', $id)
                       ->orderby('pengaduan.created_at', 'desc')
                       ->get();
+
       return view('pages/topikbyskpd', compact('getskpd', 'gettopik', 'getbelumtanggap', 'getsudahtanggap', 'getpengaduan'));
     }
 
@@ -180,11 +182,17 @@ class MasterSKPDController extends Controller
               ->leftJoin('tanggapan', 'tanggapan.id_pengaduan' , '=', 'pengaduan.id')
               ->leftJoin('users', 'tanggapan.id_userskpd' , '=', 'users.id')
               ->leftJoin('master_skpd', 'users.id_skpd' , '=', 'master_skpd.id')
-              ->select('pengaduan.id', 'users.nama', 'master_skpd.nama_skpd', 'pengaduan.judul_pengaduan', 'pengaduan.created_at as tanggal_pengaduan', 'pengaduan.isi_pengaduan', 'tanggapan.tanggapan')
+              ->leftJoin('dokumen_pengaduan', 'pengaduan.id', '=', 'dokumen_pengaduan.pengaduan_id')
+              ->select('pengaduan.id', 'users.nama', 'master_skpd.nama_skpd', 'pengaduan.judul_pengaduan', 'pengaduan.created_at as tanggal_pengaduan', 'pengaduan.isi_pengaduan', 'tanggapan.tanggapan', 'dokumen_pengaduan.url_dokumen')
               ->where('pengaduan.id', $id)
               ->get();
-              // dd($get);
+
       return $get;
     }
 
+    public function getdokumenpengaduan($id)
+    {
+      $get = DokumenPengaduan::where('pengaduan_id', $id)->get();
+      return $get;
+    }
 }
