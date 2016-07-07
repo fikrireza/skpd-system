@@ -54,16 +54,16 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Horizontal Form -->
-      <div class="box box-warning">
+      <div class="box box-primary">
         <div class="box-header">
           @if(Auth::user()->level == "0")
             @foreach($data['getmasterskpd'] as $key)
-              <h3 class="box-title">Seluruh Pengaduan dengan Jenis Pengaduan : {{ $key->nama_skpd }}</h3>
+              <h3 class="box-title">Seluruh Pengaduan dengan SKPD : {{ $key->nama_skpd }}</h3>
               @break;
             @endforeach
           @elseif(Auth::user()->level == "2")
             @foreach($data['getmasterskpdtopik'] as $key)
-              <h3 class="box-title">Seluruh Pengaduan dengan Jenis Pengaduan : {{ $key->nama_topik }}</h3>
+              <h3 class="box-title">Seluruh Pengaduan dengan Kategori Pengaduan : {{ $key->nama_topik }}</h3>
               @break;
             @endforeach
           @endif
