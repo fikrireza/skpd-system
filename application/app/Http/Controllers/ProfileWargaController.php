@@ -18,14 +18,16 @@ use Image;
 
 class ProfileWargaController extends Controller
 {
+  protected $indexBeranda;
   /**
    * Authentication controller.
    *
    * @return void
    */
-  public function __construct()
+  public function __construct(WargaController $indexBeranda)
   {
     $this->middleware('isWarga');
+    $this->indexBeranda = $indexBeranda;
   }
 
   public function index()
@@ -36,7 +38,10 @@ class ProfileWargaController extends Controller
     $pengaduanWid = Pengaduan::where('warga_id', '=', $id)->count();
     $tanggapWid  = Pengaduan::where('warga_id', '=', $id)->where('flag_tanggap', '=', 1)->count();
 
-    return view('front.profile', compact('profiles', 'pengaduanWid', 'tanggapWid' ));
+    $skpdonly = $this->indexBeranda->index()->skpdonly;
+    $AllTopiks = $this->indexBeranda->index()->AllTopiks;
+
+    return view('front.profile', compact('profiles', 'pengaduanWid', 'tanggapWid', 'skpdonly', 'AllTopiks' ));
   }
 
   public function store(ProfileWargaRequest $request)

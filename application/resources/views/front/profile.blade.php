@@ -258,23 +258,32 @@
   <div class="col-md-3">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Laporan Terbaru</h3>
+        <h3 class="box-title">Pengaduan Terbaru</h3>
       </div>
       <div class="box-body">
-        <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
-        <p class="text-muted">
-          B.S. in Computer Science from the University of Tennessee at Knoxville
+        <?php $batas = 0; ?>
+        @foreach($skpdonly as $skpd1)
+        <strong><i class="margin-r-5"></i>{{ $skpd1->nama_skpd }}</strong>
+        <p>
+        <?php $batas1 = 0; ?>
+        @foreach($AllTopiks as $skpd)
+        @foreach($skpd as $topik)
+        @if($topik->slug_skpd === $skpd1->slug_skpd)
+        <div class="">
+          @if($topik->warga_id == Auth::user()->id)
+          <a href="{{ url('pengaduansaya/detail', $topik->slug) }}" class="text-muted">{{ $topik->judul_pengaduan}}</a>
+          @else
+          <a href="{{ url('semuapengaduan/detail', $topik->slug) }}" class="text-muted">{{ $topik->judul_pengaduan}}</a>
+          @endif
+        </div>
+        @endif
+        @if($batas1++ == 2) @break @endif
+        @endforeach
+        @endforeach
         </p>
-
+        @if($batas++ == 3) @break @endif
         <hr>
-
-        <strong><i class="fa fa-map-marker margin-r-5"></i> Geografi</strong>
-        <p class="text-muted">Malibu, California</p>
-
-        <hr>
-
-        <strong><i class="fa fa-file-text-o margin-r-5"></i> Kependudukan</strong>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+        @endforeach
       </div>
     </div>
   </div>

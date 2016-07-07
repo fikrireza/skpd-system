@@ -30,7 +30,7 @@
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
-      <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
+      <strong><i class="fa fa-phone-square margin-r-5"></i> No. Telp</strong>
       <p class="text-muted">
         @if(auth()->user()->notelp == '')
           -
@@ -41,23 +41,22 @@
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
-      <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
+      <strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
       <p class="text-muted">{{ auth()->user()->email}}</p>
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
-      <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-      <p class="text-muted">@if(auth()->user()->jeniskelamin === 'P')
-                                Perempuan
-                            @elseif(auth()->user()->jeniskelamin === 'L')
-                                Laki-Laki
-                            @elseif(auth()->user()->jeniskelamin == '')
-                              -
-                            @endif</p>
+      @if(auth()->user()->jeniskelamin=="P")
+        <strong><i class="fa fa-female margin-r-5"></i> Jenis Kelamin</strong>
+        <p class="text-muted">Wanita</p>
+      @elseif(auth()->user()->jeniskelamin=="L")
+        <strong><i class="fa fa-male margin-r-5"></i> Jenis Kelamin</strong>
+        <p class="text-muted">Pria</p>
+      @endif
 
       <hr style="margin-top:2px;margin-bottom:8px;">
 
-      <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
+      <strong><i class="fa fa-home margin-r-5"></i> Alamat</strong>
       <p class="text-muted">
         @if(auth()->user()->alamat == '')
           -
