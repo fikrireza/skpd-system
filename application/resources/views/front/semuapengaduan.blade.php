@@ -12,9 +12,9 @@
       <?php $active = 1; ?>
       @foreach($skpdonly as $skpd)
         @if($active++ == 1)
-        <li class="active"><a href="#{{$skpd->nama_skpd}}" data-toggle="tab" aria-expanded="false">{{ $skpd->nama_skpd }}</a></li>
+        <li class="active"><a href="#{{$skpd->slug_skpd}}" data-toggle="tab" aria-expanded="false">{{ $skpd->nama_skpd }}</a></li>
         @else
-        <li class=""><a href="#{{$skpd->nama_skpd}}" data-toggle="tab" aria-expanded="false">{{ $skpd->nama_skpd }}</a></li>
+        <li class=""><a href="#{{$skpd->slug_skpd}}" data-toggle="tab" aria-expanded="false">{{ $skpd->nama_skpd }}</a></li>
         @endif
       @endforeach
       </ul>
@@ -22,13 +22,13 @@
         <?php $pane = 1; ?>
         @foreach($skpdonly as $tabskpd)
           @if($pane++ == 1)
-            <div class="tab-pane active" id="{{$tabskpd->nama_skpd}}">
+            <div class="tab-pane active" id="{{$tabskpd->slug_skpd}}">
           @else
-            <div class="tab-pane" id="{{$tabskpd->nama_skpd}}">
+            <div class="tab-pane" id="{{$tabskpd->slug_skpd}}">
           @endif
           @foreach($AllTopiks as $skpd)
             @foreach($skpd as $topik)
-            @if($topik->nama_skpd === $tabskpd->nama_skpd)
+            @if($topik->slug_skpd === $tabskpd->slug_skpd)
             <div class="post">
               <div class="user-block">
                 @if($topik->url_photo == null || $topik->flag_anonim == 1)

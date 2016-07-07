@@ -22,7 +22,7 @@ class WargaController extends Controller
    */
   public function __construct()
   {
-    // $this->middleware('isWarga');
+    $this->middleware('isWarga');
   }
 
   /**
@@ -53,7 +53,7 @@ class WargaController extends Controller
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                      ->select('master_skpd.nama_skpd as nama_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'master_skpd.slug as slug_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
                       ->where('master_skpd.flag_skpd', 1)
                       ->where('pengaduan.flag_rahasia', 0)
                       ->orderby('pengaduan.created_at', 'desc')
@@ -66,11 +66,13 @@ class WargaController extends Controller
     $skpdonly  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
-                      ->select('master_skpd.nama_skpd as nama_skpd')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'master_skpd.slug as slug_skpd')
                       ->where('master_skpd.flag_skpd', 1)
                       ->where('pengaduan.flag_rahasia', 0)
                       ->groupBy('nama_skpd')
+                      ->limit(6)
                       ->get();
+    // dd($skpdonly);
 
     return view('front.beranda', compact('topiks', 'topikgroup', 'skpdonly', 'AllTopiks', 'pengaduanWid', 'tanggapWid'));
   }
@@ -170,14 +172,17 @@ class WargaController extends Controller
                     ->where('pengaduan.warga_id', $id)
                     ->orderby('pengaduan.created_at', 'desc')
                     ->get();
-    // dd($pengaduans);
+
     $dokumentall = DB::table('pengaduan')
                     ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                     ->select('*')
                     ->where('pengaduan.warga_id', $id)
                     ->get();
-    //dd($dokument);
-    return view('front.pengaduansaya', compact('topiks', 'topikgroup', 'pengaduans', 'pengaduanWid', 'tanggapWid', 'dokumentall'));
+
+    $skpdonly = $this->index()->skpdonly;
+    $AllTopiks = $this->index()->AllTopiks;
+
+    return view('front.pengaduansaya', compact('topiks', 'topikgroup', 'pengaduans', 'pengaduanWid', 'tanggapWid', 'dokumentall', 'skpdonly', 'AllTopiks'));
   }
 
   /**
@@ -213,9 +218,11 @@ class WargaController extends Controller
                       ->where('pengaduan.warga_id', $id)
                       ->orderby('pengaduan.created_at', 'desc')
                       ->get();
-    // Pengaduan::where('warga_id', $id)->orderBy('created_at', 'dsc')->get();
 
-    return view('front.detailpengaduan', compact('profiles', 'pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan', 'dokumentall'));
+    $skpdonly = $this->index()->skpdonly;
+    $AllTopiks = $this->index()->AllTopiks;
+
+    return view('front.detailpengaduan', compact('profiles', 'pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan', 'dokumentall', 'skpdonly', 'AllTopiks'));
   }
 
   /**
@@ -232,7 +239,7 @@ class WargaController extends Controller
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                      ->select('master_skpd.nama_skpd as nama_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'master_skpd.slug as slug_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
                       ->where('master_skpd.flag_skpd', 1)
                       ->where('pengaduan.flag_rahasia', 0)
                       ->orderby('pengaduan.created_at', 'desc')
@@ -244,10 +251,11 @@ class WargaController extends Controller
     $skpdonly  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
-                      ->select('master_skpd.nama_skpd as nama_skpd')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'master_skpd.slug as slug_skpd')
                       ->where('master_skpd.flag_skpd', 1)
                       ->where('pengaduan.flag_rahasia', 0)
                       ->groupBy('nama_skpd')
+                      ->limit(6)
                       ->get();
 
     return view('front.semuapengaduan', compact('skpdonly', 'AllTopiks', 'pengaduanWid', 'tanggapWid'));
@@ -295,8 +303,11 @@ class WargaController extends Controller
                           ->where('master_skpd.nama_skpd', $detail->nama_skpd)
                           ->where('pengaduan.flag_rahasia', 0)
                           ->paginate(10);
-      // dd($listPengaduan);
-      return view('front.detailsemuapengaduan', compact('pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan'));
+
+      $skpdonly = $this->index()->skpdonly;
+      $AllTopiks = $this->index()->AllTopiks;
+
+      return view('front.detailsemuapengaduan', compact('pengaduanWid', 'tanggapWid', 'detail', 'tanggapan', 'listPengaduan', 'skpdonly', 'AllTopiks'));
 
   }
 }

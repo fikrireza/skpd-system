@@ -1,5 +1,5 @@
 @if(session('level') == 1)
-<!-- About Me Box -->
+
 <div class="col-md-3">
   <div class="box box-primary">
     <div class="box-body box-profile" style="height:225px;">
@@ -17,7 +17,7 @@
           <b>Telah Ditanggapi</b> <span class="pull-right badge bg-green">{{ $tanggapWid }}</span>
         </li>
       </ul>
-    </div><!-- /.box-body -->
+    </div>
     <div class="box-body" style="margin-top:10px;">
       <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
       <p class="text-muted">
@@ -65,57 +65,40 @@
           {{ auth()->user()->alamat}}
         @endif
       </p>
-    </div><!-- /.box-body -->
-  </div><!-- /.box -->
+    </div>
+  </div>
 
   <div class="box box-primary">
     <div class="box-header with-border">
       <h3 class="box-title">Pengaduan Terbaru</h3>
-    </div><!-- /.box-header -->
+    </div>
     <div class="box-body">
-      <strong><i class="fa fa-book margin-r-5"></i>  Pendidikan</strong>
+      <?php $batas = 0; ?>
+      @foreach($skpdonly as $skpd1)
+      <strong><i class="margin-r-5"></i>{{ $skpd1->nama_skpd }}</strong>
       <p>
-        <div class="">
-          <a href="" class="text-muted">
-            Biaya sekolah terlalu mahal
-          </a>
-        </div>
-        <div class="">
-          <a href="" class="text-muted">
-            Buku paket tidak tersedia di sekolah
-          </a>
-        </div>
-        <div class="">
-          <a href="" class="text-muted">
-            Guru sering datang terlambat
-          </a>
-        </div>
+      <?php $batas1 = 0; ?>
+      @foreach($AllTopiks as $skpd)
+      @foreach($skpd as $topik)
+      @if($topik->slug_skpd === $skpd1->slug_skpd)
+      <div class="">
+        @if($topik->warga_id == Auth::user()->id)
+        <a href="{{ url('pengaduansaya/detail', $topik->slug) }}" class="text-muted">{{ $topik->judul_pengaduan}}</a>
+        @else
+        <a href="{{ url('semuapengaduan/detail', $topik->slug) }}" class="text-muted">{{ $topik->judul_pengaduan}}</a>
+        @endif
+      </div>
+      @endif
+      @if($batas1++ == 2) @break @endif
+      @endforeach
+      @endforeach
       </p>
-
+      @if($batas++ == 3) @break @endif
       <hr>
-
-      <strong><i class="fa fa-map-marker margin-r-5"></i> Jalan</strong>
-      <p>
-        <div class="">
-          <a href="" class="text-muted">
-            Jalan talagasari banyak lubang
-          </a>
-        </div>
-        <div class="">
-          <a href="" class="text-muted">
-            Mohon rambu jalan diperjelas
-          </a>
-        </div>
-        <div class="">
-          <a href="" class="text-muted">
-            Marka jalan tidak terlihat di tol balaraja
-          </a>
-        </div>
-      </p>
-
-    </div><!-- /.box-body -->
-  </div><!-- /.box -->
-</div><!-- /.col -->
+      @endforeach
+    </div>
+  </div>
+</div>
 
 @else
   coba

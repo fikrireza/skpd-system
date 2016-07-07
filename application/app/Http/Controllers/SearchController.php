@@ -40,7 +40,6 @@ class SearchController extends Controller
     $search = $request->input('qr');
 
     $kalimat = explode(' ', $search);
-    // dd($kalimat);
     $searchTermBits = array();
     foreach ($kalimat as $kata) {
       $kata = trim($kata);
@@ -51,8 +50,8 @@ class SearchController extends Controller
     }
 
     $bantu = implode(' OR ',$searchTermBits);
-    $searches = DB::select("select pengaduan.*, topik_pengaduan.nama_topik, users.nama, users.url_photo FROM pengaduan, topik_pengaduan, users WHERE ".$bantu." AND topik_pengaduan.id = pengaduan.topik_id AND pengaduan.warga_id = users.id ORDER BY pengaduan.created_at DESC");
-    // dd($searches);
+    $searches = DB::select("select pengaduan.*, topik_pengaduan.nama_topik, users.nama, users.url_photo FROM pengaduan, topik_pengaduan, users WHERE pengaduan.flag_rahasia = 0 AND ".$bantu." AND topik_pengaduan.id = pengaduan.topik_id AND pengaduan.warga_id = users.id GROUP BY judul_pengaduan ORDER BY pengaduan.created_at DESC");
+
     return view('front.pencarian', compact('pengaduanWid', 'tanggapWid','searches', 'kalimat'));
 
   }
