@@ -8,7 +8,11 @@
 @section('breadcrumb')
   <h1>
     Seluruh Data Pengaduan
-    <small>Pengaduan ditampilkan sesuai dengan topik pengaduan yang dipilih</small>
+    @if(Auth::user()->level == "0")
+      <small>Pengaduan ditampilkan sesuai dengan SKPD yang dipilih</small>
+    @else
+      <small>Pengaduan ditampilkan sesuai dengan topik pengaduan yang dipilih</small>
+    @endif
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{url('dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
@@ -63,7 +67,7 @@
             @endforeach
           @elseif(Auth::user()->level == "2")
             @foreach($data['getmasterskpdtopik'] as $key)
-              <h3 class="box-title">Seluruh Pengaduan dengan Kategori Pengaduan : {{ $key->nama_topik }}</h3>
+              <h3 class="box-title">Seluruh Pengaduan dengan Topik Pengaduan : {{ $key->nama_topik }}</h3>
               @break;
             @endforeach
           @endif

@@ -44,7 +44,7 @@
                   </div>
                   <div class="form-group">
                     <label>
-                      Kategori Pengaduan :
+                      Topik Pengaduan :
                     </label>
                     {{-- <select class="form-control select2" name="id_topik" style="width: 100%;">
                       <option selected="selected"></option>
@@ -53,7 +53,7 @@
                       @endforeach
                     </select> --}}
                     <select class="form-control select2" name="topik" style="width: 100%;">
-                      <option value="">-- Pilih Kategori --</option>
+                      <option value="">-- Pilih Topik --</option>
                       @foreach($gettskpd as $getdataskpd)
                         <optgroup label="{{ $getdataskpd->nama_skpd }}">
                           @foreach($gettopik as $getdatatopik)

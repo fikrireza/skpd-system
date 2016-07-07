@@ -365,7 +365,7 @@
                 @if(Auth::user()->level=="0")
                   <b>SKPD Terkait</b>
                 @else
-                  <b>Kategori Pengaduan</b>
+                  <b>Topik Pengaduan</b>
                 @endif
                 <span class="pull-right">
                   <b>
