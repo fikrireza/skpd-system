@@ -26,10 +26,16 @@ class CustomAuthController extends Controller
         $user = Auth::user();
         if($user->level==1)
         {
-          if($user->jeniskelamin == null || $user->noktp == null || $user->alamat == null){
-            return redirect('profil')->with('messagefilled', "Harap Lengkapi Profil Anda Dengan Sebenarnya");
-          }
-          return redirect('/');
+            $set = User::find(Auth::user()->id);
+            $getcounter = $set->login_counter;
+            $set->login_counter = $getcounter+1;
+            $set->save();
+
+            if($user->jeniskelamin == null || $user->noktp == null || $user->alamat == null){
+                return redirect('profil')->with('messagefilled', "Harap Lengkapi Profil Anda Dengan Sebenarnya");
+            }
+
+            return redirect('/');
         }
         else if($user->level==2)
         {
@@ -54,37 +60,5 @@ class CustomAuthController extends Controller
       {
         return redirect()->route('welcomepage')->with('messageloginfailed', "Periksa kembali email dan password anda.");
       }
-      // if(!$user)
-      // {
-      //   Session::flash('message','Email belum diaktifasi');
-      //   return redirect('/login');
-      // }
-
-      // return redirect('/home');
-
-      // if($request->email=="dudy@gmail.com")
-      // {
-      //   session()->put('namalogin', 'Dudy');
-      //   session()->put('akses', 'kesehatan');
-      //   return redirect('dashboard');
-      // }
-      // else if($request->email=="bayu@gmail.com")
-      // {
-      //   session()->put('namalogin', 'Bayu');
-      //   session()->put('akses', 'pendidikan');
-      //   return redirect('dashboard');
-      // }
-      // else if($request->email=="fikri@gmail.com")
-      // {
-      //   session()->put('namalogin', 'Fikri');
-      //   session()->put('akses', 'administrator');
-      //   return redirect('dashboard');
-      // }
-      // else if($request->email=="dika@gmail.com")
-      // {
-      //   session()->put('namalogin', 'Dika');
-      //   session()->put('akses', 'warga');
-      //   return redirect('beranda');
-      // }
     }
 }
