@@ -66,6 +66,19 @@ class DashboardController extends Controller
                       ->orderby('pengaduan.created_at', 'desc')
                       ->count('nama');
 
+      $getcountmutasiall = LihatPengaduanModel::where('flag_mutasi', '1')->count('warga_id');
+      $getcountmutasi = DB::table('pengaduan')
+                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*', 'pengaduan.id')
+                      ->where('master_skpd.id', $userid->id_skpd)
+                      ->where('flag_mutasi', '1')
+                      // ->where('flag_tanggap', '1')
+                      // ->where('flag_verifikasi', '1')
+                      ->orderby('pengaduan.created_at', 'desc')
+                      ->count('nama');
+
       $getcountpengaduantelahditanggapiall = LihatPengaduanModel::where('flag_tanggap', '1')->count('flag_tanggap');
       $getcountpengaduantelahditanggapi = DB::table('pengaduan')
                       ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -134,6 +147,7 @@ class DashboardController extends Controller
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
+      'getcountmutasi', 'getcountmutasiall',
       'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getmasterskpdtopik',
        'getdokumen','getitemforpiechart', 'getitemforpiechartskpd'));
     }

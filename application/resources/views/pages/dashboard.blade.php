@@ -30,7 +30,7 @@
         </div>
       @endif
     </div>
-    <div class="col-lg-4 col-md-4 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-teal">
         <div class="inner">
@@ -46,18 +46,11 @@
         <div class="icon">
           <i class="ion ion-speakerphone"></i>
         </div>
-        <a
-          @if(Session::has('akses'))
-            @if(Session::get('akses')=="administrator")
-              href="{{url('historipengaduan')}}"
-            @else
-              href="{{url('lihatpengaduan')}}"
-            @endif
-          @endif
+        <a href="{{url('lihatpengaduan')}}"
          class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
-    <div class="col-lg-4 col-md-4 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-purple">
         <div class="inner">
@@ -73,10 +66,29 @@
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="{{url('lihatpengaduan')}}" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
-    <div class="col-lg-4 col-md-4 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-xs-12">
+      <!-- small box -->
+      <div class="small-box bg-yellow">
+        <div class="inner">
+          <h3>
+          @if(Auth::user()->level=="0")
+            {{$getcountmutasiall}}
+          @elseif(Auth::user()->level=="2")
+            {{$getcountmutasi}}
+          @endif
+            <sup style="font-size: 20px"></sup></h3>
+          <p>Pengaduan Telah Dimutasi</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-code-fork"></i>
+        </div>
+        <a href="#" class="small-box-footer">Lihat Data Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-md-3 col-xs-12">
       <!-- small box -->
       <div class="small-box bg-maroon">
         <div class="inner">
@@ -181,7 +193,7 @@
                       @endif
                     @endforeach
                     @if($cekdok=="0")
-                      Data tidak tersedia.
+                      Pengaduan ini tidak memiliki data pendukung.
                     @endif
                   </p>
                   <div class="pull-right">
@@ -255,7 +267,7 @@
                       @endif
                     @endforeach
                     @if($cekdok=="0")
-                      Data tidak tersedia.
+                      Pengaduan ini tidak memiliki data pendukung.
                     @endif
                   </p>
                   <div class="pull-right">
