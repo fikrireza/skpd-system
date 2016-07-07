@@ -104,7 +104,14 @@ class DashboardController extends Controller
                    DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id', 'topik_id')
                    ->groupBy('master_skpd.id')
                    ->paginate(7);
-
+     $getmasterskpdtopik = DB::table('topik_pengaduan')
+                   ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
+                    DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+                   ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+                   ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
+                   ->groupBy('topik_pengaduan.id')
+                   ->paginate(7);
+      // dd($getmasterskpdtopik);
       $getitemforpiechart = DB::table('pengaduan')
               ->join('topik_pengaduan', 'topik_pengaduan.id' , '=', 'pengaduan.topik_id')
               ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
@@ -112,12 +119,20 @@ class DashboardController extends Controller
               ->groupBy('master_skpd.nama_skpd')
               ->limit(5)
               ->get();
-
+      $getitemforpiechartskpd = DB::table('topik_pengaduan')
+                ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
+                 DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+                ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+                ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
+                ->groupBy('topik_pengaduan.id')
+                ->limit(5)
+                ->get();
 
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
       'getcountpengaduanbelumditanggapiall', 'getcountpengaduanbelumditanggapi',
-      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getdokumen','getitemforpiechart'));
+      'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getmasterskpdtopik',
+       'getdokumen','getitemforpiechart', 'getitemforpiechartskpd'));
     }
 
     /**
@@ -176,6 +191,8 @@ class DashboardController extends Controller
 
     }
 
+
+
     public function adminpiechart()
     {
       $get = DB::table('pengaduan')
@@ -195,6 +212,35 @@ class DashboardController extends Controller
             "color" => $color[$i],
             "highlight" => $color[$i],
             "label" => $key->nama_skpd
+          ];
+          $i++;
+      }
+      return $data;
+    }
+
+    public function adminpiechartSKPD()
+    {
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
+
+      $get = DB::table('topik_pengaduan')
+              ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
+               DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+              ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+              ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
+              ->groupBy('topik_pengaduan.id')
+              ->limit(5)
+              ->get();
+
+      $color = ['#f56954','#00a65a','#f39c12','#00c0ef','#3c8dbc','#d2d6de'];
+      $data = array();
+      $i = 0;
+      foreach ($get as $key) {
+          $data[$i] = [
+            "value" => $key->jumlahpengaduan,
+            "color" => $color[$i],
+            "highlight" => $color[$i],
+            "label" => $key->nama_topik
           ];
           $i++;
       }
@@ -229,6 +275,42 @@ class DashboardController extends Controller
 
     }
 
+
+    public function adminareachartSKPD()
+    {
+
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
+
+      $getbignumber = DB::table('topik_pengaduan')
+              ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
+               DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+              ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+              ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
+              ->groupBy('topik_pengaduan.id')
+              ->limit(5)
+              ->get();
+
+      $getnamatopik = array();
+      $i = 0;
+      foreach ($getbignumber as $key) {
+        $getnamatopik[$i] = $key->nama_topik;
+        $i++;
+      }
+
+      $getdataforareachart = DB::table('pengaduan')
+                              ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'),
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[0]') as 'a'"),
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"))
+                              ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                              ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                              ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
+                              ->orderby('pengaduan.created_at', 'asc')
+                              ->get();
+      return $getdataforareachart;
+
+    }
+
     public function countpengaduanbyskpd()
     {
       $getbignumber = DB::table('master_skpd')
@@ -246,5 +328,28 @@ class DashboardController extends Controller
         $i++;
       }
       return $getnamaskpd;
+    }
+
+    public function countpengaduanbytopik()
+    {
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
+
+      $getbignumber = DB::table('topik_pengaduan')
+              ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
+               DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+              ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+              ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
+              ->groupBy('topik_pengaduan.id')
+              ->limit(5)
+              ->get();
+
+      $getnamatopik = array();
+      $i = 0;
+      foreach ($getbignumber as $key) {
+        $getnamatopik[$i] = $key->nama_topik;
+        $i++;
+      }
+      return $getnamatopik;
     }
 }

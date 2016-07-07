@@ -63,8 +63,8 @@
 
             </div>
             <div class="modal-footer">
-              <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" id="set">Proses Mutasi Pengaduan</button>
+              <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary btn-flat" id="set">Proses Mutasi Pengaduan</button>
             </div>
           </div>
         </form>
@@ -86,8 +86,8 @@
           Apakah anda yakin telah melakukan verifikasi terhadap pengaduan ini?
         </div>
         <div class="modal-footer">
-          <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">Tidak</button>
-          <a href="{{url('detailpengaduan/verifikasi', $binddatapengaduan->id)}}" class="btn btn-primary" id="set">Ya, saya yakin.</a>
+          <button type="reset" class="btn btn-default pull-left btn-flat" data-dismiss="modal">Tidak</button>
+          <a href="{{url('detailpengaduan/verifikasi', $binddatapengaduan->id)}}" class="btn btn-primary btn-flat" id="set">Ya, saya yakin.</a>
         </div>
       </div>
 
@@ -138,7 +138,12 @@
           <!-- Attachment -->
           <div class="attachment-block clearfix">
             <b>Data Pendukung</b><br>
+            @if($binddatapengaduan->flag_verifikasi==0)
+            @endif
+            <?php $cekdok="0"; ?>
             @foreach($getdokumen as $dok)
+                <?php $cekdok="1"; ?>
+                @if($binddatapengaduan->id === $dok->pengaduan_id)
                 <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm">
                   @if (strpos($dok->url_dokumen, '.pdf'))
                     <img width="3%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
@@ -152,7 +157,11 @@
                     <img width="3%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
                   @endif
                 </a>
+              @endif
             @endforeach
+            @if($cekdok=="0")
+                Data tidak tersedia.
+            @endif
             <div class="pull-right">
               {{-- button dibawah cuma buat user skpd cuuuy, akses admin ga bisa --}}
               @if(Auth::user()->level=="2")
@@ -166,11 +175,12 @@
               @endif
 
               {{-- button download, user skpd sama admin bisa pake --}}
-              @foreach($getdokumen as $dok)
+              {{-- @foreach($getdokumen as $dok)
                   @if($binddatapengaduan->id === $dok->pengaduan_id)
                     <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
                   @endif
-              @endforeach
+              @endforeach --}}
+
             </div>
           </div><!-- /.attachment-block -->
 

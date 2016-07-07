@@ -71,8 +71,8 @@ class WargaProfileController extends Controller
                           ->select('*', 'tanggapan.created_at as created_tanggapan', 'pengaduan.created_at as created_pengaduan')
                           ->paginate(5);
 
-        $getdatajumlahpengaduanall = LihatPengaduanModel::where('warga_id', $id)
-                          ->where('flag_mutasi', '0')->count('warga_id');
+        $getdatajumlahpengaduanall = LihatPengaduanModel::where('warga_id', $id)->count('warga_id');
+                          // ->where('flag_mutasi', '0')->count('warga_id');
 
         $getdatajumlahpengaduan = DB::table('pengaduan')
                             ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -80,7 +80,7 @@ class WargaProfileController extends Controller
                             ->join('users', 'master_skpd.id', '=', 'users.id_skpd')
                             ->where('master_skpd.id', $userid->id_skpd)
                             ->where('users.id', $userid->id)
-                            ->where('flag_mutasi', '0')
+                            // ->where('flag_mutasi', '0')
                             ->where('pengaduan.warga_id', $id)
                             ->count('warga_id');
 

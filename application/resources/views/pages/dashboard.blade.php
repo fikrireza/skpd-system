@@ -280,7 +280,7 @@
 
         </div><!-- /.chat -->
         <div class="box-footer">
-          <a href="{{url('lihatpengaduan')}}" class="btn btn-primary pull-right"><i class="fa fa-eye"></i> &nbsp;&nbsp;Lihat Seluruh Pengaduan</a>
+          <a href="{{url('lihatpengaduan')}}" class="btn btn-primary pull-right btn-flat"><i class="fa fa-eye"></i> &nbsp;&nbsp;Lihat Seluruh Pengaduan</a>
         </div>
       </div><!-- /.box (chat box) -->
 
@@ -303,16 +303,30 @@
               </div><!-- ./chart-responsive -->
             </div><!-- /.col -->
             <div class="col-md-6" style="padding-left:0px">
-              <ul class="chart-legend clearfix">
-                <?php
-                  $color = ['text-red','text-green','text-yellow','text-aqua','text-light-blue','text-gray'];
-                  $i = 0;
-                ?>
-                @foreach($getitemforpiechart as $key)
-                  <li><i class="fa fa-circle-o <?php echo $color[$i]; ?>"></i> {{ $key->nama_skpd }} </li>
-                  <?php $i++; ?>
-                @endforeach
-              </ul>
+              @if(Auth::user()->level == "0")
+                <ul class="chart-legend clearfix">
+                  <?php
+                    $color = ['text-red','text-green','text-yellow','text-aqua','text-light-blue','text-gray'];
+                    $i = 0;
+                  ?>
+                  @foreach($getitemforpiechart as $key)
+                    <li><i class="fa fa-circle-o <?php echo $color[$i]; ?>"></i> {{ $key->nama_skpd }} </li>
+                    <?php $i++; ?>
+                  @endforeach
+                </ul>
+              @else
+                <ul class="chart-legend clearfix">
+                  <?php
+                    $color = ['text-red','text-green','text-yellow','text-aqua','text-light-blue','text-gray'];
+                    $i = 0;
+                  ?>
+                  @foreach($getitemforpiechartskpd as $key)
+                    <li><i class="fa fa-circle-o <?php echo $color[$i]; ?>"></i> {{ $key->nama_topik }} </li>
+                    <?php $i++; ?>
+                  @endforeach
+                </ul>
+              @endif
+
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.box-body -->
@@ -328,27 +342,53 @@
                 </span>
               </a>
             </li>
-            @if($getmasterskpd->isEmpty())
-              <tr>
-                <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
-              </tr>
-            @elseif(isset($getmasterskpd))
-            @foreach($getmasterskpd as $keyskpd)
-              <li>
-                <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
-                  {{$keyskpd->nama_skpd}}
-                  <span class="pull-right text-red">
-                    <b>{{$keyskpd->jumlahpengaduan}}</b>
-                  </span>
-                </a>
-              </li>
-            @endforeach
-          @endif
-          <div class="box-footer">
-            <div class="pagination pagination-sm no-margin pull-right">
-              {{ $getmasterskpd->links() }}
-            </div>
-          </div>
+            @if(Auth::user()->level == "0")
+                @if($getmasterskpd->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($getmasterskpd))
+                @foreach($getmasterskpd as $keyskpd)
+                  <li>
+                    <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
+                      {{$keyskpd->nama_skpd}}
+                      <span class="pull-right text-red">
+                        <b>{{$keyskpd->jumlahpengaduan}}</b>
+                      </span>
+                    </a>
+                  </li>
+                @endforeach
+              @endif
+              <div class="box-footer">
+                <div class="pagination pagination-sm no-margin pull-right">
+                  {{ $getmasterskpd->links() }}
+                </div>
+              </div>
+            @elseif(Auth::user()->level == "2")
+                @if($getmasterskpdtopik->isEmpty())
+                  <tr>
+                    <td colspan="5" class="text-muted" style="text-align:center;"><i>Data Topik tidak tersedia.</i></td>
+                  </tr>
+                @elseif(isset($getmasterskpdtopik))
+                @foreach($getmasterskpdtopik as $keytopik)
+                  <li>
+                    <a href="{{url('pengaduanbytopik/show', $keytopik->id)}}">
+                      {{$keytopik->nama_topik}}
+                      <span class="pull-right text-red">
+                        <b>{{$keytopik->jumlahpengaduan}}</b>
+                      </span>
+                    </a>
+                  </li>
+                @endforeach
+              @endif
+              <div class="box-footer">
+                <div class="pagination pagination-sm no-margin pull-right">
+                  {{ $getmasterskpdtopik->links() }}
+                </div>
+              </div>
+            @endif
+
+
           </ul>
         </div><!-- /.footer -->
       </div><!-- /.box -->
@@ -378,7 +418,7 @@
           </ul><!-- /.users-list -->
         </div><!-- /.box-body -->
         <div class="box-footer text-center">
-          <a class="btn btn-primary" href="{{url('datawarga')}}">
+          <a class="btn btn-primary btn-flat" href="{{url('datawarga')}}">
             <i class="fa fa-eye"></i>&nbsp;&nbsp;Lihat Semua Identitas Pelapor
           </a>
 
@@ -423,7 +463,7 @@
   <!-- AdminLTE App -->
   <script src="{{ asset('dist/js/app.min.js') }}"></script>
 
-  @if(Auth::user()->level == "0")
+
     <script type="text/javascript">
       $(function () {
         'use strict';
@@ -447,7 +487,12 @@
 
         $.ajax({
           type: "GET",
-          url: "{{ url('adminpiechart') }}"
+          @if(Auth::user()->level == "0")
+            url: "{{ url('adminpiechart') }}"
+          @else
+            url: "{{ url('adminpiechartSKPD') }}"
+          @endif
+
         })
         .done(function( data ) {
           pieChart.Doughnut(data, pieOptions);
@@ -458,12 +503,22 @@
 
         $.ajax({
           type: "GET",
-          url: "{{ url('adminareachart') }}"
+          @if(Auth::user()->level == "0")
+              url: "{{ url('adminareachart') }}"
+          @else
+              url: "{{ url('adminareachartSKPD') }}"
+          @endif
+
         })
         .done(function( datax ) {
           $.ajax({
             type: "GET",
-            url: "{{ url('countpengaduanbyskpd') }}"
+            @if(Auth::user()->level == "0")
+                url: "{{ url('countpengaduanbyskpd') }}"
+            @else
+                url: "{{ url('countpengaduanbytopik') }}"
+            @endif
+
           })
           .done(function( dataxx ) {
             var area = new Morris.Area({
@@ -487,7 +542,6 @@
 
       });
     </script>
-  @endif
 
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('/dist/js/demo.js') }}"></script>
