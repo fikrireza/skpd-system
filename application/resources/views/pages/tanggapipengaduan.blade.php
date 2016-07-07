@@ -118,7 +118,9 @@
                 @else
                 <div class="attachment-block clearfix">
                   <b>Data Pendukung</b><br>
-                    Pengaduan ini tidak memiliki data pendukung.
+                  <p class="text-muted">
+                    <i>Pengaduan ini tidak memiliki data pendukung.</i>
+                  </p>
                 </div>
               @endif
             </div><!-- /.box-body -->
@@ -231,7 +233,9 @@
                         @endif
                     @endforeach
                     @if($cekDok=="0")
-                      Pengaduan ini tidak memiliki data pendukung.
+                      <p class="text-muted">
+                        <i>Pengaduan ini tidak memiliki data pendukung.</i>
+                      </p>
                     @endif
                   </div><!-- /.attachment-block -->
                 @endif
