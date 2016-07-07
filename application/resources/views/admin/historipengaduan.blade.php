@@ -22,7 +22,7 @@
   <div class="row">
     <!-- Left col -->
     <section class="col-lg-8 col-md-8 connectedSortable">
-      <div class="box box-warning">
+      <div class="box box-primary">
          <div class="box-header with-border">
            <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Warga</h3>
          </div>
