@@ -81,7 +81,7 @@
               <!-- post text -->
               <p>
                 @if(isset($data['binddatapengaduan']))
-                  {{$data['binddatapengaduan']->judul_pengaduan}}
+                  <b>{{$data['binddatapengaduan']->judul_pengaduan}}</b>
                 @endif
               </p>
               <p style="text-align:justify">
@@ -201,7 +201,7 @@
               <!-- post text -->
               <p>
                 @if(isset($data['binddatamutasi']))
-                  {{$data['getdatamutasi'][0]->judul_pengaduan}}
+                  <b>{{$data['getdatamutasi'][0]->judul_pengaduan}}</b>
                 @endif
               </p>
               <p style="text-align:justify">

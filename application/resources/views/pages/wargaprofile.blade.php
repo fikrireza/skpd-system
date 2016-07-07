@@ -114,7 +114,7 @@
                   <div class="post">
                     <div class="user-block">
                       <span class='username' style="margin-left:0px;">
-                        {{$getdatapengaduanall->judul_pengaduan}}
+                        <b>{{$getdatapengaduanall->judul_pengaduan}}</b>
                       </span>
                       <span class='description' style="margin-left:0px;">
                         SKPD : {{$getdatapengaduanall->nama_skpd}} &nbsp;&nbsp;||&nbsp;&nbsp; Topik Pengaduan : {{$getdatapengaduanall->nama_topik}} &nbsp;&nbsp;||&nbsp;&nbsp; {{$getdatapengaduanall->created_pengaduan}}
@@ -171,7 +171,7 @@
                   <div class="post">
                     <div class="user-block">
                       <span class='username' style="margin-left:0px;">
-                        {{$getdatapengaduan->judul_pengaduan}}
+                        <b>{{$getdatapengaduan->judul_pengaduan}}</b>
                       </span>
                       <span class='description' style="margin-left:0px;">
                         Topik Pengaduan : {{$getdatapengaduan->nama_topik}} &nbsp;&nbsp;||&nbsp;&nbsp; {{$getdatapengaduan->created_pengaduan}}
