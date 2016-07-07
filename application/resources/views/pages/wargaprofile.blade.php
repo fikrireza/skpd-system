@@ -128,7 +128,7 @@
                       </span>
                     </div><!-- /.user-block -->
                     <p>
-                      {{$getdatapengaduanall->isi_pengaduan}}
+                      <?php echo $getdatapengaduanall->isi_pengaduan; ?>
                     </p>
                     @if($getdatapengaduanall->flag_tanggap==1)
                       <div class='box-footer box-comments' style="border:1px solid #00a65a;">
