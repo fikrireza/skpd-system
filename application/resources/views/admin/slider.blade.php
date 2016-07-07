@@ -119,7 +119,7 @@
             </td>
             <td>
               @if($slider->flag_slider == 1)
-                <span data-toggle="tooltip" title="Non Aktifkan">
+                <span data-toggle="tooltip" title="Tidak Aktifkan">
                   <a href="{{ url('/admin/slider', $slider->id) }}" class="btn btn-default bg-marron btn-flat btn-xs"><i class="fa fa-ban"></i></a>
                 </span>
               @elseif($slider->flag_slider == 0)

@@ -50,7 +50,7 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{url('topikbyskpd/').'/'.$key->id}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='View Data'><i class="fa fa-eye"></i></a>
+                    <a href="{{url('topikbyskpd/').'/'.$key->id}}" class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data SKPD'><i class="fa fa-eye"></i></a>
                   </td>
                 </tr>
                 <?php $no++; ?>

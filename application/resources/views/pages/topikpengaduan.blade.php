@@ -184,7 +184,7 @@
                   <td>{{ $key->nama_topik }}</td>
                   <td>{{ $key->masterskpd->nama_skpd }}</td>
                   <td>
-                    <span data-toggle="tooltip" title="Edit Data">
+                    <span data-toggle="tooltip" title="Ubah Data">
                       <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-flat btn-xs edit" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
                     </span>
                     <span data-toggle="tooltip" title="Hapus Data">

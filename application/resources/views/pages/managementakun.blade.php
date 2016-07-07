@@ -256,7 +256,7 @@
                   </td>
                   <td>
                     @if($key->flag_user!=0)
-                      <span data-toggle="tooltip" title="Non Aktifkan Akun">
+                      <span data-toggle="tooltip" title="Tidak Aktifkan Akun">
                         <a href="" class="btn btn-default btn-flat btn-xs nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="{{ $key->id }}"><i class="fa fa-ban"></i></a>
                       </span>
                     @else
@@ -264,7 +264,7 @@
                         <a href="" class="btn btn-primary btn-flat btn-xs aktif" data-toggle="modal" data-target="#myModalAktif" data-value="{{ $key->id }}"><i class="fa fa-check"></i></a>
                       </span>
                     @endif
-                    <span data-toggle="tooltip" title="Edit Akun">
+                    <span data-toggle="tooltip" title="Ubah Akun">
                       <a href="" class="btn btn-warning btn-flat btn-xs edit" data-toggle="modal" data-target="#myModalEdit" data-value="{{ $key->id }}"><i class="fa fa-edit"></i></a>
                     </span>
                     <span data-toggle="tooltip" title="Delete Akun">

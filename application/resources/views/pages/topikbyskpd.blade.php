@@ -221,7 +221,7 @@
                      @endif
                    </td>
                    <td>
-                     <span data-toggle="tooltip" title="View Data">
+                     <span data-toggle="tooltip" title="Lihat Data Pengaduan">
                        <a href="" data-value="{{ $key->pengaduanid }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
                      </span>
                    </td>
