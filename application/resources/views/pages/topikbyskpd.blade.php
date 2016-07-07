@@ -46,9 +46,8 @@
               <!-- Attachment -->
               <div class="attachment-block clearfix">
                 <b>Data Pendukung</b><br>
-                <i class="text-muted">gambar.jpg</i>
-                <div class="pull-right">
-                  <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
+                <div id="data_pendukung">
+                  <i class="text-muted">Pengaduan ini tidak memiliki data pendukung.</i>
                 </div>
               </div>
 
@@ -267,6 +266,7 @@
             var tanggap = data[0].tanggapan;
             var nama_penanggap = data[0].nama;
             var nama_skpd = data[0].nama_skpd;
+            var dokumen = data[0].url_dokumen;
 
             // set
             $('span#judul_pengaduan').html(judul_pengaduan);
@@ -294,6 +294,53 @@
             }
             else {
               $('div#tanggapan').html("");
+            }
+
+            if(dokumen!=null) {
+                $.ajax({
+                  url: "{{ url('/') }}/getdokumenpengaduan/bind/"+a,
+                  success: function(datax) {
+                    $('div#data_pendukung').html("");
+                    for (var i = 0; i < datax.length; i++) {
+                      var ext = datax[i].url_dokumen.split('.').pop();
+                      if(ext=="pdf") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/pdf.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="png") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/png.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="jpg") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/jpg.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="docx") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/doc.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="xlsx") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/doc.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      }
+
+                    }
+                  }
+                });
+            }
+            else {
+              $('div#data_pendukung').html("<i class='text-muted'>Pengaduan ini tidak memiliki data pendukung.</i>");
             }
           }
         });
