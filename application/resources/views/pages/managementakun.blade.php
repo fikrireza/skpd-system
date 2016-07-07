@@ -152,7 +152,7 @@
     <form class="form-horizontal" method="post" action="{{ url('managementakun/create') }}">
       {{ csrf_field() }}
         <div class="col-md-4">
-          <div class="box box-warning">
+          <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Formulir Tambah Akun SKPD</h3>
             </div>
@@ -189,7 +189,7 @@
     <!-- END FORM-->
     <!-- START TABLE-->
     <div class="col-md-8">
-      <div class="box box-warning">
+      <div class="box box-primary">
         <div class="box-header with-border">
           <div class="box-title">
             Seluruh Data Akun SKPD

@@ -18,7 +18,7 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Horizontal Form -->
-      <div class="box box-warning">
+      <div class="box box-primary">
         <div class="box-header">
           <h3 class="box-title">Seluruh Data SKPD Terkait</h3>
         </div><!-- /.box-header -->
