@@ -103,7 +103,10 @@ class DashboardController extends Controller
                    ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd',
                    DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id', 'topik_id')
                    ->groupBy('master_skpd.id')
+                   ->orderby('jumlahpengaduan', 'desc')
                    ->paginate(7);
+                  //  dd($getmasterskpd);
+
      $getmasterskpdtopik = DB::table('topik_pengaduan')
                    ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
                     DB::raw('count(pengaduan.id) as jumlahpengaduan'))
@@ -305,7 +308,7 @@ class DashboardController extends Controller
                               ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
                               ->orderby('pengaduan.created_at', 'asc')
                               ->get();
-                              
+
       return $getdataforareachart;
     }
 
