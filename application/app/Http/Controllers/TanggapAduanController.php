@@ -37,7 +37,7 @@ class TanggapAduanController extends Controller
                       ->paginate(10);
       $getmutasi = DB::table('mutasi')
                       ->join('pengaduan', 'mutasi.id_pengaduan', '=', 'pengaduan.id')
-                      ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->join('topik_pengaduan', 'mutasi.id_topik', '=', 'topik_pengaduan.id')
                       ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*', 'mutasi.id')
@@ -105,7 +105,7 @@ class TanggapAduanController extends Controller
         $data['getdatapengaduan'] = $getdatapengaduan;
         $getmutasi = DB::table('mutasi')
                         ->join('pengaduan', 'mutasi.id_pengaduan', '=', 'pengaduan.id')
-                        ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                        ->join('topik_pengaduan', 'mutasi.id_topik', '=', 'topik_pengaduan.id')
                         ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                         ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                         ->select('*', 'mutasi.id')
@@ -113,6 +113,7 @@ class TanggapAduanController extends Controller
                         ->where('mutasi.id_userskpd', $userid->id_skpd)
                         ->orderby('mutasi.created_at', 'desc')
                         ->paginate(10);
+                        // dd($getmutasi);
         $getdokumen = DB::table('pengaduan')
                         ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                         ->join('users', 'users.id', '=', 'pengaduan.warga_id')
@@ -166,15 +167,32 @@ class TanggapAduanController extends Controller
         $data['getdatapengaduan'] = $getdatapengaduan;
         $getmutasi = DB::table('mutasi')
                         ->join('pengaduan', 'mutasi.id_pengaduan', '=', 'pengaduan.id')
-                        ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                        ->join('topik_pengaduan', 'mutasi.id_topik', '=', 'topik_pengaduan.id')
                         ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                         ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                         ->select('*', 'mutasi.id')
                         ->where('flag_mutasi', '1')
                         ->where('mutasi.id_userskpd', $userid->id_skpd)
+                        // ->where('mutasi.id', $id)
                         ->orderby('mutasi.created_at', 'desc')
                         ->paginate(10);
+
       $data['getmutasi'] = $getmutasi;
+
+
+      $getdatamutasi = DB::table('mutasi')
+                      ->join('pengaduan', 'mutasi.id_pengaduan', '=', 'pengaduan.id')
+                      ->join('topik_pengaduan', 'mutasi.id_topik', '=', 'topik_pengaduan.id')
+                      ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                      ->select('*', 'mutasi.id')
+                      ->where('flag_mutasi', '1')
+                      ->where('mutasi.id_userskpd', $userid->id_skpd)
+                      ->where('mutasi.id', $id)
+                      ->orderby('mutasi.created_at', 'desc')
+                      ->paginate(10);
+
+      $data['getdatamutasi'] = $getdatamutasi;
 
       $getdokumen = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')

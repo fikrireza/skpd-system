@@ -50,12 +50,6 @@
                     @else
                       <img class="img-circle" src="{{ asset('/images/'.$data['binddatapengaduan']->user->url_photo) }}" alt="{{$data['binddatapengaduan']->user->nama}}">
                     @endif
-                  @elseif(isset($data['binddatapengaduanmutasi']))
-                    @if($data['getmutasi'][0]->url_photo == null || $data['getmutasi'][0]->flag_anonim==1)
-                      <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
-                    @else
-                      <img class="img-circle" src="{{ asset('/images/'.$data['getmutasi'][0]->url_photo) }}" alt="{{$data['getmutasi'][0]->nama}}">
-                    @endif
                   @else
                       <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
                   @endif
@@ -66,29 +60,15 @@
                     @else
                       Nama Dirahasiakan
                     @endif
-                  @elseif(isset($data['binddatamutasi']))
-                    @if($data['binddatapengaduanmutasi']->flag_anonim==0)
-                      {{$data['getmutasi'][0]->nama}}
-                    @else
-                      Nama Dirahasiakan
-                    @endif
                   @endif
                 </a></span>
                 <span class='description'>
                   @if(isset($data['binddatapengaduan']))
                     {{$data['binddatapengaduan']->created_at}}
-                  @elseif(isset($data['binddatamutasi']))
-                    {{$data['getmutasi'][0]->created_at}}
-                  @else
-                    Tanggal Pengaduan
                   @endif
                   |
                   @if(isset($data['binddatapengaduan']))
                     {{$data['binddatapengaduan']->topik->nama_topik}}
-                  @elseif(isset($data['binddatamutasi']))
-                    {{$data['getmutasi'][0]->nama_topik}}
-                  @else
-                    Topik Pengaduan
                   @endif
                 </span>
               </div><!-- /.user-block -->
@@ -102,19 +82,11 @@
               <p>
                 @if(isset($data['binddatapengaduan']))
                   {{$data['binddatapengaduan']->judul_pengaduan}}
-                @elseif(isset($data['binddatamutasi']))
-                  {{$data['getmutasi'][0]->judul_pengaduan}}
-                @else
-                  Judul Pengaduan
                 @endif
               </p>
               <p style="text-align:justify">
                 @if(isset($data['binddatapengaduan']))
-                  {{$data['binddatapengaduan']->isi_pengaduan}}
-                @elseif(isset($data['binddatamutasi']))
-                  {{$data['getmutasi'][0]->isi_pengaduan}}
-                @else
-                  Isi Pengaduan
+                  <?php echo $data['binddatapengaduan']->isi_pengaduan ?>
                 @endif
               </p>
               <!-- Attachment -->
@@ -142,40 +114,6 @@
                       </a>
                     </p>
                   </div><!-- /.attachment-block -->
-                @elseif(isset($data['binddatapengaduanmutasi']))
-                  <div class="attachment-block clearfix">
-                  <b>Data Pendukung</b><br>
-                    {{-- @foreach($data['getdokumen'] as $dok)
-                        @if($data['binddatamutasi']->id_pengaduan === $dok->pengaduan_id)
-                          <i class="text-muted">{{$dok->url_dokumen}}</i>
-                        @endif
-                    @endforeach --}}
-                    @foreach($data['getdokumen'] as $dok)
-                      <?php $cekDok="0"; ?>
-                      @if($data['binddatamutasi']->id_pengaduan === $dok->pengaduan_id)
-                        {{-- <div class="pull-right">
-                          <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                        </div> --}}
-                          <?php $cekDok="1"; ?>
-                        <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm">
-                          @if (strpos($dok->url_dokumen, '.pdf'))
-                            <img width="5%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
-                          @elseif(strpos($dok->url_dokumen, '.png'))
-                            <img width="5%" src="{{ asset('dist\img\png.png') }}" alt="..." class="margin">
-                          @elseif(strpos($dok->url_dokumen, '.jpg'))
-                            <img width="5%" src="{{ asset('dist\img\jpg.png') }}" alt="..." class="margin">
-                          @elseif(strpos($dok->url_dokumen, '.docx'))
-                            <img width="5%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
-                          @elseif(strpos($dok->url_dokumen, '.xlsx'))
-                            <img width="5%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
-                          @endif
-                        </a>
-                        @endif
-                    @endforeach
-                    @if($cekDok=="0")
-                      Data tidak tersedia.
-                    @endif
-                  </div><!-- /.attachment-block -->
                 @endif
                 @else
                 <div class="attachment-block clearfix">
@@ -185,13 +123,7 @@
               @endif
             </div><!-- /.box-body -->
             <div class="box-footer">
-              @if(isset($data['binddatapengaduan']))
                 {!! Form::model($data['binddatapengaduan'], ['route' => ['tanggap.update', $data['binddatapengaduan']->id], 'method' => "patch", 'class'=>'form-horizontal']) !!}
-              @elseif(isset($data['binddatamutasi']))
-                <form class="form-horizontal" method="post" action="{{url('tanggap')}}">
-                @else
-                  <form class="form-horizontal" method="post" action="#">
-                  @endif
                   {!! csrf_field() !!}
                   <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/logokabtangerang.png')}}" alt="alt text">
                   <!-- .img-push is used to add margin to elements next to floating images -->
@@ -199,22 +131,12 @@
                     <input
                     @if(isset($data['binddatapengaduan']))
                       value="{{$data['binddatapengaduan']->id}}"
-                    @elseif(isset($data['binddatamutasi']))
-                      value="{{$data['binddatamutasi']->id_pengaduan}}"
                     @endif
                     type="hidden" name="id" class="form-control" readonly="true"
                     @if(!$errors->has('id'))
                       value="{{ old('id') }}"
                     @endif
                     >
-                    @if(isset($data['binddatamutasi']))
-                      {{-- <h4><span class="label bg-green">Data Mutasi dari SKPD
-                      @foreach($data['getmutasi'] as $key)
-                      {{$key->nama_skpd}}</span></h4>
-                    @endforeach --}}
-                    <textarea name="tanggapanmutasi" readonly="true" class="form-control" rows="5" cols="40" style="border:1px solid #00a65a;margin-top:5px;">{{$data['binddatamutasi']->pesan_mutasi}}</textarea>
-                  @endif
-                  <br>
                   <textarea name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."
                   @if($errors->has('tanggapan'))
                     style="border:1px solid #DD4B39;margin-top:5px;"
@@ -228,13 +150,7 @@
                     </span>
                   @endif
                   <div class="footer pull-right" style="padding-top:5px;">
-                    @if(isset($data['binddatapengaduan']))
                       <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
-                    @elseif(isset($data['binddatamutasi']))
-                      <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
-                    @else
-                      <button class="btn btn-primary btn-sm btn-flat" disabled="true">Kirim Tanggapan</button>
-                    @endif
                   </div>
                 </div>
               </form>
@@ -246,51 +162,31 @@
           <div class="box box-widget">
             <div class='box-header with-border'>
               <div class='user-block'>
-                  @if(isset($data['binddatapengaduan']))
-                    @if($data['binddatapengaduan']->user->url_photo == null || $data['binddatapengaduan']->flag_anonim==1)
+                  @if(isset($data['binddatapengaduanmutasi']))
+                    @if($data['getdatamutasi'][0]->url_photo == null || $data['getdatamutasi'][0]->flag_anonim==1)
                       <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
                     @else
-                      <img class="img-circle" src="{{ asset('/images/'.$data['binddatapengaduan']->user->url_photo) }}" alt="{{$data['binddatapengaduan']->user->nama}}">
-                    @endif
-                  @elseif(isset($data['binddatapengaduanmutasi']))
-                    @if($data['getmutasi'][0]->url_photo == null || $data['getmutasi'][0]->flag_anonim==1)
-                      <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
-                    @else
-                      <img class="img-circle" src="{{ asset('/images/'.$data['getmutasi'][0]->url_photo) }}" alt="{{$data['getmutasi'][0]->nama}}">
+                      <img class="img-circle" src="{{ asset('/images/'.$data['getdatamutasi'][0]->url_photo) }}" alt="{{$data['getdatamutasi'][0]->nama}}">
                     @endif
                   @else
                       <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="user image">
                   @endif
                 <span class='username'><a href="#">
-                  @if(isset($data['binddatapengaduan']))
-                    @if($data['binddatapengaduan']->flag_anonim==0)
-                      {{$data['binddatapengaduan']->user->nama}}
-                    @else
-                      Nama Dirahasiakan
-                    @endif
-                  @elseif(isset($data['binddatamutasi']))
-                    @if($data['binddatapengaduanmutasi']->flag_anonim==0)
-                      {{$data['getmutasi'][0]->nama}}
+                  @if(isset($data['binddatamutasi']))
+                    @if($data['getdatamutasi'][0]->flag_anonim==0)
+                      {{$data['getdatamutasi'][0]->nama}}
                     @else
                       Nama Dirahasiakan
                     @endif
                   @endif
                 </a></span>
                 <span class='description'>
-                  @if(isset($data['binddatapengaduan']))
-                    {{$data['binddatapengaduan']->created_at}}
-                  @elseif(isset($data['binddatamutasi']))
-                    {{$data['getmutasi'][0]->created_at}}
-                  @else
-                    Tanggal Pengaduan
+                  @if(isset($data['binddatamutasi']))
+                    {{$data['getdatamutasi'][0]->created_at}}
                   @endif
                   |
-                  @if(isset($data['binddatapengaduan']))
-                    {{$data['binddatapengaduan']->topik->nama_topik}}
-                  @elseif(isset($data['binddatamutasi']))
-                    {{$data['getmutasi'][0]->nama_topik}}
-                  @else
-                    Topik Pengaduan
+                  @if(isset($data['binddatamutasi']))
+                    {{$data['getdatamutasi'][0]->nama_topik}}
                   @endif
                 </span>
               </div><!-- /.user-block -->
@@ -302,62 +198,22 @@
             <div class='box-body'>
               <!-- post text -->
               <p>
-                @if(isset($data['binddatapengaduan']))
-                  {{$data['binddatapengaduan']->judul_pengaduan}}
-                @elseif(isset($data['binddatamutasi']))
-                  {{$data['getmutasi'][0]->judul_pengaduan}}
-                @else
-                  Judul Pengaduan
+                @if(isset($data['binddatamutasi']))
+                  {{$data['getdatamutasi'][0]->judul_pengaduan}}
                 @endif
               </p>
               <p style="text-align:justify">
-                @if(isset($data['binddatapengaduan']))
-                  {{$data['binddatapengaduan']->isi_pengaduan}}
-                @elseif(isset($data['binddatamutasi']))
-                  {{$data['getmutasi'][0]->isi_pengaduan}}
-                @else
-                  Isi Pengaduan
+                @if(isset($data['binddatamutasi']))
+                  <?php echo $data['getdatamutasi'][0]->isi_pengaduan?>
                 @endif
               </p>
               <!-- Attachment -->
-              @if($data['getdokumen'] != null)
-                @if(isset($data['binddatapengaduan']))
-                  <div class="attachment-block clearfix">
-                    <b>Data Pendukung</b><br>
-                      {{-- <i class="text-muted">{{$data['getdokumen'][0]->url_dokumen}}</i>
-                    <div class="pull-right">
-                      <a href="{{ asset('\..\documents').'/'.$data['getdokumen'][0]->url_dokumen}}" download="{{$data['getdokumen'][0]->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                    </div> --}}
-                    <p class="text-muted">
-                      <a href="{{ asset('\..\documents').'/'.$data['getdokumen'][0]->url_dokumen}}" download="{{$data['getdokumen'][0]->url_dokumen}}" class="link-black text-sm">
-                        @if (strpos($data['getdokumen'][0]->url_dokumen, '.pdf'))
-                          <img width="5%" src="{{ asset('dist\img\pdf.png') }}" alt="..." class="margin">
-                        @elseif(strpos($data['getdokumen'][0]->url_dokumen, '.png'))
-                          <img width="5%" src="{{ asset('dist\img\png.png') }}" alt="..." class="margin">
-                        @elseif(strpos($data['getdokumen'][0]->url_dokumen, '.jpg'))
-                          <img width="5%" src="{{ asset('dist\img\jpg.png') }}" alt="..." class="margin">
-                        @elseif(strpos($data['getdokumen'][0]->url_dokumen, '.docx'))
-                          <img width="5%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
-                        @elseif(strpos($data['getdokumen'][0]->url_dokumen, '.xlsx'))
-                          <img width="5%" src="{{ asset('dist\img\doc.png') }}" alt="..." class="margin">
-                        @endif
-                      </a>
-                    </p>
-                  </div><!-- /.attachment-block -->
-                @elseif(isset($data['binddatapengaduanmutasi']))
+                @if(isset($data['binddatapengaduanmutasi']))
                   <div class="attachment-block clearfix">
                   <b>Data Pendukung</b><br>
-                    {{-- @foreach($data['getdokumen'] as $dok)
-                        @if($data['binddatamutasi']->id_pengaduan === $dok->pengaduan_id)
-                          <i class="text-muted">{{$dok->url_dokumen}}</i>
-                        @endif
-                    @endforeach --}}
+                  <?php $cekDok="0"; ?>
                     @foreach($data['getdokumen'] as $dok)
-                      <?php $cekDok="0"; ?>
                       @if($data['binddatamutasi']->id_pengaduan === $dok->pengaduan_id)
-                        {{-- <div class="pull-right">
-                          <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                        </div> --}}
                           <?php $cekDok="1"; ?>
                         <a href="{{ asset('\..\documents').'/'.$dok->url_dokumen}}" download="{{$dok->url_dokumen}}" class="link-black text-sm">
                           @if (strpos($dok->url_dokumen, '.pdf'))
@@ -379,29 +235,15 @@
                     @endif
                   </div><!-- /.attachment-block -->
                 @endif
-                @else
-                <div class="attachment-block clearfix">
-                  <b>Data Pendukung</b><br>
-                    Data tidak tersedia.
-                </div>
-              @endif
             </div><!-- /.box-body -->
             <div class="box-footer">
-              @if(isset($data['binddatapengaduan']))
-                {!! Form::model($data['binddatapengaduan'], ['route' => ['tanggap.update', $data['binddatapengaduan']->id], 'method' => "patch", 'class'=>'form-horizontal']) !!}
-              @elseif(isset($data['binddatamutasi']))
-                <form class="form-horizontal" method="post" action="{{url('tanggap')}}">
-                @else
-                  <form class="form-horizontal" method="post" action="#">
-                  @endif
+              <form class="form-horizontal" method="post" action="{{url('tanggap')}}">
                   {!! csrf_field() !!}
                   <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/logokabtangerang.png')}}" alt="alt text">
                   <!-- .img-push is used to add margin to elements next to floating images -->
                   <div class="img-push">
                     <input
-                    @if(isset($data['binddatapengaduan']))
-                      value="{{$data['binddatapengaduan']->id}}"
-                    @elseif(isset($data['binddatamutasi']))
+                    @if(isset($data['binddatamutasi']))
                       value="{{$data['binddatamutasi']->id_pengaduan}}"
                     @endif
                     type="hidden" name="id" class="form-control" readonly="true"
@@ -430,13 +272,7 @@
                     </span>
                   @endif
                   <div class="footer pull-right" style="padding-top:5px;">
-                    @if(isset($data['binddatapengaduan']))
-                      <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
-                    @elseif(isset($data['binddatamutasi']))
-                      <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
-                    @else
-                      <button class="btn btn-primary btn-sm btn-flat" disabled="true">Kirim Tanggapan</button>
-                    @endif
+                    <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
                   </div>
                 </div>
               </form>

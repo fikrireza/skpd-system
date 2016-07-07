@@ -302,7 +302,10 @@ class DashboardController extends Controller
       $getdataforareachart = DB::table('pengaduan')
                               ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'),
                                DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[0]') as 'a'"),
-                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"))
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"),
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[2]') as 'c'"),
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[3]') as 'd'"),
+                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[4]') as 'e'"))
                               ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                               ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                               ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
