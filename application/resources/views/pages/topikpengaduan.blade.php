@@ -113,7 +113,7 @@
     <form class="form-horizontal" method="post" action="#">
       {{ csrf_field() }}
         <div class="col-md-4">
-          <div class="box box-warning">
+          <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Formulir Tambah Data Topik Pengaduan</h3>
             </div>
@@ -146,7 +146,7 @@
     <!-- END FORM-->
     <!-- START TABLE-->
     <div class="col-md-8">
-      <div class="box box-warning">
+      <div class="box box-primary">
         <div class="box-header with-border">
           <div class="box-title">
             Seluruh Data Topik Pengaduan
@@ -184,7 +184,7 @@
                   <td>{{ $key->nama_topik }}</td>
                   <td>{{ $key->masterskpd->nama_skpd }}</td>
                   <td>
-                    <span data-toggle="tooltip" title="Edit Data">
+                    <span data-toggle="tooltip" title="Ubah Data">
                       <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-flat btn-xs edit" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
                     </span>
                     <span data-toggle="tooltip" title="Hapus Data">

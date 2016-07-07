@@ -57,7 +57,7 @@
   <form class="form-horizontal" method="post" action="{{ url('admin/slider') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
       <div class="col-md-4">
-        <div class="box box-danger">
+        <div class="box box-primary">
           <div class="box-header with-border">
               <h3 class="box-title">Tambah Gambar Slider</h3>
           </div>
@@ -85,7 +85,7 @@
 
   {{-- <!-- START TABLE--> --}}
   <div class="col-md-8">
-    <div class="box box-danger">
+    <div class="box box-primary">
       <div class="box-header with-border">
         <div class="box-title">
           Gambar Slider
@@ -93,7 +93,7 @@
       </div>
       <div class="box-body no-padding">
         <table class="table table-hover">
-          <tr class="bg-red">
+          <tr class="bg-yellow">
             <th style="width:10px;">No</th>
             <th>Gambar</th>
             <th>User</th>
@@ -119,7 +119,7 @@
             </td>
             <td>
               @if($slider->flag_slider == 1)
-                <span data-toggle="tooltip" title="Non Aktifkan">
+                <span data-toggle="tooltip" title="Tidak Aktifkan">
                   <a href="{{ url('/admin/slider', $slider->id) }}" class="btn btn-default bg-marron btn-flat btn-xs"><i class="fa fa-ban"></i></a>
                 </span>
               @elseif($slider->flag_slider == 0)

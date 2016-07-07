@@ -162,7 +162,7 @@
  <div class="row">
    <div class="col-md-12">
      <!-- Horizontal Form -->
-     <div class="box box-warning">
+     <div class="box box-primary">
        <div class="box-header">
          <h3 class="box-title">Seluruh Data Pengaduan SKPD Terkait</h3>
        </div><!-- /.box-header -->
@@ -221,7 +221,7 @@
                      @endif
                    </td>
                    <td>
-                     <span data-toggle="tooltip" title="View Data">
+                     <span data-toggle="tooltip" title="Lihat Data Pengaduan">
                        <a href="" data-value="{{ $key->pengaduanid }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
                      </span>
                    </td>

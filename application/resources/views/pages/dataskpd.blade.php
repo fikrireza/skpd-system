@@ -152,7 +152,7 @@
     <form class="form-horizontal" method="post" action="{{ route('dataskpd.store') }}">
       {!! csrf_field(); !!}
         <div class="col-md-4">
-          <div class="box box-warning">
+          <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Formulir Tambah Data SKPD</h3>
             </div>
@@ -183,7 +183,7 @@
     <!-- END FORM-->
     <!-- START TABLE-->
     <div class="col-md-8">
-      <div class="box box-warning">
+      <div class="box box-primary">
         <div class="box-header with-border">
           <div class="box-title">
             Seluruh Data SKPD
@@ -228,7 +228,7 @@
                   </td>
                   <td>
                     @if($key->flag_skpd==1)
-                      <span data-toggle="tooltip" title="Non Aktifkan SKPD">
+                      <span data-toggle="tooltip" title="Tidak Aktifkan SKPD">
                         <a href="" data-value="{{ $key->id }}" class="btn btn-default btn-xs btn-flat nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="#"><i class="fa fa-ban"></i></a>
                       </span>
                     @else
@@ -236,7 +236,7 @@
                         <a href="" data-value="{{ $key->id }}" class="btn btn-primary btn-xs btn-flat aktif" data-toggle="modal" data-target="#myModalAktif" data-value="#"><i class="fa fa-check-square-o"></i></a>
                       </span>
                     @endif
-                    <span data-toggle="tooltip" title="Edit Data">
+                    <span data-toggle="tooltip" title="Ubah Data">
                       <a href="" data-value="{{ $key->id }}" class="btn btn-warning btn-xs btn-flat edit" data-toggle="modal" data-target="#myModalEdit"><i class="fa fa-edit"></i></a>
                     </span>
                     <span data-toggle="tooltip" title="Hapus Data">

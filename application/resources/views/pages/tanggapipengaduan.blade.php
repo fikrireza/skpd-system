@@ -81,7 +81,7 @@
               <!-- post text -->
               <p>
                 @if(isset($data['binddatapengaduan']))
-                  {{$data['binddatapengaduan']->judul_pengaduan}}
+                  <b>{{$data['binddatapengaduan']->judul_pengaduan}}</b>
                 @endif
               </p>
               <p style="text-align:justify">
@@ -152,7 +152,7 @@
                     </span>
                   @endif
                   <div class="footer pull-right" style="padding-top:5px;">
-                      <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+                      <button class="btn btn-success btn-sm btn-flat">Kirim Tanggapan</button>
                   </div>
                 </div>
               </form>
@@ -201,7 +201,7 @@
               <!-- post text -->
               <p>
                 @if(isset($data['binddatamutasi']))
-                  {{$data['getdatamutasi'][0]->judul_pengaduan}}
+                  <b>{{$data['getdatamutasi'][0]->judul_pengaduan}}</b>
                 @endif
               </p>
               <p style="text-align:justify">
@@ -276,7 +276,7 @@
                     </span>
                   @endif
                   <div class="footer pull-right" style="padding-top:5px;">
-                    <button class="btn btn-primary btn-sm btn-flat">Kirim Tanggapan</button>
+                    <button class="btn btn-success btn-sm btn-flat">Kirim Tanggapan</button>
                   </div>
                 </div>
               </form>
@@ -359,7 +359,7 @@
                         <td>{{ $key->created_at }}</td>
                         <td>
                           @if($key->flag_tanggap==0)
-                            <a class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data Pengaduan' href="{{ route('tanggap.edit', $key->id) }}"><i class="fa fa-eye"></i></a></td>
+                            <a class="btn btn-danger btn-xs btn-flat" data-toggle='tooltip' title='Tanggapi Data Pengaduan' href="{{ route('tanggap.edit', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
                           @endif
                       </tr>
                       <?php $no++; ?>
@@ -414,7 +414,7 @@
                       <td>{{ $key->nama_skpd }}</td>
                       <td>
                         @if($key->flag_tanggap==0)
-                          <a class="btn btn-primary btn-xs btn-flat" data-toggle='tooltip' title='Lihat Data Mutasi' href="{{ route('tanggap.show', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
+                          <a class="btn btn-danger btn-xs btn-flat" data-toggle='tooltip' title='Tanggapi Data Mutasi' href="{{ route('tanggap.show', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
                         @endif
                     </tr>
                     <?php $no++; ?>

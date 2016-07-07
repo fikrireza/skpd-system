@@ -22,7 +22,7 @@
   <div class="row">
     <!-- Left col -->
     <section class="col-lg-8 col-md-8 connectedSortable">
-      <div class="box box-warning">
+      <div class="box box-primary">
          <div class="box-header with-border">
            <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Warga</h3>
          </div>
@@ -46,7 +46,10 @@
         <div class="icon">
           <i class="ion ion-speakerphone"></i>
         </div>
-        <div class="small-box-footer"></div>
+        <a class="small-box-footer">
+          <i>Terdapat {{ $pengaduan}}
+            jumlah pegaduan.</i>
+        </a>
       </div>
       <div class="small-box bg-aqua">
         <div class="inner">
@@ -56,7 +59,10 @@
         <div class="icon">
           <i class="fa fa-smile-o"></i>
         </div>
-        <div class="small-box-footer"></div>
+        <a class="small-box-footer">
+          <i>Terdapat {{ $ditanggapi}}
+            pengaduan sudah di tanggapi.</i>
+        </a>
       </div>
       <div class="small-box bg-red">
         <div class="inner">
@@ -66,7 +72,10 @@
         <div class="icon">
           <i class="fa fa-meh-o"></i>
         </div>
-        <div class="small-box-footer"></div>
+        <a class="small-box-footer">
+          <i>Terdapat {{ $blmtanggapi}}
+            pengaduan belum di tanggapi.</i>
+        </a>
       </div>
     </div>
   </div><!-- /.row (main row) -->
