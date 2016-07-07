@@ -348,16 +348,16 @@
                     <td colspan="5" class="text-muted" style="text-align:center;"><i>Data SKPD tidak tersedia.</i></td>
                   </tr>
                 @elseif(isset($getmasterskpd))
-                @foreach($getmasterskpd as $keyskpd)
-                  <li>
-                    <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
-                      {{$keyskpd->nama_skpd}}
-                      <span class="pull-right text-red">
-                        <b>{{$keyskpd->jumlahpengaduan}}</b>
-                      </span>
-                    </a>
-                  </li>
-                @endforeach
+                  @foreach($getmasterskpd as $keyskpd)
+                    <li>
+                      <a href="{{url('pengaduanbytopik/show', $keyskpd->id)}}">
+                        {{$keyskpd->nama_skpd}}
+                        <span class="pull-right text-red">
+                          <b>{{$keyskpd->jumlahpengaduan}}</b>
+                        </span>
+                      </a>
+                    </li>
+                  @endforeach
               @endif
               <div class="box-footer">
                 <div class="pagination pagination-sm no-margin pull-right">
