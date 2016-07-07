@@ -11,6 +11,7 @@ use Auth;
 use Hash;
 use DB;
 use Validator;
+use Image;
 
 class ProfileController extends Controller
 {
@@ -18,6 +19,7 @@ class ProfileController extends Controller
   {
     $id = Auth::user()->id;
     $getprofile = User::find($id);
+    // dd($getprofile);
     $getcounttanggap = TanggapanModel::where('id_userskpd', $id)->count();
 
     $gethistoritanggapan = DB::table('pengaduan')
@@ -32,13 +34,30 @@ class ProfileController extends Controller
 
   public function store(Request $request)
   {
-    $set = User::find($request->id);
-    $set->nama = $request->nama;
-    $set->noktp = $request->noktp;
-    $set->notelp = $request->notelp;
-    $set->jeniskelamin = $request->jk;
-    $set->alamat = $request->alamat;
-    $set->save();
+    $file = $request->file('url_photo');
+
+    if ($file==null) {
+      $set = User::find($request->id);
+      $set->nama = $request->nama;
+      $set->noktp = $request->noktp;
+      $set->notelp = $request->notelp;
+      $set->jeniskelamin = $request->jk;
+      $set->alamat = $request->alamat;
+      $set->save();
+    }
+    else {
+      $photo_name = time(). '.' . $file->getClientOriginalExtension();
+      Image::make($file)->resize(200,200)->save('images/'. $photo_name);
+
+      $set = User::find($request->id);
+      $set->nama = $request->nama;
+      $set->noktp = $request->noktp;
+      $set->notelp = $request->notelp;
+      $set->jeniskelamin = $request->jk;
+      $set->alamat = $request->alamat;
+      $set->url_photo = $photo_name;
+      $set->save();
+    }
 
     return redirect()->route('my.profile')->with('message', 'Berhasil mengubah profile.');
   }

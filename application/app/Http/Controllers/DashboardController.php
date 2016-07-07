@@ -270,11 +270,9 @@ class DashboardController extends Controller
                               ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
                               ->orderby('pengaduan.created_at', 'asc')
                               ->get();
-                              // dd($getdataforareachart);
+
       return $getdataforareachart;
-
     }
-
 
     public function adminareachartSKPD()
     {
@@ -307,8 +305,8 @@ class DashboardController extends Controller
                               ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
                               ->orderby('pengaduan.created_at', 'asc')
                               ->get();
+                              
       return $getdataforareachart;
-
     }
 
     public function countpengaduanbyskpd()
