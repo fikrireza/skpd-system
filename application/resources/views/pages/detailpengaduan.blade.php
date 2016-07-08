@@ -132,7 +132,7 @@
             @else
               <span class='username'><a href="#">Nama Dirahasiakan</a></span>
             @endif
-            <span class='description'>{{$binddatapengaduan->created_at}} | {{$binddatapengaduan->topik->nama_topik}}</span>
+            <span class='description'>{{ \Carbon\Carbon::parse($binddatapengaduan->created_at)->format('d-M-y H:i:s')}} | {{$binddatapengaduan->topik->nama_topik}}</span>
           </div><!-- /.user-block -->
           <div class='box-tools'>
             <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
@@ -207,8 +207,10 @@
                   <span class="username">
                       @foreach($tanggapanall as $gettanggapanall)
                         {{$gettanggapanall->nama}}
-                        <span class='text-muted pull-right'>{{$gettanggapanall->created_tanggpan
-                        }}</span>
+                        <span class='text-muted pull-right'>
+                          
+                        {{ \Carbon\Carbon::parse($gettanggapanall->created_tanggpan)->format('d-M-y H:i:s')}}
+                        </span>
                         </span><!-- /.username -->
                         {{$gettanggapanall->tanggapan}}
                       @endforeach

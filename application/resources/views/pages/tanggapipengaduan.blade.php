@@ -64,7 +64,7 @@
                 </a></span>
                 <span class='description'>
                   @if(isset($data['binddatapengaduan']))
-                    {{$data['binddatapengaduan']->created_at}}
+                    {{ \Carbon\Carbon::parse($data['binddatapengaduan']->created_at)->format('d-M-y H:i:s')}}
                   @endif
                   |
                   @if(isset($data['binddatapengaduan']))
@@ -184,7 +184,7 @@
                 </a></span>
                 <span class='description'>
                   @if(isset($data['binddatamutasi']))
-                    {{$data['getdatamutasi'][0]->created_at}}
+                    {{ \Carbon\Carbon::parse($data['getdatamutasi'][0]->created_at)->format('d-M-y H:i:s')}}
                   @endif
                   |
                   @if(isset($data['binddatamutasi']))
@@ -356,7 +356,7 @@
                             <td>Nama Dirahasiakan</td>
                         @endif
                         <td>{{ $key->nama_topik }}</td>
-                        <td>{{ $key->created_at }}</td>
+                        <td>{{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y H:i:s')}}</td>
                         <td>
                           @if($key->flag_tanggap==0)
                             <a class="btn btn-danger btn-xs btn-flat" data-toggle='tooltip' title='Tanggapi Data Pengaduan' href="{{ route('tanggap.edit', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
@@ -410,7 +410,7 @@
                           <td>Nama Dirahasiakan</td>
                       @endif
                       <td>{{ $key->nama_topik }}</td>
-                      <td>{{ $key->created_at }}</td>
+                      <td>{{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y H:i:s')}}</td>
                       <td>{{ $key->nama_skpd }}</td>
                       <td>
                         @if($key->flag_tanggap==0)
