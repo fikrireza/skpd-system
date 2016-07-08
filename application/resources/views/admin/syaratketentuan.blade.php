@@ -65,7 +65,7 @@
   <form class="form-horizontal" method="post" action="{{ url('admin/syaratketentuan') }}">
     {{ csrf_field() }}
       <div class="col-md-4">
-        <div class="box box-danger">
+        <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Syarat & Ketentuan</h3>
             <div class="box-tools pull-right">
