@@ -39,8 +39,27 @@
               </div>
             @endif
 
-            <div class="row">
+            <div class="modal fade" id="modalSyarat" role="dialog">
+              <div class="modal-dialog" >
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h3 class="box-title">Syarat & Ketentuan SIMPEDU</h3>
+                    </div>
+                    <div class="modal-body">
+                      @if($syarat != null)
+                      {!! $syarat->isi_syarat !!}
+                      @else
+                      Belum ada data
+                      @endif
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                  </div>
+              </div>
+            </div>
 
+            <div class="row">
               <div class="col-md-9">
                 <div class="box box-solid">
                 <div class="box-body">
@@ -130,7 +149,7 @@
                           <div class="social-auth-links text-center">
                             <div class="checkbox icheck">
                               <label>
-                                <input type="checkbox" required=""> Saya Setuju <a href="#">Ketentuan</a>
+                                <input type="checkbox" required=""> Saya Setuju <a href="#" data-toggle="modal" data-target="#modalSyarat">Ketentuan</a>
                               </label>
                             </div>
                           </div>

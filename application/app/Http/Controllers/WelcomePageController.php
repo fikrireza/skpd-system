@@ -13,6 +13,7 @@ use App\MasterSKPD;
 use App\Models\TanggapanModel;
 use App\Models\Sliders;
 use App\Models\Tentang;
+use App\Models\SyaratKetentuan;
 use Image;
 
 class WelcomePageController extends Controller
@@ -68,13 +69,13 @@ class WelcomePageController extends Controller
                       ->orderby('jumlah_pengaduan', 'desc')
                       ->get();
     //dd($skpdonly);
-    $sliders = Sliders::orderby('updated_at', 'desc')->get();
+    $sliders = Sliders::where('flag_slider', 1)->orderby('updated_at', 'desc')->get();
 
-    $tentang = Tentang::join('users', 'users.id', '=', 'tentang.id_users')
-                        ->select('users.nama', 'tentang.*')
-                        ->first();
+    $tentang = Tentang::select('isi_tentang')->first();
+    $syarat = SyaratKetentuan::select('isi_syarat')->first();
 
-    return view('index', compact('pengaduanWid', 'tanggapWid', 'CountPengaduan','UsersWarga', 'Persen', 'skpdonly', 'AllTopiks', 'sliders', 'tentang'));
+
+    return view('index', compact('pengaduanWid', 'tanggapWid', 'CountPengaduan','UsersWarga', 'Persen', 'skpdonly', 'AllTopiks', 'sliders', 'tentang', 'syarat'));
   }
 
   public function semuatopik($slug)

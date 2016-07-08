@@ -181,3 +181,6 @@ Route::get('admin/deleteslider/{id}', 'SlidersController@hapus');
 Route::get('admin/tentang', ['as' => 'tentang', 'uses' => 'TentangController@index']);
 Route::post('admin/tentang', 'TentangController@store');
 Route::post('admin/tentang/update', 'TentangController@update');
+Route::get('admin/syaratketentuan', ['as' => 'syaratketentuan', 'uses' => 'SyaratKetentuanController@index']);
+Route::post('admin/syaratketentuan', 'SyaratKetentuanController@store');
+Route::post('admin/syaratketentuan/update', 'SyaratKetentuanController@update');
