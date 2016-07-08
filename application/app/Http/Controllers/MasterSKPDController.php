@@ -61,9 +61,13 @@ class MasterSKPDController extends Controller
      */
     public function store(Request $request)
     {
+      $tampung = $request->namaskpd;
+      $slug = str_slug($tampung);
+
       $set = new MasterSKPD;
       $set->kode_skpd = $request->kodeskpd;
       $set->nama_skpd = $request->namaskpd;
+      $set->slug      = $slug;
       $set->flag_skpd = $request->flagskpd;
       $set->save();
 
@@ -101,9 +105,13 @@ class MasterSKPDController extends Controller
      */
     public function update(Request $request)
     {
+        $tampung = $request->namaskpd;
+        $slug = str_slug($tampung);
+
         $set = MasterSKPD::find($request->idskpd);
         $set->kode_skpd = $request->kodeskpd;
         $set->nama_skpd = $request->namaskpd;
+        $set->slug      = $slug;
         $set->flag_skpd = $request->flagskpd;
         $set->save();
 

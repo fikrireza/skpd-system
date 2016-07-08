@@ -9,7 +9,7 @@ class MasterSKPD extends Model
     protected $table = 'master_skpd';
 
     protected $fillable = [
-        'kode_skpd', 'nama_skpd', 'flag_skpd'
+        'kode_skpd', 'nama_skpd', 'slug', 'flag_skpd'
     ];
 
     public function topikpengaduan()
