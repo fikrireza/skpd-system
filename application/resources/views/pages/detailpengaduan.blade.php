@@ -52,7 +52,7 @@
                         <option value="{{ $key->id }}">{{ $key->kode_topik }} - {{ $key->nama_topik }}</option>
                       @endforeach
                     </select> --}}
-                    <select class="form-control select2" name="topik" style="width: 100%;">
+                    <select class="form-control select2" name="id_topik" style="width: 100%;">
                       <option value="">-- Pilih Topik --</option>
                       @foreach($gettskpd as $getdataskpd)
                         <optgroup label="{{ $getdataskpd->nama_skpd }}">
@@ -279,10 +279,9 @@
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
   <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+
   <script type="text/javascript">
-    $(document).ready(function(){
-      $(".select2").select2();
-    });
+  $(".select2").select2();
   </script>
   <script>
     window.setTimeout(function() {
