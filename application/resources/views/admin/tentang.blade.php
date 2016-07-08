@@ -6,7 +6,7 @@
 @stop
 
 @section('breadcrumb')
-  <h1>Slider</h1>
+  <h1>Tentang SIMPEDU</h1>
   <ol class="breadcrumb">
     <li class=""><a href="{{ url('/dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
   </ol>

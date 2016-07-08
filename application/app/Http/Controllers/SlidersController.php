@@ -19,7 +19,7 @@ class SlidersController extends Controller
    */
   public function __construct()
   {
-    // $this->middleware('isAdmin');
+    $this->middleware('isAdmin');
   }
 
   public function index()
@@ -27,7 +27,7 @@ class SlidersController extends Controller
     $sliders = Sliders::join('users', 'users.id', '=', 'sliders.id_users')
                         ->select('users.nama', 'sliders.*')
                         ->orderby('sliders.updated_at', 'desc')
-                        ->get();
+                        ->paginate(4);
 
     return view('admin.slider', compact('sliders'));
   }
