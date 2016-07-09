@@ -52,7 +52,6 @@ class WelcomePageController extends Controller
                       ->where('pengaduan.flag_rahasia', 0)
                       ->where('pengaduan.flag_verifikasi', 1)
                       ->orderby('pengaduan.created_at', 'desc')
-                      ->take(24)
                       ->get();
     $grouping = collect($AllTopikQuery);
 
@@ -68,7 +67,7 @@ class WelcomePageController extends Controller
                       ->groupBy('nama_skpd')
                       ->orderby('jumlah_pengaduan', 'desc')
                       ->get();
-    //dd($skpdonly);
+
     $sliders = Sliders::where('flag_slider', 1)->orderby('updated_at', 'desc')->get();
 
     $tentang = Tentang::select('isi_tentang')->first();
