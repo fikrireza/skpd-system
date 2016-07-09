@@ -32,7 +32,7 @@
                     <h3 class="box-title">{{ $cekSlug->nama_skpd}}</h3>
                   </div>
                   <div class="box-body">
-                    @foreach($allpengaduan as $pengaduan)
+                    {{-- @foreach($allpengaduan as $pengaduan) --}}
                     <div class="post">
                       <div class="user-block">
                         @if($pengaduan->url_photo == null || $pengaduan->flag_anonim == 1)
@@ -108,7 +108,7 @@
                         @endif
                       </ul>
                     </div>
-                    @endforeach
+                    {{-- @endforeach --}}
                   </div>
                   <div class="box-footer">
 
