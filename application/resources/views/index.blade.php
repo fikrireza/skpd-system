@@ -326,7 +326,7 @@
                   </ul>
                 </div>
                 <div class="box-footer text-center">
-                  <a href="{{url('semua/'.$tabskpd->slug)}}" class="label uppercase bg-blue">Lihat Semua</a>
+                  <a href="{{url('skpd/'.$tabskpd->slug)}}" class="label uppercase bg-blue">Lihat Semua</a>
                 </div>
               </div>
             </section>
@@ -358,7 +358,7 @@
                   </ul>
                 </div>
                 <div class="box-footer text-center">
-                  <a href="{{url('semua/skpd')}}" class="label uppercase bg-blue">Lihat Semua SKPD</a>
+                  <a href="{{url('skpd')}}" class="label uppercase bg-blue">Lihat Semua SKPD</a>
                 </div>
               </div>
             </section>
