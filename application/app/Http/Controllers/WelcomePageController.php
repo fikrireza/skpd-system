@@ -104,7 +104,9 @@ class WelcomePageController extends Controller
                             ->paginate(10);
     }
 
-    return view('front.lihatsemuabyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'allpengaduan'));
+    $syarat = SyaratKetentuan::select('isi_syarat')->first();
+
+    return view('front.lihatsemuabyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'allpengaduan', 'syarat'));
   }
 
   public function detailpengaduan($slug)
@@ -147,6 +149,31 @@ class WelcomePageController extends Controller
     }
     // dd($tanggapan);
     return view('front.lihatdetailbyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'allpengaduan', 'tanggapan', 'dokumentall'));
+  }
+
+  public function semuaskpd()
+  {
+    $CountPengaduan   = Pengaduan::count();
+    $UsersWarga       = User::where('level', 1)->count();
+    $PengaduanProses  = Pengaduan::where('flag_verifikasi', 1)->count();
+
+    $Persen = ($PengaduanProses/$CountPengaduan)*100;
+    $Persen = round($Persen,2);
+
+    $dataskpd  = DB::table('master_skpd')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'master_skpd.slug as slug', DB::raw('count(pengaduan.topik_id) as jumlah_pengaduan'))
+                      ->where('master_skpd.flag_skpd', 1)
+                      ->where('pengaduan.flag_rahasia', 0)
+                      ->where('pengaduan.flag_verifikasi', 1)
+                      ->groupBy('nama_skpd')
+                      ->orderby('jumlah_pengaduan', 'desc')
+                      ->get();
+    //dd($dataskpd);
+    $syarat = SyaratKetentuan::select('isi_syarat')->first();
+
+    return view('front.alldetailskpd', compact('dataskpd', 'CountPengaduan', 'UsersWarga', 'Persen', 'syarat'));
   }
 
 }

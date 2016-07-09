@@ -152,8 +152,7 @@
                             </div>
                           </div>
                         </form>
-                        <a href="#">Lupa Password? Klik disini.</a><br>
-
+                        Lupa Password? <a href="{{ url('lupa_password') }}">Klik disini.</a><br>
                       </div>
                     </div>
                     <div class="tab-pane" id="daftar">
@@ -187,7 +186,7 @@
                             <div class="social-auth-links text-center">
                               <div class="checkbox icheck">
                                 <label>
-                                  <input type="checkbox"> Saya Setuju <a href="#">Ketentuan</a>
+                                  <input type="checkbox" required=""> Saya Setuju <a href="#" data-toggle="modal" data-target="#modalSyarat">Ketentuan</a>
                                 </label>
                               </div>
                             </div><!-- /.col -->
