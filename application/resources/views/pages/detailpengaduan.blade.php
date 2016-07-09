@@ -52,7 +52,7 @@
                         <option value="{{ $key->id }}">{{ $key->kode_topik }} - {{ $key->nama_topik }}</option>
                       @endforeach
                     </select> --}}
-                    <select class="form-control select2" name="topik" style="width: 100%;">
+                    <select class="form-control select2" name="id_topik" style="width: 100%;">
                       <option value="">-- Pilih Topik --</option>
                       @foreach($gettskpd as $getdataskpd)
                         <optgroup label="{{ $getdataskpd->nama_skpd }}">
@@ -132,7 +132,7 @@
             @else
               <span class='username'><a href="#">Nama Dirahasiakan</a></span>
             @endif
-            <span class='description'>{{$binddatapengaduan->created_at}} | {{$binddatapengaduan->topik->nama_topik}}</span>
+            <span class='description'>{{ \Carbon\Carbon::parse($binddatapengaduan->created_at)->format('d-M-y H:i:s')}} | {{$binddatapengaduan->topik->nama_topik}}</span>
           </div><!-- /.user-block -->
           <div class='box-tools'>
             <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
@@ -207,8 +207,10 @@
                   <span class="username">
                       @foreach($tanggapanall as $gettanggapanall)
                         {{$gettanggapanall->nama}}
-                        <span class='text-muted pull-right'>{{$gettanggapanall->created_tanggpan
-                        }}</span>
+                        <span class='text-muted pull-right'>
+                          
+                        {{ \Carbon\Carbon::parse($gettanggapanall->created_tanggpan)->format('d-M-y H:i:s')}}
+                        </span>
                         </span><!-- /.username -->
                         {{$gettanggapanall->tanggapan}}
                       @endforeach
@@ -279,10 +281,9 @@
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
   <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+
   <script type="text/javascript">
-    $(document).ready(function(){
-      $(".select2").select2();
-    });
+  $(".select2").select2();
   </script>
   <script>
     window.setTimeout(function() {

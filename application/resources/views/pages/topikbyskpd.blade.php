@@ -187,12 +187,12 @@
                    <td>{{$no}}.</td>
                    <td>{{ $key->nama }}</td>
                    <td>{{ $key->nama_topik }}</td>
-                   <td>{{ $key->tanggaladuan }}</td>
+                   <td>{{ \Carbon\Carbon::parse($key->tanggaladuan)->format('d-M-y H:i:s')}}</td>
                    <td>
                     @if($key->flag_tanggap=="0")
                       --
                     @else
-                      {{ $key->tanggaltanggap }}
+                      {{ \Carbon\Carbon::parse($key->tanggaltanggap)->format('d-M-y H:i:s')}}
                     @endif
                    </td>
                    <td>

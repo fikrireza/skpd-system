@@ -128,7 +128,12 @@
         <ul class="nav nav-tabs pull-right">
           <li class="active"><a href="#revenue-chart" data-toggle="tab">Grafik</a></li>
           {{-- <li><a href="#sales-chart" data-toggle="tab">Donut</a></li> --}}
-          <li class="pull-left header"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Per Topik</li>
+          <li class="pull-left header"><i class="fa fa-area-chart">
+              @if(Auth::user()->level == "0")
+                </i> Jumlah Pengaduan Per SKPD</li>
+              @else
+                </i> Jumlah Pengaduan Per Topik</li>
+              @endif
         </ul>
         <div class="tab-content no-padding">
           <!-- Morris chart - Sales -->
@@ -165,15 +170,11 @@
                   @endif
                     <small class="text-muted pull-right">
                       <i class="fa fa-calendar"></i>
-                      <?php
-                        $date = $key->created_at;
-                        $justdate = substr($date, 0, 10);
-                        $explode = explode("-", $justdate);
-                        echo $explode[2]."-".$explode[1]."-".$explode[0];
-                      ?>
+                      {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                         &nbsp;&nbsp;
                       <i class="fa fa-clock-o"></i>
                       <?php
+                        $date = $key->created_at;
                         $justtime = substr($date, 12);
                         echo $justtime;
                       ?>
@@ -239,15 +240,11 @@
                     @endif
                     <small class="text-muted pull-right">
                       <i class="fa fa-calendar"></i>
-                      <?php
-                        $date = $key->created_at;
-                        $justdate = substr($date, 0, 10);
-                        $explode = explode("-", $justdate);
-                        echo $explode[2]."-".$explode[1]."-".$explode[0];
-                      ?>
+                      {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                         &nbsp;&nbsp;
                       <i class="fa fa-clock-o"></i>
                       <?php
+                        $date = $key->created_at;
                         $justtime = substr($date, 12);
                         echo $justtime;
                       ?>
@@ -444,7 +441,7 @@
                   <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$key->url_photo) }}" alt="{{$key->nama}}">
                 @endif
                 <a class="users-list-name" href="{{url('wargaprofile/show', $key->id)}}">{{$key->nama}}</a>
-                <span class="users-list-date">{{$key->tgl_lahir}}</span>
+                <span class="users-list-date">{{ \Carbon\Carbon::parse($key->tgl_lahir)->format('d-M-y')}}</span>
               </li>
             @endforeach
           </ul><!-- /.users-list -->

@@ -98,12 +98,7 @@
                     @endif
                     <td>{{ $key->nama_topik }}</td>
                     <td>
-                      <?php
-                        $date = $key->created_at;
-                        $justdate = substr($date, 0, 10);
-                        $explode = explode("-", $justdate);
-                        echo $explode[2]."-".$explode[1]."-".$explode[0];
-                      ?>
+                      {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                     </td>
                     <td>
                       @if($key->flag_verifikasi==0)
@@ -137,12 +132,7 @@
                     @endif
                     <td>{{ $key->nama_topik }}</td>
                     <td>
-                      <?php
-                        $date = $key->created_at;
-                        $justdate = substr($date, 0, 10);
-                        $explode = explode("-", $justdate);
-                        echo $explode[2]."-".$explode[1]."-".$explode[0];
-                      ?>
+                      {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                     </td>
                     <td>
                       @if($key->flag_verifikasi==0)

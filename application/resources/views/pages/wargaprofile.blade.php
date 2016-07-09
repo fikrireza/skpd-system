@@ -117,7 +117,7 @@
                         <b>{{$getdatapengaduanall->judul_pengaduan}}</b>
                       </span>
                       <span class='description' style="margin-left:0px;">
-                        SKPD : {{$getdatapengaduanall->nama_skpd}} &nbsp;&nbsp;||&nbsp;&nbsp; Topik Pengaduan : {{$getdatapengaduanall->nama_topik}} &nbsp;&nbsp;||&nbsp;&nbsp; {{$getdatapengaduanall->created_pengaduan}}
+                        SKPD : {{$getdatapengaduanall->nama_skpd}} &nbsp;&nbsp;||&nbsp;&nbsp; Topik Pengaduan : {{$getdatapengaduanall->nama_topik}} &nbsp;&nbsp;||&nbsp;&nbsp; {{ \Carbon\Carbon::parse($getdatapengaduanall->created_pengaduan)->format('d-M-y H:i:s')}}
                       </span>
                       <span class='description' style="margin-left:0px; padding-top:3px;">
                         @if($getdatapengaduanall->flag_tanggap==1)
@@ -141,7 +141,7 @@
                           <div class='comment-text'>
                             <span class="username">
                                 {{$getdatapengaduanall->nama}}
-                              <span class='text-muted pull-right'>{{$getdatapengaduanall->created_tanggapan}}</span>
+                              <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($getdatapengaduanall->created_pengaduan)->format('d-M-y H:i:s')}}</span>
                             </span><!-- /.username -->
                             {{$getdatapengaduanall->tanggapan}}
 
@@ -174,7 +174,7 @@
                         <b>{{$getdatapengaduan->judul_pengaduan}}</b>
                       </span>
                       <span class='description' style="margin-left:0px;">
-                        Topik Pengaduan : {{$getdatapengaduan->nama_topik}} &nbsp;&nbsp;||&nbsp;&nbsp; {{$getdatapengaduan->created_pengaduan}}
+                        Topik Pengaduan : {{$getdatapengaduan->nama_topik}} &nbsp;&nbsp;||&nbsp;&nbsp; {{ \Carbon\Carbon::parse($getdatapengaduan->created_pengaduan)->format('d-M-y H:i:s')}}
                       </span>
                       <span class='description' style="margin-left:0px; padding-top:3px;">
                         @if($getdatapengaduan->flag_tanggap==1)
@@ -198,7 +198,7 @@
                           <div class='comment-text'>
                             <span class="username">
                                 {{$getdatapengaduan->nama}}
-                              <span class='text-muted pull-right'>{{$getdatapengaduan->created_tanggapan}}</span>
+                              <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($getdatapengaduan->created_pengaduan)->format('d-M-y H:i:s')}}span>
                             </span><!-- /.username -->
                             {{$getdatapengaduan->tanggapan}}
 
