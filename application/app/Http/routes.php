@@ -14,9 +14,11 @@
 // Welcome Page & Umum //
 Route::get('/', ['as' => 'welcomepage', 'uses' => 'WelcomePageController@index']);
 
-Route::get('semua/{slug}', ['as' => 'perskpd', 'uses' => 'WelcomePageController@semuatopik'])->where('slug', '[A-Za-z0-9-]+');
+Route::get('skpd/{slug}', ['as' => 'perskpd', 'uses' => 'WelcomePageController@semuatopik'])->where('slug', '[A-Za-z0-9-]+');
 
 Route::get('detail/pengaduan/{slug}', ['as' => 'detailpengaduan', 'uses' => 'WelcomePageController@detailpengaduan'])->where('slug', '[A-Za-z0-9-]+');
+
+Route::get('skpd', 'WelcomePageController@semuaskpd');
 // End Route for Umum & Walcome Page //
 
 

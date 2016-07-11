@@ -63,7 +63,7 @@
               <div class="col-md-9">
                 <div class="box box-solid">
                 <div class="box-body">
-                  <div id="myCarousel" class="carousel">
+                  <div id="mySlider" class="carousel">
                   <div class="carousel-inner">
                     <?php $active = 1;?>
                     @foreach($sliders as $slider)
@@ -73,8 +73,8 @@
                         <div class="item"><img src="{{asset('images/'.$slider->url_gambar)}}" width="900" height="500"></div>
                     @endforeach
                   </div>
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="fa fa-angle-left"></span></a>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="fa fa-angle-right"></span></a>
+                    <a class="left carousel-control" href="#mySlider" data-slide="prev"><span class="fa fa-angle-left"></span></a>
+                    <a class="right carousel-control" href="#mySlider" data-slide="next"><span class="fa fa-angle-right"></span></a>
                   </div>
                 </div>
                 </div>
@@ -326,16 +326,16 @@
                   </ul>
                 </div>
                 <div class="box-footer text-center">
-                  <a href="{{url('semua/'.$tabskpd->slug)}}" class="label uppercase bg-blue">Lihat Semua</a>
+                  <a href="{{url('skpd/'.$tabskpd->slug)}}" class="label uppercase bg-blue">Lihat Semua</a>
                 </div>
               </div>
             </section>
-            <?php if($batasskpd++ == 7) break;?>
+            <?php if($batasskpd++ == 7) break; ?>
             @endforeach
 
             @if($batasskpd >= 7)
             <section class="col-lg-3 col-md-3 col-xs-12">
-              <div class="box box-success">
+              <div class="box box-primary">
                 <div class="box-header with-border">
                   <div class="user-block">
                     <img class="img-circle img-bordered-sm" src="{{asset('images/megaphone.png')}}" alt="user image">
@@ -345,56 +345,20 @@
                   </div>
                 </div>
                 <div class="box-body">
-                    <ul class="nav nav-pills nav-stacked">
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Pengaduan Listrik
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Lalu Lintas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Kerusakan Bangunan
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Pelayanan Administrasi
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Pariwisata
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Kebudayaan
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Perpajakan
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Transportasi Publik
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{url('viewall/topik-aduan')}}">
-                          Lainnya
-                        </a>
-                      </li>
-                    </ul>
+                  <ul class="nav nav-pills nav-stacked">
+                    @foreach($skpdonly as $key => $tabskpd)
+                    @if($key >= 7)
+                    <li>
+                      <a href="{{url('semua/'.$tabskpd->slug)}}">
+                        {{ $tabskpd->nama_skpd }}
+                      </a>
+                    </li>
+                    @endif
+                    @endforeach
+                  </ul>
                 </div>
                 <div class="box-footer text-center">
-                  <a href="{{url('detail/semua-pengaduan-lainnya')}}" class="label uppercase bg-blue">Lihat Semua</a>
+                  <a href="{{url('skpd')}}" class="label uppercase bg-blue">Lihat Semua SKPD</a>
                 </div>
               </div>
             </section>
