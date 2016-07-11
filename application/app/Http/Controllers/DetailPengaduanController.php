@@ -180,6 +180,9 @@ class DetailPengaduanController extends Controller
       }
 
       $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
+
+      $gettskpd = MasterSKPD::whereNotIn('id', $data)->get();
+
       $getdokumen = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
@@ -188,7 +191,7 @@ class DetailPengaduanController extends Controller
       // $message = true;
       // dd($message);
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
-      'tanggapan', 'gettopik', 'getdokumen'));
+      'tanggapan', 'gettopik', 'gettskpd','getdokumen'))->with('message', "Berhasil Memverifikasikan data tersebut");
       // return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
     }
 
@@ -222,6 +225,6 @@ class DetailPengaduanController extends Controller
                     ->where('flag_mutasi', '0')
                     ->orderby('pengaduan.created_at', 'desc')
                     ->get();
-      return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
+      return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'))->with('message', "Berhasil Memutasikan data tersebut");
     }
 }

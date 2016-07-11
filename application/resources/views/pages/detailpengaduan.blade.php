@@ -208,7 +208,7 @@
                       @foreach($tanggapanall as $gettanggapanall)
                         {{$gettanggapanall->nama}}
                         <span class='text-muted pull-right'>
-                          
+
                         {{ \Carbon\Carbon::parse($gettanggapanall->created_tanggpan)->format('d-M-y H:i:s')}}
                         </span>
                         </span><!-- /.username -->
