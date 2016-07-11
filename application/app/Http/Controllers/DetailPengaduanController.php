@@ -185,10 +185,10 @@ class DetailPengaduanController extends Controller
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*')
                       ->get();
-      $message = true;
-      dd($message);
+      // $message = true;
+      // dd($message);
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
-      'tanggapan', 'gettopik', 'getdokumen', 'message'));
+      'tanggapan', 'gettopik', 'getdokumen'));
       // return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
     }
 

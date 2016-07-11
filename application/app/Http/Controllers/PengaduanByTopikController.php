@@ -60,7 +60,7 @@ class PengaduanByTopikController extends Controller
                           ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                           ->join('users', 'pengaduan.warga_id', '=', 'users.id')
                           ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
-                          ->select('*' , 'pengaduan.id as id_pengaduan')
+                          ->select('*' , 'pengaduan.id as id_pengaduan', 'pengaduan.created_at', 'pengaduan.updated_at')
                           ->where('topik_pengaduan.id_skpd', $id)
                           ->get();
                   //  dd($getmasterskpdtopik);
@@ -68,7 +68,7 @@ class PengaduanByTopikController extends Controller
                   ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
                   ->join('users', 'pengaduan.warga_id', '=', 'users.id')
                   ->where('pengaduan.topik_id', $id)
-                  ->select('*' , 'pengaduan.id as id_pengaduan')
+                  ->select('*' , 'pengaduan.id as id_pengaduan', 'pengaduan.created_at', 'pengaduan.updated_at')
                   ->get();
                   //  dd($getmasterskpdtopik);
       return view('pages.pengaduanbytopik')->with('data', compact('getmasterskpd','getmasterskpdtopik'));

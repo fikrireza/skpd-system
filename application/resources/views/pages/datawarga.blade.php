@@ -44,8 +44,8 @@
                 <tr>
                   <td>{{ $pageget }}</td>
                   <td>{{ $key->nama }}</td>
-                  <td>{{ $key->created_at }}</td>
-                  <td>{{ $key->updated_at }}</td>
+                  <td>{{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y H:i:s')}}</td>
+                  <td>{{ \Carbon\Carbon::parse($key->updated_at)->format('d-M-y H:i:s')}}</td>
                   {{-- <td><span class="badge bg-blue">
                     {{ $key->login_counter }}
                   </span></td> --}}

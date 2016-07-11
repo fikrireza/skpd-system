@@ -54,11 +54,7 @@
                     {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                   </td>
                   <td>
-                    <?php
-                      $date = $key->created_at;
-                      $justtime = substr($date, 12);
-                      echo $justtime;
-                    ?>
+                    {{ \Carbon\Carbon::parse($key->created_at)->format('H:i:s')}}
                   </td>
                   <td>
                     @if($key->flag_verifikasi==0)
@@ -94,11 +90,7 @@
                         {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                     </td>
                     <td>
-                      <?php
-                        $date = $key->created_at;
-                        $justtime = substr($date, 12);
-                        echo $justtime;
-                      ?>
+                      {{ \Carbon\Carbon::parse($key->created_at)->format('H:i:s')}}
                     </td>
                     <td>
                       @if($key->flag_verifikasi==0)
