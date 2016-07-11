@@ -134,7 +134,7 @@ class DetailPengaduanController extends Controller
                       ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                       ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                      ->select('*', 'pengaduan.id', 'users.id as iduser')
+                      ->select('*', 'pengaduan.id', 'users.id as iduser', 'pengaduan.created_at', 'pengaduan.updated_at')
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_mutasi', '0')
                       ->orderby('pengaduan.created_at', 'desc')
@@ -180,15 +180,18 @@ class DetailPengaduanController extends Controller
       }
 
       $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
+
+      $gettskpd = MasterSKPD::whereNotIn('id', $data)->get();
+
       $getdokumen = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*')
                       ->get();
-      $message = true;
-      dd($message);
+      // $message = true;
+      // dd($message);
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
-      'tanggapan', 'gettopik', 'getdokumen', 'message'));
+      'tanggapan', 'gettopik', 'gettskpd','getdokumen'))->with('message', "Berhasil Memverifikasikan data tersebut");
       // return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
     }
 
@@ -217,11 +220,11 @@ class DetailPengaduanController extends Controller
                     ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                     ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                     ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                    ->select('*', 'pengaduan.id', 'users.id as iduser')
+                    ->select('*', 'pengaduan.id', 'users.id as iduser', 'pengaduan.created_at', 'pengaduan.updated_at')
                     ->where('master_skpd.id', $userid->id_skpd)
                     ->where('flag_mutasi', '0')
                     ->orderby('pengaduan.created_at', 'desc')
                     ->get();
-      return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
+      return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'))->with('message', "Berhasil Memutasikan data tersebut");
     }
 }

@@ -173,11 +173,7 @@
                       {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                         &nbsp;&nbsp;
                       <i class="fa fa-clock-o"></i>
-                      <?php
-                        $date = $key->created_at;
-                        $justtime = substr($date, 12);
-                        echo $justtime;
-                      ?>
+                      {{ \Carbon\Carbon::parse($key->created_at)->format('H:i:s')}}
                     </small>
                     @if($key->flag_anonim==0)
                       {{$key->nama}}
@@ -243,11 +239,7 @@
                       {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                         &nbsp;&nbsp;
                       <i class="fa fa-clock-o"></i>
-                      <?php
-                        $date = $key->created_at;
-                        $justtime = substr($date, 12);
-                        echo $justtime;
-                      ?>
+                      {{ \Carbon\Carbon::parse($key->created_at)->format('H:i:s')}}
                     </small>
                     @if($key->flag_anonim=="0")
                       {{$key->nama}}
