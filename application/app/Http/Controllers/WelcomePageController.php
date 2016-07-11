@@ -124,14 +124,14 @@ class WelcomePageController extends Controller
       // Jika url slug tidak ditemukan
       abort(404);
     }else{
-      $pengaduan  = Pengaduan::join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'pengaduan.topik_id')
+      $pengaduan  = Pengaduan::join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                             ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
                             ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                            ->select('master_skpd.nama_skpd as nama_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*')
+                            ->select('master_skpd.nama_skpd as nama_skpd', 'topik_pengaduan.nama_topik as nama_topik', 'pengaduan.judul_pengaduan as judul_pengaduan', 'users.url_photo as url_photo', 'users.nama as nama', 'pengaduan.*', 'pengaduan.slug')
+                            ->where('pengaduan.slug', $slug)
                             ->where('master_skpd.flag_skpd', 1)
                             ->where('pengaduan.flag_rahasia', 0)
                             ->where('pengaduan.flag_verifikasi', 1)
-                            ->where('pengaduan.slug', $slug)
                             ->orderby('pengaduan.created_at', 'desc')
                             ->first();
 
@@ -147,7 +147,7 @@ class WelcomePageController extends Controller
                                       ->where('pengaduan.slug', $slug)
                                       ->get();
     }
-    // dd($allpengaduan);
+    // dd($pengaduan);
     return view('front.lihatdetailbyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'pengaduan', 'tanggapan', 'dokumentall'));
   }
 
