@@ -338,7 +338,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                      <button type="submit" class="btn btn-primary btn-flat">Simpan Perubahan</button>
                     </div>
                   </div>
                 </form>
@@ -407,7 +407,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Ganti Password Saya</button>
+                      <button type="submit" class="btn btn-primary btn-flat">Ganti Password Saya</button>
                     </div>
                   </div>
                 </form>
