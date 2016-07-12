@@ -255,15 +255,13 @@
                         <td colspan="6" class="text-muted" style="text-align:center;"><i>Data tidak tersedia.</i></td>
                       </tr>
                     @endif --}}
-
                   </table>
-                </div><!-- /.post -->
-
-                <div class="box-footer">
-                  <div class="pagination pagination-sm no-margin pull-right">
-                    {{ $gethistoritanggapan->links() }}
+                  <div class="box-footer">
+                    <div class="pagination pagination-sm no-margin pull-right">
+                      {{ $gethistoritanggapan->links() }}
+                    </div>
                   </div>
-                </div>
+                </div><!-- /.post -->
               </div><!-- /.tab-pane -->
 
               <div class="
