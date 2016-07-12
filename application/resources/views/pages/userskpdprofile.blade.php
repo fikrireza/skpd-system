@@ -157,16 +157,15 @@
                 Wanita
               @endif
             </p> --}}
-            <strong>
+
               @if($getprofile->jeniskelamin=="P")
-                <i class="fa fa-female margin-r-5"></i> Jenis Kelamin
+                <strong><i class="fa fa-female margin-r-5"></i> Jenis Kelamin</strong>
                 <p class="text-muted">Wanita</p>
               @elseif($getprofile->jeniskelamin=="L")
-                <i class="fa fa-male margin-r-5"></i> Jenis Kelamin
+                <strong><i class="fa fa-male margin-r-5"></i> Jenis Kelamin</strong>
                 <p class="text-muted">Pria</p>
               @endif
               <hr style="margin-top:2px;margin-bottom:8px;">
-            </strong>
 
             <strong><i class="fa fa-home margin-r-5"></i> Alamat</strong>
             <p class="text-muted">
