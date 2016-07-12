@@ -139,29 +139,36 @@
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
+            <strong><i class="fa fa-phone-square margin-r-5"></i> No. Telp</strong>
             <p class="text-muted">{{ $getprofile->notelp }}</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
+            <strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
             <p class="text-muted">{{ $getprofile->email }}</p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
+            {{-- <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
             <p class="text-muted">
               @if($getprofile->jeniskelamin=="L")
                 Pria
               @else
                 Wanita
               @endif
-            </p>
+            </p> --}}
+            <strong>
+              @if($getprofile->jeniskelamin=="P")
+                <i class="fa fa-female margin-r-5"></i> Jenis Kelamin
+                <p class="text-muted">Wanita</p>
+              @elseif($getprofile->jeniskelamin=="L")
+                <i class="fa fa-male margin-r-5"></i> Jenis Kelamin
+                <p class="text-muted">Pria</p>
+              @endif
+              <hr style="margin-top:2px;margin-bottom:8px;">
+            </strong>
 
-            <hr style="margin-top:2px;margin-bottom:8px;">
-
-
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
+            <strong><i class="fa fa-home margin-r-5"></i> Alamat</strong>
             <p class="text-muted">
               {{ $getprofile->alamat }}
             </p>
