@@ -201,7 +201,7 @@
                 <!-- Post -->
                 <div class="post" style="color:#333;">
                   <table class="table">
-                    <tr class="bg-green">
+                    <tr class="bg-yellow">
                       <th>#</th>
                       <th>Judul Pengaduan</th>
                       <th>Nama Pelapor</th>
@@ -209,24 +209,30 @@
                       <th>Tanggal Tanggapan</th>
                       <th style="width: 40px">Aksi</th>
                     </tr>
-                    @if($gethistoritanggapan)
-                      <?php $no=1; ?>
+                    <?php
+                      $no;
+                      if($gethistoritanggapan->currentPage()==1)
+                        $no = 1;
+                      else
+                        $no = (($gethistoritanggapan->currentPage() - 1) * $gethistoritanggapan->perPage())+1;
+                      ?>
+                    @if($gethistoritanggapan->isEmpty())
+                      <tr>
+                        <td colspan="5" class="text-muted" style="text-align:center;"><i>Data tidak tersedia.</i></td>
+                      </tr>
+                    @elseif(isset($gethistoritanggapan))
                       @foreach($gethistoritanggapan as $k)
                         <tr>
                           <td>{{$no}}</td>
                           <td>{{$k->judul_pengaduan}}</td>
                           <td>{{$k->nama}}</td>
                           <td>
-                            <?php
-                              $tglpengaduan = $k->tanggal_pengaduan;
-                              echo substr($tglpengaduan, 0, 10);
-                            ?>
+
+                            {{ \Carbon\Carbon::parse($k->tanggal_pengaduan)->format('d-M-y')}}
                           </td>
                           <td>
-                            <?php
-                              $tgltanggapan = $k->tanggal_tanggapan;
-                              echo substr($tgltanggapan, 0, 10);
-                            ?>
+
+                            {{ \Carbon\Carbon::parse($k->tanggal_tanggapan)->format('d-M-y')}}
                           </td>
                           <td>
                             <span data-toggle="tooltip" title="View Data">
@@ -236,23 +242,20 @@
                         </tr>
                         <?php $no++; ?>
                       @endforeach
-                    @else
+                    @endif
+                    {{-- @else
                       <tr>
                         <td colspan="6" class="text-muted" style="text-align:center;"><i>Data tidak tersedia.</i></td>
                       </tr>
-                    @endif
+                    @endif --}}
 
                   </table>
                 </div><!-- /.post -->
 
-                <div class="clearfix">
-                  <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                  </ul>
+                <div class="box-footer">
+                  <div class="pagination pagination-sm no-margin pull-right">
+                    {{ $gethistoritanggapan->links() }}
+                  </div>
                 </div>
               </div><!-- /.tab-pane -->
 
