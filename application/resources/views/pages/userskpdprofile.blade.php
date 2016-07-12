@@ -242,7 +242,7 @@
                             {{ \Carbon\Carbon::parse($k->tanggal_tanggapan)->format('d-M-y')}}
                           </td>
                           <td>
-                            <span data-toggle="tooltip" title="View Data">
+                            <span data-toggle="tooltip" title="Lihat Pengaduan">
                               <a href="" data-value="{{ $k->id }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
                             </span>
                           </td>
