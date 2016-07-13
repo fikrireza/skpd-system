@@ -191,7 +191,7 @@ class MasterSKPDController extends Controller
               ->leftJoin('users', 'tanggapan.id_userskpd' , '=', 'users.id')
               ->leftJoin('master_skpd', 'users.id_skpd' , '=', 'master_skpd.id')
               ->leftJoin('dokumen_pengaduan', 'pengaduan.id', '=', 'dokumen_pengaduan.pengaduan_id')
-              ->select('pengaduan.id', 'users.nama', 'master_skpd.nama_skpd', 'pengaduan.judul_pengaduan', 'pengaduan.created_at as tanggal_pengaduan', 'pengaduan.isi_pengaduan', 'tanggapan.tanggapan', 'dokumen_pengaduan.url_dokumen')
+              ->select('pengaduan.id', 'users.nama', 'master_skpd.nama_skpd', 'pengaduan.judul_pengaduan', 'pengaduan.created_at as tanggal_pengaduan', 'tanggapan.created_at as tanggal_tanggap', 'pengaduan.isi_pengaduan', 'tanggapan.tanggapan', 'dokumen_pengaduan.url_dokumen')
               ->where('pengaduan.id', $id)
               ->get();
 

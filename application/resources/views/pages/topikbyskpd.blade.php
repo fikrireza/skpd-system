@@ -5,6 +5,7 @@
 @section('title')
     <title>List Data Topik Berdasarkan SKPD</title>
     <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
+    <script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
 @stop
 <!-- END CONDITION SECTION TITLE-->
 
@@ -267,6 +268,14 @@
             var nama_penanggap = data[0].nama;
             var nama_skpd = data[0].nama_skpd;
             var dokumen = data[0].url_dokumen;
+            var tanggal_tanggap = data[0].tanggal_tanggap;
+
+            // change date format
+            var mydate = new Date(tanggal_tanggap);
+            var tanggal_tanggap = mydate.toString("dd MMMM yyyy");
+
+            var mydate = new Date(tanggal_pengaduan);
+            var tanggal_pengaduan = mydate.toString("dd MMMM yyyy");
 
             // set
             $('span#judul_pengaduan').html(judul_pengaduan);
@@ -284,7 +293,7 @@
                 "<div class='comment-text'>"+
                 "<span class='username'>"+
                 nama_penanggap + " || Administrator SKPD " + nama_skpd +
-                "<span class='text-muted pull-right'>25 April 2016</span>"+
+                "<span class='text-muted pull-right'>"+ tanggal_tanggap +"</span>"+
                 "</span>"+
                 tanggap +
                 "</div>"+
