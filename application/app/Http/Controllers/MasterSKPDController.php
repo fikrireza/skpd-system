@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Requests;
 use App\MasterSKPD;
@@ -61,6 +62,21 @@ class MasterSKPDController extends Controller
      */
     public function store(Request $request)
     {
+      $messages = [
+        'kodeskpd.required' => 'Kode SKPD harus diisi.',
+        'kodeskpd.unique' => 'Kode SKPD telah digunakan.',
+        'namaskpd.required' => 'Nama SKPD harus diisi.',
+      ];
+
+      $validator = Validator::make($request->all(), [
+        'kodeskpd' => 'required|unique:master_skpd,kode_skpd',
+        'namaskpd' => 'required',
+      ], $messages);
+
+      if($validator->fails()) {
+        return redirect()->route('dataskpd.index')->withErrors($validator)->withInput();
+      }
+
       $tampung = $request->namaskpd;
       $slug = str_slug($tampung);
 

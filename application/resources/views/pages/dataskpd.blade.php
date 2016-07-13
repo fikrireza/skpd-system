@@ -159,13 +159,31 @@
             <div class="box-body">
               <div class="col-md-12 {{ $errors->has('kodeskpd') ? 'has-error' : '' }}">
                 <label class="control-label">Kode SKPD</label>
-                <input type="text" name="kodeskpd" class="form-control" placeholder="Kode SKPD">
+                <input type="text" name="kodeskpd" class="form-control" placeholder="Kode SKPD"
+                @if(!$errors->has('kodeskpd'))
+                  value="{{ old('kodeskpd') }}"
+                @endif
+                >
+                @if($errors->has('kodeskpd'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('kodeskpd')}}</i>
+                  </span>
+                @endif
               </div>
               <div class="col-md-12 {{ $errors->has('namaskpd') ? 'has-error' : '' }}">
                 <label class="control-label">Nama SKPD</label>
-                <input type="text" name="namaskpd" class="form-control" placeholder="Nama SKPD">
+                <input type="text" name="namaskpd" class="form-control" placeholder="Nama SKPD"
+                @if(!$errors->has('namaskpd'))
+                  value="{{ old('namaskpd') }}"
+                @endif
+                >
+                @if($errors->has('namaskpd'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('namaskpd')}}</i>
+                  </span>
+                @endif
               </div>
-              <div class="col-md-12 {{ $errors->has('namaskpd') ? 'has-error' : '' }}">
+              <div class="col-md-12">
                 <label class="control-label">Status</label>
                 <select class="form-control" name="flagskpd">
                   <option value="1">Aktif</option>
