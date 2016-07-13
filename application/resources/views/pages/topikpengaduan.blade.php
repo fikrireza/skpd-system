@@ -149,7 +149,7 @@
                 <select class="form-control" name="idskpd">
                   <option value="-- Pilih --">-- Pilih --</option>
                   @foreach($getskpd as $key)
-                    <option value="{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
+                    <option value="{{ $key->id }}" {{ old('idskpd')==$key->id ? 'selected' : '' }}>{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
                   @endforeach
                 </select>
                 @if($errors->has('idskpd'))
