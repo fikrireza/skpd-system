@@ -118,22 +118,45 @@
                 <h3 class="box-title">Formulir Tambah Data Topik Pengaduan</h3>
             </div>
             <div class="box-body">
-              <div class="col-md-14 {{ $errors->has('bahasa') ? 'has-error' : '' }}">
+              <div class="col-md-14 {{ $errors->has('kodepengaduan') ? 'has-error' : '' }}">
                 <label class="control-label">Kode Topik Pengaduan</label>
-                <input type="text" name="kodepengaduan" class="form-control" placeholder="Kode Topik Pengaduan">
+                <input type="text" name="kodepengaduan" class="form-control" placeholder="Kode Topik Pengaduan"
+                @if(!$errors->has('kodepengaduan'))
+                  value="{{ old('kodepengaduan') }}"
+                @endif
+                >
+                @if($errors->has('kodepengaduan'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('kodepengaduan')}}</i>
+                  </span>
+                @endif
               </div>
-              <div class="col-md-14 {{ $errors->has('bahasa') ? 'has-error' : '' }}">
+              <div class="col-md-14 {{ $errors->has('namapengaduan') ? 'has-error' : '' }}">
                 <label class="control-label">Nama Topik Pengaduan</label>
-                <input type="text" name="namapengaduan" class="form-control" placeholder="Nama Topik Pengaduan">
+                <input type="text" name="namapengaduan" class="form-control" placeholder="Nama Topik Pengaduan"
+                @if(!$errors->has('namapengaduan'))
+                  value="{{ old('namapengaduan') }}"
+                @endif
+                >
+                @if($errors->has('namapengaduan'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('namapengaduan')}}</i>
+                  </span>
+                @endif
               </div>
-              <div class="col-md-14 {{ $errors->has('skpd') ? 'has-error' : '' }}">
+              <div class="col-md-14 {{ $errors->has('idskpd') ? 'has-error' : '' }}">
                 <label class="control-label">SKPD</label>
                 <select class="form-control" name="idskpd">
-                  <option value="">-- Pilih --</option>
+                  <option value="-- Pilih --">-- Pilih --</option>
                   @foreach($getskpd as $key)
                     <option value="{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
                   @endforeach
                 </select>
+                @if($errors->has('idskpd'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('idskpd')}}</i>
+                  </span>
+                @endif
               </div>
             </div>
             <div class="box-footer">

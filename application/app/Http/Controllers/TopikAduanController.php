@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Requests;
 use App\MasterSKPD;
@@ -20,6 +21,24 @@ class TopikAduanController extends Controller
 
     public function store(Request $request)
     {
+      $messages = [
+        'kodepengaduan.required' => 'Kode Pengaduan harus diisi.',
+        'kodepengaduan.unique' => 'Kode Pengaduan telah digunakan.',
+        'namapengaduan.required' => 'Nama Pengaduan harus diisi.',
+        'idskpd.required' => 'SKPD harus dipilih.',
+        'idskpd.not_in' => 'SKPD harus dipilih.',
+      ];
+
+      $validator = Validator::make($request->all(), [
+        'kodepengaduan' => 'required|unique:topik_pengaduan,kode_topik',
+        'namapengaduan' => 'required',
+        'idskpd' => 'required|not_in:-- Pilih --',
+      ], $messages);
+
+      if($validator->fails()) {
+        return redirect()->route('topikpengaduan.index')->withErrors($validator)->withInput();
+      }
+
       $set = new TopikAduan;
       $set->kode_topik = $request->kodepengaduan;
       $set->nama_topik = $request->namapengaduan;
