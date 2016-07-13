@@ -159,6 +159,8 @@ return [
 
         // Manipulate Images
         Intervention\Image\ImageServiceProvider::class,
+        // Report export to documents
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -209,6 +211,7 @@ return [
 		'HTML'		=> Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Str'       => Illuminate\Support\Str::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
