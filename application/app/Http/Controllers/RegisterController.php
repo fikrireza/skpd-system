@@ -45,17 +45,23 @@ class RegisterController extends Controller
     public function verify($code)
     {
       $user = User::where('activation_code', $code)->first();
-      if($user->level=="1") //warga
+      if($user!="")
       {
-        $user->activation_code = null;
-        $user->activated = 1;
-        $user->save();
+        if($user->level=="1") //warga
+        {
+          $user->activation_code = null;
+          $user->activated = 1;
+          $user->save();
 
-        return redirect()->route('welcomepage')->with('message', "Akun anda telah aktif. Silahkan lakukan login.");
+          return redirect()->route('welcomepage')->with('message', "Akun anda telah aktif. Silahkan lakukan login.");
+        }
+        else // selain warga: administrator / user skpd
+        {
+          return view('pages.login')->with('email', $user->email);
+        }
       }
-      else // selain warga: administrator / user skpd
-      {
-        return view('pages.login')->with('email', $user->email);
+      else {
+        return redirect()->route('welcomepage')->with('messageactivationfailed', "Link aktifasi tidak valid.");
       }
     }
 
@@ -74,7 +80,7 @@ class RegisterController extends Controller
         $set->login_counter = $getcounter+1;
         $set->save();
 
-        return redirect()->route('dashboard')->with('firsttimelogin', "Anda telah berhasil melakukan aktifasi akun. Selanjutnya, anda bisa menggunakan akun ini untuk login ke dalam sistem dan dapat menggunakan fitur yang telah disediakan.");
+        return redirect()->route('welcomepage')->with('firsttimelogin', "Anda telah berhasil melakukan aktifasi akun. Selanjutnya, anda bisa menggunakan akun ini untuk login ke dalam sistem dan dapat menggunakan fitur yang telah disediakan.");
       }
       else {
         return redirect()->route('welcomepage')->with('message', "Silahkan lakukan login.");
