@@ -134,13 +134,23 @@
           <div class="box-body">
             <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
             <p class="text-muted">
-              {{ $getprofile->noktp }}
+              @if($getprofile->noktp!="")
+                {{ $getprofile->noktp }}
+              @else
+                <i>Belum ada data</i>
+              @endif
             </p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
             <strong><i class="fa fa-phone-square margin-r-5"></i> No. Telp</strong>
-            <p class="text-muted">{{ $getprofile->notelp }}</p>
+            <p class="text-muted">
+              @if($getprofile->notelp!="")
+                {{ $getprofile->notelp }}
+              @else
+                <i>Belum ada data</i>
+              @endif
+            </p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
@@ -149,27 +159,25 @@
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-            {{-- <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-            <p class="text-muted">
-              @if($getprofile->jeniskelamin=="L")
-                Pria
-              @else
-                Wanita
-              @endif
-            </p> --}}
-
               @if($getprofile->jeniskelamin=="P")
                 <strong><i class="fa fa-female margin-r-5"></i> Jenis Kelamin</strong>
                 <p class="text-muted">Wanita</p>
               @elseif($getprofile->jeniskelamin=="L")
                 <strong><i class="fa fa-male margin-r-5"></i> Jenis Kelamin</strong>
                 <p class="text-muted">Pria</p>
+              @else
+                <strong><i class="fa fa-male margin-r-5"></i> Jenis Kelamin</strong>
+                <p class="text-muted"><i>Belum ada data</i></p>
               @endif
               <hr style="margin-top:2px;margin-bottom:8px;">
 
             <strong><i class="fa fa-home margin-r-5"></i> Alamat</strong>
             <p class="text-muted">
-              {{ $getprofile->alamat }}
+              @if($getprofile->alamat!="")
+                {{ $getprofile->alamat }}
+              @else
+                <i>Belum ada data</i>
+              @endif
             </p>
 
           </div><!-- /.box-body -->
