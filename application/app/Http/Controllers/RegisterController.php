@@ -80,7 +80,7 @@ class RegisterController extends Controller
         $set->login_counter = $getcounter+1;
         $set->save();
 
-        return redirect()->route('welcomepage')->with('firsttimelogin', "Anda telah berhasil melakukan aktifasi akun. Selanjutnya, anda bisa menggunakan akun ini untuk login ke dalam sistem dan dapat menggunakan fitur yang telah disediakan.");
+        return redirect('dashboard')->with('firsttimelogin', "Anda telah berhasil melakukan aktifasi akun. Selanjutnya, anda bisa menggunakan akun ini untuk login ke dalam sistem dan dapat menggunakan fitur yang telah disediakan.");
       }
       else {
         return redirect()->route('welcomepage')->with('message', "Silahkan lakukan login.");
