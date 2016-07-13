@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Requests;
 use App\MasterSKPD;
@@ -21,11 +22,29 @@ class ManagementAkunController extends Controller
 
     public function create(Request $request)
     {
-      // dd($request);
       $activation_code = str_random(30).time();
+
+      $message = [
+        'level.required' => 'Level harus diisi.',
+        'level.not_in' => 'Level harus dipilih.',
+        'id_skpd.required' => 'SKPD harus diisi.',
+        'id_skpd.not_in' => 'SKPD harus dipilih.',
+        'email.required' => 'Email harus diisi.',
+        'email.email' => 'Format email tidak valid.',
+        'email.unique' => 'Email telah terdaftar.',
+      ];
 
       $akses = "";
       if($request->level=="0") {
+        $validator = Validator::make($request->all(), [
+          'level' => 'required|not_in:-- Pilih --',
+          'email' => 'required|email|unique:users,email',
+        ], $message);
+
+        if($validator->fails()) {
+          return redirect()->route('managementakun.index')->withErrors($validator)->withInput();
+        }
+
         $akses = "Administrator";
         $user = new User;
         $user->email = $request->email;
@@ -37,7 +56,17 @@ class ManagementAkunController extends Controller
         $user->flag_user = 1;
         $user->save();
       }
-      else if($request->level=="2"){
+      else if($request->level=="2") {
+        $validator = Validator::make($request->all(), [
+          'level' => 'required|not_in:-- Pilih --',
+          'id_skpd' => 'required|not_in:-- Pilih --',
+          'email' => 'required|email|unique:users,email',
+        ], $message);
+
+        if($validator->fails()) {
+          return redirect()->route('managementakun.index')->withErrors($validator)->withInput();
+        }
+
         $akses = "User SKPD";
         $user = new User;
         $user->email = $request->email;
@@ -49,6 +78,16 @@ class ManagementAkunController extends Controller
         $user->activation_code = $activation_code;
         $user->flag_user = 1;
         $user->save();
+      } else {
+        $validator = Validator::make($request->all(), [
+          'level' => 'required|not_in:-- Pilih --',
+          'id_skpd' => 'required|not_in:-- Pilih --',
+          'email' => 'required|email|unique:users,email',
+        ], $message);
+
+        if($validator->fails()) {
+          return redirect()->route('managementakun.index')->withErrors($validator)->withInput();
+        }
       }
 
       // KIRIM EMAIL CUUUUUI

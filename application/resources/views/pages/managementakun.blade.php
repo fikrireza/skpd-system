@@ -160,23 +160,42 @@
               <div class="col-md-14 {{ $errors->has('level') ? 'has-error' : '' }}">
                 <label class="control-label">Level</label>
                 <select class="form-control" name="level" id="leveluser">
-                  <option value="">-- Pilih --</option>
-                  <option value="0">Administrator</option>
-                  <option value="2">User SKPD</option>
+                  <option value="-- Pilih --">-- Pilih --</option>
+                  <option value="0" {{ old('level')=="0" ? 'selected' : '' }} >Administrator</option>
+                  <option value="2" {{ old('level')=="2" ? 'selected' : '' }} >User SKPD</option>
                 </select>
+                @if($errors->has('level'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('level')}}</i>
+                  </span>
+                @endif
               </div>
-              <div id="skpdoption" class="col-md-14 {{ $errors->has('status') ? 'has-error' : '' }}">
+              <div id="skpdoption" class="col-md-14 {{ $errors->has('id_skpd') ? 'has-error' : '' }}">
                 <label class="control-label">SKPD</label>
                 <select class="form-control" name="id_skpd">
-                  <option value="">-- Pilih --</option>
+                  <option value="-- Pilih --">-- Pilih --</option>
                   @foreach($getskpd as $key)
-                    <option value="{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
+                    <option value="{{ $key->id }}" {{ old('id_skpd')==$key->id ? 'selected' : '' }}>{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
                   @endforeach
                 </select>
+                @if($errors->has('id_skpd'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('id_skpd')}}</i>
+                  </span>
+                @endif
               </div>
-              <div class="col-md-14 {{ $errors->has('username') ? 'has-error' : '' }}">
+              <div class="col-md-14 {{ $errors->has('email') ? 'has-error' : '' }}">
                 <label class="control-label">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email">
+                <input type="email" name="email" class="form-control" placeholder="Email"
+                @if($errors->has('email'))
+                  value="{{ old('email') }}"
+                @endif
+                >
+                @if($errors->has('email'))
+                  <span class="help-block">
+                    <i>* {{$errors->first('email')}}</i>
+                  </span>
+                @endif
               </div>
             </div>
             <div class="box-footer">
@@ -359,7 +378,11 @@
         });
       });
 
-      $('#skpdoption').hide();
+      var leveluser = $('#leveluser').val();
+      if(leveluser!=2) {
+        $('#skpdoption').hide();
+      }
+
       $('#leveluser').change(function(){
         if($(this).val() == '2') {
           $('#skpdoption').show();
