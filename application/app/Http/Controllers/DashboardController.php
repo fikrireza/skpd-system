@@ -367,6 +367,7 @@ class DashboardController extends Controller
               ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
               ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
               ->groupBy('topik_pengaduan.id')
+              ->orderby('jumlahpengaduan', 'desc')
               ->limit(5)
               ->get();
 
@@ -468,6 +469,7 @@ class DashboardController extends Controller
               ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
               ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
               ->groupBy('topik_pengaduan.id')
+              ->orderby('jumlahpengaduan', 'desc')
               ->limit(5)
               ->get();
 
