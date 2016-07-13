@@ -288,7 +288,7 @@
           <div class="row">
             <?php $batasskpd = 1; ?>
             @foreach($skpdonly as $tabskpd)
-            <section class="col-lg-3 col-md-3 col-xs-12" style="min-height:645px;">
+            <section class="col-lg-3 col-md-3 col-xs-12" style="min-height:585px;">
               <div class="box box-primary">
                 <div class="box-header with-border">
                 <div class="user-block">
@@ -318,12 +318,12 @@
                         @elseif($topik->flag_anonim == 0)
                           {{$topik->nama}}
                         @endif</span>
+                        <a href="{{url('detail/pengaduan/'.$topik->slug)}}">
                         <span class="product-description-custom">
                         <?php $isi_pengaduans = strip_tags($topik->isi_pengaduan); ?>
-                        
-                        {!! Str::words($isi_pengaduans, 13,' ....')  !!}
+
+                        {!! Str::words($isi_pengaduans, 10,' ....')  !!}
                         </span>
-                        <a href="{{url('detail/pengaduan/'.$topik->slug)}}">
                           [Selengkapnya]
                         </a>
                       </div>
