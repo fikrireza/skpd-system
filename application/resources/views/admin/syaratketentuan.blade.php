@@ -9,6 +9,7 @@
   <h1>Syarat & Ketentuan SIMPEDU</h1>
   <ol class="breadcrumb">
     <li class=""><a href="{{ url('/dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
+    <li class="active">Syarat & Ketentuan</li>
   </ol>
 @stop
 
@@ -23,7 +24,7 @@
 </script>
 @if($syarat != null)
 <div class="modal fade" id="myModalEdit" role="dialog">
-  <div class="modal-dialog" style="width:500px;">
+  <div class="modal-dialog" style="width:800px;">
     <form class="form-horizontal" action="{{ url('admin/syaratketentuan/update') }}" method="post">
       {!! csrf_field() !!}
       <div class="modal-content">
@@ -33,7 +34,7 @@
         </div>
         <div class="modal-body">
           <div class="col-md-14 {{ $errors->has('isi_syarat') ? 'has-error' : '' }}">
-            <label class="control-label">Isikan Syarat & Ketentuan Simpedu</label>
+            <label class="control-label" style="margin-bottom:10px;">Isikan Syarat & Ketentuan Simpedu :</label>
             <textarea class="textarea" rows="5" name="isi_syarat" placeholder="Isi Syarat & Ketentuan SIMPEDU...?" style="width: 100%;  font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('isi_syarat')}}</textarea>
             <input type="hidden" name="id" value="{{ $syarat->id}}">
             <input type="hidden" name="id_users" value="{{ auth()->user()->id}}">
@@ -64,18 +65,18 @@
   @if($syarat == null)
   <form class="form-horizontal" method="post" action="{{ url('admin/syaratketentuan') }}">
     {{ csrf_field() }}
-      <div class="col-md-4">
+      <div class="col-md-12">
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Syarat & Ketentuan</h3>
+            <h3 class="box-title">Form Edit Syarat & Ketentuan Website SIMPEDU</h3>
             <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div>
           </div>
           <div class="box-body">
             <div class="col-md-14 {{ $errors->has('isi_syarat') ? 'has-error' : '' }}">
-              <label class="control-label">Isikan Syarat & Ketentuan Simpedu</label>
-              <textarea class="textarea" rows="5" name="isi_syarat" placeholder="Isi Syarat & Ketentuan SIMPEDU...?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('isi_syarat')}}</textarea>
+              <label class="control-label" style="margin-bottom:10px;">Isikan Syarat & Ketentuan Simpedu :</label>
+              <textarea class="textarea" rows="5" name="isi_syarat" placeholder="isi dengan Syarat & Ketentuan dari website SIMPEDU" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('isi_syarat')}}</textarea>
               <input type="hidden" name="id_users" value="{{ auth()->user()->id}}">
             </div>
           </div>
@@ -90,7 +91,7 @@
 
   {{-- <!-- START TABLE--> --}}
   @if($syarat != null)
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div class="box box-solid">
       <div class="box-header with-border">
         <img src="{{asset('images/logokabtangerang.png')}}">

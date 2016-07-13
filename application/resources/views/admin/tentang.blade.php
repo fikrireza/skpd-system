@@ -9,6 +9,7 @@
   <h1>Tentang SIMPEDU</h1>
   <ol class="breadcrumb">
     <li class=""><a href="{{ url('/dashboard')}}"><i class="fa fa-dashboard"></i> Halaman Utama</a></li>
+    <li class="active">Tentang Simpedu</li>
   </ol>
 @stop
 
