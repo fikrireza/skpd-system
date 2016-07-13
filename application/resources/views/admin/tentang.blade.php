@@ -23,7 +23,7 @@
 </script>
 @if($tentang != null)
 <div class="modal fade" id="myModalEdit" role="dialog">
-  <div class="modal-dialog" style="width:500px;">
+  <div class="modal-dialog" style="width:700px;">
     <form class="form-horizontal" action="{{ url('admin/tentang/update') }}" method="post">
       {!! csrf_field() !!}
       <div class="modal-content">
@@ -33,8 +33,8 @@
         </div>
         <div class="modal-body">
           <div class="col-md-14 {{ $errors->has('isi_tentang') ? 'has-error' : '' }}">
-            <label class="control-label">Isikan Tentang Simpedu</label>
-            <textarea class="textarea" rows="5" name="isi_tentang" placeholder="Isi Tentang SIMPEDU...?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('isi_tentang')}}</textarea>
+            <label class="control-label" style="margin-bottom:10px;">Isikan Tentang Simpedu :</label>
+            <textarea class="textarea" rows="5" name="isi_tentang" placeholder="isi dengan deskripsi singkat dari website SIMPEDU" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('isi_tentang')}}</textarea>
             <input type="hidden" name="id" value="{{ $tentang->id}}">
             <input type="hidden" name="id_users" value="{{ auth()->user()->id}}">
           </div>
@@ -64,18 +64,18 @@
   @if($tentang == null)
   <form class="form-horizontal" method="post" action="{{ url('admin/tentang') }}">
     {{ csrf_field() }}
-      <div class="col-md-4">
+      <div class="col-md-12">
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Tentang</h3>
+            <h3 class="box-title">Form Edit Deskripsi Simpedu</h3>
             <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div>
           </div>
           <div class="box-body">
             <div class="col-md-14 {{ $errors->has('isi_tentang') ? 'has-error' : '' }}">
-              <label class="control-label">Isikan Tentang Simpedu</label>
-              <textarea class="textarea" rows="5" name="isi_tentang" placeholder="Isi Tentang SIMPEDU...?" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('isi_tentang')}}</textarea>
+              <label class="control-label" style="margin-bottom:10px;">Isikan Tentang Simpedu :</label>
+              <textarea class="textarea" rows="5" name="isi_tentang" placeholder="isi dengan deskripsi singkat dari website SIMPEDU" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ old('isi_tentang')}}</textarea>
               <input type="hidden" name="id_users" value="{{ auth()->user()->id}}">
             </div>
           </div>
@@ -90,7 +90,7 @@
 
   {{-- <!-- START TABLE--> --}}
   @if($tentang != null)
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div class="box box-solid">
       <div class="box-header with-border">
         <img src="{{asset('images/logokabtangerang.png')}}">
