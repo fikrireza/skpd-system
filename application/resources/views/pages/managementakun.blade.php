@@ -242,56 +242,58 @@
                   $no = (($getakun->currentPage() - 1) * $getakun->perPage())+1;
               ?>
               @foreach($getakun as $key)
-                <tr>
-                  <td>{{ $no }}.</td>
-                  <td>{{ $key->email }}</td>
-                  <td>
-                    @if($key->level==0)
-                      {{ 'Administrator' }}
-                    @elseif($key->level==2)
-                      {{ 'User SKPD' }}
-                    @endif
-                  </td>
-                  <td>
-                    @if($key->id_skpd=="")
-                      {{ '-' }}
-                    @else
-                      {{ $key->masterskpd->nama_skpd }}
-                    @endif
-                  </td>
-                  <td>
-                    @if($key->activated==0)
-                      <span class="pull-center badge">Belum Aktifasi</span>
-                    @elseif($key->activated==1)
-                      <span class="pull-center badge bg-green">Sudah Aktifasi</span>
-                    @endif
-                  </td>
-                  <td>
-                    @if($key->flag_user!=0)
-                      <span class="pull-center badge bg-blue">Aktif</span>
-                    @else
-                      <span class="pull-center badge">Tidak Aktif</span>
-                    @endif
-                  </td>
-                  <td>
-                    @if($key->flag_user!=0)
-                      <span data-toggle="tooltip" title="Tidak Aktifkan Akun">
-                        <a href="" class="btn btn-default btn-flat btn-xs nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="{{ $key->id }}"><i class="fa fa-ban"></i></a>
+                @if($key->email!=Auth::user()->email)
+                  <tr>
+                    <td>{{ $no }}.</td>
+                    <td>{{ $key->email }}</td>
+                    <td>
+                      @if($key->level==0)
+                        {{ 'Administrator' }}
+                      @elseif($key->level==2)
+                        {{ 'User SKPD' }}
+                      @endif
+                    </td>
+                    <td>
+                      @if($key->id_skpd=="")
+                        {{ '-' }}
+                      @else
+                        {{ $key->masterskpd->nama_skpd }}
+                      @endif
+                    </td>
+                    <td>
+                      @if($key->activated==0)
+                        <span class="pull-center badge">Belum Aktifasi</span>
+                      @elseif($key->activated==1)
+                        <span class="pull-center badge bg-green">Sudah Aktifasi</span>
+                      @endif
+                    </td>
+                    <td>
+                      @if($key->flag_user!=0)
+                        <span class="pull-center badge bg-blue">Aktif</span>
+                      @else
+                        <span class="pull-center badge">Tidak Aktif</span>
+                      @endif
+                    </td>
+                    <td>
+                      @if($key->flag_user!=0)
+                        <span data-toggle="tooltip" title="Tidak Aktifkan Akun">
+                          <a href="" class="btn btn-default btn-flat btn-xs nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="{{ $key->id }}"><i class="fa fa-ban"></i></a>
+                        </span>
+                      @else
+                        <span data-toggle="tooltip" title="Aktifkan Akun">
+                          <a href="" class="btn btn-primary btn-flat btn-xs aktif" data-toggle="modal" data-target="#myModalAktif" data-value="{{ $key->id }}"><i class="fa fa-check"></i></a>
+                        </span>
+                      @endif
+                      <span data-toggle="tooltip" title="Ubah Akun">
+                        <a href="" class="btn btn-warning btn-flat btn-xs edit" data-toggle="modal" data-target="#myModalEdit" data-value="{{ $key->id }}"><i class="fa fa-edit"></i></a>
                       </span>
-                    @else
-                      <span data-toggle="tooltip" title="Aktifkan Akun">
-                        <a href="" class="btn btn-primary btn-flat btn-xs aktif" data-toggle="modal" data-target="#myModalAktif" data-value="{{ $key->id }}"><i class="fa fa-check"></i></a>
+                      <span data-toggle="tooltip" title="Delete Akun">
+                        <a href="" class="btn btn-danger btn-flat btn-xs hapus" data-toggle="modal" data-target="#myModalHapus" data-value="{{ $key->id }}"><i class="fa fa-remove"></i></a>
                       </span>
-                    @endif
-                    <span data-toggle="tooltip" title="Ubah Akun">
-                      <a href="" class="btn btn-warning btn-flat btn-xs edit" data-toggle="modal" data-target="#myModalEdit" data-value="{{ $key->id }}"><i class="fa fa-edit"></i></a>
-                    </span>
-                    <span data-toggle="tooltip" title="Delete Akun">
-                      <a href="" class="btn btn-danger btn-flat btn-xs hapus" data-toggle="modal" data-target="#myModalHapus" data-value="{{ $key->id }}"><i class="fa fa-remove"></i></a>
-                    </span>
-                  </td>
-                </tr>
-                <?php $no++; ?>
+                    </td>
+                  </tr>
+                  <?php $no++; ?>
+                @endif
               @endforeach
             @endif
           </table>
