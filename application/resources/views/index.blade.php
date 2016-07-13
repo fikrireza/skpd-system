@@ -31,6 +31,14 @@
               </div>
             @endif
 
+            @if(Session::has('messageactivationfailed'))
+              <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Aktifasi Gagal!</h4>
+                {{ Session::get('messageactivationfailed') }}
+              </div>
+            @endif
+
             @if(Session::has('passwordbaru'))
               <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

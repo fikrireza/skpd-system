@@ -27,7 +27,7 @@ class ProfileController extends Controller
                             ->join('tanggapan', 'tanggapan.id_pengaduan', '=', 'pengaduan.id')
                             ->select('pengaduan.id', 'pengaduan.judul_pengaduan', 'users.nama', 'pengaduan.created_at as tanggal_pengaduan', 'tanggapan.created_at as tanggal_tanggapan')
                             ->where('tanggapan.id_userskpd', $id)
-                            ->get();
+                            ->paginate(10);
                             // dd($gethistoritanggapan);
     return view('pages.userskpdprofile')->with('getprofile', $getprofile)->with('gethistoritanggapan', $gethistoritanggapan)->with('getcounttanggap', $getcounttanggap);
   }

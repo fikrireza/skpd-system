@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Requests;
 use App\MasterSKPD;
@@ -61,6 +62,21 @@ class MasterSKPDController extends Controller
      */
     public function store(Request $request)
     {
+      $messages = [
+        'kodeskpd.required' => 'Kode SKPD harus diisi.',
+        'kodeskpd.unique' => 'Kode SKPD telah digunakan.',
+        'namaskpd.required' => 'Nama SKPD harus diisi.',
+      ];
+
+      $validator = Validator::make($request->all(), [
+        'kodeskpd' => 'required|unique:master_skpd,kode_skpd',
+        'namaskpd' => 'required',
+      ], $messages);
+
+      if($validator->fails()) {
+        return redirect()->route('dataskpd.index')->withErrors($validator)->withInput();
+      }
+
       $tampung = $request->namaskpd;
       $slug = str_slug($tampung);
 
@@ -191,7 +207,7 @@ class MasterSKPDController extends Controller
               ->leftJoin('users', 'tanggapan.id_userskpd' , '=', 'users.id')
               ->leftJoin('master_skpd', 'users.id_skpd' , '=', 'master_skpd.id')
               ->leftJoin('dokumen_pengaduan', 'pengaduan.id', '=', 'dokumen_pengaduan.pengaduan_id')
-              ->select('pengaduan.id', 'users.nama', 'master_skpd.nama_skpd', 'pengaduan.judul_pengaduan', 'pengaduan.created_at as tanggal_pengaduan', 'pengaduan.isi_pengaduan', 'tanggapan.tanggapan', 'dokumen_pengaduan.url_dokumen')
+              ->select('pengaduan.id', 'users.nama', 'master_skpd.nama_skpd', 'pengaduan.judul_pengaduan', 'pengaduan.created_at as tanggal_pengaduan', 'tanggapan.created_at as tanggal_tanggap', 'pengaduan.isi_pengaduan', 'tanggapan.tanggapan', 'dokumen_pengaduan.url_dokumen')
               ->where('pengaduan.id', $id)
               ->get();
 

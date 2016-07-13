@@ -67,13 +67,13 @@
           <i class="ion ion-stats-bars"></i>
         </div>
         <a class="small-box-footer">
-          <i>Terdapat
+          <i>
             @if(Auth::user()->level=="0")
             {{$getcountpengaduantelahditanggapiall}}
             @elseif(Auth::user()->level=="2")
               {{$getcountpengaduantelahditanggapi}}
             @endif
-            pengaduan sudah di tanggapi.</i>
+            data pengaduan telah ditanggapi</i>
         </a>
       </div>
     </div><!-- ./col -->
@@ -94,13 +94,13 @@
           <i class="fa fa-code-fork"></i>
         </div>
         <a class="small-box-footer">
-          <i>Terdapat
+          <i>
             @if(Auth::user()->level=="0")
               {{$getcountmutasiall}}
             @elseif(Auth::user()->level=="2")
               {{$getcountmutasi}}
             @endif
-            data yang dimutasi.</i>
+            data pengaduan telah dimutasi</i>
         </a>
       </div>
     </div><!-- ./col -->
@@ -306,7 +306,7 @@
     <section class="col-lg-5 col-md-5 connectedSortable">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title"><i class="fa fa-pie-chart"></i> Presentase Total Pengaduan</h3>
+          <h3 class="box-title"><i class="fa fa-pie-chart"></i> Jumlah Total Pengaduan</h3>
           <div class="box-tools pull-right">
             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>

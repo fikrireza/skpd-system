@@ -134,36 +134,50 @@
           <div class="box-body">
             <strong><i class="fa fa-book margin-r-5"></i>  No. KTP</strong>
             <p class="text-muted">
-              {{ $getprofile->noktp }}
-            </p>
-
-            <hr style="margin-top:2px;margin-bottom:8px;">
-
-            <strong><i class="fa fa-map-marker margin-r-5"></i> No. Telp</strong>
-            <p class="text-muted">{{ $getprofile->notelp }}</p>
-
-            <hr style="margin-top:2px;margin-bottom:8px;">
-
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Email</strong>
-            <p class="text-muted">{{ $getprofile->email }}</p>
-
-            <hr style="margin-top:2px;margin-bottom:8px;">
-
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Jenis Kelamin</strong>
-            <p class="text-muted">
-              @if($getprofile->jeniskelamin=="L")
-                Pria
+              @if($getprofile->noktp!="")
+                {{ $getprofile->noktp }}
               @else
-                Wanita
+                <i>Belum ada data</i>
               @endif
             </p>
 
             <hr style="margin-top:2px;margin-bottom:8px;">
 
-
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
+            <strong><i class="fa fa-phone-square margin-r-5"></i> No. Telp</strong>
             <p class="text-muted">
-              {{ $getprofile->alamat }}
+              @if($getprofile->notelp!="")
+                {{ $getprofile->notelp }}
+              @else
+                <i>Belum ada data</i>
+              @endif
+            </p>
+
+            <hr style="margin-top:2px;margin-bottom:8px;">
+
+            <strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
+            <p class="text-muted">{{ $getprofile->email }}</p>
+
+            <hr style="margin-top:2px;margin-bottom:8px;">
+
+              @if($getprofile->jeniskelamin=="P")
+                <strong><i class="fa fa-female margin-r-5"></i> Jenis Kelamin</strong>
+                <p class="text-muted">Wanita</p>
+              @elseif($getprofile->jeniskelamin=="L")
+                <strong><i class="fa fa-male margin-r-5"></i> Jenis Kelamin</strong>
+                <p class="text-muted">Pria</p>
+              @else
+                <strong><i class="fa fa-male margin-r-5"></i> Jenis Kelamin</strong>
+                <p class="text-muted"><i>Belum ada data</i></p>
+              @endif
+              <hr style="margin-top:2px;margin-bottom:8px;">
+
+            <strong><i class="fa fa-home margin-r-5"></i> Alamat</strong>
+            <p class="text-muted">
+              @if($getprofile->alamat!="")
+                {{ $getprofile->alamat }}
+              @else
+                <i>Belum ada data</i>
+              @endif
             </p>
 
           </div><!-- /.box-body -->
@@ -201,7 +215,7 @@
                 <!-- Post -->
                 <div class="post" style="color:#333;">
                   <table class="table">
-                    <tr class="bg-green">
+                    <tr class="bg-yellow">
                       <th>#</th>
                       <th>Judul Pengaduan</th>
                       <th>Nama Pelapor</th>
@@ -209,51 +223,52 @@
                       <th>Tanggal Tanggapan</th>
                       <th style="width: 40px">Aksi</th>
                     </tr>
-                    @if($gethistoritanggapan)
-                      <?php $no=1; ?>
+                    <?php
+                      $no;
+                      if($gethistoritanggapan->currentPage()==1)
+                        $no = 1;
+                      else
+                        $no = (($gethistoritanggapan->currentPage() - 1) * $gethistoritanggapan->perPage())+1;
+                      ?>
+                    @if($gethistoritanggapan->isEmpty())
+                      <tr>
+                        <td colspan="5" class="text-muted" style="text-align:center;"><i>Data tidak tersedia.</i></td>
+                      </tr>
+                    @elseif(isset($gethistoritanggapan))
                       @foreach($gethistoritanggapan as $k)
                         <tr>
                           <td>{{$no}}</td>
                           <td>{{$k->judul_pengaduan}}</td>
                           <td>{{$k->nama}}</td>
                           <td>
-                            <?php
-                              $tglpengaduan = $k->tanggal_pengaduan;
-                              echo substr($tglpengaduan, 0, 10);
-                            ?>
+
+                            {{ \Carbon\Carbon::parse($k->tanggal_pengaduan)->format('d-M-y')}}
                           </td>
                           <td>
-                            <?php
-                              $tgltanggapan = $k->tanggal_tanggapan;
-                              echo substr($tgltanggapan, 0, 10);
-                            ?>
+
+                            {{ \Carbon\Carbon::parse($k->tanggal_tanggapan)->format('d-M-y')}}
                           </td>
                           <td>
-                            <span data-toggle="tooltip" title="View Data">
+                            <span data-toggle="tooltip" title="Lihat Pengaduan">
                               <a href="" data-value="{{ $k->id }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
                             </span>
                           </td>
                         </tr>
                         <?php $no++; ?>
                       @endforeach
-                    @else
+                    @endif
+                    {{-- @else
                       <tr>
                         <td colspan="6" class="text-muted" style="text-align:center;"><i>Data tidak tersedia.</i></td>
                       </tr>
-                    @endif
-
+                    @endif --}}
                   </table>
+                  <div class="box-footer">
+                    <div class="pagination pagination-sm no-margin pull-right">
+                      {{ $gethistoritanggapan->links() }}
+                    </div>
+                  </div>
                 </div><!-- /.post -->
-
-                <div class="clearfix">
-                  <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                  </ul>
-                </div>
               </div><!-- /.tab-pane -->
 
               <div class="
@@ -328,7 +343,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                      <button type="submit" class="btn btn-primary btn-flat">Simpan Perubahan</button>
                     </div>
                   </div>
                 </form>
@@ -397,7 +412,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Ganti Password Saya</button>
+                      <button type="submit" class="btn btn-primary btn-flat">Ganti Password Saya</button>
                     </div>
                   </div>
                 </form>
