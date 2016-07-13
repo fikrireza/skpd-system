@@ -21,7 +21,7 @@ class CustomAuthController extends Controller
 
     public function loginprocess(Request $request)
     {
-      if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'activated'=>1]))
+      if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'activated'=>1, 'flag_user'=>1]))
       {
         $user = Auth::user();
         if($user->level==1)
