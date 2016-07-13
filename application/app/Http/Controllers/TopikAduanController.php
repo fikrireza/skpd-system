@@ -59,7 +59,7 @@ class TopikAduanController extends Controller
         return redirect()->route('topikpengaduan.index')->with('message', "Berhasil menghapus topik pengaduan.");
       } else {
         $set = TopikAduan::find($id);
-        return redirect()->route('topikpengaduan.index')->with('messageerror', "Topik pengaduan dengan nama $set->nama_topik tidak dapat dihapus karena telah memiliki data pengaduan yang menggunakan topik tersebut.");
+        return redirect()->route('topikpengaduan.index')->with('messageerror', "Topik pengaduan dengan nama $set->nama_topik tidak dapat dihapus karena telah memiliki data pengaduan warga.");
       }
     }
 

@@ -27,6 +27,12 @@
         $(this).remove();
     });
   }, 2000);
+
+  window.setTimeout(function() {
+    $(".alert-danger").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+  }, 5000);
 </script>
 <!-- END DURATION TIME ALERT -->
 
@@ -143,6 +149,16 @@
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
           <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
           <p>{{ Session::get('message') }}</p>
+        </div>
+      @endif
+    </div>
+
+    <div class="col-md-12">
+      @if(Session::has('messageerror'))
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-ban"></i> Oops, terjadi kesalahan!</h4>
+          <p>{{ Session::get('messageerror') }}</p>
         </div>
       @endif
     </div>

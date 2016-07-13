@@ -142,10 +142,16 @@ class MasterSKPDController extends Controller
      */
     public function destroy($id)
     {
-      $set = MasterSKPD::find($id);
-      $set->delete();
+      $check = TopikAduan::where('id_skpd', $id)->count();
+      if($check==0) {
+        $set = MasterSKPD::find($id);
+        $set->delete();
 
-      return redirect()->route('dataskpd.index')->with('message', "Berhasil menghapus data SKPD.");
+        return redirect()->route('dataskpd.index')->with('message', "Berhasil menghapus data SKPD.");
+      } else {
+        $set = MasterSKPD::find($id);
+        return redirect()->route('dataskpd.index')->with('messageerror', "Data SKPD dengan nama $set->nama_skpd  tidak dapat dihapus karena telah memiliki data topik pengaduan.");
+      }
     }
 
     public function bind($id)
