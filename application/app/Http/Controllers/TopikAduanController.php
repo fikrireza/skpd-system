@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests;
 use App\MasterSKPD;
 use App\TopikAduan;
+use App\Models\Pengaduan;
 
 class TopikAduanController extends Controller
 {
@@ -50,10 +51,16 @@ class TopikAduanController extends Controller
 
     public function delete($id)
     {
-      $set = TopikAduan::find($id);
-      $set->delete();
+      $check = Pengaduan::where('topik_id', $id)->count();
+      if($check==0) {
+        $set = TopikAduan::find($id);
+        $set->delete();
 
-      return redirect()->route('topikpengaduan.index')->with('message', "Berhasil menghapus topik pengaduan.");
+        return redirect()->route('topikpengaduan.index')->with('message', "Berhasil menghapus topik pengaduan.");
+      } else {
+        $set = TopikAduan::find($id);
+        return redirect()->route('topikpengaduan.index')->with('messageerror', "Topik pengaduan dengan nama $set->nama_topik tidak dapat dihapus karena telah memiliki data pengaduan yang menggunakan topik tersebut.");
+      }
     }
 
     public function bind($id)
