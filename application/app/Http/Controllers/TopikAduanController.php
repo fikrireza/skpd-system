@@ -71,6 +71,20 @@ class TopikAduanController extends Controller
 
     public function update(Request $request)
     {
+      $messages = [
+        'kode_topik.required' => 'Kode Pengaduan harus diisi.',
+        'nama_topik.required' => 'Nama Pengaduan harus diisi.',
+      ];
+
+      $validator = Validator::make($request->all(), [
+        'kode_topik' => 'required',
+        'nama_topik' => 'required',
+      ], $messages);
+
+      if($validator->fails()) {
+        return redirect()->route('topikpengaduan.index')->withErrors($validator)->withInput();
+      }
+
       $set = TopikAduan::find($request->id_topik);
       $set->kode_topik = $request->kode_topik;
       $set->nama_topik = $request->nama_topik;

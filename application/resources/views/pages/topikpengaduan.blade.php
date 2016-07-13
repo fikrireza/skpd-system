@@ -69,15 +69,37 @@
           <div class="modal-body">
             <div class="form-group">
               <label class="col-sm-4 control-label">Kode Topik Aduan</label>
-              <div class="col-sm-7">
-                <input type="text" class="form-control" name="kode_topik" id="kode_topik">
+              <div class="col-sm-7 {{ $errors->has('kode_topik') ? 'has-error' : '' }}">
+                <input readonly type="text" class="form-control" name="kode_topik" id="kode_topik"
+                  @if(!$errors->has('kode_topik'))
+                    value="{{ old('kode_topik') }}"
+                  @endif
+                >
                 <input type="hidden" class="form-control" name="id_topik" id="id_topik">
+                <div class="erroredit">
+                  @if($errors->has('kode_topik'))
+                    <span class="help-block">
+                      <i>* {{$errors->first('kode_topik')}}</i>
+                    </span>
+                  @endif
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-4 control-label">Nama Topik Aduan</label>
-              <div class="col-sm-7">
-                <input type="text" class="form-control" name="nama_topik" id="nama_topik">
+              <div class="col-sm-7 {{ $errors->has('nama_topik') ? 'has-error' : '' }}">
+                <input type="text" class="form-control" name="nama_topik" id="nama_topik"
+                  @if(!$errors->has('nama_topik'))
+                    value="{{ old('nama_topik') }}"
+                  @endif
+                >
+                <div class="erroredit">
+                  @if($errors->has('nama_topik'))
+                    <span class="help-block">
+                      <i>* {{$errors->first('nama_topik')}}</i>
+                    </span>
+                  @endif
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -260,32 +282,31 @@
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
 
-  <!-- iCheck -->
-  <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
-
   <script type="text/javascript">
     $(function(){
-      $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-        checkboxClass: 'icheckbox_minimal-green',
-        radioClass: 'iradio_minimal-green'
-      });
-    });
-  </script>
+      @if($errors->has('kode_topik') || $errors->has('nama_topik'))
+        $(window).load(function(){
+            $('#myModalEdit').modal('show');
+        });
+      @endif
 
-  <script type="text/javascript">
-    $(function(){
       $('a.hapus').click(function(){
         var a = $(this).data('value');
         $('#sethapus').attr('href', "{{ url('/') }}/topikpengaduan/delete/"+a);
       });
 
       $('a.edit').click(function(){
+        //clear error message in modal
+        $('div.col-sm-7').removeClass('has-error');
+        $('div.erroredit').html('');
+
+        //bind data to modal
         var a = $(this).data('value');
         $.ajax({
           url: "{{ url('/') }}/topikpengaduan/bind/"+a,
           dataType: 'json',
           success: function(data){
-            //get
+            // get
             var id = data.id;
             var kode_topik = data.kode_topik;
             var nama_topik = data.nama_topik;
