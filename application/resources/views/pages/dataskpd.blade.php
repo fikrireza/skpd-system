@@ -197,9 +197,9 @@
             <div class="box-body">
               <div class="col-md-12 {{ $errors->has('kodeskpd') ? 'has-error' : '' }}">
                 <label class="control-label">Kode SKPD</label>
-                <input type="text" name="kodeskpd" class="form-control" placeholder="Kode SKPD"
+                <input type="text" name="kodeskpd" class="form-control" placeholder="Kode SKPD" readonly="true"
                 @if(!$errors->has('kodeskpd'))
-                  value="{{ old('kodeskpd') }}"
+                  value=<?php echo $kodegenerate?>
                 @endif
                 >
                 @if($errors->has('kodeskpd'))

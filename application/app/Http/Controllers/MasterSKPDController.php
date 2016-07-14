@@ -22,8 +22,26 @@ class MasterSKPDController extends Controller
     public function index()
     {
       $getskpd = MasterSKPD::paginate(10);
+      $sql = DB::table('master_skpd')
+              ->select('*')
+              ->orderby('kode_skpd', 'desc')
+              ->get();
 
-      return view('pages.dataskpd')->with('getskpd', $getskpd);
+      $get = array();
+      $kode = 0;
+      foreach ($sql as $key) {
+        $get[$kode] = $key->kode_skpd;
+        $kode++;
+      }
+        if ($kode != 0) {
+           $kodegenerate = $kode + 1;
+           $kodegenerate = "SKPD".str_pad($kodegenerate, 3, "0", STR_PAD_LEFT);
+        } else {
+            $kodegenerate = "SKPD001";
+        }
+
+      // return view('pages.dataskpd')->with('getskpd', $getskpd);
+      return view('pages.dataskpd', compact('getskpd', 'kodegenerate'));
     }
 
     public function nonaktif($id)
