@@ -121,14 +121,28 @@ class MasterSKPDController extends Controller
      */
     public function update(Request $request)
     {
-        $tampung = $request->namaskpd;
+        $messages = [
+          'kodeskpdedit.required' => 'Kode SKPD harus diisi.',
+          'namaskpdedit.required' => 'Nama SKPD harus diisi.',
+        ];
+
+        $validator = Validator::make($request->all(), [
+          'kodeskpdedit' => 'required',
+          'namaskpdedit' => 'required',
+        ], $messages);
+
+        if($validator->fails()) {
+          return redirect()->route('dataskpd.index')->withErrors($validator)->withInput();
+        }
+
+        $tampung = $request->namaskpdedit;
         $slug = str_slug($tampung);
 
         $set = MasterSKPD::find($request->idskpd);
-        $set->kode_skpd = $request->kodeskpd;
-        $set->nama_skpd = $request->namaskpd;
+        $set->kode_skpd = $request->kodeskpdedit;
+        $set->nama_skpd = $request->namaskpdedit;
         $set->slug      = $slug;
-        $set->flag_skpd = $request->flagskpd;
+        $set->flag_skpd = $request->flagskpdedit;
         $set->save();
 
         return redirect()->route('dataskpd.index')->with('message', "Berhasil mengubah data SKPD.");

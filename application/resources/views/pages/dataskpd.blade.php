@@ -49,23 +49,45 @@
           <div class="modal-body">
             <div class="form-group">
               <label class="col-sm-3 control-label">Kode SKPD</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="kodeskpd" id="kodeskpd">
+              <div class="col-sm-8 {{$errors->has('kodeskpdedit') ? 'has-error' : ''}}">
+                <input type="text" class="form-control" name="kodeskpdedit" id="kodeskpd" readonly
+                  @if(!$errors->has('kodeskpdedit'))
+                    value="{{ old('kodeskpdedit') }}"
+                  @endif
+                >
                 <input type="hidden" class="form-control" name="idskpd" id="idskpd">
+                <div class="erroredit">
+                  @if($errors->has('kodeskpdedit'))
+                    <span class="help-block">
+                      <i>* {{$errors->first('kodeskpdedit')}}</i>
+                    </span>
+                  @endif
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">Nama SKPD</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" name="namaskpd" id="namaskpd">
+              <div class="col-sm-8 {{$errors->has('namaskpdedit') ? 'has-error' : ''}}">
+                <input type="text" class="form-control" name="namaskpdedit" id="namaskpd"
+                  @if(!$errors->has('namaskpdedit'))
+                    value="{{ old('namaskpdedit') }}"
+                  @endif
+                >
+                <div class="erroredit">
+                  @if($errors->has('namaskpdedit'))
+                    <span class="help-block">
+                      <i>* {{$errors->first('namaskpdedit')}}</i>
+                    </span>
+                  @endif
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label">Status</label>
               <div class="col-sm-8">
-                <select class="form-control" name="flagskpd">
-                  <option value="1" id="flagskpdaktif">Aktif</option>
-                  <option value="0" id="flagskpdnonaktif">Tidak Aktif</option>
+                <select class="form-control" name="flagskpdedit">
+                  <option value="1" id="flagskpdaktif" {{ old('flagskpdedit')=="1" ? 'selected' : '' }}>Aktif</option>
+                  <option value="0" id="flagskpdnonaktif" {{ old('flagskpdedit')=="0" ? 'selected' : '' }}>Tidak Aktif</option>
                 </select>
               </div>
             </div>
@@ -262,7 +284,7 @@
                   </td>
                   <td>
                     @if($key->flag_skpd==1)
-                      <span data-toggle="tooltip" title="Tidak Aktifkan SKPD">
+                      <span data-toggle="tooltip" title="Non Aktifkan SKPD">
                         <a href="" data-value="{{ $key->id }}" class="btn btn-default btn-xs btn-flat nonaktif" data-toggle="modal" data-target="#myModalNonAktif" data-value="#"><i class="fa fa-ban"></i></a>
                       </span>
                     @else
@@ -309,6 +331,12 @@
 
   <script type="text/javascript">
     $(function(){
+      @if($errors->has('kodeskpdedit') || $errors->has('namaskpdedit'))
+        $(window).load(function(){
+            $('#myModalEdit').modal('show');
+        });
+      @endif
+
       $('a.hapus').click(function(){
         var a = $(this).data('value');
         $('#sethapus').attr('href', "{{ url('/') }}/dataskpd/delete/"+a);
@@ -325,6 +353,10 @@
       });
 
       $('a.edit').click(function(){
+        //clear error message in modal
+        $('div.col-sm-8').removeClass('has-error');
+        $('div.erroredit').html('');
+
         var a = $(this).data('value');
         $.ajax({
           url: "{{ url('/') }}/dataskpd/bind/"+a,
