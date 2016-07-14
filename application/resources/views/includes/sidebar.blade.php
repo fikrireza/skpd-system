@@ -99,7 +99,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{url('admin/slider')}}"><i class="fa fa-image"></i> <span>Slider</span></a></li>
-          <li><a href="{{url('admin/tentang')}}"><i class="fa fa-glass"></i> <span>Tentang Simpedu</span></a></li>
+          <li><a href="{{url('admin/tentang')}}"><i class="fa fa-tv"></i> <span>Tentang Simpedu</span></a></li>
           <li><a href="{{url('admin/syaratketentuan')}}"><i class="fa fa-gavel"></i> <span>Syarat & Ketentuan</span></a></li>
         </ul>
       </li>
