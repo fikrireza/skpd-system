@@ -39,14 +39,25 @@
           {!! csrf_field() !!}
           <div class="form-group has-feedback">
             <input name="email" type="text" class="form-control" placeholder="Email" value="{{ $email }}" readonly="true">
+            <input name="verifytoken" type="hidden" class="form-control" placeholder="Email" value="{{ $verifytoken }}" readonly="true">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
-          <div class="form-group has-feedback">
+          <div class="form-group {{$errors->has('password') ? 'has-error' : ''}}">
             <input name="password" type="password" class="form-control" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            @if($errors->has('password'))
+              <span class="help-block">
+                <i>* {{ $errors->first('password') }}</i>
+              </span>
+            @endif
           </div>
-          <div class="form-group has-feedback">
-            <input name="kpassword" type="password" class="form-control" placeholder="Konfirmasi Password">
+          <div class="form-group {{$errors->has('password_confirmation') ? 'has-error' : ''}}">
+            <input name="password_confirmation" type="password" class="form-control" placeholder="Konfirmasi Password">
+            @if($errors->has('password_confirmation'))
+              <span class="help-block">
+                <i>* {{ $errors->first('password_confirmation') }}</i>
+              </span>
+            @endif
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">

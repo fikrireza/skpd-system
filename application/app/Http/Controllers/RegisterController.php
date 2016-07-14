@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Requests;
 use App\User;
@@ -57,7 +58,7 @@ class RegisterController extends Controller
         }
         else // selain warga: administrator / user skpd
         {
-          return view('pages.login')->with('email', $user->email);
+          return view('pages.login')->with('email', $user->email)->with('verifytoken', $code);
         }
       }
       else {
@@ -67,6 +68,21 @@ class RegisterController extends Controller
 
     public function setpassword(Request $request)
     {
+      $message = [
+        'password.required' => "Password harus diisi.",
+        'password.confirmed' => "Password dan konfirmasi password tidak sama.",
+        'password_confirmation.required' => "Konfirmasi password harus diisi.",
+      ];
+
+      $validator = Validator::make($request->all(), [
+        'password' => 'required|confirmed',
+        'password_confirmation' => 'required',
+      ], $message);
+
+      if($validator->fails()) {
+        return redirect()->route('verify.setpassword', ['code' => $request->verifytoken])->withErrors($validator);
+      }
+
       $user = User::where('email', $request->email)->first();
       $user->password = Hash::make($request->password);
       $user->activation_code = null;

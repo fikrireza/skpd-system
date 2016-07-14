@@ -101,7 +101,6 @@
               <div class="col-sm-8">
                 <input type="hidden" class="form-control" name="id_user" id="edit_id_user">
                 <select class="form-control" name="level" id="edit_level">
-                  <option value="">-- Pilih --</option>
                   <option value="0" id="leveladmin">Administrator</option>
                   <option value="2" id="levelskpd">User SKPD</option>
                 </select>
@@ -111,7 +110,6 @@
               <label class="col-sm-3 control-label">SKPD</label>
               <div class="col-sm-8">
                 <select class="form-control" name="id_skpd" id="edit_id_skpd">
-                  <option value="" id="editskpd0">-- Pilih --</option>
                   @foreach($getskpd as $key)
                     <option value="{{ $key->id }}" id="editskpd{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
                   @endforeach
@@ -121,7 +119,7 @@
             <div class="form-group">
               <label class="col-sm-3 control-label">Email SKPD</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" name="email_skpd" id="edit_email_skpd">
+                <input type="text" class="form-control" name="email_skpdedit" id="edit_email_skpd" readonly>
               </div>
             </div>
           </div>
