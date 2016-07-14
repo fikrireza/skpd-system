@@ -117,6 +117,7 @@ class DashboardController extends Controller
                    DB::raw('count(pengaduan.id) as jumlahpengaduan'), 'master_skpd.flag_skpd', 'master_skpd.id', 'topik_id')
                    ->groupBy('master_skpd.id')
                    ->orderby('jumlahpengaduan', 'desc')
+                   ->orderby('jumlahpengaduan', 'desc')
                    ->paginate(7);
                   //  dd($getmasterskpd);
 
@@ -126,6 +127,7 @@ class DashboardController extends Controller
                    ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
                    ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
                    ->groupBy('topik_pengaduan.id')
+                   ->orderby('jumlahpengaduan', 'desc')
                    ->paginate(7);
       // dd($getmasterskpdtopik);
       $getitemforpiechart = DB::table('pengaduan')
@@ -133,6 +135,7 @@ class DashboardController extends Controller
               ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
               ->select(DB::raw('count(*) as jumlahpengaduan'),'master_skpd.nama_skpd')
               ->groupBy('master_skpd.nama_skpd')
+              ->orderby('jumlahpengaduan', 'desc')
               ->limit(5)
               ->get();
       $getitemforpiechartskpd = DB::table('topik_pengaduan')
@@ -141,21 +144,9 @@ class DashboardController extends Controller
                 ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
                 ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
                 ->groupBy('topik_pengaduan.id')
+                ->orderby('jumlahpengaduan', 'desc')
                 ->limit(5)
                 ->get();
-
-
-                $idlogin = Auth::user()->id;
-                $userid = User::find($idlogin);
-
-                $getbignumber = DB::table('topik_pengaduan')
-                        ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
-                         DB::raw('count(pengaduan.id) as jumlahpengaduan'))
-                        ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
-                        ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
-                        ->groupBy('topik_pengaduan.id')
-                        ->limit(5)
-                        ->get();
 
       return view('pages.dashboard', compact('getcountpengaduan','getcountpengaduanall',
       'getcountpengaduantelahditanggapiall', 'getcountpengaduantelahditanggapi',
@@ -230,6 +221,7 @@ class DashboardController extends Controller
               ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
               ->select(DB::raw('count(*) as jumlahpengaduan'),'master_skpd.nama_skpd')
               ->groupBy('master_skpd.nama_skpd')
+              ->orderby('jumlahpengaduan', 'desc')
               ->limit(5)
               ->get();
 
@@ -259,6 +251,7 @@ class DashboardController extends Controller
               ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
               ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
               ->groupBy('topik_pengaduan.id')
+              ->orderby('jumlahpengaduan', 'desc')
               ->limit(5)
               ->get();
 
@@ -367,6 +360,7 @@ class DashboardController extends Controller
               ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
               ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
               ->groupBy('topik_pengaduan.id')
+              ->orderby('jumlahpengaduan', 'desc')
               ->limit(5)
               ->get();
 
@@ -468,6 +462,7 @@ class DashboardController extends Controller
               ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
               ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
               ->groupBy('topik_pengaduan.id')
+              ->orderby('jumlahpengaduan', 'desc')
               ->limit(5)
               ->get();
 
