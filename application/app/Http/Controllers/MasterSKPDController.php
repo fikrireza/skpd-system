@@ -11,6 +11,7 @@ use DB;
 use App\TopikAduan;
 use App\Models\Pengaduan;
 use App\Models\DokumenPengaduan;
+use Excel;
 
 class MasterSKPDController extends Controller
 {
@@ -256,5 +257,29 @@ class MasterSKPDController extends Controller
     {
       $get = DokumenPengaduan::where('pengaduan_id', $id)->get();
       return $get;
+    }
+
+    public function export($type)
+    {
+        $data = MasterSKPD::leftJoin('topik_pengaduan', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                            ->leftJoin('pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                            ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd', DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+                            ->groupBy('master_skpd.id')
+                            ->get()
+                            ->toArray();
+
+        return Excel::create('Topik Pengaduan Berdasarkan SKPD', function($excel) use($data){
+          $excel->sheet('Jumlah Topik Pengaduan', function($sheet) use ($data)
+          {
+            $sheet->fromArray($data, null, 'A1', true);
+            $sheet->row(1, array(' Kode SKPD', 'SKPD', 'Jumlah Pengaduan'));
+            $sheet->cell('A1:C1', function($cell){
+              $cell->setFontSize(12);
+              $cell->setFontWeight('bold');
+              $cell->setAlignment('center');
+            });
+            $sheet->setAllBorders('thin');
+            $sheet->setFreeze('A2'); });
+        })->download($type);
     }
 }

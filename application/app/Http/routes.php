@@ -109,6 +109,7 @@ Route::get('dataskpd/delete/{id}', 'MasterSKPDController@destroy');
 Route::post('dataskpd/update', 'MasterSKPDController@update');
 Route::get('dataskpd/bind/{id}', 'MasterSKPDController@bind');
 Route::get('listdataskpdbytopik', 'MasterSKPDController@getDataSKPD');
+Route::get('admin/listdataskpdbytopik/{type}', 'MasterSKPDController@export');
 Route::get('topikbyskpd/{id}', 'MasterSKPDController@detailSKPD');
 Route::get('pengaduandetail/bind/{id}', 'MasterSKPDController@bindfordetail');
 Route::get('getdokumenpengaduan/bind/{id}', 'MasterSKPDController@getdokumenpengaduan');
