@@ -162,11 +162,20 @@
 
  <div class="row">
    <div class="col-md-12">
-     <!-- Horizontal Form -->
      <div class="box box-primary">
        <div class="box-header">
          <h3 class="box-title">Seluruh Data Pengaduan SKPD Terkait</h3>
-       </div><!-- /.box-header -->
+         <div class="btn-group pull-right">
+           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+             Download <span class="caret"></span>
+             <span class="sr-only">Toggle Dropdown</span>
+           </button>
+           <ul class="dropdown-menu" role="menu">
+             <li><a href="{{ URL::to('admin/topikbyskpd/pdf/'.$getskpd[0]->id) }}">PDF</a></li>
+             <li><a href="{{ URL::to('admin/topikbyskpd/xlsx/'.$getskpd[0]->id) }}">Excel</a></li>
+           </ul>
+         </div>
+       </div>
        <div class="box-body">
          <table id="tabeluser" class="table table-hover">
            <thead>

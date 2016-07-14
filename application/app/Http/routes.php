@@ -111,6 +111,7 @@ Route::get('dataskpd/bind/{id}', 'MasterSKPDController@bind');
 Route::get('listdataskpdbytopik', 'MasterSKPDController@getDataSKPD');
 Route::get('admin/listdataskpdbytopik/{type}', 'MasterSKPDController@export');
 Route::get('topikbyskpd/{id}', 'MasterSKPDController@detailSKPD');
+Route::get('admin/topikbyskpd/{type}/{id}', 'MasterSKPDController@exportDetail');
 Route::get('pengaduandetail/bind/{id}', 'MasterSKPDController@bindfordetail');
 Route::get('getdokumenpengaduan/bind/{id}', 'MasterSKPDController@getdokumenpengaduan');
 

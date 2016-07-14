@@ -12,6 +12,7 @@ use App\TopikAduan;
 use App\Models\Pengaduan;
 use App\Models\DokumenPengaduan;
 use Excel;
+use PHPExcel_Worksheet_PageSetup;
 
 class MasterSKPDController extends Controller
 {
@@ -280,6 +281,61 @@ class MasterSKPDController extends Controller
             });
             $sheet->setAllBorders('thin');
             $sheet->setFreeze('A2'); });
+        })->download($type);
+    }
+
+    public function exportDetail($type, $id)
+    {
+        $data = MasterSKPD::leftJoin('topik_pengaduan', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                            ->leftJoin('pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+                            ->select('master_skpd.kode_skpd', 'master_skpd.nama_skpd', DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+                            ->groupBy('master_skpd.id')
+                            ->get()
+                            ->toArray();
+
+        $getskpd = MasterSKPD::where('id', $id)->get();
+        $topik = TopikAduan::select('topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', DB::raw('count(pengaduan.id) as jumlahpengaduan'))
+                              ->join('pengaduan', "topik_pengaduan.id", '=', 'pengaduan.topik_id')
+                              ->where('topik_pengaduan.id_skpd', $id)
+                              ->groupBy('topik_pengaduan.id')
+                              ->get()
+                              ->toArray();
+        $pengaduan = Pengaduan::leftJoin('tanggapan', 'tanggapan.id_pengaduan', '=', 'pengaduan.id')
+                        ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                        ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                        ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                        ->select('users.nama', 'topik_pengaduan.nama_topik', 'pengaduan.created_at as sempak', 'tanggapan.created_at', DB::raw('DATEDIFF(pengaduan.created_at,tanggapan.created_at) AS Days'), 'pengaduan.flag_tanggap')
+                        ->where('master_skpd.id', $id)
+                        ->orderby('pengaduan.created_at', 'desc')
+                        ->get()
+                        ->toArray();
+        
+        return Excel::create('Topik Pengaduan Berdasarkan SKPD', function($excel) use($topik, $pengaduan){
+            $excel->sheet('Jumlah Topik Pengaduan', function($sheet) use ($topik)
+            {
+                $sheet->fromArray($topik, null, 'A1', true);
+                $sheet->row(1, array('Kode Topik', 'Nama Topik', 'Jumlah Pengaduan'));
+                $sheet->cell('A1:C1', function($cell){
+                  $cell->setFontSize(12);
+                  $cell->setFontWeight('bold');
+                  $cell->setAlignment('center');
+                });
+                $sheet->setAllBorders('thin');
+                $sheet->setFreeze('A2');
+            });
+            $excel->sheet('Data Pengaduan', function($sheet) use($pengaduan)
+            {
+                $sheet->fromArray($pengaduan, null, 'A1', true);
+                $sheet->row(1, array('Pelapor', 'Topik Aduan', 'Tanggal Aduan', 'Tanggal Proses', 'Durasi Pemrosesan', 'Status Aduan'));
+                $sheet->cell('A1:F1', function($cell){
+                  $cell->setFontSize(12);
+                  $cell->setFontWeight('bold');
+                  $cell->setAlignment('center');
+                });
+                $sheet->setAllBorders('thin');
+                $sheet->setFreeze('A2');
+                $sheet->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+            });
         })->download($type);
     }
 }
