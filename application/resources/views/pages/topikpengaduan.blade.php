@@ -213,8 +213,17 @@
             Seluruh Data Topik Pengaduan
           </div>
           <div class='box-tools'>
-            <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
-            <button class='btn btn-box-tool' data-widget='remove'><i class='fa fa-times'></i></button>
+            <div class="btn-group">
+              <button type="button" class="btn btn-info">Download</button>
+              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ URL::to('admin/topikpengaduan/pdf') }}">PDF</a></li>
+                <li><a href="{{ URL::to('admin/topikpengaduan/xlsx') }}">Excel</a></li>
+              </ul>
+            </div>
           </div><!-- /.box-tools -->
         </div>
         <div class="box-body no-padding">
