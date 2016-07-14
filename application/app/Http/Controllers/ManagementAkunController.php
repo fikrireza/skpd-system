@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\MasterSKPD;
 use App\User;
 use Mail;
+use Excel;
+use PHPExcel_Worksheet_Drawing;
 
 class ManagementAkunController extends Controller
 {
@@ -146,5 +148,34 @@ class ManagementAkunController extends Controller
       $set->save();
 
       return redirect()->route('managementakun.index')->with('message', 'Berhasil mengubah data akun.');
+    }
+
+    public function export($type)
+    {
+        $data = MasterSKPD::join('users', 'users.id_skpd', '=', 'master_skpd.id')
+                            ->select('users.email', 'users.level', 'master_skpd.nama_skpd', 'users.flag_user')
+                            ->orderby('master_skpd.nama_skpd', 'asc')
+                            ->get()
+                            ->toArray();
+
+        return Excel::create('Data Akun SIMPEDU', function($excel) use($data){
+          $excel->sheet('Data Akun', function($sheet) use ($data)
+          {
+            $sheet->fromArray($data);
+            $sheet->row(1, array('Email', 'Level','SKPD', 'Status Akun'));
+            $sheet->cell('A1:D1', function($cell){
+              $cell->setFontSize(12);
+              $cell->setFontWeight('bold');
+              $cell->setAlignment('center');
+            });
+            $sheet->setAllBorders('thin');
+            $sheet->setFreeze('A2');
+            $sheet->setAutoFilter();
+            // $objDrawing = new PHPExcel_Worksheet_Drawing;
+            // $objDrawing->setPath('images/logokabtangerang.png');
+            // $objDrawing->setCoordinates('A1');
+            // $objDrawing->setWorksheet($sheet);
+          });
+        })->download($type);
     }
 }
