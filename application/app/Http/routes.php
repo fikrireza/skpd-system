@@ -128,6 +128,7 @@ Route::get('managementakun/delete/{id}', 'ManagementAkunController@delete');
 Route::get('managementakun/bind/{id}', 'ManagementAkunController@bind');
 Route::post('managementakun/update', 'ManagementAkunController@update');
 Route::post('managementakun/setpassword', ['as'=>'setpassword', 'uses'=>'RegisterController@setpassword']);
+Route::get('admin/managementakun/{type}', 'ManagementAkunController@export');
 
 Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']);
 Route::post('my-profile', ['as'=>'profile.store', 'uses'=>'ProfileController@store']);
