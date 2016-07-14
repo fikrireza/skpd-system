@@ -37,33 +37,39 @@
           </div>
         @endif
 
-      <div class="row">
       	<div class="box box-primary">
           <div class="box-body">
       			<hr>
-      			<h2 class="intro-text text-center">Lupa Password</h2>
+      			<h2 class="intro-text text-center">Lupa Password?</h2>
       			<hr>
-      			<p>Jika Anda Lupa Password, Maka Isilah Alamat Email Dibawah Ini. Anda Akan Mendapatkan Pesan Dengan Instruksi Untuk Membuat Password Baru Anda.</p>
+      			{{-- <p style="text-align:center;">Jangan khawatir, masukan email yang anda gunakan pada kolom di bawah ini. Kami akan mengirimkan link untuk set ulang password anda via email.</p> --}}
+            <div class="col-sm-2"></div>
+            <div class="callout callout-info col-sm-8" style="text-align:center;">
+              <h4>Jangan khawatir..</h4>
+              <p>Masukan email yang anda gunakan pada kolom di bawah ini. Kami akan mengirimkan link untuk set ulang password anda via email.</p>
+            </div>
+            <div class="col-sm-2"></div>
             <form action="{{ route('emailreset')}}" method="POST" role="form" class="form-horizontal">
             {{ csrf_field() }}
-            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-              <label class="col-sm-3 control-label">Email Anda</label>
+            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }} col-sm-12" style="padding-top:10px;">
+              <label class="col-sm-4 control-label">Email Anda</label>
               <div class="col-sm-4">
-              <input type="email" name="email" class="form-control" placeholder="Email Anda" value="{{old('email')}}">
+              <input type="email" name="email" class="form-control" placeholder="masukkan email anda" value="{{old('email')}}">
               @if($errors->has('email'))
                 <span class="help-block">
                   <strong>{{ $errors->first('email')}}</strong>
                 </span>
               @endif
               </div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary">Reset Password</button>
+              </div>
             </div>
       		</div>
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
           </form>
       	</div>
-      </div>
       </div>
       </section>
     </div>
