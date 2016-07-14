@@ -143,7 +143,6 @@ class ManagementAkunController extends Controller
       $set = User::find($request->id_user);
       $set->level = $request->level;
       $set->id_skpd = $request->id_skpd;
-      $set->email = $request->email_skpd;
       $set->save();
 
       return redirect()->route('managementakun.index')->with('message', 'Berhasil mengubah data akun.');

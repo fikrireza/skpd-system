@@ -90,7 +90,7 @@ Route::get('register', function(){
 });
 Route::post('register', 'RegisterController@wargaregisterprocess');
 
-Route::get('/register/verify/{code}', 'RegisterController@verify');
+Route::get('/register/verify/{code}', 'RegisterController@verify')->name('verify.setpassword');
 
 // Password reset link request routes...
 Route::get('lupa_password', 'Auth\PasswordController@getEmail');
