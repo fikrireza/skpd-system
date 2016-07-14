@@ -221,7 +221,7 @@
               </button>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{{ URL::to('admin/topikpengaduan/pdf') }}">PDF</a></li>
-                <li><a href="{{ URL::to('admin/historipengaduan/xlsx') }}">Excel</a></li>
+                <li><a href="{{ URL::to('admin/topikpengaduan/xlsx') }}">Excel</a></li>
               </ul>
             </div>
           </div><!-- /.box-tools -->
