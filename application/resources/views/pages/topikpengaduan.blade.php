@@ -158,9 +158,9 @@
             <div class="box-body">
               <div class="col-md-14 {{ $errors->has('kodepengaduan') ? 'has-error' : '' }}">
                 <label class="control-label">Kode Topik Pengaduan</label>
-                <input type="text" name="kodepengaduan" class="form-control" placeholder="Kode Topik Pengaduan"
+                <input type="text" name="kodepengaduan" class="form-control" placeholder="Kode Topik Pengaduan" readonly="true"
                 @if(!$errors->has('kodepengaduan'))
-                  value="{{ old('kodepengaduan') }}"
+                  value=<?php echo $kodegenerate?>
                 @endif
                 >
                 @if($errors->has('kodepengaduan'))

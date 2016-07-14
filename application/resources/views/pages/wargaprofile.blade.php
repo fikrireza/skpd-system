@@ -141,7 +141,7 @@
                           <div class='comment-text'>
                             <span class="username">
                                 {{$getdatapengaduanall->nama}}
-                              <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($getdatapengaduanall->created_pengaduan)->format('d-M-y H:i:s')}}</span>
+                              <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($getdatapengaduanall->created_tanggapan)->format('d-M-y H:i:s')}}</span>
                             </span><!-- /.username -->
                             {{$getdatapengaduanall->tanggapan}}
 
@@ -198,7 +198,7 @@
                           <div class='comment-text'>
                             <span class="username">
                                 {{$getdatapengaduan->nama}}
-                              <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($getdatapengaduan->created_pengaduan)->format('d-M-y H:i:s')}}span>
+                              <span class='text-muted pull-right'>{{ \Carbon\Carbon::parse($getdatapengaduan->created_tanggapan)->format('d-M-y H:i:s')}}</span>
                             </span><!-- /.username -->
                             {{$getdatapengaduan->tanggapan}}
 

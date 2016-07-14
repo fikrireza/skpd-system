@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\MasterSKPD;
 use App\TopikAduan;
 use App\Models\Pengaduan;
+use DB;
 use Excel;
 
 class TopikAduanController extends Controller
@@ -17,8 +18,25 @@ class TopikAduanController extends Controller
     {
       $getskpd = MasterSKPD::where('flag_skpd', '1')->get();
       $gettopik = TopikAduan::paginate(10);
+      $sql = DB::table('topik_pengaduan')
+              ->select('*')
+              ->orderby('kode_topik', 'desc')
+              ->get();
 
-      return view('pages.topikpengaduan', compact('getskpd', 'gettopik'));
+      $get = array();
+      $kode = 0;
+      foreach ($sql as $key) {
+        $get[$kode] = $key->kode_topik;
+        $kode++;
+      }
+        if ($kode != 0) {
+           $kodegenerate = $kode + 1;
+           $kodegenerate = "TP".str_pad($kodegenerate, 4, "0", STR_PAD_LEFT);
+        } else {
+            $kodegenerate = "TP0001";
+        }
+
+      return view('pages.topikpengaduan', compact('getskpd', 'gettopik', 'kodegenerate'));
     }
 
     public function store(Request $request)
