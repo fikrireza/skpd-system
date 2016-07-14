@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\MasterSKPD;
 use App\TopikAduan;
 use App\Models\Pengaduan;
+use Excel;
 
 class TopikAduanController extends Controller
 {
@@ -92,5 +93,29 @@ class TopikAduanController extends Controller
       $set->save();
 
       return redirect()->route('topikpengaduan.index')->with('message', "Berhasil mengubah topik pengaduan.");
+    }
+
+    public function export($type)
+    {
+        $data = TopikAduan::join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+                            ->select('topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'master_skpd.nama_skpd')
+                            ->orderby('master_skpd.nama_skpd', 'asc')
+                            ->get()
+                            ->toArray();
+
+        return Excel::create('Topik Pengaduan SIMPEDU', function($excel) use($data){
+          $excel->sheet('Topik Pengaduan', function($sheet) use ($data)
+          {
+            $sheet->fromArray($data);
+            $sheet->row(1, array('Kode Topik', 'Topik Pengaduan','SKPD'));
+            $sheet->cell('A1:C1', function($cell){
+              $cell->setFontSize(12);
+              $cell->setFontWeight('bold');
+              $cell->setAlignment('center');
+            });
+            $sheet->setAllBorders('thick');
+            $sheet->setFreeze('A2');
+          });
+        })->download($type);
     }
 }

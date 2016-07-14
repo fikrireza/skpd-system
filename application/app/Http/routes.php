@@ -118,6 +118,7 @@ Route::post('topikpengaduan', ['as'=>'topikpengaduan.store', 'uses'=>'TopikAduan
 Route::get('topikpengaduan/delete/{id}', 'TopikAduanController@delete');
 Route::get('topikpengaduan/bind/{id}', 'TopikAduanController@bind');
 Route::post('topikpengaduan/update', 'TopikAduanController@update');
+Route::get('admin/topikpengaduan/{type}', 'TopikAduanController@export');
 
 Route::get('managementakun', ['as'=>'managementakun.index', 'uses'=>'ManagementAkunController@index']);
 Route::post('managementakun/create', 'ManagementAkunController@create');
@@ -173,16 +174,23 @@ Route::get('listdatapengaduanbyskpd', function(){
 });
 
 
-
+// Histori Pengaduan
 Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
 Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
+Route::get('admin/historipengaduan/{type}', 'HistoriPengaduanController@downloadExcel');
+
+// Menu Slider
 Route::get('admin/slider', ['as' => 'slider', 'uses' => 'SlidersController@index']);
 Route::post('admin/slider', 'SlidersController@upload');
 Route::get('admin/slider/{id}', 'SlidersController@update');
 Route::get('admin/deleteslider/{id}', 'SlidersController@hapus');
+
+// Menu Tentang SKPD
 Route::get('admin/tentang', ['as' => 'tentang', 'uses' => 'TentangController@index']);
 Route::post('admin/tentang', 'TentangController@store');
 Route::post('admin/tentang/update', 'TentangController@update');
+
+// Menu Syarat & Ketentuan
 Route::get('admin/syaratketentuan', ['as' => 'syaratketentuan', 'uses' => 'SyaratKetentuanController@index']);
 Route::post('admin/syaratketentuan', 'SyaratKetentuanController@store');
 Route::post('admin/syaratketentuan/update', 'SyaratKetentuanController@update');
