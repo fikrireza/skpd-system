@@ -16,69 +16,79 @@
 @stop
 
 @section('content')
-
-
-  <!-- Main row -->
-  <div class="row">
-    <!-- Left col -->
-    <section class="col-lg-8 col-md-8 connectedSortable">
-      <div class="box box-primary">
-         <div class="box-header with-border">
-           <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Warga</h3>
+<div class="row">
+  <section class="col-lg-8 col-md-8 connectedSortable">
+    <div class="box box-primary">
+       <div class="box-header with-border">
+         <h3 class="box-title"><i class="fa fa-area-chart"></i> Jumlah Pengaduan Warga</h3>
+         <div class="btn-group pull-right">
+           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+             Download <span class="caret"></span>
+             <span class="sr-only">Toggle Dropdown</span>
+           </button>
+           <ul class="dropdown-menu" role="menu">
+             <li><a href="#">PDF</a></li>
+             <li><a href="{{ URL::to('admin/historipengaduan/pdf/2016') }}">2016</a></li>
+             <li><a href="{{ URL::to('admin/historipengaduan/pdf/2017') }}">2017</a></li>
+             <li class="divider"></li>
+             <li><a href="#">Excel</a></li>
+             <li><a href="{{ URL::to('admin/historipengaduan/xlsx/2016') }}">2016</a></li>
+             <li><a href="{{ URL::to('admin/historipengaduan/xlsx/2017') }}">2017</a></li>
+           </ul>
          </div>
-         <div class="box-body chart-responsive">
-           <div class="chart" id="pengaduan-warga-bulan" style="height: 365px;"></div>
-           <ul class="nav nav-pills tahun">
-            <li class="active"><a href="#" year='semua'>Semua</a></li>
-            <li class="#"><a href="#" year='2016'>2016</a></li>
-            <li><a href="#" year='2017'>2017</a></li>
-          </ul>
-         </div>
-         <!-- /.box-body -->
        </div>
-    </section>
-    <div class="col-md-4 col-md-4">
-      <div class="small-box bg-purple">
-        <div class="inner">
-          <h3>{{ $pengaduan }}</h3>
-          <p>Jumlah Pengaduan</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-speakerphone"></i>
-        </div>
-        <a class="small-box-footer">
-          <i>Terdapat {{ $pengaduan}}
-            jumlah pegaduan.</i>
-        </a>
+       <div class="box-body chart-responsive">
+         <div class="chart" id="pengaduan-warga-bulan" style="height: 365px;"></div>
+         <ul class="nav nav-pills tahun">
+          <li class="active"><a href="#" year='semua'>Semua</a></li>
+          <li class="#"><a href="#" year='2016'>2016</a></li>
+          <li><a href="#" year='2017'>2017</a></li>
+        </ul>
+       </div>
+     </div>
+  </section>
+  <div class="col-md-4 col-md-4">
+    <div class="small-box bg-purple">
+      <div class="inner">
+        <h3>{{ $pengaduan }}</h3>
+        <p>Jumlah Pengaduan</p>
       </div>
-      <div class="small-box bg-aqua">
-        <div class="inner">
-          <h3>{{ $ditanggapi}}</h3>
-          <p>Sudah Ditanggapi</p>
-        </div>
-        <div class="icon">
-          <i class="fa fa-smile-o"></i>
-        </div>
-        <a class="small-box-footer">
-          <i>Terdapat {{ $ditanggapi}}
-            pengaduan sudah di tanggapi.</i>
-        </a>
+      <div class="icon">
+        <i class="ion ion-speakerphone"></i>
       </div>
-      <div class="small-box bg-red">
-        <div class="inner">
-          <h3> {{ $blmtanggapi}}</h3>
-          <p>Belum Ditanggapi</p>
-        </div>
-        <div class="icon">
-          <i class="fa fa-meh-o"></i>
-        </div>
-        <a class="small-box-footer">
-          <i>Terdapat {{ $blmtanggapi}}
-            pengaduan belum di tanggapi.</i>
-        </a>
-      </div>
+      <a class="small-box-footer">
+        <i>Terdapat {{ $pengaduan}}
+          jumlah pegaduan.</i>
+      </a>
     </div>
-  </div><!-- /.row (main row) -->
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3>{{ $ditanggapi}}</h3>
+        <p>Sudah Ditanggapi</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-smile-o"></i>
+      </div>
+      <a class="small-box-footer">
+        <i>Terdapat {{ $ditanggapi}}
+          pengaduan sudah di tanggapi.</i>
+      </a>
+    </div>
+    <div class="small-box bg-red">
+      <div class="inner">
+        <h3> {{ $blmtanggapi}}</h3>
+        <p>Belum Ditanggapi</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-meh-o"></i>
+      </div>
+      <a class="small-box-footer">
+        <i>Terdapat {{ $blmtanggapi}}
+          pengaduan belum di tanggapi.</i>
+      </a>
+    </div>
+  </div>
+</div>
 
 
   <!-- Bootstrap 3.3.5 -->

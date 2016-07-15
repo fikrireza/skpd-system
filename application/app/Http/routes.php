@@ -180,7 +180,7 @@ Route::get('listdatapengaduanbyskpd', function(){
 // Histori Pengaduan
 Route::get('admin/historipengaduan', 'HistoriPengaduanController@index');
 Route::get('admin/historipengaduan/charts/api', 'HistoriPengaduanController@getApi');
-Route::get('admin/historipengaduan/{type}', 'HistoriPengaduanController@downloadExcel');
+Route::get('admin/historipengaduan/{type}/{year}', 'HistoriPengaduanController@downloadExcel');
 
 // Menu Slider
 Route::get('admin/slider', ['as' => 'slider', 'uses' => 'SlidersController@index']);
