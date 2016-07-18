@@ -17,6 +17,7 @@ use App\Http\Requests\TanggapanRequest;
 use App\Http\Requests\MutasiRequest;
 use DB;
 use Auth;
+use Mail;
 
 class DetailPengaduanController extends Controller
 {
@@ -130,6 +131,17 @@ class DetailPengaduanController extends Controller
       $tanggap->tanggapan    = $request->tanggapan;
       $tanggap->save();
 
+      $wargaemail = User::find($set->warga_id);
+
+      $data = array([
+        'judul' => $set->judul_pengaduan,
+        'slug' => $set->slug
+      ]);
+
+      Mail::send('emailtanggap', ['data' => $data], function($message) use($wargaemail) {
+        $message->to($wargaemail->email, $wargaemail->email)->subject('Tanggapan Pengaduan SIMPEDU');
+      });
+
       $getdatapengaduan = DB::table('pengaduan')
                       ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                       ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
@@ -139,6 +151,7 @@ class DetailPengaduanController extends Controller
                       ->where('flag_mutasi', '0')
                       ->orderby('pengaduan.created_at', 'desc')
                       ->get();
+
       return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
     }
 
