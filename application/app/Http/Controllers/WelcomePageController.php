@@ -14,6 +14,7 @@ use App\Models\TanggapanModel;
 use App\Models\Sliders;
 use App\Models\Tentang;
 use App\Models\SyaratKetentuan;
+use App\Models\Visitor;
 use Image;
 
 class WelcomePageController extends Controller
@@ -39,11 +40,12 @@ class WelcomePageController extends Controller
     $CountPengaduan   = Pengaduan::count();
     $UsersWarga       = User::where('level', 1)->count();
     $PengaduanProses  = Pengaduan::where('flag_verifikasi', 1)->count();
+    $Visitor          = Visitor::count();
 
-    if($CountPengaduan =! null){
+    // if($CountPengaduan =! null){
       $Persen = ($PengaduanProses/$CountPengaduan)*100;
       $Persen = round($Persen,2);
-    }
+    // }
 
     $AllTopikQuery  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
@@ -76,7 +78,7 @@ class WelcomePageController extends Controller
     $syarat = SyaratKetentuan::select('isi_syarat')->first();
 
 
-    return view('index', compact('pengaduanWid', 'tanggapWid', 'CountPengaduan','UsersWarga', 'Persen', 'skpdonly', 'AllTopiks', 'sliders', 'tentang', 'syarat'));
+    return view('index', compact('pengaduanWid', 'tanggapWid', 'CountPengaduan','UsersWarga', 'Persen', 'skpdonly', 'AllTopiks', 'sliders', 'tentang', 'syarat', 'Visitor'));
   }
 
   public function semuatopik($slug)
@@ -84,6 +86,7 @@ class WelcomePageController extends Controller
     $CountPengaduan   = Pengaduan::count();
     $UsersWarga       = User::where('level', 1)->count();
     $PengaduanProses  = Pengaduan::where('flag_verifikasi', 1)->count();
+    $Visitor          = Visitor::count();
 
     $Persen = ($PengaduanProses/$CountPengaduan)*100;
     $Persen = round($Persen,2);
@@ -108,7 +111,7 @@ class WelcomePageController extends Controller
 
     $syarat = SyaratKetentuan::select('isi_syarat')->first();
 
-    return view('front.lihatsemuabyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'allpengaduan', 'syarat'));
+    return view('front.lihatsemuabyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'allpengaduan', 'syarat', 'Visitor'));
   }
 
   public function detailpengaduan($slug)
@@ -116,6 +119,7 @@ class WelcomePageController extends Controller
     $CountPengaduan   = Pengaduan::count();
     $UsersWarga       = User::where('level', 1)->count();
     $PengaduanProses  = Pengaduan::where('flag_verifikasi', 1)->count();
+    $Visitor          = Visitor::count();
 
     $Persen = ($PengaduanProses/$CountPengaduan)*100;
     $Persen = round($Persen,2);
@@ -150,7 +154,7 @@ class WelcomePageController extends Controller
                                       ->get();
     }
     // dd($pengaduan);
-    return view('front.lihatdetailbyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'pengaduan', 'tanggapan', 'dokumentall'));
+    return view('front.lihatdetailbyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'pengaduan', 'tanggapan', 'dokumentall', 'Visitor'));
   }
 
   public function semuaskpd()
@@ -158,6 +162,7 @@ class WelcomePageController extends Controller
     $CountPengaduan   = Pengaduan::count();
     $UsersWarga       = User::where('level', 1)->count();
     $PengaduanProses  = Pengaduan::where('flag_verifikasi', 1)->count();
+    $Visitor          = Visitor::count();
 
     $Persen = ($PengaduanProses/$CountPengaduan)*100;
     $Persen = round($Persen,2);
@@ -175,7 +180,7 @@ class WelcomePageController extends Controller
     //dd($dataskpd);
     $syarat = SyaratKetentuan::select('isi_syarat')->first();
 
-    return view('front.alldetailskpd', compact('dataskpd', 'CountPengaduan', 'UsersWarga', 'Persen', 'syarat'));
+    return view('front.alldetailskpd', compact('dataskpd', 'CountPengaduan', 'UsersWarga', 'Persen', 'syarat', 'Visitor'));
   }
 
 }

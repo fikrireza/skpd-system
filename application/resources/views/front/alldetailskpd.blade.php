@@ -228,8 +228,8 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                   <div class="inner">
-                    <h3>12378</h3>
-                    <p>Jumlah Views</p>
+                    <h3>{{ $Visitor }}</h3>
+                    <p>Jumlah Pengunjung</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-eye"></i>

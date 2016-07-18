@@ -4,6 +4,7 @@
     <title>SIMPEDU</title>
     @include('includes.head')
     <link rel="stylesheet" href="{{asset('dist/css/customcss.css')}}" media="screen" title="no title" charset="utf-8">
+    <?php include('plugins/visitor-counter/visitor_tracking.php');?>
   </head>
 
   <body class="hold-transition skin-white layout-top-nav">
@@ -258,8 +259,8 @@
             <div class="col-lg-3 col-md-6 col-xs-12">
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>12378</h3>
-                  <p>Jumlah Views</p>
+                  <h3>{{ $Visitor }}</h3>
+                  <p>Jumlah Pengunjung</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-eye"></i>
