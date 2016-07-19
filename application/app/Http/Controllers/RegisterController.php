@@ -17,7 +17,6 @@ class RegisterController extends Controller
 {
     public function wargaregisterprocess(Request $request)
     {
-      // dd($request);
       $activation_code = str_random(30).time();
       $user = new User;
       $user->nama = $request->nama;
@@ -36,7 +35,6 @@ class RegisterController extends Controller
         ]);
 
       Mail::send('verify', ['data' => $data], function($message) {
-        // $message->from('no-reply@simpedu.tangerangkab.go.id', 'Administrator');
         $message->to(Input::get('email'), Input::get('name'))->subject('Aktifasi Akun SIMPEDU');
       });
 

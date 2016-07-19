@@ -17,34 +17,13 @@ use Auth;
 class WargaProfileController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    * Authentication controller.
+    *
+    * @return void
+    */
+    public function __construct()
     {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
+        $this->middleware('isAdmin');
     }
 
     /**
@@ -64,15 +43,12 @@ class WargaProfileController extends Controller
                           ->leftJoin('tanggapan', 'pengaduan.id', '=', 'tanggapan.id_pengaduan')
                           ->leftJoin('users', 'tanggapan.id_userskpd', '=', 'users.id')
                           ->where('master_skpd.id', $userid->id_skpd)
-                          // ->where('flag_mutasi', '0')
-                          // ->where('flag_tanggap', '1')
                           ->where('pengaduan.warga_id', $id)
                           ->orderby('pengaduan.created_at', 'desc')
                           ->select('*', 'tanggapan.created_at as created_tanggapan', 'pengaduan.created_at as created_pengaduan')
                           ->paginate(5);
 
         $getdatajumlahpengaduanall = LihatPengaduanModel::where('warga_id', $id)->count('warga_id');
-                          // ->where('flag_mutasi', '0')->count('warga_id');
 
         $getdatajumlahpengaduan = DB::table('pengaduan')
                             ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -80,7 +56,6 @@ class WargaProfileController extends Controller
                             ->join('users', 'master_skpd.id', '=', 'users.id_skpd')
                             ->where('master_skpd.id', $userid->id_skpd)
                             ->where('users.id', $userid->id)
-                            // ->where('flag_mutasi', '0')
                             ->where('pengaduan.warga_id', $id)
                             ->count('warga_id');
 
@@ -93,58 +68,15 @@ class WargaProfileController extends Controller
                             ->leftJoin('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                             ->leftJoin('tanggapan', 'pengaduan.id', '=', 'tanggapan.id_pengaduan')
                             ->leftJoin('users', 'tanggapan.id_userskpd', '=', 'users.id')
-                            // ->where('flag_mutasi', '0')
-                            // ->where('flag_tanggap', '1')
                             ->where('pengaduan.warga_id', $id)
                             ->orderby('pengaduan.created_at', 'desc')
                             ->select('*', 'tanggapan.created_at as created_tanggapan', 'pengaduan.created_at as created_pengaduan')
                             ->paginate(5);
-                            //  dd($getdatapengaduansudahtanggapall);
 
         return view('pages.wargaprofile')->with('data', compact('getdatapengaduanbelumtanggap', 'getdatapengaduansudahtanggap',
         'getdatajumlahpengaduan', 'getdatajumlahpengaduanall',
         'getdatawarga','getdataskpd',
         'getdatapengaduanbelumtanggapall', 'getdatapengaduansudahtanggapall'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-
-    }
-
-    public function bind($id)
-    {
-
-    }
-
 
 }

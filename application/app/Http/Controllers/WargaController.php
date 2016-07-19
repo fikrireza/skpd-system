@@ -42,13 +42,13 @@ class WargaController extends Controller
                     ->select('nama_skpd')
                     ->where('master_skpd.flag_skpd', 1)
                     ->get();
-    // dd($topiks);
+
     $topikgroup = DB::table('master_skpd')
                     ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                     ->select('topik_pengaduan.id','topik_pengaduan.nama_topik as nama_topik', 'master_skpd.nama_skpd as nama_skpd')
                     ->where('master_skpd.flag_skpd', 1)
                     ->get();
-    // dd($topikgroup);
+
     $AllTopikQuery  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -72,7 +72,6 @@ class WargaController extends Controller
                       ->groupBy('nama_skpd')
                       ->limit(6)
                       ->get();
-    // dd($skpdonly);
 
     return view('front.beranda', compact('topiks', 'topikgroup', 'skpdonly', 'AllTopiks', 'pengaduanWid', 'tanggapWid'));
   }
@@ -279,7 +278,7 @@ class WargaController extends Controller
                           ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                           ->select('master_skpd.nama_skpd', 'topik_pengaduan.nama_topik', 'pengaduan.*', 'users.nama', 'users.url_photo')
                           ->where('pengaduan.slug', $slug)->first();
-      // dd($detail);
+      
       $dokumentall = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->select('*')

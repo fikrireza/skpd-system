@@ -17,6 +17,16 @@ use Auth;
 class DashboardController extends Controller
 {
     /**
+    * Authentication controller.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -34,7 +44,7 @@ class DashboardController extends Controller
                           ->where('flag_mutasi', '0')
                           ->orderby('pengaduan.created_at', 'desc')
                           ->limit(3)->get();
-      // dd($getlihatpengaduanall);
+
       $getlihatpengaduan = DB::table('pengaduan')
                           ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                           ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
@@ -44,15 +54,14 @@ class DashboardController extends Controller
                           ->where('flag_mutasi', '0')
                           ->orderby('pengaduan.created_at', 'desc')
                           ->limit(3)->get();
-      // dd($getlihatpengaduan);
+
 
       $getdokumen = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*')
-                      // ->where('pengaduan.warga_id', 'users.id')
                       ->get();
-                      // dd($getdokumen);
+
       $getcountpengaduanall = LihatPengaduanModel::where('flag_mutasi', '0')->count('warga_id');
       $getcountpengaduan = DB::table('pengaduan')
                       ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
@@ -61,8 +70,6 @@ class DashboardController extends Controller
                       ->select('*', 'pengaduan.id')
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_mutasi', '0')
-                      // ->where('flag_tanggap', '1')
-                      // ->where('flag_verifikasi', '1')
                       ->orderby('pengaduan.created_at', 'desc')
                       ->count('nama');
 
@@ -74,8 +81,6 @@ class DashboardController extends Controller
                       ->select('*', 'pengaduan.id')
                       ->where('master_skpd.id', $userid->id_skpd)
                       ->where('flag_mutasi', '1')
-                      // ->where('flag_tanggap', '1')
-                      // ->where('flag_verifikasi', '1')
                       ->orderby('pengaduan.created_at', 'desc')
                       ->count('nama');
 
@@ -119,7 +124,7 @@ class DashboardController extends Controller
                    ->orderby('jumlahpengaduan', 'desc')
                    ->orderby('jumlahpengaduan', 'desc')
                    ->paginate(7);
-                  //  dd($getmasterskpd);
+
 
      $getmasterskpdtopik = DB::table('topik_pengaduan')
                    ->select('topik_pengaduan.id', 'topik_pengaduan.kode_topik', 'topik_pengaduan.nama_topik', 'topik_pengaduan.id_skpd',
@@ -129,7 +134,7 @@ class DashboardController extends Controller
                    ->groupBy('topik_pengaduan.id')
                    ->orderby('jumlahpengaduan', 'desc')
                    ->paginate(7);
-      // dd($getmasterskpdtopik);
+
       $getitemforpiechart = DB::table('pengaduan')
               ->join('topik_pengaduan', 'topik_pengaduan.id' , '=', 'pengaduan.topik_id')
               ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
@@ -155,63 +160,6 @@ class DashboardController extends Controller
       'getcountuser','getlihatpengaduan','getlihatpengaduanall', 'getuser','recordusers', 'getmasterskpd', 'getmasterskpdtopik',
        'getdokumen','getitemforpiechart', 'getitemforpiechartskpd'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-
-    }
-
 
 
     public function adminpiechart()

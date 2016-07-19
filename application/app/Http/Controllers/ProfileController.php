@@ -15,6 +15,16 @@ use Image;
 
 class ProfileController extends Controller
 {
+  /**
+  * Authentication controller.
+  *
+  * @return void
+  */
+  public function __construct()
+  {
+      $this->middleware('isAdmin');
+  }
+  
   public function index()
   {
     $id = Auth::user()->id;

@@ -22,34 +22,13 @@ use Mail;
 class DetailPengaduanController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    * Authentication controller.
+    *
+    * @return void
+    */
+    public function __construct()
     {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
-    {
-
+        $this->middleware('isAdmin');
     }
 
     /**
@@ -94,17 +73,6 @@ class DetailPengaduanController extends Controller
                       ->get();
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
       'tanggapan', 'tanggapanall', 'gettopik', 'gettskpd', 'getdokumen'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
     }
 
     /**
@@ -155,22 +123,6 @@ class DetailPengaduanController extends Controller
       return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-
-    }
-
-    public function bind($id)
-    {
-
-    }
-
     public function verifikasi($id)
     {
       $set = LihatPengaduanModel::find($id);
@@ -201,18 +153,14 @@ class DetailPengaduanController extends Controller
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*')
                       ->get();
-      // $message = true;
-      // dd($message);
+
       return view('pages.detailpengaduan', compact('binddatapengaduan', 'binddatatanggapan', 'getdataskpd',
       'tanggapan', 'gettopik', 'gettskpd','getdokumen'))->with('message', "Berhasil Memverifikasikan data tersebut");
-      // return view('pages/tanggapipengaduan')->with('data', compact('getdatapengaduan', 'getmutasi'));
     }
 
     public function mutasi(Request $request)
     {
-      // dd($request);
       $getskpd = TopikAduan::where('id', $request->id_topik)->get();
-      // dd($getskpd[0]->id_skpd);
 
       $pengaduan = LihatPengaduanModel::find($request->id);
       $pengaduan->flag_mutasi = 1;

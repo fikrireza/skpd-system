@@ -26,13 +26,12 @@ class HistoriPengaduanController extends Controller
    */
   public function __construct()
   {
-    // $this->middleware('isAdmin');
+    $this->middleware('isAdmin');
   }
 
   public function index()
   {
     $tahun = date('Y');
-    // dd($tahun);
     $pengaduan = Pengaduan::whereYear('created_at', '=', date('Y'))->count();
     $ditanggapi = Pengaduan::where('flag_tanggap', 1)->whereYear('created_at', '=', date('Y'))->count();
     $blmtanggapi = Pengaduan::where('flag_tanggap', 0)->whereYear('created_at', '=', date('Y'))->count();

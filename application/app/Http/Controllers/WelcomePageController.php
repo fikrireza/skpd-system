@@ -21,16 +21,6 @@ class WelcomePageController extends Controller
 {
 
   /**
-   * Create a new authentication controller instance.
-   *
-   * @return void
-   */
-  public function __construct()
-  {
-    //$this->middleware('isWarga');
-  }
-
-  /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
@@ -42,10 +32,8 @@ class WelcomePageController extends Controller
     $PengaduanProses  = Pengaduan::where('flag_verifikasi', 1)->count();
     $Visitor          = Visitor::count();
 
-    // if($CountPengaduan =! null){
-      $Persen = ($PengaduanProses/$CountPengaduan)*100;
-      $Persen = round($Persen,2);
-    // }
+    $Persen = ($PengaduanProses/$CountPengaduan)*100;
+    $Persen = round($Persen,2);
 
     $AllTopikQuery  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
@@ -153,7 +141,6 @@ class WelcomePageController extends Controller
                                       ->where('pengaduan.slug', $slug)
                                       ->get();
     }
-    // dd($pengaduan);
     return view('front.lihatdetailbyskpd', compact('CountPengaduan','UsersWarga', 'Persen', 'cekSlug', 'pengaduan', 'tanggapan', 'dokumentall', 'Visitor'));
   }
 
@@ -177,7 +164,7 @@ class WelcomePageController extends Controller
                       ->groupBy('nama_skpd')
                       ->orderby('jumlah_pengaduan', 'desc')
                       ->get();
-    //dd($dataskpd);
+
     $syarat = SyaratKetentuan::select('isi_syarat')->first();
 
     return view('front.alldetailskpd', compact('dataskpd', 'CountPengaduan', 'UsersWarga', 'Persen', 'syarat', 'Visitor'));

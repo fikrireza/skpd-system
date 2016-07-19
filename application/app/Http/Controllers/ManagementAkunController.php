@@ -15,6 +15,16 @@ use PHPExcel_Worksheet_Drawing;
 
 class ManagementAkunController extends Controller
 {
+    /**
+    * Authentication controller.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+
     public function index()
     {
       $getskpd = MasterSKPD::all();
@@ -92,7 +102,7 @@ class ManagementAkunController extends Controller
         }
       }
 
-      // KIRIM EMAIL CUUUUUI
+      // KIRIM EMAIL
       if($akses!="")
       {
         $data = array([
@@ -144,7 +154,7 @@ class ManagementAkunController extends Controller
     {
       $set = User::find($request->id_user);
       $set->level = $request->level;
-      
+
       if($request->level=="0") {
         $set->id_skpd = null;
       } else {
@@ -177,10 +187,6 @@ class ManagementAkunController extends Controller
             $sheet->setAllBorders('thin');
             $sheet->setFreeze('A2');
             $sheet->setAutoFilter();
-            // $objDrawing = new PHPExcel_Worksheet_Drawing;
-            // $objDrawing->setPath('images/logokabtangerang.png');
-            // $objDrawing->setCoordinates('A1');
-            // $objDrawing->setWorksheet($sheet);
           });
         })->download($type);
     }

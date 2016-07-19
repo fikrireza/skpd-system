@@ -217,6 +217,28 @@
                 </ul>
               </div>
             </div>
+            @elseif(session('level') == 2)
+            <div class="box box-widget widget-user-2">
+              <div class="widget-user-header bg-blue">
+                <div class="widget-user-image">
+                  @if(auth()->user()->url_photo == null)
+                    <img class="img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                  @else
+                    <img class="img-circle" src="{{ asset('/images/'.auth()->user()->url_photo) }}" alt="{{ auth()->user()->nama}}">
+                  @endif
+                </div>
+                <h3 class="widget-user-username">{{ auth()->user()->nama}}</h3>
+                <h5 class="widget-user-desc">Bergabung {{ \Carbon\Carbon::parse(auth()->user()->created_at)->format('d-M-y')}}</h5>
+              </div>
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li><a href="{{ url('dashboard') }}"><b>Dashboard</b></a></li>
+                  <li><a href="{{ url('lihatpengaduan') }}"><b>Lihat Pengaduan</b></a></li>
+                  <li><a href="{{ url('tanggap') }}"><b>Tanggapi Pengaduan</b></a></li>
+                  <li><a href="{{ url('logout') }}"><b>Logout</b></a></li>
+                </ul>
+              </div>
+            </div>
               @endif
             </div>
           </div>

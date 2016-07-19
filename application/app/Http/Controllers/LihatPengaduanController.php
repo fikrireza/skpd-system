@@ -13,6 +13,16 @@ use DB;
 
 class LihatPengaduanController extends Controller
 {
+    /**
+    * Authentication controller.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+
     public function index()
     {
       $idlogin = Auth::user()->id;
@@ -25,11 +35,9 @@ class LihatPengaduanController extends Controller
                     ->select('*', 'pengaduan.id', 'users.id as iduser', 'pengaduan.created_at', 'pengaduan.updated_at')
                     ->where('master_skpd.id', $userid->id_skpd)
                     ->where('flag_mutasi', '0')
-                    // ->where('flag_tanggap', '0')
-                    // ->where('flag_verifikasi', '0')
                     ->orderby('pengaduan.created_at', 'desc')
                     ->get();
-                    // dd($getdatapengaduan);
+
       $getdatapengaduanall = DB::table('pengaduan')
                     ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                     ->join('users', 'users.id', '=', 'pengaduan.warga_id')
@@ -37,7 +45,7 @@ class LihatPengaduanController extends Controller
                     ->select('*', 'pengaduan.id', 'users.id as iduser', 'pengaduan.created_at', 'pengaduan.updated_at')
                     ->orderby('pengaduan.created_at', 'desc')
                     ->get();
-                    // dd($getdatapengaduan);
+
       return view('pages.lihatpengaduan')->with('data', compact('getdatapengaduan', 'getdatapengaduanall'));
     }
 

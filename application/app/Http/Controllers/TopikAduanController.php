@@ -14,6 +14,16 @@ use Excel;
 
 class TopikAduanController extends Controller
 {
+    /**
+    * Authentication controller.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+        $this->middleware('isAdmin');
+    }
+    
     public function index()
     {
       $getskpd = MasterSKPD::where('flag_skpd', '1')->get();
