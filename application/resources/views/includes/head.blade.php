@@ -6,11 +6,7 @@
 <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="{{ asset('/bootstrap/css/font-awesome.min.css') }}">
-{{-- <link rel="stylesheet" href="{{ asset('/dist/css/font-awesome.min.css') }}"> --}}
-<!-- Ionicons -->
-<link rel="stylesheet" href="{{ asset('/bootstrap/css/ionicons.min.css') }}">
-{{-- <link rel="stylesheet" href="{{ asset('/dist/css/ionicons.min.css') }}"> --}}
-<!-- Theme style -->
+
 <link rel="stylesheet" href="{{ asset('/dist/css/AdminLTE.min.css') }}">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
      folder instead of downloading all of them to reduce the load. -->
