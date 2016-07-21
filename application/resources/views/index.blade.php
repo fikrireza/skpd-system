@@ -258,7 +258,11 @@
             <div class="col-lg-3 col-md-6 col-xs-12">
               <div class="small-box bg-purple">
                 <div class="inner">
-                  <h3>{{ $Persen }}<sup style="font-size: 20px">%</sup></h3>
+                  <h3>@if($Persen != null)
+                    {{ $Persen}}
+                  @else
+                    0.0
+                  @endif<sup style="font-size: 20px">%</sup></h3>
                   <p>Pengaduan Terproses</p>
                 </div>
                 <div class="icon">
