@@ -52,7 +52,16 @@ class SearchController extends Controller
     $bantu = implode(' OR ',$searchTermBits);
     $searches = DB::select("select pengaduan.*, topik_pengaduan.nama_topik, users.nama, users.url_photo FROM pengaduan, topik_pengaduan, users WHERE pengaduan.flag_rahasia = 0 AND ".$bantu." AND topik_pengaduan.id = pengaduan.topik_id AND pengaduan.warga_id = users.id GROUP BY judul_pengaduan ORDER BY pengaduan.created_at DESC");
 
-    return view('front.pencarian', compact('pengaduanWid', 'tanggapWid','searches', 'kalimat'));
+    $skpdonly  = DB::table('master_skpd')
+                      ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
+                      ->select('master_skpd.nama_skpd as nama_skpd', 'master_skpd.slug as slug_skpd')
+                      ->where('master_skpd.flag_skpd', 1)
+                      ->where('pengaduan.flag_rahasia', 0)
+                      ->groupBy('nama_skpd')
+                      ->limit(6)
+                      ->get();
 
+    return view('front.pencarian', compact('pengaduanWid', 'tanggapWid','searches', 'kalimat', 'skpdonly'));
   }
 }
