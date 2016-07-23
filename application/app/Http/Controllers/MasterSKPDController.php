@@ -39,19 +39,13 @@ class MasterSKPDController extends Controller
               ->orderby('kode_skpd', 'desc')
               ->get();
 
-      $get = array();
-      $kode = 0;
-      foreach ($sql as $key) {
-        $get[$kode] = $key->kode_skpd;
-        $kode++;
-      }
-        if ($kode != 0) {
-           $kodegenerate = $kode + 1;
-           $kodegenerate = "SKPD".str_pad($kodegenerate, 3, "0", STR_PAD_LEFT);
-        } else {
-            $kodegenerate = "SKPD001";
+        $number   = MasterSKPD::latest('created_at')->first();
+        if($number == null)
+        {
+          $kodegenerate = '1';
+        }else{
+          $kodegenerate = substr($number->kode_skpd, 4)+1;
         }
-
       // return view('pages.dataskpd')->with('getskpd', $getskpd);
       return view('pages.dataskpd', compact('getskpd', 'kodegenerate'));
     }

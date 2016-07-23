@@ -160,7 +160,7 @@
                 <label class="control-label">Kode Topik Pengaduan</label>
                 <input type="text" name="kodepengaduan" class="form-control" placeholder="Kode Topik Pengaduan" readonly="true"
                 @if(!$errors->has('kodepengaduan'))
-                  value=<?php echo $kodegenerate?>
+                  value=<?php echo "TP".$kodegenerate?>
                 @endif
                 >
                 @if($errors->has('kodepengaduan'))

@@ -23,7 +23,7 @@ class TopikAduanController extends Controller
     {
         $this->middleware('isAdmin');
     }
-    
+
     public function index()
     {
       $getskpd = MasterSKPD::where('flag_skpd', '1')->get();
@@ -33,18 +33,13 @@ class TopikAduanController extends Controller
               ->orderby('kode_topik', 'desc')
               ->get();
 
-      $get = array();
-      $kode = 0;
-      foreach ($sql as $key) {
-        $get[$kode] = $key->kode_topik;
-        $kode++;
+      $number   = TopikAduan::latest('created_at')->first();
+      if($number == null)
+      {
+        $kodegenerate = '1';
+      }else{
+        $kodegenerate = substr($number->kode_topik, 2)+1;
       }
-        if ($kode != 0) {
-           $kodegenerate = $kode + 1;
-           $kodegenerate = "TP".str_pad($kodegenerate, 4, "0", STR_PAD_LEFT);
-        } else {
-            $kodegenerate = "TP0001";
-        }
 
       return view('pages.topikpengaduan', compact('getskpd', 'gettopik', 'kodegenerate'));
     }

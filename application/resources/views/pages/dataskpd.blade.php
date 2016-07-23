@@ -199,7 +199,7 @@
                 <label class="control-label">Kode SKPD</label>
                 <input type="text" name="kodeskpd" class="form-control" placeholder="Kode SKPD" readonly="true"
                 @if(!$errors->has('kodeskpd'))
-                  value=<?php echo $kodegenerate?>
+                  value=<?php echo "SKPD".$kodegenerate?>
                 @endif
                 >
                 @if($errors->has('kodeskpd'))
