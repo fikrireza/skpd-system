@@ -41,6 +41,7 @@ class LihatPengaduanController extends Controller
       $getdatapengaduanall = DB::table('pengaduan')
                     ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
                     ->join('users', 'users.id', '=', 'pengaduan.warga_id')
+                    ->leftJoin('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                     ->where('flag_mutasi', '0')
                     ->select('*', 'pengaduan.id', 'users.id as iduser', 'pengaduan.created_at', 'pengaduan.updated_at')
                     ->orderby('pengaduan.created_at', 'desc')

@@ -127,11 +127,7 @@
             @else
               <img class="img-circle" src="{{ asset('/images/'.$binddatapengaduan->user->url_photo) }}" alt="{{$binddatapengaduan->user->nama}}">
             @endif
-            @if($binddatapengaduan->flag_anonim==0)
-                <span class='username'><a href="#">{{$binddatapengaduan->user->nama}}</a></span>
-            @else
-              <span class='username'><a href="#">Nama Dirahasiakan</a></span>
-            @endif
+            <span class='username'><a href="#">{{$binddatapengaduan->user->nama}}</a></span>
             <span class='description'>{{ \Carbon\Carbon::parse($binddatapengaduan->created_at)->format('d-M-y H:i:s')}} | {{$binddatapengaduan->topik->nama_topik}}</span>
           </div><!-- /.user-block -->
           <div class='box-tools'>

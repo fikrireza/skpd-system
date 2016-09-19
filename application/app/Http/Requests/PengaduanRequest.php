@@ -27,7 +27,7 @@ class PengaduanRequest extends Request
       'topik' => 'required',
       'judul'  => 'required|max:150|min:3',
       'isi' => 'required',
-      'dokumen.*' => 'mimes:jpg,bmp,docx,xlsc,png,pdf'
+      'dokumen.*' => 'mimes:jpg,bmp,docx,xlsc,png,pdf|max:2048'
     ];
   }
 

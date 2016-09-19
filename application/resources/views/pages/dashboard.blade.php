@@ -175,11 +175,7 @@
                       <i class="fa fa-clock-o"></i>
                       {{ \Carbon\Carbon::parse($key->created_at)->format('H:i:s')}}
                     </small>
-                    @if($key->flag_anonim==0)
-                      {{$key->nama}}
-                    @elseif($key->flag_anonim==1)
-                      Nama Dirahasiakan
-                    @endif
+                    {{$key->nama}}
                   </a>
                     <?php echo strip_tags($key->isi_pengaduan); ?>
                 </p>
@@ -241,11 +237,7 @@
                       <i class="fa fa-clock-o"></i>
                       {{ \Carbon\Carbon::parse($key->created_at)->format('H:i:s')}}
                     </small>
-                    @if($key->flag_anonim=="0")
-                      {{$key->nama}}
-                    @elseif($key->flag_anonim=="1")
-                      Nama Dirahasiakan
-                    @endif
+                    {{$key->nama}}
                   </a>
                     <?php echo strip_tags($key->isi_pengaduan); ?>
                   </p>

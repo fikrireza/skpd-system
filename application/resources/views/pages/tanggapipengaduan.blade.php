@@ -55,11 +55,7 @@
                   @endif
                 <span class='username'><a href="#">
                   @if(isset($data['binddatapengaduan']))
-                    @if($data['binddatapengaduan']->flag_anonim==0)
-                      {{$data['binddatapengaduan']->user->nama}}
-                    @else
-                      Nama Dirahasiakan
-                    @endif
+                    {{$data['binddatapengaduan']->user->nama}}
                   @endif
                 </a></span>
                 <span class='description'>
@@ -175,11 +171,7 @@
                   @endif
                 <span class='username'><a href="#">
                   @if(isset($data['binddatamutasi']))
-                    @if($data['getdatamutasi'][0]->flag_anonim==0)
-                      {{$data['getdatamutasi'][0]->nama}}
-                    @else
-                      Nama Dirahasiakan
-                    @endif
+                    {{$data['getdatamutasi'][0]->nama}}
                   @endif
                 </a></span>
                 <span class='description'>
@@ -350,11 +342,7 @@
                     @foreach($data['getdatapengaduan'] as $key)
                       <tr>
                         <td>{{ $no }}</td>
-                        @if($key->flag_anonim==0)
-                          <td>{{ $key->nama }}</td>
-                        @elseif($key->flag_anonim==1)
-                            <td>Nama Dirahasiakan</td>
-                        @endif
+                        <td>{{ $key->nama }}</td>
                         <td>{{ $key->nama_topik }}</td>
                         <td>{{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y H:i:s')}}</td>
                         <td>
@@ -404,11 +392,7 @@
                   @foreach($data['getmutasi'] as $key)
                     <tr>
                       <td>{{ $no }}</td>
-                      @if($key->flag_anonim==0)
-                        <td>{{ $key->nama }}</td>
-                      @elseif($key->flag_anonim==1)
-                          <td>Nama Dirahasiakan</td>
-                      @endif
+                      <td>{{ $key->nama }}</td>
                       <td>{{ $key->nama_topik }}</td>
                       <td>{{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y H:i:s')}}</td>
                       <td>{{ $key->nama_skpd }}</td>

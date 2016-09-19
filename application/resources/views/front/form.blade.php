@@ -50,18 +50,19 @@
           <div class="form-group">
             <label for="exampleInputFile">Dokumen Pendukung</label>
             <input type="file" id="exampleInputFile" name="dokumen[]" multiple="multiple" accept=".jpg, .png, .bmp, .docx, .doc, .xls, .xlsx, .pdf">
-            <p class="help-block">Dokumen yang akan dilampirkan</p>
+            {{-- <p class="help-block">Dokumen yang akan dilampirkan</p> --}}
+            <p class="help-block" style="color:red">*Kapasitas Dokumen tidak lebih dari 20 MB</p>
           </div>
         </div><!-- /.col-lg-6 -->
         <div class="col-lg-6">
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="anonim" value="ya"> Anonim <sub><font color="black">Identitas Anda Tidak Akan Ditampilkan</font></sub>
+              <input type="checkbox" name="anonim" value="ya"> Anonim <sub><font color="red">*Identitas Anda Tidak Akan Ditampilkan</font></sub>
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="rahasia" value="ya"> Pengaduan Rahasia <sub><font color="black">Pengaduan Anda Akan Kami Rahasiakan Terhadap Publik </font></sub>
+              <input type="checkbox" name="rahasia" value="ya"> Pengaduan Rahasia <sub><font color="red">*Pengaduan Anda Akan Kami Rahasiakan Terhadap Publik </font></sub>
             </label>
           </div>
         </div><!-- /.col-lg-6 -->

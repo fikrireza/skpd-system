@@ -34,6 +34,7 @@ class SlidersController extends Controller
 
   public function upload(SlidersRequest $request)
   {
+    // dd($request);
     $imageName = $request->file('url_gambar')->getClientOriginalName();
 	  $request->file('url_gambar')->move('images', $imageName );
 

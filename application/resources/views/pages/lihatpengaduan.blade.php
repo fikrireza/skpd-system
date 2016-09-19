@@ -39,7 +39,7 @@
               <tr class="bg-yellow">
                 <th>#</th>
                 <th>Pelapor</th>
-                <th>Topik Aduan</th>
+                <th>SKPD - Topik Aduan</th>
                 <th>Tanggal</th>
                 <th>Jam</th>
                 <th>Status Verifikasi</th>
@@ -53,12 +53,8 @@
                   @foreach($data['getdatapengaduanall'] as $key)
                 <tr>
                   <td>{{ $pageget }}</td>
-                  @if($key->flag_anonim==0)
                     <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
-                  @elseif($key->flag_anonim==1)
-                    <td><a href="#">Nama Dirahasiakan</a></td>
-                  @endif
-                  <td>{{ $key->nama_topik }}</td>
+                  <td>{{ $key->nama_skpd }} - {{ $key->nama_topik }}</td>
                   <td>
                     {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                   </td>
@@ -89,12 +85,8 @@
                 @foreach($data['getdatapengaduan'] as $key)
                   <tr>
                     <td>{{ $pageget }}</td>
-                    @if($key->flag_anonim==0)
                         <td><a href="{{url('wargaprofile/show', $key->iduser)}}">{{ $key->nama }}</a></td>
-                    @elseif($key->flag_anonim==1)
-                      <td><a href="#">Nama Dirahasiakan</a></td>
-                    @endif
-                    <td>{{ $key->nama_topik }}</td>
+                    <td>{{ $key->nama_skpd }} - {{ $key->nama_topik }}</td>
                     <td>
                         {{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y')}}
                     </td>
