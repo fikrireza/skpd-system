@@ -21,6 +21,7 @@ class RegisterController extends Controller
       $user = new User;
       $user->nama = $request->nama;
       $user->email = $request->email;
+      $user->notelp   = $request->telp;
       $user->password = Hash::make($request->password);
       //0:admin, 1:warga, 2:skpd
       $user->level = 1;
@@ -50,6 +51,7 @@ class RegisterController extends Controller
         {
           $user->activation_code = null;
           $user->activated = 1;
+          $user->flag_user = 1;
           $user->save();
 
           return redirect()->route('welcomepage')->with('message', "Akun anda telah aktif. Silahkan lakukan login.");
@@ -85,6 +87,7 @@ class RegisterController extends Controller
       $user->password = Hash::make($request->password);
       $user->activation_code = null;
       $user->activated = 1;
+      $user->flag_user = 1;
       $user->save();
 
       if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password, 'activated'=>1]))
