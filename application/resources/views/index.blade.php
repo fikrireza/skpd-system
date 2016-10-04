@@ -312,6 +312,7 @@
               </div>
             </div>
           </div>
+
           <div class="row">
             <?php $batasskpd = 1; ?>
             @foreach($skpdonly as $tabskpd)
@@ -366,10 +367,70 @@
                 </div>
               </div>
             </section>
+            <?php if($batasskpd++ == 4) break; ?>
+            @endforeach
+          </div>
+
+          <div class="row">
+            <?php $batasskpd = 1; ?>
+            @foreach($skpdonly as $tabskpd)
+              <?php if ($batasskpd>=5): ?>
+                <section class="col-lg-3 col-md-3 col-xs-12" style="min-height:585px;">
+                  <div class="box box-primary">
+                    <div class="box-header with-border">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{asset('images/stars.png')}}" alt="user image">
+                        <span class="username">
+                          <h4>{{ $tabskpd->nama_skpd }}</h4>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="box-body">
+                      <ul class="products-list product-list-in-box">
+                        <?php $batasisi = 1; ?>
+                        @foreach($AllTopiks as $skpd)
+                          @foreach($skpd as $topik)
+                            @if($topik->nama_skpd === $tabskpd->nama_skpd)
+                              <li class="item">
+                                <div class="product-img">
+                                  @if($topik->url_photo == null || $topik->flag_anonim == 1)
+                                    <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/userdefault.png') }}" alt="User Avatar">
+                                  @else
+                                    <img class="img-bordered-sm img-responsive img-circle" src="{{ asset('/images/'.$topik->url_photo) }}" alt="{{$topik->nama}}">
+                                  @endif
+                                </div>
+                                <div class="product-info">
+                                  <span class="product-title">@if($topik->flag_anonim == 1)
+                                    Tanpa Nama
+                                  @elseif($topik->flag_anonim == 0)
+                                    {{$topik->nama}}
+                                  @endif</span>
+                                  <a href="{{url('detail/pengaduan/'.$topik->slug)}}">
+                                    <span class="product-description-custom">
+                                      <?php $isi_pengaduans = strip_tags($topik->isi_pengaduan); ?>
+
+                                      {!! Str::words($isi_pengaduans, 10,' ....')  !!}
+                                    </span>
+                                    [Selengkapnya]
+                                  </a>
+                                </div>
+                              </li>
+                              <?php if($batasisi++ == 3) break;?>
+                            @endif
+                          @endforeach
+                        @endforeach
+                      </ul>
+                    </div>
+                    <div class="box-footer text-center">
+                      <a href="{{url('skpd/'.$tabskpd->slug)}}" class="label uppercase bg-blue">Lihat Semua</a>
+                    </div>
+                  </div>
+                </section>
+              <?php endif; ?>
             <?php if($batasskpd++ == 7) break; ?>
             @endforeach
 
-            @if($batasskpd >= 7)
+            @if(count($skpdonly)>=7)
             <section class="col-lg-3 col-md-3 col-xs-12">
               <div class="box box-primary">
                 <div class="box-header with-border">
@@ -386,7 +447,7 @@
                     @if($key >= 7)
                     <?php if($batas == 9) break; ?>
                     <li>
-                      <a href="{{url('semua/'.$tabskpd->slug)}}">
+                      <a href="{{url('skpd/'.$tabskpd->slug)}}">
                         {{ $tabskpd->nama_skpd }}
                       </a>
                     </li>

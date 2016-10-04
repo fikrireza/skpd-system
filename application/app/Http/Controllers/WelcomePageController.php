@@ -31,13 +31,13 @@ class WelcomePageController extends Controller
     $UsersWarga       = User::where('level', 1)->count();
     $PengaduanProses  = Pengaduan::where('flag_verifikasi', 1)->count();
     $Visitor          = Visitor::count();
-	
-	if($CountPengaduan > 0){
-		$Persen = ($PengaduanProses/$CountPengaduan)*100;
-		$Persen = round($Persen,2);
+
+  	if($CountPengaduan > 0){
+  		$Persen = ($PengaduanProses/$CountPengaduan)*100;
+  		$Persen = round($Persen,2);
     }
-	
-	
+
+
     $AllTopikQuery  = DB::table('master_skpd')
                       ->join('topik_pengaduan', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                       ->join('pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')
