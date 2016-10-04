@@ -136,13 +136,11 @@ Route::get('my-profile', ['as'=>'my.profile', 'uses'=>'ProfileController@index']
 Route::post('my-profile', ['as'=>'profile.store', 'uses'=>'ProfileController@store']);
 Route::post('change-password', ['as'=>'ganti.password', 'uses'=>'ProfileController@changePassword']);
 
-
-
-
 Route::get('tanggap', function(){
   return view('pages.tanggapipengaduan');
 });
 Route::resource('tanggap', 'TanggapAduanController');
+Route::post('/tanggap/mutasi', 'TanggapAduanController@tanggapmutasi')->name('tanggapmutasi.store');
 
 // Route::get('detailpengaduan', function(){
 //   return view('pages.detailpengaduan');

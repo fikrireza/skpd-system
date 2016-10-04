@@ -51,6 +51,7 @@ class TanggapAduanController extends Controller
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*', 'mutasi.id', 'mutasi.created_at', 'mutasi.updated_at')
                       ->where('flag_mutasi', '1')
+                      ->where('flag_tanggap', '0')
                       ->where('mutasi.id_userskpd', $userid->id_skpd)
                       ->orderby('mutasi.created_at', 'desc')
                       ->paginate(10);
@@ -171,6 +172,7 @@ class TanggapAduanController extends Controller
                         ->orderby('mutasi.created_at', 'desc')
                         ->paginate(10);
 
+
       $data['getmutasi'] = $getmutasi;
 
 
@@ -185,6 +187,8 @@ class TanggapAduanController extends Controller
                       ->where('mutasi.id', $id)
                       ->orderby('mutasi.created_at', 'desc')
                       ->paginate(10);
+
+                      // dd($getdatamutasi);
 
       $data['getdatamutasi'] = $getdatamutasi;
 
@@ -203,6 +207,21 @@ class TanggapAduanController extends Controller
       $data['getdokumen'] = $getdokumen;
 
       return view('pages/tanggapipengaduan')->with('data', $data);
+  }
+
+  public function tanggapmutasi(Request $request)
+  {
+    $update = Pengaduan::find($request->id);
+    $update->flag_tanggap = 1;
+    $update->save();
+
+    $set = new TanggapanModel;
+    $set->id_pengaduan = $request->id;
+    $set->id_userskpd = Auth::user()->id;
+    $set->tanggapan = $request->tanggapan;
+    $set->save();
+
+    return redirect()->route('tanggap.index')->with('message', 'Berhasil menanggapi pengaduan.');
   }
 
 }
