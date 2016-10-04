@@ -148,6 +148,7 @@ Route::post('/tanggap/mutasi', 'TanggapAduanController@tanggapmutasi')->name('ta
 Route::get('detailpengaduan/show/{id}', 'DetailPengaduanController@show');
 Route::get('detailpengaduan/verifikasi/{id}', ['as'=>'detailpengaduan.verifikasi', 'uses'=>'DetailPengaduanController@verifikasi']);
 Route::post('detailpengaduan/mutasi', 'DetailPengaduanController@mutasi');
+Route::get('getpesanmutasi/bind/{id}', 'DetailPengaduanController@getpesanmutasi');
 Route::resource('detailpengaduan', 'DetailPengaduanController');
 
 Route::resource('lihatpengaduan', 'LihatPengaduanController');

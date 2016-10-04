@@ -28,6 +28,26 @@
 @stop
 
 @section('content')
+  <div class="modal modal-default fade" id="myModalDetailPesan" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detail Pesan Mutasi</h4>
+        </div>
+        <div class="modal-body">
+          <span id="isipesan"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-primary pull-right btn-sm btn-flat pull-right" data-dismiss="modal">Kembali</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <div class="modal modal-default fade" id="myModal" role="dialog">
     <div class="modal-dialog" style="width:80%">
       <div class="modal-content">
@@ -424,10 +444,10 @@
               <table class="table">
                 <tr class="bg-yellow">
                   <th style="width:10px;">#</th>
-                  <th>Pelapor</th>
+                  <th>SKPD Pemutasi</th>
+                  <th>Pesan Mutasi</th>
                   <th>Kategori</th>
                   <th>Tanggal Mutasi</th>
-                  <th>SKPD Mutasi</th>
                   <th>Aksi</th>
                 </tr>
                 <?php
@@ -445,10 +465,24 @@
                   @foreach($data['getmutasi'] as $key)
                     <tr>
                       <td>{{ $no }}</td>
-                      <td>{{ $key->nama }}</td>
+                      <td>{{ $key->nama_skpd }}</td>
+                      <td>
+                        <a href="#" data-value="{{$key->id}}" data-toggle="modal" data-target="#myModalDetailPesan" id="isipesanmutasi">
+                          @php
+                            $pesan = explode(" ", $key->pesan_mutasi);
+                          @endphp
+                          @if (count($pesan)>3)
+                            @for ($i=0; $i < 3; $i++)
+                              {{ $pesan[$i] }}
+                            @endfor
+                            ...
+                          @else
+                            {{ $key->pesan_mutasi }}
+                          @endif
+                        </a>
+                      </td>
                       <td>{{ $key->nama_topik }}</td>
                       <td>{{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y H:i:s')}}</td>
-                      <td>{{ $key->nama_skpd }}</td>
                       <td>
                         @if($key->flag_tanggap==0)
                           {{-- <a class="btn btn-danger btn-xs btn-flat" data-toggle='tooltip' title='Tanggapi Data Mutasi' href="{{ route('tanggap.show', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td> --}}
@@ -496,6 +530,19 @@
       $('a.hapus').click(function(){
         var a = $(this).data('value');
         $('#set').attr('href', "{{ url('/') }}/masterjabatan/hapusjabatan/"+a);
+      });
+
+      $('a#isipesanmutasi').click(function(){
+        var a = $(this).data('value');
+        $.ajax({
+          url: "{{ url('/') }}/getpesanmutasi/bind/"+a,
+          dataType: 'json',
+          success: function(data){
+            var pesan = data.pesan_mutasi;
+
+            $("span#isipesan").html(pesan);
+          }
+        })
       });
     });
   </script>

@@ -37,6 +37,12 @@ class DetailPengaduanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function getpesanmutasi($id)
+    {
+      $get = MutasiModel::find($id);
+      return $get;
+    }
+
     public function show($id)
     {
       // dd($id);
@@ -168,15 +174,17 @@ class DetailPengaduanController extends Controller
       $pengaduan->topik_id = $request->id_topik;
       $pengaduan->save();
 
+      $idlogin = Auth::user()->id;
+      $userid = User::find($idlogin);
+
       $mutasi = new MutasiModel;
       $mutasi->id_pengaduan = $request->id;
       $mutasi->id_topik     = $request->id_topik;
       $mutasi->id_userskpd  = $getskpd[0]->id_skpd;
+      $mutasi->id_skpd_pemutasi = $userid->id_skpd;
       $mutasi->pesan_mutasi = $request->pesan_mutasi;
       $mutasi->save();
 
-      $idlogin = Auth::user()->id;
-      $userid = User::find($idlogin);
 
       $getdatapengaduan = DB::table('pengaduan')
                     ->join('topik_pengaduan', 'pengaduan.topik_id', '=', 'topik_pengaduan.id')

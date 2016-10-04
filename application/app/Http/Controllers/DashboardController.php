@@ -69,9 +69,8 @@ class DashboardController extends Controller
                       ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                       ->select('*', 'pengaduan.id')
                       ->where('master_skpd.id', $userid->id_skpd)
-                      ->where('flag_mutasi', '0')
                       ->orderby('pengaduan.created_at', 'desc')
-                      ->count('nama');
+                      ->count('pengaduan.id');
 
       $getcountmutasiall = LihatPengaduanModel::where('flag_mutasi', '1')->count('warga_id');
       $getcountmutasi = DB::table('pengaduan')
