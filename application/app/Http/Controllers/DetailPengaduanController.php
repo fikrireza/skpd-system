@@ -67,6 +67,7 @@ class DetailPengaduanController extends Controller
       $gettopik = TopikAduan::whereNotIn('id_skpd', $data)->get();
 
       $gettskpd = MasterSKPD::whereNotIn('id', $data)->get();
+      // dd($gettopik);
 
       $getdokumen = DB::table('dokumen_pengaduan')
                       ->where('pengaduan_id', $id)
