@@ -35,8 +35,8 @@
           <div class="box box-widget">
             <div class='box-header with-border'>
               <div class='user-block'>
-                <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
-                <span class='username'><a href="#">Bambang Pamungkis</a></span>
+                <img id="fotowarga" class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
+                <span class='username'><a href="#"><span id="namawarga"></span></a></span>
                 <span class='description'><span id="tanggal_pengaduan"></span> | <span id="judul_pengaduan"></span></span>
               </div><!-- /.user-block -->
             </div><!-- /.box-header -->
@@ -276,8 +276,10 @@
             var tanggap = data[0].tanggapan;
             var nama_penanggap = data[0].nama;
             var nama_skpd = data[0].nama_skpd;
+            var nama = data[0].nama;
             var dokumen = data[0].url_dokumen;
             var tanggal_tanggap = data[0].tanggal_tanggap;
+            var url_photo = data[0].url_photo;
 
             // change date format
             var mydate = new Date(tanggal_tanggap);
@@ -288,8 +290,15 @@
 
             // set
             $('span#judul_pengaduan').html(judul_pengaduan);
+            $('span#namawarga').html(nama);
             $('span#tanggal_pengaduan').html(tanggal_pengaduan);
             $('div#isi_pengaduan').html(isi_pengaduan);
+            if (url_photo!=null) {
+              $('img#fotowarga').attr('src', "{{ url('/') }}/images/"+url_photo);
+            } else {
+              $('img#fotowarga').attr('src', "{{ url('/') }}/images/userdefault.png");
+            }
+
             if(tanggap!=null)
             {
               $('div#tanggapan').html(

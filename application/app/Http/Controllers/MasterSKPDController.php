@@ -216,11 +216,12 @@ class MasterSKPDController extends Controller
     public function bindfordetail($id)
     {
       $get = DB::table('pengaduan')
-              ->leftJoin('tanggapan', 'tanggapan.id_pengaduan' , '=', 'pengaduan.id')
-              ->leftJoin('users', 'tanggapan.id_userskpd' , '=', 'users.id')
-              ->leftJoin('master_skpd', 'users.id_skpd' , '=', 'master_skpd.id')
-              ->leftJoin('dokumen_pengaduan', 'pengaduan.id', '=', 'dokumen_pengaduan.pengaduan_id')
-              ->select('pengaduan.id', 'users.nama', 'master_skpd.nama_skpd', 'pengaduan.judul_pengaduan', 'pengaduan.created_at as tanggal_pengaduan', 'tanggapan.created_at as tanggal_tanggap', 'pengaduan.isi_pengaduan', 'tanggapan.tanggapan', 'dokumen_pengaduan.url_dokumen')
+              ->join('users', 'pengaduan.warga_id' , '=', 'users.id')
+              ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
+              ->join('master_skpd', 'master_skpd.id', '=', 'topik_pengaduan.id_skpd')
+              ->leftjoin('tanggapan', 'tanggapan.id_pengaduan', '=', 'pengaduan.id')
+              ->leftjoin('dokumen_pengaduan', 'dokumen_pengaduan.pengaduan_id', '=', 'pengaduan.id')
+              ->select('users.url_photo', 'pengaduan.id', 'users.nama', 'master_skpd.nama_skpd', 'pengaduan.judul_pengaduan', 'pengaduan.created_at as tanggal_pengaduan', 'tanggapan.created_at as tanggal_tanggap', 'pengaduan.isi_pengaduan', 'tanggapan.tanggapan', 'dokumen_pengaduan.url_dokumen')
               ->where('pengaduan.id', $id)
               ->get();
 
