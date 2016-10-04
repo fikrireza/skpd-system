@@ -310,7 +310,7 @@
                 "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
                 "<div class='comment-text'>"+
                 "<span class='username'>"+
-                nama_penanggap + " || Administrator SKPD " + nama_skpd +
+                "Administrator " + nama_skpd +
                 "<span class='text-muted pull-right'>"+ tanggal_tanggap +"</span>"+
                 "</span>"+
                 tanggap +
