@@ -312,64 +312,64 @@ class DashboardController extends Controller
               ->limit(5)
               ->get();
 
-      $getnamatopik = array();
+      $getidtopik = array();
       $i = 0;
       foreach ($getbignumber as $key) {
-        $getnamatopik[$i] = $key->nama_topik;
+        $getidtopik[$i] = $key->id;
         $i++;
       }
 
       $getdataforareachart = array();
-      if (count($getnamatopik) == 1) {
+      if (count($getidtopik) == 1) {
       $getdataforareachart = DB::table('pengaduan')
                               ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'),
-                               DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[0]') as 'a'"))
+                               DB::raw("sum(topik_pengaduan.id='$getidtopik[0]') as 'a'"))
                               ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                               ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                               ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
                               ->orderby('pengaduan.created_at', 'asc')
                               ->get();
-      } elseif (count($getnamatopik) == 2) {
+      } elseif (count($getidtopik) == 2) {
         $getdataforareachart = DB::table('pengaduan')
                                 ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[0]') as 'a'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"))
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[0]') as 'a'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[1]') as 'b'"))
                                 ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                                 ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                                 ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
                                 ->orderby('pengaduan.created_at', 'asc')
                                 ->get();
-      } elseif (count($getnamatopik) == 3) {
+      } elseif (count($getidtopik) == 3) {
         $getdataforareachart = DB::table('pengaduan')
                                 ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[0]') as 'a'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[2]') as 'c'"))
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[0]') as 'a'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[1]') as 'b'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[2]') as 'c'"))
                                 ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                                 ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                                 ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
                                 ->orderby('pengaduan.created_at', 'asc')
                                 ->get();
-      } elseif (count($getnamatopik) == 4) {
+      } elseif (count($getidtopik) == 4) {
         $getdataforareachart = DB::table('pengaduan')
                                 ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[0]') as 'a'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[2]') as 'c'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[3]') as 'd'"))
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[0]') as 'a'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[1]') as 'b'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[2]') as 'c'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[3]') as 'd'"))
                                 ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                                 ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                                 ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
                                 ->orderby('pengaduan.created_at', 'asc')
                                 ->get();
-      } elseif (count($getnamatopik) == 5) {
+      } elseif (count($getidtopik) == 5) {
         $getdataforareachart = DB::table('pengaduan')
                                 ->select(DB::raw('substr(pengaduan.created_at, 1, 7) as y'),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[0]') as 'a'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[1]') as 'b'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[2]') as 'c'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[3]') as 'd'"),
-                                 DB::raw("sum(topik_pengaduan.nama_topik='$getnamatopik[4]') as 'e'"))
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[0]') as 'a'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[1]') as 'b'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[2]') as 'c'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[3]') as 'd'"),
+                                 DB::raw("sum(topik_pengaduan.id='$getidtopik[4]') as 'e'"))
                                 ->join('topik_pengaduan', 'topik_pengaduan.id', '=', 'pengaduan.topik_id')
                                 ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
                                 ->groupBy(DB::raw('extract(month from pengaduan.created_at)'))
