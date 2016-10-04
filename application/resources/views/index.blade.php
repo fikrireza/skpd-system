@@ -384,11 +384,13 @@
                   <ul class="nav nav-pills nav-stacked">
                     @foreach($skpdonly as $key => $tabskpd)
                     @if($key >= 7)
+                    <?php if($batas == 9) break; ?>
                     <li>
                       <a href="{{url('semua/'.$tabskpd->slug)}}">
                         {{ $tabskpd->nama_skpd }}
                       </a>
                     </li>
+                    <?php $batas++; ?>
                     @endif
                     @endforeach
                   </ul>

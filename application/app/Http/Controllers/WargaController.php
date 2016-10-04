@@ -57,7 +57,7 @@ class WargaController extends Controller
                       ->where('master_skpd.flag_skpd', 1)
                       ->where('pengaduan.flag_rahasia', 0)
                       ->orderby('pengaduan.created_at', 'desc')
-                      ->take(60)
+                      // ->take(60)
                       ->get();
 
     $grouping = collect($AllTopikQuery);
@@ -242,7 +242,7 @@ class WargaController extends Controller
                       ->where('master_skpd.flag_skpd', 1)
                       ->where('pengaduan.flag_rahasia', 0)
                       ->orderby('pengaduan.created_at', 'desc')
-                      ->take(60)
+                      // ->take(60)
                       ->get();
     $grouping = collect($AllTopikQuery);
     $AllTopiks = $grouping->groupBy('nama_skpd')->toArray();
@@ -278,7 +278,7 @@ class WargaController extends Controller
                           ->join('users', 'users.id', '=', 'pengaduan.warga_id')
                           ->select('master_skpd.nama_skpd', 'topik_pengaduan.nama_topik', 'pengaduan.*', 'users.nama', 'users.url_photo')
                           ->where('pengaduan.slug', $slug)->first();
-      
+
       $dokumentall = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
                       ->select('*')
