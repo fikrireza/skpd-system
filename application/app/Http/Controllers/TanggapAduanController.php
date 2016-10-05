@@ -44,16 +44,18 @@ class TanggapAduanController extends Controller
                       ->where('flag_mutasi', '0')
                       ->orderby('pengaduan.created_at', 'desc')
                       ->paginate(10);
+
       $getmutasi = DB::table('mutasi')
-                      ->join('pengaduan', 'mutasi.id_pengaduan', '=', 'pengaduan.id')
+                      ->select('mutasi.id as id', 'master_skpd.nama_skpd', 'mutasi.pesan_mutasi', 'topik_pengaduan.nama_topik', 'mutasi.created_at', 'mutasi.id_pengaduan as id_pengaduan', 'flag_tanggap')
                       ->join('topik_pengaduan', 'mutasi.id_topik', '=', 'topik_pengaduan.id')
-                      ->join('master_skpd', 'topik_pengaduan.id_skpd', '=', 'master_skpd.id')
-                      ->join('users', 'users.id', '=', 'pengaduan.warga_id')
-                      ->select('*', 'mutasi.id', 'mutasi.created_at', 'mutasi.updated_at')
+                      ->join('master_skpd', 'mutasi.id_skpd_pemutasi', '=', 'master_skpd.id')
+                      ->join('pengaduan', 'mutasi.id_pengaduan', '=', 'pengaduan.id')
                       ->where('flag_mutasi', '1')
-                      ->where('mutasi.id_userskpd', $userid->id_skpd)
+                      ->where('flag_tanggap', '0')
+                      ->where('topik_pengaduan.id_skpd', $userid->id_skpd)
                       ->orderby('mutasi.created_at', 'desc')
                       ->paginate(10);
+
 
       $getdokumen = DB::table('pengaduan')
                       ->join('dokumen_pengaduan', 'pengaduan.id' , '=', 'dokumen_pengaduan.pengaduan_id')
@@ -171,6 +173,7 @@ class TanggapAduanController extends Controller
                         ->orderby('mutasi.created_at', 'desc')
                         ->paginate(10);
 
+
       $data['getmutasi'] = $getmutasi;
 
 
@@ -185,6 +188,8 @@ class TanggapAduanController extends Controller
                       ->where('mutasi.id', $id)
                       ->orderby('mutasi.created_at', 'desc')
                       ->paginate(10);
+
+                      // dd($getdatamutasi);
 
       $data['getdatamutasi'] = $getdatamutasi;
 
@@ -203,6 +208,22 @@ class TanggapAduanController extends Controller
       $data['getdokumen'] = $getdokumen;
 
       return view('pages/tanggapipengaduan')->with('data', $data);
+  }
+
+  public function tanggapmutasi(Request $request)
+  {
+    $update = Pengaduan::find($request->id);
+    $update->flag_tanggap = 1;
+    $update->flag_verifikasi = 1;
+    $update->save();
+
+    $set = new TanggapanModel;
+    $set->id_pengaduan = $request->id;
+    $set->id_userskpd = Auth::user()->id;
+    $set->tanggapan = $request->tanggapan;
+    $set->save();
+
+    return redirect()->route('tanggap.index')->with('message', 'Berhasil menanggapi pengaduan.');
   }
 
 }

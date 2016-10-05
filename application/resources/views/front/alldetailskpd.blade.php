@@ -47,6 +47,7 @@
               <div class="col-md-9">
                 <?php $warna = 1;
                 ?>
+                <div class="row">
                 @foreach($dataskpd as $skpd)
                 <div class="col-md-4">
                   <div class="box box-widget widget-user-2">
@@ -75,6 +76,7 @@
                   </div>
                 </div>
                 @endforeach
+              </div>
               </div>
 
               <div class="col-md-3">

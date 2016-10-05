@@ -47,8 +47,8 @@
               <div class="box box-widget">
                 <div class='box-header with-border'>
                   <div class='user-block'>
-                    <img class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
-                    <span class='username'><a href="#">Bambang Pamungkis</a></span>
+                    <img id="fotowarga" class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
+                    <span class='username'><a href="#"><span id="namawarga"></span></a></span>
                     <span class='description'><span id="tanggal_pengaduan"></span> | <span id="judul_pengaduan"></span></span>
                   </div><!-- /.user-block -->
                 </div><!-- /.box-header -->
@@ -59,9 +59,8 @@
                   <!-- Attachment -->
                   <div class="attachment-block clearfix">
                     <b>Data Pendukung</b><br>
-                    <i class="text-muted">gambar.jpg</i>
-                    <div class="pull-right">
-                      <button class="btn btn-default btn-sm btn-flat">Download Data Pendukung</button>
+                    <div id="data_pendukung">
+                      <i class="text-muted">Pengaduan ini tidak memiliki data pendukung.</i>
                     </div>
                   </div>
 
@@ -441,13 +440,8 @@
   {{-- icheck --}}
   <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
 
-  <script>
-    $(function () {
-      $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-        checkboxClass: 'icheckbox_minimal-blue',
-        radioClass: 'iradio_minimal-blue'
-      });
-
+  <script type="text/javascript">
+    $(function(){
       $('a.viewdetail').click(function(){
         var a = $(this).data('value');
         $.ajax({
@@ -462,11 +456,33 @@
             var tanggap = data[0].tanggapan;
             var nama_penanggap = data[0].nama;
             var nama_skpd = data[0].nama_skpd;
+            var nama = data[0].nama;
+            var dokumen = data[0].url_dokumen;
+            var tanggal_tanggap = data[0].tanggal_tanggap;
+            var url_photo = data[0].url_photo;
+
+            // change date format
+            var mydate = new Date(tanggal_tanggap);
+            var tanggal_tanggap = mydate.toString("dd MMMM yyyy");
+
+            var mydate = new Date(tanggal_pengaduan);
+            var tanggal_pengaduan = mydate.toString("dd MMMM yyyy");
 
             // set
             $('span#judul_pengaduan').html(judul_pengaduan);
+            $('span#namawarga').html(nama);
             $('span#tanggal_pengaduan').html(tanggal_pengaduan);
             $('div#isi_pengaduan').html(isi_pengaduan);
+            if (url_photo!=null) {
+              $('img#fotowarga').attr('src', "{{ url('/') }}/images/"+url_photo);
+            } else {
+              $('img#fotowarga').attr('src', "{{ url('/') }}/images/userdefault.png");
+            }
+
+            if (url_photo==null) {
+              url_photo = "userdefault.png";
+            }
+
             if(tanggap!=null)
             {
               $('div#tanggapan').html(
@@ -475,11 +491,11 @@
                 "<b>Tanggapan</b>"+
                 "</div>"+
                 "<div class='box-comment'>"+
-                "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
+                "<img class='img-circle img-sm' src='{{ url('/') }}/images/userdefault.png' alt='user image'>"+
                 "<div class='comment-text'>"+
                 "<span class='username'>"+
-                nama_penanggap + " || Administrator SKPD " + nama_skpd +
-                "<span class='text-muted pull-right'>25 April 2016</span>"+
+                "Administrator SKPD " + nama_skpd +
+                "<span class='text-muted pull-right'>"+ "{{ \Carbon\Carbon::parse($k->tanggal_tanggapan)->format('d-M-y')}}" +"</span>"+
                 "</span>"+
                 tanggap +
                 "</div>"+
@@ -489,6 +505,53 @@
             }
             else {
               $('div#tanggapan').html("");
+            }
+
+            if(dokumen!=null) {
+                $.ajax({
+                  url: "{{ url('/') }}/getdokumenpengaduan/bind/"+a,
+                  success: function(datax) {
+                    $('div#data_pendukung').html("");
+                    for (var i = 0; i < datax.length; i++) {
+                      var ext = datax[i].url_dokumen.split('.').pop();
+                      if(ext=="pdf") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/pdf.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="png") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/png.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="jpg") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/jpg.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="docx") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/doc.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="xlsx") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/doc.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      }
+
+                    }
+                  }
+                });
+            }
+            else {
+              $('div#data_pendukung').html("<i class='text-muted'>Pengaduan ini tidak memiliki data pendukung.</i>");
             }
           }
         });

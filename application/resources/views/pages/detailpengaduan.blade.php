@@ -3,6 +3,7 @@
 @section('title')
   <title>Detail Pengaduan</title>
   <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('/dist/css/AdminLTE.min.css') }}">
 @stop
 
 @section('breadcrumb')
@@ -57,7 +58,7 @@
                       @foreach($gettskpd as $getdataskpd)
                         <optgroup label="{{ $getdataskpd->nama_skpd }}">
                           @foreach($gettopik as $getdatatopik)
-                            @if($getdataskpd->id === $getdatatopik->id_skpd)
+                            @if($getdataskpd->id == $getdatatopik->id_skpd)
                               <option value="{{ $getdatatopik->id}}">{{ $getdatatopik->nama_topik}}</option>
                             @endif
                           @endforeach

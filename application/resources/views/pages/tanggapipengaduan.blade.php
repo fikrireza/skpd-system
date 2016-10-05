@@ -28,6 +28,83 @@
 @stop
 
 @section('content')
+  <div class="modal modal-default fade" id="myModalDetailPesan" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detail Pesan Mutasi</h4>
+        </div>
+        <div class="modal-body">
+          <span id="isipesan"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-primary pull-right btn-sm btn-flat pull-right" data-dismiss="modal">Kembali</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="width:80%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detail Pengaduan</h4>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-widget">
+              <div class='box-header with-border'>
+                <div class='user-block'>
+                  <img id="fotowarga" class='img-circle' src='{{asset('dist/img/user1-128x128.jpg')}}' alt='user image'>
+                  <span class='username'><a href="#"><span id="namawarga"></span></a></span>
+                  <span class='description'><span id="tanggal_pengaduan"></span> | <span id="judul_pengaduan"></span></span>
+                </div><!-- /.user-block -->
+              </div><!-- /.box-header -->
+              <div class='box-body'>
+                <!-- post text -->
+                <div id="isi_pengaduan" style="margin-bottom:10px;"></div>
+
+                <!-- Attachment -->
+                <div class="attachment-block clearfix">
+                  <b>Data Pendukung</b><br>
+                  <div id="data_pendukung">
+                    <i class="text-muted">Pengaduan ini tidak memiliki data pendukung.</i>
+                  </div>
+                </div>
+
+              </div><!-- /.box-body -->
+
+              <div class="box-footer">
+                  <form action="{{route('tanggapmutasi.store')}}" method="post">
+                    {!! csrf_field() !!}
+                    <img class="img-responsive img-circle img-sm" src="{{asset('dist/img/logokabtangerang.png')}}" alt="alt text">
+                    <!-- .img-push is used to add margin to elements next to floating images -->
+                    <div class="img-push">
+                    <input id="id_pengaduan" type="hidden" name="id" class="form-control" readonly="true">
+                    <textarea required name="tanggapan" class="form-control" rows="5" cols="40" placeholder="Tulis tanggapan anda di sini.."></textarea>
+                    <div class="footer pull-right" style="padding-top:5px;">
+                        <button class="btn btn-success btn-sm btn-flat">Kirim Tanggapan</button>
+                    </div>
+                  </div>
+                </form>
+              </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+          </div><!--/.col -->
+
+        </div>   <!-- /.row -->
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-warning pull-right btn-sm btn-flat pull-right" data-dismiss="modal">Kembali</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-12">
       @if(Session::has('message'))
@@ -90,10 +167,6 @@
                 @if(isset($data['binddatapengaduan']))
                   <div class="attachment-block clearfix">
                     <b>Data Pendukung</b><br>
-                      {{-- <i class="text-muted">{{$data['getdokumen'][0]->url_dokumen}}</i>
-                    <div class="pull-right">
-                      <a href="{{ asset('\..\documents').'/'.$data['getdokumen'][0]->url_dokumen}}" download="{{$data['getdokumen'][0]->url_dokumen}}" class="btn btn-default btn-sm btn-flat">Download Data Pendukung</a>
-                    </div> --}}
                     <p class="text-muted">
                       <a href="{{ asset('\..\documents').'/'.$data['getdokumen'][0]->url_dokumen}}" download="{{$data['getdokumen'][0]->url_dokumen}}" class="link-black text-sm">
                         @if (strpos($data['getdokumen'][0]->url_dokumen, '.pdf'))
@@ -371,10 +444,10 @@
               <table class="table">
                 <tr class="bg-yellow">
                   <th style="width:10px;">#</th>
-                  <th>Pelapor</th>
+                  <th>SKPD Pemutasi</th>
+                  <th>Pesan Mutasi</th>
                   <th>Kategori</th>
                   <th>Tanggal Mutasi</th>
-                  <th>SKPD Mutasi</th>
                   <th>Aksi</th>
                 </tr>
                 <?php
@@ -392,13 +465,30 @@
                   @foreach($data['getmutasi'] as $key)
                     <tr>
                       <td>{{ $no }}</td>
-                      <td>{{ $key->nama }}</td>
-                      <td>{{ $key->nama_topik }}</td>
-                      <td>{{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y H:i:s')}}</td>
                       <td>{{ $key->nama_skpd }}</td>
                       <td>
+                        <a href="#" data-value="{{$key->id}}" data-toggle="modal" data-target="#myModalDetailPesan" id="isipesanmutasi">
+                          @php
+                            $pesan = explode(" ", $key->pesan_mutasi);
+                          @endphp
+                          @if (count($pesan)>3)
+                            @for ($i=0; $i < 3; $i++)
+                              {{ $pesan[$i] }}
+                            @endfor
+                            ...
+                          @else
+                            {{ $key->pesan_mutasi }}
+                          @endif
+                        </a>
+                      </td>
+                      <td>{{ $key->nama_topik }}</td>
+                      <td>{{ \Carbon\Carbon::parse($key->created_at)->format('d-M-y H:i:s')}}</td>
+                      <td>
                         @if($key->flag_tanggap==0)
-                          <a class="btn btn-danger btn-xs btn-flat" data-toggle='tooltip' title='Tanggapi Data Mutasi' href="{{ route('tanggap.show', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td>
+                          {{-- <a class="btn btn-danger btn-xs btn-flat" data-toggle='tooltip' title='Tanggapi Data Mutasi' href="{{ route('tanggap.show', $key->id) }}"><i class="fa fa-exclamation-triangle"></i></a></td> --}}
+                          <span data-toggle="tooltip" title="Tanggapi Data Mutasi">
+                            <a href="" data-value="{{ $key->id_pengaduan }}" class="btn btn-primary btn-flat btn-xs viewdetail" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
+                          </span>
                         @endif
                     </tr>
                     <?php $no++; ?>
@@ -441,8 +531,139 @@
         var a = $(this).data('value');
         $('#set').attr('href', "{{ url('/') }}/masterjabatan/hapusjabatan/"+a);
       });
+
+      $('a#isipesanmutasi').click(function(){
+        var a = $(this).data('value');
+        $.ajax({
+          url: "{{ url('/') }}/getpesanmutasi/bind/"+a,
+          dataType: 'json',
+          success: function(data){
+            var pesan = data.pesan_mutasi;
+
+            $("span#isipesan").html(pesan);
+          }
+        })
+      });
     });
   </script>
+
+  <script type="text/javascript">
+    $(function(){
+      $('a.viewdetail').click(function(){
+        var a = $(this).data('value');
+        $.ajax({
+          url: "{{ url('/') }}/pengaduandetail/bind/"+a,
+          dataType: 'json',
+          success: function(data){
+            //get
+            var id = data[0].id;
+            var judul_pengaduan = data[0].judul_pengaduan;
+            var tanggal_pengaduan = data[0].tanggal_pengaduan;
+            var isi_pengaduan = data[0].isi_pengaduan;
+            var tanggap = data[0].tanggapan;
+            var nama_penanggap = data[0].nama;
+            var nama_skpd = data[0].nama_skpd;
+            var nama = data[0].nama;
+            var dokumen = data[0].url_dokumen;
+            var tanggal_tanggap = data[0].tanggal_tanggap;
+            var url_photo = data[0].url_photo;
+
+            // change date format
+            var mydate = new Date(tanggal_tanggap);
+            var tanggal_tanggap = mydate.toString("dd MMMM yyyy");
+
+            var mydate = new Date(tanggal_pengaduan);
+            var tanggal_pengaduan = mydate.toString("dd MMMM yyyy");
+
+            // set
+            $('span#judul_pengaduan').html(judul_pengaduan);
+            $('span#namawarga').html(nama);
+            $('span#tanggal_pengaduan').html(tanggal_pengaduan);
+            $('div#isi_pengaduan').html(isi_pengaduan);
+            $('input#id_pengaduan').attr('value',id);
+
+            if (url_photo!=null) {
+              $('img#fotowarga').attr('src', "{{ url('/') }}/images/"+url_photo);
+            } else {
+              $('img#fotowarga').attr('src', "{{ url('/') }}/images/userdefault.png");
+            }
+
+            if(tanggap!=null)
+            {
+              $('div#tanggapan').html(
+                "<div class='box-footer box-comments' style='border:1px solid #00a65a;'>"+
+                "<div style='padding-bottom:5px;'>"+
+                "<b>Tanggapan</b>"+
+                "</div>"+
+                "<div class='box-comment'>"+
+                "<img class='img-circle img-sm' src='{{asset('dist/img/user3-128x128.jpg')}}' alt='user image'>"+
+                "<div class='comment-text'>"+
+                "<span class='username'>"+
+                nama_penanggap + " || Administrator SKPD " + nama_skpd +
+                "<span class='text-muted pull-right'>"+ tanggal_tanggap +"</span>"+
+                "</span>"+
+                tanggap +
+                "</div>"+
+                "</div>"+
+                "</div>"
+              );
+            }
+            else {
+              $('div#tanggapan').html("");
+            }
+
+            if(dokumen!=null) {
+                $.ajax({
+                  url: "{{ url('/') }}/getdokumenpengaduan/bind/"+a,
+                  success: function(datax) {
+                    $('div#data_pendukung').html("");
+                    for (var i = 0; i < datax.length; i++) {
+                      var ext = datax[i].url_dokumen.split('.').pop();
+                      if(ext=="pdf") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/pdf.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="png") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/png.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="jpg") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/jpg.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="docx") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/doc.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      } else if (ext=="xlsx") {
+                        $('div#data_pendukung').append(
+                          "<a href='{{asset("documents")}}/"+ datax[i].url_dokumen +"' download='"+ datax[i].url_dokumen +"'>"+
+                            "<img width='3%' src='{{ asset("dist/img/doc.png") }}' alt='...' class='margin'>"+
+                          "</a>"
+                        );
+                      }
+
+                    }
+                  }
+                });
+            }
+            else {
+              $('div#data_pendukung').html("<i class='text-muted'>Pengaduan ini tidak memiliki data pendukung.</i>");
+            }
+          }
+        });
+      })
+    });
+  </script>
+
  <script>
    window.setTimeout(function() {
      $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
