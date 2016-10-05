@@ -49,7 +49,7 @@
         <div class="col-lg-6">
           <div class="form-group">
             <label for="exampleInputFile">Dokumen Pendukung</label>
-            <input type="file" id="exampleInputFile" name="dokumen[]" multiple="multiple" accept=".jpg, .png, .bmp, .docx, .doc, .xls, .xlsx, .pdf">
+            <input type="file" id="exampleInputFile" name="dokumen[]" multiple="multiple" accept=".jpg, .png, .bmp, .docx, .doc, .xls, .xlsx, .pdf" value="{{ old('dokumen[]') }}">
             {{-- <p class="help-block">Dokumen yang akan dilampirkan</p> --}}
             <p class="help-block" style="color:red">*Kapasitas Dokumen tidak lebih dari 20 MB</p>
           </div>

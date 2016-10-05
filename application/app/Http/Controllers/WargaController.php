@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Http\Requests\PengaduanRequest;
+
 use Carbon;
 use Auth;
 use DB;
+use Validator;
 use App\User;
 use App\Models\Pengaduan;
 use App\Models\DokumenPengaduan;
@@ -81,8 +85,9 @@ class WargaController extends Controller
    *
    * @return App\Http\Requests\PengaduanRequest
    */
-  public function postPengaduan(PengaduanRequest $request)
+  public function postPengaduan(Request $request)
   {
+    // dd($request->input('dokumen'));
     if($request->input('anonim') == null){
       $anonim = 0;
     }else{
@@ -100,6 +105,25 @@ class WargaController extends Controller
 
     if($request->hasFile('dokumen'))
     {
+      $message = [
+        'topik.required' => 'Wajib di Isi',
+        'judul.required'  => 'Wajib di Isi',
+        'isi.required' => 'Wajib di Isi',
+        // 'dokumen.*.mimes' => 'jpg,bmp,docx,doc,xlsc,png,pdf',
+      ];
+      // dd($message);
+      $validator = Validator::make($request->all(), [
+        'topik' => 'required',
+        'judul'  => 'required|max:150|min:3',
+        'isi' => 'required',
+        // 'dokumen.*' => 'required|mimes:jpg,bmp,docx,doc,xlsc,png,pdf',
+      ], $message);
+      // dd($validator->fails());
+      if($validator->fails())
+      {
+        return redirect()->route('pengaduansaya')->withErrors($validator)->withInput();
+      }
+
       DB::transaction(function() use($request, $anonim, $rahasia, $slugtitle)
       {
         $pengaduan = Pengaduan::create([
@@ -114,8 +138,9 @@ class WargaController extends Controller
 
         foreach ($request->file('dokumen') as $file)
         {
+          // dd($file);
           $photo_name = time().'-'.$file->getClientOriginalName();
-          $file->move('documents', $photo_name);
+          $file->move('documents/', $photo_name);
           $dokPengaduan = DokumenPengaduan::create([
                       'url_dokumen'   => $photo_name,
                       'pengaduan_id'  => $pengaduan->id,
@@ -125,6 +150,23 @@ class WargaController extends Controller
     }
     else
     {
+      $message = [
+        'topik.required' => 'Wajib di Isi',
+        'judul.required'  => 'Wajib di Isi',
+        'isi.required' => 'Wajib di Isi',
+      ];
+
+      $validator = Validator::make($request->all(), [
+        'topik' => 'required',
+        'judul'  => 'required|max:150|min:3',
+        'isi' => 'required',
+      ], $message);
+
+      if($validator->fails())
+      {
+        return redirect()->route('pengaduansaya')->withErrors($validator)->withInput();
+      }
+
       $pengaduan = Pengaduan::create([
                   'topik_id'          => $request->input('topik'),
                   'judul_pengaduan'   => $request->input('judul'),
