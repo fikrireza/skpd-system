@@ -5,6 +5,7 @@
 @section('title')
     <title>Tambah Data SKPD</title>
     <link rel="stylesheet" href="{{asset('plugins/iCheck/all.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
 @stop
 <!-- END CONDITION SECTION TITLE-->
 
@@ -87,7 +88,7 @@
   </div>
 
   <div class="modal fade" id="myModalEdit" role="dialog">
-    <div class="modal-dialog" style="width:500px;">
+    <div class="modal-dialog" style="width:750px;">
       <form class="form-horizontal" action="{{ url('managementakun/update') }}" method="post">
         {!! csrf_field() !!}
         <div class="modal-content">
@@ -109,7 +110,7 @@
             <div class="form-group" id="skpdedit">
               <label class="col-sm-3 control-label">SKPD</label>
               <div class="col-sm-8">
-                <select class="form-control" name="id_skpd" id="edit_id_skpd">
+                <select class="form-control select2" name="id_skpd" id="edit_id_skpd" style="width: 100%;">
                   @foreach($getskpd as $key)
                     <option value="{{ $key->id }}" id="editskpd{{ $key->id }}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
                   @endforeach
@@ -170,7 +171,7 @@
               </div>
               <div id="skpdoption" class="col-md-14 {{ $errors->has('id_skpd') ? 'has-error' : '' }}">
                 <label class="control-label">SKPD</label>
-                <select class="form-control" name="id_skpd">
+                <select class="form-control select2" name="id_skpd">
                   <option value="-- Pilih --">-- Pilih --</option>
                   @foreach($getskpd as $key)
                     <option value="{{ $key->id }}" {{ old('id_skpd')==$key->id ? 'selected' : '' }}>{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
@@ -330,6 +331,11 @@
 
   <!-- iCheck -->
   <script src="{{asset('plugins/iCheck/icheck.min.js')}}"></script>
+  <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+
+  <script type="text/javascript">
+  $(".select2").select2();
+  </script>
 
   <script type="text/javascript">
     $(function(){

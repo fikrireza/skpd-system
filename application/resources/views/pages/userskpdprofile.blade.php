@@ -495,7 +495,7 @@
                 "<div class='comment-text'>"+
                 "<span class='username'>"+
                 "Administrator SKPD " + nama_skpd +
-                "<span class='text-muted pull-right'>"+ "{{ \Carbon\Carbon::parse($k->tanggal_tanggapan)->format('d-M-y')}}" +"</span>"+
+                "<span class='text-muted pull-right'>"+ tanggal_tanggap +"</span>"+
                 "</span>"+
                 tanggap +
                 "</div>"+

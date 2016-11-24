@@ -5,6 +5,7 @@
 @section('title')
     <title>Tambah Data Topik Pengaduan</title>
     <link rel="stylesheet" href="{{asset('plugins/iCheck/all.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/select2/select2.min.css')}}">
 @stop
 <!-- END CONDITION SECTION TITLE-->
 @section('breadcrumb')
@@ -58,7 +59,7 @@
 
 <!-- START MODAL TO ALERT DELETE-->
   <div class="modal fade" id="myModalEdit" role="dialog">
-    <div class="modal-dialog" style="width:500px;">
+    <div class="modal-dialog" style="width:750px;">
       <form class="form-horizontal" action="{{ url('topikpengaduan/update') }}" method="post">
         {!! csrf_field() !!}
         <div class="modal-content">
@@ -105,7 +106,7 @@
             <div class="form-group">
               <label class="col-sm-4 control-label">SKPD</label>
               <div class="col-sm-7">
-                <select class="form-control" name="id_skpd">
+                <select class="form-control select2" name="id_skpd" style="width: 100%;">
                   @foreach($getskpd as $key)
                     <option value="{{ $key->id }}" id="skpd{{$key->id}}">{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
                   @endforeach
@@ -184,7 +185,7 @@
               </div>
               <div class="col-md-14 {{ $errors->has('idskpd') ? 'has-error' : '' }}">
                 <label class="control-label">SKPD</label>
-                <select class="form-control" name="idskpd">
+                <select class="form-control select2" name="idskpd">
                   <option value="-- Pilih --">-- Pilih --</option>
                   @foreach($getskpd as $key)
                     <option value="{{ $key->id }}" {{ old('idskpd')==$key->id ? 'selected' : '' }}>{{ $key->kode_skpd }} - {{ $key->nama_skpd }}</option>
@@ -290,6 +291,11 @@
   <script src="{{asset('dist/js/app.min.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('dist/js/demo.js')}}"></script>
+  <script src="{{asset('plugins/select2/select2.full.min.js')}}"></script>
+
+  <script type="text/javascript">
+  $(".select2").select2();
+  </script>
 
   <script type="text/javascript">
     $(function(){
